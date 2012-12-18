@@ -39,6 +39,7 @@
 		post			:	0,
 		post_category	:	false,
 		post_format		:	false,
+		post_template	:	false,
 		taxonomy		:	false
 	};
 	
@@ -171,6 +172,13 @@
 		acf.data.page_template = $(this).val();
 		update_fields();
 	    
+	});
+	
+	$('#custom_post_template').live('change', function(){
+		
+		acf.data.post_template = $(this).val();
+		update_fields();
+		
 	});
 	
 	$('#parent_id').live('change', function(){

@@ -1152,6 +1152,7 @@ class Acf
 				'post',
 				'post_category',
 				'post_format',
+				'post_template',
 				'taxonomy',
 				'lang',
 			);
@@ -1579,6 +1580,37 @@ class Acf
 							return true; 
 						}
 					}
+		        	
+		        	return false;
+		        }
+		        
+		        break;
+				
+			 // POST TEMPLATE
+			 case "post_template":
+		        
+		        $post_template = isset($overrides['post_template']) ? $overrides['post_template'] : get_post_meta($post->ID,'custom_post_template',true);
+		        
+		        if($rule['operator'] == "==")
+		        {
+		        	if($post_template == $rule['value'])
+		        	{
+		        		return true; 
+		        	}
+		        	
+		        	if($rule['value'] == "default" && !$post_template)
+		        	{
+		        		return true;
+		        	}
+		        	
+		        	return false;
+		        }
+		        elseif($rule['operator'] == "!=")
+		        {
+		        	if($post_template != $rule['value'])
+		        	{
+		        		return true; 
+		        	}
 		        	
 		        	return false;
 		        }
@@ -2122,6 +2154,32 @@ class Acf
 		return $post_types;
 		
 	}
+	
+	/*
+	*  get_post_templates
+	*
+	*  @description: 
+	*  @since: 3.5.5
+	*  @created: 18/12/12
+	*/
+	
+	function get_post_templates()
+    {
+        $theme = wp_get_theme();
+
+        $post_templates = array();
+
+        $files = (array) $theme->get_files( 'php', 1 );
+
+        foreach ( $files as $file => $full_path ) {
+            $headers = get_file_data( $full_path, array( 'Template Name Posts' => 'Template Name Posts' ) );
+            if ( empty( $headers['Template Name Posts'] ) )
+                continue;
+            $post_templates[ $file ] = $headers['Template Name Posts'];
+        }
+
+        return $post_templates;
+    } 
 	
 	
 }

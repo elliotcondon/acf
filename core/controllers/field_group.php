@@ -422,6 +422,22 @@ class acf_field_group
 				}
 				
 				break;
+				
+			case "post_template" :
+				
+				$choices = array(
+					'default'	=>	__("Default Template",'acf'),
+				);
+				
+				$templates = $this->parent->get_post_templates();
+				$templates = array_flip($templates);
+				foreach($templates as $k => $v)
+				{
+					$choices[$v] = $k;
+				}
+				
+				break;
+			
 			
 			case "post" :
 				
