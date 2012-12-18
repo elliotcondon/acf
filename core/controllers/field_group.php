@@ -430,10 +430,9 @@ class acf_field_group
 				);
 				
 				$templates = $this->parent->get_post_templates();
-				$templates = array_flip($templates);
 				foreach($templates as $k => $v)
 				{
-					$choices[$v] = $k;
+					$choices[$k] = $v;
 				}
 				
 				break;
