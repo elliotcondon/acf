@@ -368,6 +368,37 @@ function the_sub_field($field_name)
 
 /*--------------------------------------------------------------------------------------
 *
+*	get_sub_field_index
+*
+*	@author Elliot Condon
+*	@since 3.5.5
+*
+*-------------------------------------------------------------------------------------*/
+
+function get_sub_field_index()
+{
+	global $acf_field;
+	return $acf_field[count($acf_field) - 1]['row'];
+}
+
+
+/*--------------------------------------------------------------------------------------
+*
+*	the_sub_field_index
+*
+*	@author Elliot Condon
+*	@since 3.5.5
+*
+*-------------------------------------------------------------------------------------*/
+
+function the_sub_field_index()
+{
+	echo get_sub_field_index();
+}
+
+
+/*--------------------------------------------------------------------------------------
+*
 *	register_field
 *
 *	@author Elliot Condon
