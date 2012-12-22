@@ -59,6 +59,7 @@ if( empty($location['rules']) )
 									'post_category'	=>	__("Category",'acf'),
 									'post_format'	=>	__("Format",'acf'),
 									'taxonomy'		=>	__("Taxonomy",'acf'),
+									'post_template'	=>	__("Post Template",'acf'),
 								),
 								__("Other",'acf') => array(
 									'ef_taxonomy'	=>	__("Taxonomy (Add / Edit)",'acf'),
