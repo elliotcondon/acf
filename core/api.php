@@ -109,9 +109,10 @@ function get_field($field_key, $post_id = false, $format_value = true)
 		$post_id = "options";
 	}
 	
+	$cache_key = $field_key;
 	
 	// return cache 
-	$cache = wp_cache_get('acf_get_field_' . $post_id . '_' . $field_key); 
+	$cache = wp_cache_get('acf_get_field_' . $post_id . '_' . $cache_key); 
 	if($cache) 
 	{ 
 		return $cache; 
@@ -174,7 +175,7 @@ function get_field($field_key, $post_id = false, $format_value = true)
 	
 	 
 	// update cache 
-	wp_cache_set('acf_get_field_' . $post_id . '_' . $field_key, $value); 
+	wp_cache_set('acf_get_field_' . $post_id . '_' . $cache_key, $value); 
 	 
 	
 	return $value; 
