@@ -437,6 +437,11 @@ function acf_register_field_group( $return )
 		return $return;
 	}
 	
+	// ensure $return is an array
+	if( ! is_array( $return ) )
+	{
+	  $return = array();
+  }
 	
 	// merge in custom
 	$return = array_merge($return, $GLOBALS['acf_register_field_group']);
