@@ -787,7 +787,7 @@ class acf_Image extends acf_Field
 		$attachment_url = $response['url'];
 		$base_url = str_replace( wp_basename( $attachment_url ), '', $attachment_url );
 		
-		if( is_array($meta['sizes']) )
+		if( isset($meta['sizes']) && is_array($meta['sizes']) )
 		{
 			foreach( $meta['sizes'] as $k => $v )
 			{
