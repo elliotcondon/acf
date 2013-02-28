@@ -35,7 +35,7 @@ class acf_Text extends acf_Field
 	
 	function create_field($field)
 	{
-		echo '<input type="text" value="' . $field['value'] . '" id="' . $field['id'] . '" class="' . $field['class'] . '" name="' . $field['name'] . '" />';
+		echo '<input type="text" value="' . esc_attr( $field['value'] ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" />';
 	}
 	
 	
