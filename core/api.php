@@ -109,13 +109,13 @@ function get_field($field_key, $post_id = false, $format_value = true)
 		$post_id = "options";
 	}
 	
+	$cache_key = $field_key;
 	
-	// return cache 
-	$cache = wp_cache_get('acf_get_field_' . $post_id . '_' . $field_key); 
-	if($cache) 
-	{ 
+	$cache = wp_cache_get('acf_get_field_' . $post_id . '_' . $cache_key, '', false, $found);
+	
+	if($found){ 
 		return $cache; 
-	} 
+	}
 	 
 	// default 
 	$value = ""; 
@@ -165,16 +165,10 @@ function get_field($field_key, $post_id = false, $format_value = true)
 	// load value
 	$value = $acf->get_value_for_api($post_id, $field);
 	
-	 
-	// no value? 
-	if( $value == "" )
-	{
-		$value = false; 
-	}
-	
-	 
+	$cache_value = $value;
+	 	
 	// update cache 
-	wp_cache_set('acf_get_field_' . $post_id . '_' . $field_key, $value); 
+	wp_cache_set('acf_get_field_' . $post_id . '_' . $cache_key, $cache_value); 
 	 
 	
 	return $value; 
