@@ -111,8 +111,8 @@ function get_field($field_key, $post_id = false, $format_value = true)
 	
 	
 	// return cache 
-	$cache = wp_cache_get('acf_get_field_' . $post_id . '_' . $field_key); 
-	if($cache) 
+	$cache = wp_cache_get('acf_get_field_' . $post_id . '_' . $field_key, '', false, $found);
+	if($found)
 	{ 
 		return $cache; 
 	} 
