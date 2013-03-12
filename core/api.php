@@ -20,6 +20,7 @@ function get_fields($post_id = false)
 	
 	if(!$post_id)
 	{
+		if(!$post) return false;
 		$post_id = $post->ID;
 	}
 	
