@@ -6,37 +6,37 @@ Tested up to: 3.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerfull API, it’s a must have for any web developer working with WordPress.Field types include: Wysiwyg, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker and more!
+Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerful API, it’s a must-have for any web developer working with WordPress. Field types include: WYSIWYG, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker, and more!
 
 == Description ==
 
-Advanced Custom Fields is the perfect solution for any wordpress website which needs more flexible data like other Content Management Systems. 
+Advanced Custom Fields is the perfect solution for any WordPress website that needs more flexible data types, like other content management systems. 
 
-* Visually create your Fields
-* Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)
+* Visually create your fields
+* Select from multiple input types (text, textarea, WYSIWYG, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery, and more to come!)
 * Assign your fields to multiple edit pages (via custom location rules)
-* Easily load data through a simple and friendly API
+* Easily load data through a simple, friendly API
 * Uses the native WordPress custom post type for ease of use and fast processing
-* Uses the native WordPress metadata for ease of use and fast processing
+* Uses native WordPress metadata for ease of use and fast processing
 
 = Field Types =
-* Tab (Group fields into tabs)
-* Text (type text, api returns text)
-* Text Area (type text, api returns text with `<br />` tags)
-* WYSIWYG (a wordpress wysiwyg editor, api returns html)
-* Image (upload an image, api returns the url)
-* File (upload a file, api returns the url)
-* Select (drop down list of choices, api returns chosen item)
-* Checkbox (tick for a list of choices, api returns array of choices)
-* Page Link (select 1 or more page, post or custom post types, api returns the url)
-* Post Object (select 1 or more page, post or custom post types, api returns post objects)
-* Date Picker (jquery date picker, options for format, api returns string)
-* True / False (tick box with message, api returns true or false)
+* Tab (group fields into tabs)
+* Text (enter text, API returns the text)
+* Text Area (enter text, API returns the text with `<br />` tags)
+* WYSIWYG (the WordPress WYSIWYG editor, API returns HTML)
+* Image (upload an image, API returns its URL)
+* File (upload a file, API returns its URL)
+* Select (drop-down list of choices, API returns the chosen item)
+* Checkbox (check for a list of choices, API returns an array of choices)
+* Page Link (select 1 or more page, post, or custom post type, API returns the URLs)
+* Post Object (select 1 or more page, post, or custom post type, API returns post objects)
+* Date Picker (jQuery date picker, options for formatting, API returns string)
+* True / False (check box with message, API returns true or false)
 * Relationship	(select and order post objects with a tidy interface)
 * Color Picker (Farbtastic!)
-* Repeater (ability to create repeatable blocks of fields!)
-* Flexible Content (ability to create flexible blocks of fields!)
-* Gallery (Add, edit and order multiple images in 1 simple field)
+* Repeater (ability to create repeatable blocks of fields)
+* Flexible Content (ability to create flexible blocks of fields)
+* Gallery (add, edit, and order multiple images in 1 simple field)
 
 = Tested on =
 * Mac Firefox 	:)
@@ -72,7 +72,7 @@ Your votes really make a difference! Thanks.
 
 == Frequently Asked Questions ==
 
-= Q. I have a question =
+= Q. I have a question. =
 A. Chances are, someone else has asked it. Check out the support forum at: 
 http://support.advancedcustomfields.com/
 
