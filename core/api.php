@@ -27,6 +27,7 @@ function acf_filter_post_id( $post_id )
 	// set post_id to global
 	if( !$post_id )
 	{
+		if(!$post) return false;
 		$post_id = $post->ID;
 	}
 	
