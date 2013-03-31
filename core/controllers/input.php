@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
 *  Input
@@ -7,58 +7,58 @@
 *  @since 3.2.6
 *  @created: 23/06/12
 */
- 
+
 class acf_input
 {
 
 	var $parent,
 		$data;
-		
-	
+
+
 	/*
 	*  __construct
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function __construct($parent)
 	{
-	
+
 		// vars
 		$this->parent = $parent;
-		
-		
+
+
 		// actions
 		add_action('admin_print_scripts', array($this,'admin_print_scripts'));
 		add_action('admin_print_styles', array($this,'admin_print_styles'));
 		add_action('admin_head', array($this,'admin_head'));
-		
-		
+
+
 		// save
-		add_action('save_post', array($this, 'save_post'), 10, 1); 
-		
-		
+		add_action('save_post', array($this, 'save_post'), 10, 1);
+
+
 		// custom actions (added in 3.1.8)
 		add_action('acf_head-input', array($this, 'acf_head_input'));
 		add_action('acf_print_scripts-input', array($this, 'acf_print_scripts_input'));
 		add_action('acf_print_styles-input', array($this, 'acf_print_styles_input'));
 		add_action('wp_restore_post_revision', array($this, 'wp_restore_post_revision'), 10, 2 );
 		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields') );
-		
+
 		// ajax
 		add_action('wp_ajax_acf_input', array($this, 'ajax_acf_input'));
 		add_action('wp_ajax_get_input_style', array($this, 'ajax_get_input_style'));
-		
-		
+
+
 		// edit attachment hooks (used by image / file / gallery)
 		add_action('admin_head-media.php', array($this, 'admin_head_media'));
 		add_action('admin_head-upload.php', array($this, 'admin_head_upload'));
-		
+
 	}
-	
-	
+
+
 	/*
 	*  validate_page
 	*
@@ -66,144 +66,143 @@ class acf_input
 	*  @since 3.2.6
 	*  @created: 23/06/12
 	*/
-	
+
 	function validate_page()
 	{
 		// global
 		global $pagenow, $typenow;
-		
-		
+
+
 		// vars
 		$return = false;
-		
-		
+
+
 		// validate page
 		if( in_array( $pagenow, array('post.php', 'post-new.php') ) )
 		{
-		
+
 			// validate post type
 			global $typenow;
-			
+
 			if( $typenow != "acf" )
 			{
 				$return = true;
 			}
-			
+
 		}
-		
-		
+
+
 		// validate page (Shopp)
 		if( $pagenow == "admin.php" && isset( $_GET['page'] ) && $_GET['page'] == "shopp-products" && isset( $_GET['id'] ) )
 		{
 			$return = true;
 		}
-		
-		
+
+
 		// return
 		return $return;
 	}
-	
-	
+
+
 	/*
 	*  admin_print_scripts
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function admin_print_scripts()
 	{
 		// validate page
 		if( ! $this->validate_page() ) return;
-		
-		
+
+
 		do_action('acf_print_scripts-input');
-		
-		
+
+
 		// only "edit post" input pages need the ajax
 		wp_enqueue_script(array(
-			'acf-input-ajax',	
+			'acf-input-ajax',
 		));
 	}
-	
-	
+
+
 	/*
 	*  admin_print_styles
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function admin_print_styles()
 	{
 		// validate page
 		if( ! $this->validate_page() ) return;
-		
+
 		do_action('acf_print_styles-input');
 	}
-	
-	
+
+
 	/*
 	*  admin_head
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function admin_head()
 	{
 		// validate page
 		if( ! $this->validate_page() ) return;
-		
-		
+
+
 		// globals
 		global $post, $pagenow, $typenow;
-		
-		
+
+
 		// shopp
 		if( $pagenow == "admin.php" && isset( $_GET['page'] ) && $_GET['page'] == "shopp-products" && isset( $_GET['id'] ) )
 		{
 			$typenow = "shopp_product";
 		}
-		
-		
+
+
 		// vars
 		$post_id = $post ? $post->ID : 0;
-		
-			
+
+
 		// get field groups
-		$filter = array( 
-			'post_id' => $post_id, 
-			'post_type' => $typenow 
+		$filter = array(
+			'post_id' => $post_id,
+			'post_type' => $typenow
 		);
 		$metabox_ids = array();
 		$metabox_ids = apply_filters( 'acf/location/match_field_groups', $metabox_ids, $filter );
-		
-		
+
+
 		// get style of first field group
 		$style = '';
 		if( isset($metabox_ids[0]) )
 		{
 			$style = $this->get_input_style( $metabox_ids[0] );
 		}
-		
-		
+
+
 		// Style
 		echo '<style type="text/css" id="acf_style" >' . $style . '</style>';
-		echo '<style type="text/css">.acf_postbox, .postbox[id*="acf_"] { display: none; }</style>';
-		
-		
+
+
 		// add user js + css
 		do_action('acf_head-input');
-		
-		
+
+
 		// get acf's
 		$acfs = apply_filters('acf/get_field_groups', false);
-		
-		
+
+
 		if($acfs)
 		{
 			foreach($acfs as $acf)
@@ -215,26 +214,26 @@ class acf_input
 				{
 					$priority = 'core';
 				}
-				
-				
+
+
 				// add meta box
 				add_meta_box(
-					'acf_' . $acf['id'], 
-					$acf['title'], 
-					array($this, 'meta_box_input'), 
-					$typenow, 
-					$acf['options']['position'], 
-					$priority, 
+					'acf_' . $acf['id'],
+					$acf['title'],
+					array($this, 'meta_box_input'),
+					$typenow,
+					$acf['options']['position'],
+					$priority,
 					array( 'fields' => $acf['fields'], 'options' => $acf['options'], 'show' => $show, 'post_id' => $post->ID )
 				);
-				
+
 			}
 			// foreach($acfs as $acf)
 		}
 		// if($acfs)
 	}
-	
-	
+
+
 	/*
 	*  get_input_style
 	*
@@ -248,16 +247,16 @@ class acf_input
 		// vars
 		$acfs = apply_filters('acf/get_field_groups', false);
 		$html = "";
-		
+
 		// find acf
 		if($acfs)
 		{
 			foreach($acfs as $acf)
 			{
 				if($acf['id'] != $acf_id) continue;
-				
 
-				// add style to html 
+
+				// add style to html
 				if( in_array('the_content',$acf['options']['hide_on_screen']) )
 				{
 					$html .= '#postdivrich {display: none;} ';
@@ -310,19 +309,19 @@ class acf_input
 				{
 					$html .= '#trackbacksdiv, #screen-meta label[for=trackbacksdiv-hide] {display: none;} ';
 				}
-				
-				
+
+
 				break;
 
 			}
 			// foreach($acfs as $acf)
 		}
 		//if($acfs)
-		
+
 		return $html;
 	}
-	
-	
+
+
 	/*
 	*  the_input_style
 	*
@@ -330,7 +329,7 @@ class acf_input
 	*  @since 2.0.5
 	*  @created: 23/06/12
 	*/
-	
+
 	function ajax_get_input_style()
 	{
 		// overrides
@@ -338,19 +337,19 @@ class acf_input
 		{
 			echo $this->get_input_style($_POST['acf_id']);
 		}
-		
+
 		die;
 	}
-	
-	
+
+
 	/*
 	*  meta_box_input
 	*
-	*  @description: 
+	*  @description:
 	*  @since 1.0.0
 	*  @created: 23/06/12
 	*/
-	
+
 	function meta_box_input($post, $args)
 	{
 		// vars
@@ -363,14 +362,14 @@ class acf_input
 			'post_id' => 0,
 		);
 		$options = array_merge( $options, $args['args'] );
-		
-		
+
+
 		// needs fields
 		if( $options['fields'] )
 		{
 			echo '<input type="hidden" name="save_input" value="true" />';
 			echo '<div class="options" data-layout="' . $options['options']['layout'] . '" data-show="' . $options['show'] . '" style="display:none"></div>';
-			
+
 			if( $options['show'] )
 			{
 				$this->parent->render_fields_for_input( $options['fields'], $options['post_id'] );
@@ -379,38 +378,38 @@ class acf_input
 			{
 				echo '<div class="acf-replace-with-fields"><div class="acf-loading"></div></div>';
 			}
-			
+
 		}
 	}
-	
-	
+
+
 	/*
 	*  ajax_acf_input
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.6
 	*  @created: 23/06/12
 	*/
 
 	function ajax_acf_input()
 	{
-		
+
 		// defaults
 		$defaults = array(
 			'acf_id' => null,
 			'post_id' => null,
 		);
-		
+
 		// load post options
 		$options = array_merge($defaults, $_POST);
-		
+
 		// required
 		if(!$options['acf_id'] || !$options['post_id'])
 		{
 			echo "";
 			die();
 		}
-		
+
 		// get acfs
 		$acfs = apply_filters('acf/get_field_groups', false);
 		if( $acfs )
@@ -420,17 +419,17 @@ class acf_input
 				if( $acf['id'] == $options['acf_id'] )
 				{
 					$this->parent->render_fields_for_input( $acf['fields'], $options['post_id']);
-					
+
 					break;
 				}
 			}
 		}
 
 		die();
-		
+
 	}
-	
-	
+
+
 	/*
 	*  save_post
 	*
@@ -438,21 +437,21 @@ class acf_input
 	*  @since 1.0.0
 	*  @created: 23/06/12
 	*/
-	
+
 	function save_post($post_id)
-	{	
-		
+	{
+
 		// do not save if this is an auto save routine
 		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
-		
-		
+
+
 		// only for save acf
 		if( ! isset($_POST['save_input']) || $_POST['save_input'] != 'true')
 		{
 			return $post_id;
 		}
-		
-		
+
+
 		// Save revision (copy and paste of current metadata. ie: what it was)
 		$parent_id = wp_is_post_revision( $post_id );
 		if( $parent_id )
@@ -463,10 +462,10 @@ class acf_input
         {
 	        do_action('acf_save_post', $post_id);
         }
-        
+
 	}
-	
-	
+
+
 	/*
 	*  save_post_revision
 	*
@@ -474,7 +473,7 @@ class acf_input
 	*  @since 3.4.4
 	*  @created: 4/09/12
 	*/
-	
+
 	function save_post_revision( $parent_id, $revision_id )
 	{
 
@@ -483,27 +482,27 @@ class acf_input
 		{
 			return false;
 		}
-		
-		
+
+
 		// field data was posted. Find all values (not references) and copy / paste them over.
-		
+
 		global $wpdb;
-		
-		
+
+
 		// get field from postmeta
 		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
-			$parent_id, 
+			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s",
+			$parent_id,
 			'\_%'
 		), ARRAY_A);
-		
-		
+
+
 		if( $rows )
 		{
 			foreach( $rows as $row )
 			{
-				$wpdb->insert( 
-					$wpdb->postmeta, 
+				$wpdb->insert(
+					$wpdb->postmeta,
 					array(
 						'post_id' => $revision_id,
 						'meta_key' => $row['meta_key'],
@@ -512,12 +511,12 @@ class acf_input
 				);
 			}
 		}
-		
+
 		return true;
 	}
-	
-		
-	
+
+
+
 	/*--------------------------------------------------------------------------------------
 	*
 	*	acf_head_input
@@ -526,15 +525,15 @@ class acf_input
 	*
 	*	@author Elliot Condon
 	*	@since 3.0.6
-	* 
+	*
 	*-------------------------------------------------------------------------------------*/
-	
+
 	function acf_head_input()
 	{
 		// global
 		global $wp_version, $post;
-		
-				
+
+
 		// vars
 		$toolbars = apply_filters( 'acf/fields/wysiwyg/toolbars', array() );
 		$post_id = 0;
@@ -542,7 +541,7 @@ class acf_input
 		{
 			$post_id = $post->ID;
 		}
-		
+
 		?>
 <script type="text/javascript">
 
@@ -551,8 +550,8 @@ acf.post_id = <?php echo $post_id; ?>;
 acf.nonce = "<?php echo wp_create_nonce( 'acf_nonce' ); ?>";
 acf.admin_url = "<?php echo admin_url(); ?>";
 acf.wp_version = "<?php echo $wp_version; ?>";
-	
-	
+
+
 // text
 acf.validation.text.error = "<?php _e("Validation Failed. One or more fields below are required.",'acf'); ?>";
 
@@ -571,7 +570,7 @@ acf.fields.gallery.title_edit = "<?php _e("Edit Image",'acf'); ?>";
 
 
 // WYSIWYG
-<?php 
+<?php
 
 if( is_array($toolbars) ):
 	foreach( $toolbars as $label => $rows ):
@@ -579,10 +578,10 @@ if( is_array($toolbars) ):
 		$name = str_replace('-', '_', $name);
 	?>
 acf.fields.wysiwyg.toolbars.<?php echo $name; ?> = {};
-		<?php if( is_array($rows) ): 
+		<?php if( is_array($rows) ):
 			foreach( $rows as $k => $v ): ?>
 acf.fields.wysiwyg.toolbars.<?php echo $name; ?>.theme_advanced_buttons<?php echo $k; ?> = '<?php echo implode(',', $v); ?>';
-			<?php endforeach; 
+			<?php endforeach;
 		endif;
 	endforeach;
 endif;
@@ -590,24 +589,24 @@ endif;
 ?>
 </script>
 		<?php
-		
-		
+
+
 		foreach($this->parent->fields as $field)
 		{
 			$field->admin_head();
 		}
 	}
-	
-	
+
+
 	/*--------------------------------------------------------------------------------------
 	*
 	*	acf_print_scripts
 	*
 	*	@author Elliot Condon
 	*	@since 3.1.8
-	* 
+	*
 	*-------------------------------------------------------------------------------------*/
-	
+
 	function acf_print_scripts_input()
 	{
 		wp_enqueue_script(array(
@@ -619,33 +618,33 @@ endif;
 			'thickbox',
 			'media-upload',
 			'acf-input',
-			'acf-datepicker',	
+			'acf-datepicker',
 		));
 
-		
+
 		foreach($this->parent->fields as $field)
 		{
 			$field->admin_print_scripts();
 		}
-		
-		
+
+
 		// 3.5 media gallery
 		if( function_exists('wp_enqueue_media') && !did_action( 'wp_enqueue_media' ))
 		{
 			wp_enqueue_media();
 		}
 	}
-	
-	
+
+
 	/*--------------------------------------------------------------------------------------
 	*
 	*	acf_print_styles
 	*
 	*	@author Elliot Condon
 	*	@since 3.1.8
-	* 
+	*
 	*-------------------------------------------------------------------------------------*/
-	
+
 	function acf_print_styles_input()
 	{
 		wp_enqueue_style(array(
@@ -653,24 +652,24 @@ endif;
 			'farbtastic',
 			'acf-global',
 			'acf-input',
-			'acf-datepicker',	
+			'acf-datepicker',
 		));
-		
+
 		foreach($this->parent->fields as $field)
 		{
 			$field->admin_print_styles();
 		}
 	}
-	
-	
+
+
 	/*
 	*  admin_head_upload
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.2.6
 	*  @created: 3/07/12
 	*/
-	
+
 	function admin_head_upload()
 	{
 		// vars
@@ -678,46 +677,46 @@ endif;
 			'acf_action'	=>	null,
 			'acf_field'		=>	'',
 		);
-		
+
 		$options = array_merge($defaults, wp_parse_args( wp_get_referer() ));
-		
-		
+
+
 		// validate
 		if( $options['acf_action'] != 'edit_attachment')
 		{
 			return false;
 		}
-		
-		
+
+
 		// call the apropriate field action
 		do_action('acf_head-update_attachment-' . $options['acf_field']);
-		
+
 		?>
 <script type="text/javascript">
 
 	// remove tb
 	self.parent.tb_remove();
-	
+
 </script>
 </head>
 <body>
-	
+
 </body>
 </html
 		<?php
-		
+
 		die;
 	}
-	
-	
+
+
 	/*
 	*  admin_head_media
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.2.6
 	*  @created: 3/07/12
 	*/
-	
+
 	function admin_head_media()
 	{
 
@@ -726,16 +725,16 @@ endif;
 			'acf_action'	=>	null,
 			'acf_field'		=>	'',
 		);
-		
+
 		$options = array_merge($defaults, $_GET);
-		
-		
+
+
 		// validate
 		if( $options['acf_action'] != 'edit_attachment')
 		{
 			return false;
 		}
-		
+
 		?>
 <style type="text/css">
 #wpadminbar,
@@ -763,43 +762,43 @@ html.wp-toolbar {
 </style>
 <script type="text/javascript">
 (function($){
-	
+
 	$(document).ready( function(){
-		
+
 		$('#media-single-form').append('<input type="hidden" name="acf_action" value="<?php echo $options['acf_action']; ?>" />');
 		$('#media-single-form').append('<input type="hidden" name="acf_field" value="<?php echo $options['acf_field']; ?>" />');
-		
+
 	});
-		
+
 })(jQuery);
 </script>
 		<?php
-		
+
 		do_action('acf_head-edit_attachment');
 	}
-	
-	
+
+
 	/*
 	*  wp_restore_post_revision
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.4.4
 	*  @created: 4/09/12
 	*/
-	
+
 	function wp_restore_post_revision( $parent_id, $revision_id )
 	{
 		global $wpdb;
-		
-		
+
+
 		// get field from postmeta
 		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
-			$revision_id, 
+			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s",
+			$revision_id,
 			'\_%'
 		), ARRAY_A);
-		
-		
+
+
 		if( $rows )
 		{
 			foreach( $rows as $row )
@@ -807,37 +806,37 @@ html.wp-toolbar {
 				update_post_meta( $parent_id, $row['meta_key'], $row['meta_value'] );
 			}
 		}
-			
+
 	}
-	
-	
+
+
 	/*
 	*  wp_post_revision_fields
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.4.4
 	*  @created: 4/09/12
 	*/
-	
+
 	function wp_post_revision_fields( $fields ) {
-		
+
 		global $post, $wpdb, $revision, $left_revision, $right_revision, $pagenow;
-		
-		
+
+
 		if( $pagenow != "revision.php" )
 		{
 			return $fields;
 		}
-		
-		
+
+
 		// get field from postmeta
 		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
-			$post->ID, 
+			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s",
+			$post->ID,
 			'\_%'
 		), ARRAY_A);
-		
-		
+
+
 		if( $rows )
 		{
 			foreach( $rows as $row )
@@ -855,18 +854,18 @@ html.wp-toolbar {
 				{
 					$revision->$row['meta_key'] = get_metadata( 'post', $revision->ID, $row['meta_key'], true );
 				}
-				
+
 			}
 		}
-		
-		
+
+
 		return $fields;
-	
+
 	}
 
-	
 
-	
+
+
 }
 
 ?>
