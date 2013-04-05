@@ -55,7 +55,6 @@ class acf_Post_object extends acf_Field
 
 		$field = array_merge($defaults, $field);
 		
-		
 		// validate taxonomy
 		if( !is_array($field['taxonomy']) )
 		{
@@ -186,8 +185,29 @@ class acf_Post_object extends acf_Field
 			// if($posts)
 		}
 		// foreach( $field['post_type'] as $post_type )
-		
-		
+		if (isset($field['taxonomies'])) {
+			foreach ($field['taxonomies'] as $tax_value)
+			{
+				$tax_arr = explode(':',$tax_value);
+				$tax_post_type = $tax_arr[0];
+				$tax_name = $tax_arr[1];
+				if ($tax_name == 'category') $tax_label = 'Categories';
+				else {
+					$tax_obj = get_taxonomy($tax_value);
+					if ($tax_obj) $tax_label = $tax_obj->labels->name;
+				}
+				$post_type_obj = get_post_type_object($tax_post_type);
+				if ($post_type_obj) $post_type_label = $post_type_obj->labels->name;
+				if ($tax_label && $post_type_label) {
+					$terms = get_terms($tax_name, array('hide_empty' => false));
+					foreach ($terms as $term) {
+						$term_identifier = 'tax:' . $tax_name . ':' . $term->term_id;
+						$field['choices'][$tax_label . ' (' . $post_type_label . ') Archives'][ $term_identifier ] = $term->name;
+					}
+				}
+			}
+		}
+		//print_r($field);
 		// create field
 		do_action('acf/create_field', $field );
 		

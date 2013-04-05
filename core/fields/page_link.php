@@ -37,7 +37,6 @@ class acf_Page_link extends acf_Field
 	{
 		// let post_object create the field
 		$field['type'] = 'post_object';
-		
 		do_action('acf/create_field', $field );
 
 	}
@@ -76,12 +75,40 @@ class acf_Page_link extends acf_Field
 					''	=>	__("All",'acf')
 				);
 				$choices = array_merge( $choices, $this->parent->get_post_types() );
+				$choices[$this->parent->none_value] = __("None",'acf');
 				
 				
 				do_action('acf/create_field', array(
 					'type'	=>	'select',
 					'name'	=>	'fields['.$key.'][post_type]',
 					'value'	=>	$field['post_type'],
+					'choices'	=>	$choices,
+					'multiple'	=>	1,
+				));
+				
+				?>
+			</td>
+		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label for=""><?php _e("Taxonomy Listings",'acf'); ?></label>
+			</td>
+			<td>
+				<?php 
+				
+				$choices = array(
+					''	=>	__("All",'acf')
+				);
+
+				foreach ($this->parent->get_taxonomies_by_post_type_name() as $tax_post_type => $taxonomies) {
+					foreach ($taxonomies as $taxonomy) $choices[$tax_post_type.':'.$taxonomy] = "$taxonomy ($tax_post_type)";
+				}
+				$choices[$this->parent->none_value] = __("None",'acf');
+				
+				do_action('acf/create_field', array(
+					'type'	=>	'select',
+					'name'	=>	'fields['.$key.'][taxonomies]',
+					'value'	=>	$field['taxonomies'],
 					'choices'	=>	$choices,
 					'multiple'	=>	1,
 				));
@@ -163,18 +190,25 @@ class acf_Page_link extends acf_Field
 		{
 			foreach($value as $k => $v)
 			{
-				$value[$k] = get_permalink($v);
+				$value[$k] = $this->get_page_link_value($v);
 			}
 		}
 		else
 		{
-			$value = get_permalink($value);
+			$value = $this->get_page_link_value($value);
 		}
 		
 		return $value;
 	}
 	
-
+	function get_page_link_value($v) {
+		if (strpos($v,'tax:') === 0) {
+			$tax_arr = explode(':',$v);
+			if ($tax_arr[1] == 'category') return get_category_link($tax_arr[2]);
+			else return get_term_link($tax_arr[1],(int)$tax_arr[2]);
+		}
+		else return get_permalink($v);
+	}
 	
 }
 

@@ -36,6 +36,7 @@ class Acf
 		$third_party,
 		$location;
 	
+	var $none_value = ' '; //Using a space because it's not usable in post type/taxonomy names
 	
 	/*
 	*  Constructor
@@ -1416,6 +1417,41 @@ foreach( $field['conditional_logic']['rules'] as $rule ):
 		}
 		
 		return $choices;
+	}
+	
+	/*--------------------------------------------------------------------------------------
+	*
+	*	get_archive_taxonomies
+	*
+	*---------------------------------------------------------------------------------------
+	*
+	*	returns a multidimentional array of taxonomies grouped by the post type / taxonomy
+	* 	
+	*   @created: 04/04/13
+	*-------------------------------------------------------------------------------------*/
+	
+	function get_taxonomies_by_post_type_name()
+	{	
+		$post_types = get_post_types();
+		$returnTaxonomies = array();
+		if($post_types)
+		{
+			foreach($post_types as $post_type)
+			{
+				$post_type_object = get_post_type_object($post_type);
+				$taxonomies = get_object_taxonomies($post_type);
+				if($taxonomies)
+				{
+					foreach($taxonomies as $taxonomy)
+					{
+						if(!is_taxonomy_hierarchical($taxonomy)) continue;
+						$returnTaxonomies[$post_type_object->name][] = $taxonomy;
+					}
+				}
+			}
+		}
+		
+		return $returnTaxonomies;
 	}
 	
 	
