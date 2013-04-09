@@ -137,14 +137,14 @@ class Acf
         
         // if file is in plugins folder
         $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR); 
-        $dir = str_replace($wp_plugin_dir, WP_PLUGIN_URL, $dir, $count);
+        $dir = str_replace($wp_plugin_dir, plugins_url(), $dir, $count);
         
         
         if( $count < 1 )
         {
 	        // if file is in wp-content folder
 	        $wp_content_dir = str_replace('\\' ,'/', WP_CONTENT_DIR); 
-	        $dir = str_replace($wp_content_dir, WP_CONTENT_URL, $dir, $count);
+	        $dir = str_replace($wp_content_dir, content_url(), $dir, $count);
         }
         
         
