@@ -56,6 +56,57 @@ input.ir { border: 0 none; background: none; }
 	opacity: 0;
 }
 
+.acf-alert {
+	background: #FCF8E3;
+    border: 1px solid #FBEED5;
+    border-radius: 4px 4px 4px 4px;
+    margin: 20px 0px;
+    padding: 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    color: #C09853;
+}
+
+.acf-alert p {
+	color: inherit;
+	margin: 0.5em 0;
+}
+
+.acf-alert.acf-alert-error {
+	background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+}
+
+.acf-alert.acf-alert-success {
+	background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847;
+}
+
+.acf-message {
+	background: #2F353E;
+	border-radius: 4px 4px 4px 4px;
+	border: #000 solid 1px;
+	color: #fff;
+	text-shadow: 0 1px 0 #000;
+	padding: 0 10px;
+	margin: 10px 0;
+}
+
+.acf-message p {
+	font-size: 15px;
+	margin: 15px 0;
+}
+
+.acf-message .acf-button,
+.acf-alert .acf-button{
+	font-size: 15px;
+	padding: 8px 12px;
+	margin-left: 5px;
+}
+
+
+
 /*--------------------------------------------------------------------------------------------
 *
 *	WP Box
@@ -68,8 +119,28 @@ input.ir { border: 0 none; background: none; }
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     position: relative;
 }
+.wp-box .title {
+	background: #f1f1f1;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#ececec), to(#f9f9f9));
+	background-image: -webkit-linear-gradient(bottom, #ececec, #f9f9f9);
+	background-image:    -moz-linear-gradient(bottom, #ececec, #f9f9f9);
+	background-image:      -o-linear-gradient(bottom, #ececec, #f9f9f9);
+	background-image: linear-gradient(to top, #ececec, #f9f9f9);
+}
+.wp-box .title h3 {
+	font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding: 7px 10px;
+    color: #464646;
+    border-bottom: #DFDFDF solid 1px;
+    box-shadow: 0 1px 0 #FFFFFF;
+    text-shadow: 0 1px 0 #FFFFFF;
+    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+}
 .wp-box .inner {
-    padding: 10px;
+    padding: 15px;
 }
 .wp-box .footer {
     background: none repeat scroll 0 0 #F5F5F5;
@@ -102,6 +173,7 @@ input.ir { border: 0 none; background: none; }
 
 .wp-box h3 {
 	margin: 1.5em 0 0;
+	
 }
 
 .wp-box p {
@@ -232,6 +304,10 @@ table.acf_input select {
 	padding: 2px;
 }
 
+table.acf_input select option {
+	padding: 3px;
+}
+
 table.acf_input input[type=text]:focus,
 table.acf_input textarea:focus,
 table.acf_input select:focus {
@@ -241,10 +317,13 @@ table.acf_input select:focus {
 
 ul.radio_list {
 	position: relative;
-	overflow: hidden;
 	display: block;
-	padding: 3px 0;
+	padding: 1px;
 	margin: 0;
+}
+
+ul.radio_list.horizontal {
+	overflow: hidden;
 }
 
 ul.radio_list.horizontal li {
@@ -359,6 +438,10 @@ input[type="submit"].acf-button[disabled]:hover {
 	
 }
 
+a.acf-button-big {
+	font-size: 16px;
+	padding: 13px;
+}
 
 /*--------------------------------------------------------------------------
 *

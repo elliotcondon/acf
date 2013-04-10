@@ -2,27 +2,21 @@
 
 class acf_everything_fields 
 {
-
-	var $parent;
-	var $dir;
-	var $data;
 	
-	/*--------------------------------------------------------------------------------------
-	*
-	*	Everything_fields
-	*
-	*	@author Elliot Condon
-	*	@since 3.1.8
-	* 
-	*-------------------------------------------------------------------------------------*/
+	var $settings,
+		$data;
 	
-	function __construct($parent)
+	
+	/*
+	*  __construct
+	*
+	*  @description: 
+	*  @since 3.1.8
+	*  @created: 23/06/12
+	*/
+		
+	function __construct()
 	{
-		// vars
-		$this->parent = $parent;
-		$this->dir = $parent->dir;
-		
-		
 		// data for passing variables
 		$this->data = array(
 			'page_id' => '', // a string used to load values
@@ -35,7 +29,7 @@ class acf_everything_fields
 		
 		// actions
 		add_action('admin_menu', array($this,'admin_menu'));
-		add_action('wp_ajax_acf_everything_fields', array($this, 'acf_everything_fields'));
+		add_action('wp_ajax_acf/everything_fields', array($this, 'acf_everything_fields'));
 		
 		
 		// save
@@ -113,13 +107,13 @@ class acf_everything_fields
 		
 		
 		// set page type
-		$options = array();
+		$filter = array();
 		
 		if( $pagenow == "admin.php" && isset( $_GET['page'], $_GET['id'] ) && $_GET['page'] == "shopp-categories" )
 		{
 		
 			$this->data['page_type'] = "shopp_category";
-			$options['ef_taxonomy'] = "shopp_category";
+			$filter['ef_taxonomy'] = "shopp_category";
 			
 			$this->data['page_action'] = "add";
 			$this->data['option_name'] = "";
@@ -135,7 +129,7 @@ class acf_everything_fields
 		{
 		
 			$this->data['page_type'] = "taxonomy";
-			$options['ef_taxonomy'] = $_GET['taxonomy'];
+			$filter['ef_taxonomy'] = $_GET['taxonomy'];
 			
 			$this->data['page_action'] = "add";
 			$this->data['option_name'] = "";
@@ -151,7 +145,7 @@ class acf_everything_fields
 		{
 		
 			$this->data['page_type'] = "user";
-			$options['ef_user'] = get_current_user_id();
+			$filter['ef_user'] = get_current_user_id();
 			
 			$this->data['page_action'] = "edit";
 			$this->data['option_name'] = "user_" . get_current_user_id();
@@ -161,7 +155,7 @@ class acf_everything_fields
 		{
 		
 			$this->data['page_type'] = "user";
-			$options['ef_user'] = $_GET['user_id'];
+			$filter['ef_user'] = $_GET['user_id'];
 			
 			$this->data['page_action'] = "edit";
 			$this->data['option_name'] = "user_" . $_GET['user_id'];
@@ -170,7 +164,7 @@ class acf_everything_fields
 		elseif( $pagenow == "user-new.php" )
 		{
 			$this->data['page_type'] = "user";
-			$options['ef_user'] ='all';
+			$filter['ef_user'] ='all';
 			
 			$this->data['page_action'] = "add";
 			$this->data['option_name'] = "";
@@ -180,7 +174,7 @@ class acf_everything_fields
 		{
 			
 			$this->data['page_type'] = "media";
-			$options['ef_media'] = 'all';
+			$filter['ef_media'] = 'all';
 			
 			$this->data['page_action'] = "add";
 			$this->data['option_name'] = "";
@@ -196,27 +190,37 @@ class acf_everything_fields
 		
 		// get field groups
 		$metabox_ids = array();
-		$this->data['metabox_ids'] = apply_filters( 'acf/location/match_field_groups', $metabox_ids, $options );
+		$this->data['metabox_ids'] = apply_filters( 'acf/location/match_field_groups', $metabox_ids, $filter );
 
 		
 		// dont continue if no ids were found
-		if(empty( $this->data['metabox_ids'] ))
+		if( empty( $this->data['metabox_ids'] ) )
 		{
 			return false;	
 		}
 		
 		
-		// some fields require js + css
-		do_action('acf_print_scripts-input');
-		do_action('acf_print_styles-input');
-
-		
-		// Add admin head
+		// actions
+		add_action('admin_enqueue_scripts', array($this,'admin_enqueue_scripts'));
 		add_action('admin_head', array($this,'admin_head'));
 		
 		
 	}
 	
+	
+	/*
+	*  admin_enqueue_scripts
+	*
+	*  @description: 
+	*  @since: 3.6
+	*  @created: 30/01/13
+	*/
+	
+	function admin_enqueue_scripts()
+	{
+		do_action('acf/input/admin_enqueue_scripts');
+	}
+
 	
 	/*--------------------------------------------------------------------------------------
 	*
@@ -233,80 +237,121 @@ class acf_everything_fields
 		
 		
 		// add user js + css
-		do_action('acf_head-input');
+		do_action('acf/input/admin_head');
 		
 		
 		?>
-		<script type="text/javascript">
-		(function($){
+<script type="text/javascript">
+(function($){
 
-		acf.data = {
-			action 			:	'acf_everything_fields',
-			metabox_ids		:	'<?php echo implode( ',', $this->data['metabox_ids'] ); ?>',
-			page_type		:	'<?php echo $this->data['page_type']; ?>',
-			page_action		:	'<?php echo $this->data['page_action']; ?>',
-			option_name		:	'<?php echo $this->data['option_name']; ?>'
-		};
-		
-		$(document).ready(function(){
+acf.data = {
+	action 			:	'acf/everything_fields',
+	metabox_ids		:	'<?php echo implode( ',', $this->data['metabox_ids'] ); ?>',
+	page_type		:	'<?php echo $this->data['page_type']; ?>',
+	page_action		:	'<?php echo $this->data['page_action']; ?>',
+	option_name		:	'<?php echo $this->data['option_name']; ?>'
+};
 
-			$.ajax({
-				url: ajaxurl,
-				data: acf.data,
-				type: 'post',
-				dataType: 'html',
-				success: function(html){
-					
+$(document).ready(function(){
+
+	$.ajax({
+		url: ajaxurl,
+		data: acf.data,
+		type: 'post',
+		dataType: 'html',
+		success: function(html){
+			
 <?php 
-					if($this->data['page_type'] == "user")
-					{
-						if($this->data['page_action'] == "add")
-						{
-							echo "$('#createuser > table.form-table > tbody').append( html );";
-						}
-						else
-						{
-							echo "$('#your-profile > p.submit').before( html );";
-						}
-					}
-					elseif($this->data['page_type'] == "shopp_category")
-					{
-						echo "$('#post-body-content').append( html );";
-					}
-					elseif($this->data['page_type'] == "taxonomy")
-					{
-						if($this->data['page_action'] == "add")
-						{
-							echo "$('#addtag > p.submit').before( html );";
-						}
-						else
-						{
-							echo "$('#edittag > p.submit').before( html );";
-						}
-					}
-					elseif($this->data['page_type'] == "media")
-					{
-						if($this->data['page_action'] == "add")
-						{
-							echo "$('#addtag > p.submit').before( html );";
-						}
-						else
-						{
-							echo "$('#media-single-form table tbody tr.submit').before( html );";
-						}
-					}
+			if($this->data['page_type'] == "user")
+			{
+				if($this->data['page_action'] == "add")
+				{
+					echo "$('#createuser > table.form-table:last > tbody').append( html );";
+				}
+				else
+				{
+					echo "$('#your-profile > p.submit').before( html );";
+				}
+			}
+			elseif($this->data['page_type'] == "shopp_category")
+			{
+				echo "$('#post-body-content').append( html );";
+			}
+			elseif($this->data['page_type'] == "taxonomy")
+			{
+				if($this->data['page_action'] == "add")
+				{
+					echo "$('#addtag > p.submit').before( html );";
+				}
+				else
+				{
+					echo "$('#edittag > table.form-table:last > tbody').append( html );";
+				}
+			}
+			elseif($this->data['page_type'] == "media")
+			{
+				if($this->data['page_action'] == "add")
+				{
+					echo "$('#addtag > p.submit').before( html );";
+				}
+				else
+				{
+					echo "$('#media-single-form table tbody tr.submit').before( html );";
+				}
+			}
 ?>
 
-					setTimeout( function(){ 
-						$(document).trigger('acf/setup_fields', $('#wpbody') ); 
-					}, 200);
-					
-				}
-			});
+			setTimeout( function(){ 
+				$(document).trigger('acf/setup_fields', $('#wpbody') ); 
+			}, 200);
+			
+		}
+	});
+	
+	
+	/*
+	*  Taxonomy Add
+	*
+	*  @description: 
+	*  @since: 3.6
+	*  @created: 24/02/13
+	*/
+	
+	$(document).ajaxComplete(function(event, xhr, settings) {
 		
+		// vars
+		data = acf.helpers.url_to_object(settings.data);
+		
+		
+		// validate
+		if( data.action != 'add-tag' )
+		{
+			return;
+		}
+		
+
+		// clear WYSIWYG field
+		$('#addtag').find('.acf_wysiwyg textarea').each(function(){
+
+			
+			// vars
+			var textarea = $(this),
+				id = textarea.attr('id'),
+				editor = tinyMCE.get( id );
+			
+			editor.setContent('');
+			editor.save();
+			
+			
 		});
-		})(jQuery);
-		</script>
+
+	});
+	
+});
+
+
+})(jQuery);
+</script>
 		<?php
 	}
 	
@@ -323,6 +368,13 @@ class acf_everything_fields
 	
 	function save_taxonomy( $term_id )
 	{
+		// verify nonce
+		if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input') )
+		{
+			return $term_id;
+		}
+		
+		
 		// for some weird reason, this is triggered by saving a menu... 
 		if( !isset($_POST['taxonomy']) )
 		{
@@ -332,7 +384,7 @@ class acf_everything_fields
 		// $post_id to save against
 		$post_id = $_POST['taxonomy'] . '_' . $term_id;
 		
-		do_action('acf_save_post', $post_id);
+		do_action('acf/save_post', $post_id);
 	}
 		
 		
@@ -347,10 +399,18 @@ class acf_everything_fields
 	
 	function save_user( $user_id )
 	{
+		// verify nonce
+		if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input') )
+		{
+			return $user_id;
+		}
+		
+		
 		// $post_id to save against
 		$post_id = 'user_' . $user_id;
 		
-		do_action('acf_save_post', $post_id);		
+		
+		do_action('acf/save_post', $post_id);		
 	}
 	
 	
@@ -365,10 +425,19 @@ class acf_everything_fields
 	
 	function save_attachment( $post, $attachment )
 	{
+		// verify nonce
+		if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input') )
+		{
+			return $post;
+		}
+		
+		
 		// $post_id to save against
 		$post_id = $post['ID'];
 		
-		do_action('acf_save_post', $post_id);
+		
+		do_action('acf/save_post', $post_id);
+		
 		
 		return $post;
 	}
@@ -384,10 +453,18 @@ class acf_everything_fields
 	
 	function shopp_category_saved( $category )
 	{
+		// verify nonce
+		if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input') )
+		{
+			return $category;
+		}
+		
+		
 		// $post_id to save against
 		$post_id = 'shopp_category_' . $category->id;
 		
-		do_action('acf_save_post', $post_id);
+		
+		do_action('acf/save_post', $post_id);
 	}
 	
 	
@@ -436,64 +513,67 @@ class acf_everything_fields
 		}
 		
 		
-		if($acfs)
+		if( $acfs )
 		{
-			foreach($acfs as $acf)
+			foreach( $acfs as $acf )
 			{
+				// load options
+				$acf['options'] = apply_filters('acf/field_group/get_options', array(), $acf['id']);
+				
+				
 				// only add the chosen field groups
 				if( !in_array( $acf['id'], $options['metabox_ids'] ) )
 				{
 					continue;
 				}
-				
-				
-				// needs fields
-				if(!$acf['fields'])
-				{
-					continue;
-				}
-				
-				$title = "";
-				if ( is_numeric( $acf['id'] ) )
-			    {
-			        $title = get_the_title( $acf['id'] );
-			    }
-			    else
-			    {
-			        $title = apply_filters( 'the_title', $acf['title'] );
-			    }
-			    
-				
+
+
 				// title 
-				if( $options['page_action'] == "edit" && !in_array($options['page_type'], array('media', 'shopp_category')) )
+				if( $options['page_action'] == "edit" && $options['page_type'] == 'user' )
 				{
-					echo '<h3>' .$title . '</h3>';
-					echo '<table class="form-table">';
+					echo '<h3>' .$acf['title'] . '</h3><table class="form-table"><tbody>';
 				}
-				elseif( $layout == 'metabox' )
+				
+				
+				// wrapper
+				if( $layout == 'tr' )
+				{
+					//nonce
+					echo '<tr><td colspan="2"><input type="hidden" name="acf_nonce" value="' . wp_create_nonce( 'input' ) . '" /></td></tr>';
+				}
+				else
+				{
+					//nonce
+					echo '<input type="hidden" name="acf_nonce" value="' . wp_create_nonce( 'input' ) . '" />';
+				}
+				
+				if( $layout == 'metabox' )
 				{
 					echo '<div class="postbox acf_postbox" id="acf_'. $acf['id'] .'">';
-					echo '<div title="Click to toggle" class="handlediv"><br></div><h3 class="hndle"><span>' . $title . '</span></h3>';
+					echo '<div title="Click to toggle" class="handlediv"><br></div><h3 class="hndle"><span>' . $acf['title'] . '</span></h3>';
 					echo '<div class="inside">';
 				}
-
 				
-				// render
-				foreach($acf['fields'] as $field)
-				{
 				
+				// load fields
+				$fields = apply_filters('acf/field_group/get_fields', array(), $acf['id']);
+				
+				
+				if( is_array($fields) ){ foreach( $fields as $field ){
+			
 					// if they didn't select a type, skip this field
-					if($field['type'] == 'null') continue;
+					if( !$field['type'] || $field['type'] == 'null' ) continue;
+					
 					
 					// set value
-					$field['value'] = $this->parent->get_value( $options['option_name'], $field);
-					
-					// required
-					if(!isset($field['required']))
+					if( !isset($field['value']) )
 					{
-						$field['required'] = 0;
+						$field['value'] = apply_filters('acf/load_value', false, $options['option_name'], $field);
+						$field['value'] = apply_filters('acf/format_value', $field['value'], $options['option_name'], $field);
 					}
 					
+					
+					// required
 					$required_class = "";
 					$required_label = "";
 					
@@ -506,7 +586,7 @@ class acf_everything_fields
 					
 					if( $layout == 'metabox' )
 					{
-						echo '<div id="acf-' . $field['name'] . '" class="field field-' . $field['type'] . ' field-'.$field['key'] . $required_class . '">';
+						echo '<div id="acf-' . $field['name'] . '" class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
 		
 							echo '<p class="label">';
 								echo '<label for="fields[' . $field['key'] . ']">' . $field['label'] . $required_label . '</label>';
@@ -520,16 +600,18 @@ class acf_everything_fields
 					}
 					elseif( $layout == 'div' )
 					{
-						echo '<div id="acf-' . $field['name'] . '" class="form-field field field-' . $field['type'] . ' field-'.$field['key'] . $required_class . '">';
+						echo '<div id="acf-' . $field['name'] . '" class="form-field field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
+						
 							echo '<label for="fields[' . $field['key'] . ']">' . $field['label'] . $required_label . '</label>';	
 							$field['name'] = 'fields[' . $field['key'] . ']';
 							do_action('acf/create_field', $field );
 							if($field['instructions']) echo '<p class="description">' . $field['instructions'] . '</p>';
+							
 						echo '</div>';
 					}
 					else
 					{
-						echo '<tr id="acf-' . $field['name'] . '" class="form-field field field-' . $field['type'] . ' field-'.$field['key'] . $required_class . '">';
+						echo '<tr id="acf-' . $field['name'] . '" class="form-field field field_type-' . $field['type'] . ' field_key-'.$field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
 							echo '<th valign="top" scope="row"><label for="fields[' . $field['key'] . ']">' . $field['label'] . $required_label . '</label></th>';	
 							echo '<td>';
 								$field['name'] = 'fields[' . $field['key'] . ']';
@@ -541,20 +623,24 @@ class acf_everything_fields
 
 					}
 					
-										
-				}
-				// foreach($fields as $field)
+				}}
 				
+							
 				
-				// footer
-				if( $options['page_action'] == "edit" && $options['page_type'] != "media")
-				{
-					echo '</table>';
-				}
-				elseif( $options['page_type'] == 'shopp_category' )
+				// wrapper
+				if( $layout == 'metabox' )
 				{
 					echo '</div></div>';
 				}
+				
+				
+				// title 
+				if( $options['page_action'] == "edit" && $options['page_type'] == 'user' )
+				{
+					echo '</tbody></table>';
+				}
+				
+				
 			}
 			// foreach($acfs as $acf)
 		}
@@ -586,5 +672,7 @@ class acf_everything_fields
 	
 			
 }
+
+new acf_everything_fields();
 
 ?>

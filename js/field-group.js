@@ -1,18 +1,27 @@
 var acf = {
 	post_id : 0,
+	nonce : '',
 	text : {
 		'move_to_trash' : "Move to trash. Are you sure?",
 		'checked' : 'checked',
 		'conditional_no_fields' : 'No "toggle" fields available',
-		'flexible_content_no_fields' : 'Flexible Content requires at least 1 layout'
+		'title' : 'Field group title is required',
+		'copy' : 'copy'
 	},
-	fields : [],
-	sortable_helper : null,
-	nonce : ''
+	helpers : {
+		uniqid : function(){},
+		sortable : function(){},
+		create_field : function(){}
+	},
+	conditional_logic : {
+		fields : [],
+		setup : function(){}
+	}
 };
 
 (function($){
 
+	
 	/*
 	*  Exists
 	*  
@@ -34,7 +43,7 @@ var acf = {
 	*  @created: 10/11/12
 	*/
 	
-	acf.sortable_helper = function(e, ui)
+	acf.helpers.sortable = function(e, ui)
 	{
 		ui.children().each(function(){
 			$(this).width($(this).width());
@@ -44,19 +53,89 @@ var acf = {
 	
 	
 	/*
-	*  uniqid
-	*  
-	*  @since			3.1.6
-	*  @description		Returns a unique ID (secconds of time)
+	*  acf.helpers.uniqid
+	*
+	*  @description: JS equivelant of PHP uniqid
+	*  @since: 3.6
+	*  @created: 7/03/13
 	*/
 	
-	function uniqid()
+	acf.helpers.uniqid = function(prefix, more_entropy)
     {
-    	var newDate = new Date;
-    	return newDate.getTime();
+    	  // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+		  // +    revised by: Kankrelune (http://www.webfaktory.info/)
+		  // %        note 1: Uses an internal counter (in php_js global) to avoid collision
+		  // *     example 1: uniqid();
+		  // *     returns 1: 'a30285b160c14'
+		  // *     example 2: uniqid('foo');
+		  // *     returns 2: 'fooa30285b1cd361'
+		  // *     example 3: uniqid('bar', true);
+		  // *     returns 3: 'bara20285b23dfd1.31879087'
+		  if (typeof prefix == 'undefined') {
+		    prefix = "";
+		  }
+		
+		  var retId;
+		  var formatSeed = function (seed, reqWidth) {
+		    seed = parseInt(seed, 10).toString(16); // to hex str
+		    if (reqWidth < seed.length) { // so long we split
+		      return seed.slice(seed.length - reqWidth);
+		    }
+		    if (reqWidth > seed.length) { // so short we pad
+		      return Array(1 + (reqWidth - seed.length)).join('0') + seed;
+		    }
+		    return seed;
+		  };
+		
+		  // BEGIN REDUNDANT
+		  if (!this.php_js) {
+		    this.php_js = {};
+		  }
+		  // END REDUNDANT
+		  if (!this.php_js.uniqidSeed) { // init seed with big random int
+		    this.php_js.uniqidSeed = Math.floor(Math.random() * 0x75bcd15);
+		  }
+		  this.php_js.uniqidSeed++;
+		
+		  retId = prefix; // start with prefix, add current milliseconds hex string
+		  retId += formatSeed(parseInt(new Date().getTime() / 1000, 10), 8);
+		  retId += formatSeed(this.php_js.uniqidSeed, 5); // add seed hex string
+		  if (more_entropy) {
+		    // for more entropy we add a float lower to 10
+		    retId += (Math.random() * 10).toFixed(8).toString();
+		  }
+		
+		  return retId;
+
     }
+        
     
-    
+    /*
+	*  Form Submit
+	*
+	*  @description: 
+	*  @since: 3.6
+	*  @created: 2/02/13
+	*/
+	
+	$('#post').live('submit', function(){
+		
+		// validate post title
+		var title = $('#titlewrap #title');
+		
+		if( !title.val() )
+		{
+			alert( acf.text.title );
+			
+			title.focus();
+		
+			return false;
+		}
+
+		
+	});
+	
+	
 	/*
 	*  Place Confirm message on Publish trash button
 	*  
@@ -66,8 +145,8 @@ var acf = {
 	
 	$('#submit-delete').live('click', function(){
 			
-		var response = confirm(acf.text.move_to_trash);
-		if(!response)
+		var response = confirm( acf.text.move_to_trash );
+		if( !response )
 		{
 			return false;
 		}
@@ -95,7 +174,7 @@ var acf = {
 		
 		
 		// update data atts
-		field.removeClass('field-' + field_type).addClass('field-' + val);
+		field.removeClass('field_type-' + field_type).addClass('field_type-' + val);
 		field.attr('data-type', val);
 		
 		
@@ -136,7 +215,7 @@ var acf = {
 			
 			
 			var ajax_data = {
-				'action' : 'acf_field_options',
+				'action' : 'acf/field_group/render_options',
 				'post_id' : acf.post_id,
 				'field_key' : select.attr('name'),
 				'field_type' : val,
@@ -152,7 +231,8 @@ var acf = {
 					
 					if( ! html )
 					{
-						alert('Error: Could not load field options');
+						tr.remove();
+						return;
 					}
 					
 					tr.replaceWith(html);
@@ -176,14 +256,10 @@ var acf = {
 	{
 		var field = $(this),
 			old_id = field.attr('data-id'),
-			new_id = uniqid();
+			new_id = 'field_' + acf.helpers.uniqid();
 		
 		
-		// temp give field unique ID for id / name.
-		// Because this is an AJAX call, it will take some time to get back the new_id.
-		// in this time, the new field will be added and the origional, and duplicate field
-		// will both use the same ID! This will cause browsers to remove the input settings on the first field
-
+		// give field a new id
 		field.attr('data-id', new_id);
 		
 		
@@ -204,52 +280,6 @@ var acf = {
 		field.find('[name*="' + old_id + '"]').each(function()
 		{	
 			$(this).attr('name', $(this).attr('name').replace(old_id, new_id) );
-		});
-		
-		
-		// onld_id is now the unique_id() value
-		old_id = new_id;
-		
-		
-		// load location html
-		$.ajax({
-			url: ajaxurl,
-			data: {
-				'action' : 'acf_next_field_id',
-				'nonce' : acf.nonce
-			},
-			type: 'post',
-			dataType: 'html',
-			success: function( new_id ){
-				
-				// remove phantom new lines...
-				new_id = new_id.replace(/(\r\n|\n|\r)/gm,"");
-				
-				
-				// give field a new id
-				field.attr('data-id', new_id);
-				
-				
-				// update class
-				field.attr('class', field.attr('class').replace(old_id, new_id) );
-				
-				
-				// update field key column
-				field.find('.field_meta td.field_key').text( new_id );
-				
-				
-				// update attributes
-				field.find('[id*="' + old_id + '"]').each(function()
-				{	
-					$(this).attr('id', $(this).attr('id').replace(old_id, new_id) );
-				});
-				
-				field.find('[name*="' + old_id + '"]').each(function()
-				{	
-					$(this).attr('name', $(this).attr('name').replace(old_id, new_id) );
-				});
-
-			}
 		});
 		
 	}
@@ -283,7 +313,7 @@ var acf = {
 	*/
 	
 	$('#acf_fields a.acf_edit_field').live('click', function(){
-
+		
 		var field = $(this).closest('.field');
 		
 		if( field.hasClass('form_open') )
@@ -298,7 +328,6 @@ var acf = {
 		}
 		
 		field.children('.field_form_mask').animate({'height':'toggle'}, 500);
-		
 		
 	});
 	
@@ -361,12 +390,24 @@ var acf = {
 		// vars
 		var a = $(this),
 			field = a.closest('.field'),
-			new_field = field.clone();
+			new_field = null;
 			
 			
+		// save select values
+		field.find('select').each(function(){
+			$(this).attr( 'data-val', $(this).val() );
+		});
+		
+		
+		// clone field
+		new_field = field.clone();
+		
 		
 		// update names
 		new_field.update_names();
+		new_field.find('.field:not(.field_key-field_clone)').each(function(){
+			$(this).update_names();
+		});
 
 		
 		// add new field
@@ -382,6 +423,22 @@ var acf = {
 		{
 			new_field.find('.acf_edit_field').first().trigger('click');
 		}
+		
+		
+		// update new_field label / name
+		var label = new_field.find('tr.field_label:first input[type="text"]'),
+			name = new_field.find('tr.field_name:first input[type="text"]');
+					
+		
+		// set select values
+		new_field.find('select').each(function(){
+			$(this).val( $(this).attr('data-val') ).trigger('change');
+		});
+		
+		
+		name.val('');
+		label.val( label.val() + ' (' + acf.text.copy + ')' );
+		label.trigger('blur').trigger('keyup');
 		
 		
 		// update order numbers
@@ -400,24 +457,23 @@ var acf = {
 	
 	$('#acf_fields #add_field').live('click',function(){
 		
-		var table_footer = $(this).closest('.table_footer');
-		var fields = table_footer.siblings('.fields');
+		var fields = $(this).closest('.table_footer').siblings('.fields');
 		
 		
 		// clone last tr
-		var new_field = fields.children('.field-field_clone').clone();
+		var new_field = fields.children('.field_key-field_clone').clone();
 		
 		
 		// update names
 		new_field.update_names();
 		
 		
-		// show (update_names will remove the field_clone field, but not for a few seconds)
+		// show
 		new_field.show();
 		
 		
 		// append to table
-		fields.children('.field-field_clone').before(new_field);
+		fields.children('.field_key-field_clone').before(new_field);
 		
 		
 		// remove no fields message
@@ -428,11 +484,17 @@ var acf = {
 		
 		
 		// clear name
-		new_field.find('.field_form input[type="text"]').val('');
-		new_field.find('.field_form input[type="text"]').first().focus();
 		new_field.find('tr.field_type select').trigger('change');	
+		new_field.find('.field_form input[type="text"]').val('');
 		
 		
+		// focus after form has dropped down
+		// - this prevents a strange rendering bug in Firefox
+		setTimeout(function(){
+        	new_field.find('.field_form input[type="text"]').first().focus();
+        }, 500);
+        
+
 		// open up form
 		new_field.find('a.acf_edit_field').first().trigger('click');
 
@@ -456,15 +518,44 @@ var acf = {
 
 	$('#acf_fields tr.field_label input.label').live('blur', function()
 	{
-		var label = $(this);
-		var name = $(this).closest('tr').siblings('tr.field_name').find('input.name');
+		var label = $(this),
+			name = label.closest('tr').siblings('tr.field_name').find('input.name');
 
-		if(name.val() == '')
+		if( name.val() == '' )
 		{
-			var val = label.val().toLowerCase().split(' ').join('_').split('\'').join('');
+			// thanks to https://gist.github.com/richardsweeney/5317392 for this code!
+			var val = label.val(),
+				replace = {
+					'ä': 'a',
+					'æ': 'a',
+					'å': 'a',
+					'ö': 'o',
+					'ø': 'o',
+					'é': 'e',
+					'ë': 'e',
+					'ü': 'u',
+					'ó': 'o',
+					'ő': 'o',
+					'ú': 'u',
+					'é': 'e',
+					'á': 'a',
+					'ű': 'u',
+					'í': 'i',
+					' ' : '_',
+					'\'' : ''
+				};
+			
+			$.each( replace, function(k, v){
+				var regex = new RegExp( k, 'g' );
+				val = val.replace( regex, v );
+			});
+			
+			
+			val = val.toLowerCase();
 			name.val(val);
 			name.trigger('keyup');
 		}
+		
 	});
 	
 	
@@ -491,11 +582,7 @@ var acf = {
 		var val = $(this).val();
 		var label = $(this).find('option[value="' + val + '"]').html();
 		
-		// update field type (if not a clone field)
-		if($(this).closest('.field_clone').length == 0)
-		{
-			$(this).closest('.field').find('td.field_type').first().html(label);
-		}
+		$(this).closest('.field').find('td.field_type').first().html(label);
 		
 	});
 	
@@ -555,7 +642,8 @@ var acf = {
 		var tr = $(this).closest('tr'),
 			i = tr.attr('data-i'),
 			ajax_data = {
-				'action' : "acf_location",
+				'action' : "acf/field_group/render_location",
+				'nonce' : acf.nonce,
 				'key' : i,
 				'value' : '',
 				'param' : $(this).val()
@@ -677,236 +765,6 @@ var acf = {
 	});
 	
 	
-	/*
-	*  Flexible Content
-	*
-	*  @description: extra javascript for the flexible content field
-	*  @created: 3/03/2011
-	*/
-	
-	/*----------------------------------------------------------------------
-	*
-	*	Add Layout Option
-	*
-	*---------------------------------------------------------------------*/
-	
-	$('#acf_fields .acf_fc_add').live('click', function(){
-		
-		// vars
-		var tr = $(this).closest('tr.field_option_flexible_content'),
-			new_tr = tr.clone(false),
-			id = new_tr.attr('data-id'),
-			new_id = uniqid();
-		
-		
-		// remove sub fields
-		new_tr.find('.field:not(.field-field_clone)').remove();
-		
-		// show add new message
-		new_tr.find('.no_fields_message').show();
-		
-		// reset layout meta values
-		new_tr.find('.acf_cf_meta input[type="text"]').val('');
-		
-		
-		// update id / names
-		new_tr.find('[name]').each(function(){
-		
-			var name = $(this).attr('name').replace('[layouts]['+id+']','[layouts]['+new_id+']');
-			$(this).attr('name', name);
-			$(this).attr('id', name);
-			
-		});
-		
-		// update data-id
-		new_tr.attr('data-id', new_id);
-		
-		// add new tr
-		tr.after(new_tr);
-		
-		// display
-		new_tr.find('.acf_cf_meta select').val('row').trigger('change');
-		
-		
-		return false;
-	});
-	
-	
-	/*----------------------------------------------------------------------
-	*
-	*	Duplicate Layout
-	*
-	*---------------------------------------------------------------------*/
-	
-	$('#acf_fields .acf_fc_duplicate').live('click', function(){
-		
-		// vars
-		var tr = $(this).closest('tr.field_option_flexible_content'),
-			new_tr = tr.clone(false),
-			id = new_tr.attr('data-id'),
-			new_id = uniqid();
-		
-		
-		// reset layout meta values
-		new_tr.find('.acf_cf_meta input[type="text"]').val('');
-		new_tr.find('.acf_cf_meta select').val('row').trigger('change');
-		
-		
-		// update id / names
-		new_tr.find('[name]').each(function(){
-		
-			var name = $(this).attr('name').replace('[layouts]['+id+']','[layouts]['+new_id+']');
-			$(this).attr('name', name);
-			$(this).attr('id', name);
-			
-		});
-		
-		
-		// update data-id
-		new_tr.attr('data-id', new_id);
-		
-		
-		// add new tr
-		tr.after(new_tr);
-	
-		
-		return false;
-	});
-	
-	
-	/*----------------------------------------------------------------------
-	*
-	*	Delete Layout Option
-	*
-	*---------------------------------------------------------------------*/
-	
-	$('#acf_fields .acf_fc_delete').live('click', function(){
-
-		var tr = $(this).closest('tr.field_option_flexible_content'),
-			tr_count = tr.siblings('tr.field_option.field_option_flexible_content').length;
-
-		if( tr_count <= 1 )
-		{
-			alert( acf.text.flexible_content_no_fields );
-			return false;
-		}
-		
-		tr.animate({'left' : '50px', 'opacity' : 0}, 250, function(){
-			tr.remove();
-		});
-		
-	});
-	
-	
-	/*----------------------------------------------------------------------
-	*
-	*	Sortable Layout Option
-	*
-	*---------------------------------------------------------------------*/
-	
-	$('#acf_fields .acf_fc_reorder').live('mouseover', function(){
-		
-		var table = $(this).closest('table.acf_field_form_table');
-		
-		if(table.hasClass('sortable')) return false;
-		
-		table.addClass('sortable').children('tbody').sortable({
-			items: ".field_option_flexible_content",
-			handle: 'a.acf_fc_reorder',
-			helper: acf.sortable_helper,
-			forceHelperSize : true,
-			forcePlaceholderSize : true,
-			scroll : true,
-			start : function (event, ui) {
-
-				// add markup to the placeholder
-				var td_count = ui.item.children('td').length;
-        		ui.placeholder.html('<td colspan="' + td_count + '"></td>');
-        		
-   			}
-		});
-		
-	});
-	
-	
-	/*----------------------------------------------------------------------
-	*
-	*	Label update name
-	*
-	*---------------------------------------------------------------------*/
-	
-	$('#acf_fields .acf_fc_label input[type="text"]').live('blur', function(){
-		
-		var label = $(this);
-		var name = $(this).parents('td').siblings('td.acf_fc_name').find('input[type="text"]');
-
-		if(name.val() == '')
-		{
-			var val = label.val().toLowerCase().split(' ').join('_').split('\'').join('');
-			name.val(val);
-			name.trigger('keyup');
-		}
-
-	});
-	
-	
-	/*
-	*  Repeater CHange layout display (Row | Table)
-	*
-	*  @description: 
-	*  @since 3.5.2
-	*  @created: 18/11/12
-	*/
-	
-	$('#acf_fields .field_option_repeater_layout input[type="radio"]').live('click', function(){
-		
-		// vars
-		var radio = $(this);
-		
-		
-		// Set class
-		radio.closest('.field_option_repeater').siblings('.field_option_repeater_fields').find('.repeater:first').removeClass('layout-row').removeClass('layout-table').addClass( 'layout-' + radio.val() );
-		
-	});
-	
-	$(document).live('acf/field_form-open', function(e, field){
-		
-		$(field).find('.field_option_repeater_layout input[type="radio"]:checked').each(function(){
-			$(this).trigger('click');
-		});
-		
-	});
-	
-	
-	
-	/*
-	*  Flexible Content CHange layout display (Row | Table)
-	*
-	*  @description: 
-	*  @since 3.5.2
-	*  @created: 18/11/12
-	*/
-	
-	$('#acf_fields .acf_fc_display select').live('change', function(){
-		
-		// vars
-		var select = $(this);
-		
-		
-		// Set class
-		select.closest('.repeater').removeClass('layout-row').removeClass('layout-table').addClass( 'layout-' + select.val() );
-		
-	});
-	
-	$(document).live('acf/field_form-open', function(e, field){
-		
-		$(field).find('.acf_fc_display select').each(function(){
-			$(this).trigger('change');
-		});
-		
-	});
-
-	
 	
 	/*
 	*  Screen Options
@@ -937,7 +795,7 @@ var acf = {
 	*  @created: 11/10/12
 	*/
 	
-	acf.create_field = function( options ){
+	acf.helpers.create_field = function( options ){
 		
 		// dafaults
 		var defaults = {
@@ -983,7 +841,7 @@ var acf = {
 	$(document).live('acf/field_form-open', function(e, field){
 		
 		// populate fields
-		acf.setup_conditional_fields();
+		acf.conditional_logic.setup();
 		
 		
 		$(field).find('.conditional-logic-field').each(function(){
@@ -994,13 +852,13 @@ var acf = {
 			
 			
 			// populate choices
-			if( acf.fields )
+			if( acf.conditional_logic.fields )
 			{
-				for( i = 0; i < acf.fields.length; i++ )
+				for( i = 0; i < acf.conditional_logic.fields.length; i++ )
 				{
 					choices.push({
-						value : acf.fields[i].id,
-						label : acf.fields[i].label
+						value : acf.conditional_logic.fields[i].id,
+						label : acf.conditional_logic.fields[i].label
 					});
 				}
 			}
@@ -1017,7 +875,7 @@ var acf = {
 	
 			
 			// create select
-			select = acf.create_field({
+			select = acf.helpers.create_field({
 				'type' : 'select',
 				'class' : 'conditional-logic-field',
 				'name' : name,
@@ -1070,8 +928,8 @@ var acf = {
 		
 		// vars
 		var id = $(this).val(),
-			field = $('#acf_fields .field-' + id),
-			type = field.find('tr.field_type select').val(),
+			field = $('#acf_fields .field_key-' + id),
+			type = field.attr('data-type'),
 			conditional_function = $(this).closest('tr').find('.conditional-logic-value');
 			
 		
@@ -1114,7 +972,7 @@ var acf = {
 		
 		
 		// create select
-		select = acf.create_field({
+		select = acf.helpers.create_field({
 			'type' : 'select',
 			'class' : 'conditional-logic-value',
 			'name' : conditional_function.attr('name'),
@@ -1137,20 +995,25 @@ var acf = {
 	*  @created: 15/10/12
 	*/
 	
-	acf.setup_conditional_fields = function()
+	acf.conditional_logic.setup = function()
 	{
-		acf.fields = [];
+		// reset
+		acf.conditional_logic.fields = [];
 		
-		$('#acf_fields > .inside > .fields > .field').each(function(){
+		
+		// loop through fields
+		$('#acf_fields > .inside > .fields > .field:not(.field_key-field_clone)').each(function(){
 			
 			var field = $(this),
-				id = field.attr('data-id');
-				type = field.find('tr.field_type select').val(),
+				id = field.attr('data-id'),
+				key = field.children('.input-field_key').val(),
+				type = field.attr('data-type'),
 				label = field.find('tr.field_label input').val();
+			
 			
 			if( type == 'select' || type == 'checkbox' || type == 'true_false' || type == 'radio' )
 			{
-				acf.fields.push({
+				acf.conditional_logic.fields.push({
 					id : id,
 					type : type,
 					label : label

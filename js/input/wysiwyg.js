@@ -42,6 +42,7 @@
 	
 	$(document).live('acf/wysiwyg_activate', function(e, div){
 		
+		
 		// validate tinymce
 		if( ! _wysiwyg.has_tinymce() )
 		{
@@ -137,6 +138,7 @@
 			$(document).trigger('acf/wysiwyg/blur', id);
 		});
 		
+		
 	};
 	
 	
@@ -162,13 +164,13 @@
 			// vars
 			var textarea = $(this),
 				id = textarea.attr('id'),
-				wysiwyg = tinyMCE.get( id );
+				editor = tinyMCE.get( id );
 			
 			
 			// if wysiwyg was found (should be always...), remove its functionality and set the value (to keep line breaks)
-			if( wysiwyg )
+			if( editor )
 			{
-				var val = wysiwyg.getContent();
+				var val = editor.getContent();
 				
 				tinyMCE.execCommand("mceRemoveControl", false, id);
 			

@@ -1,58 +1,69 @@
 === Advanced Custom Fields ===
 Contributors: Elliot Condon
 Tags: custom, field, custom field, advanced, simple fields, magic fields, more fields, repeater, matrix, post, type, text, textarea, file, image, edit, admin
-Requires at least: 3.3.0
+Requires at least: 3.0.0
 Tested up to: 3.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerful API, it’s a must-have for any web developer working with WordPress. Field types include: WYSIWYG, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker, and more!
+Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerfull API, it’s a must have for any web developer working with WordPress.Field types include: Wysiwyg, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker and more!
+
 
 == Description ==
 
-Advanced Custom Fields is the perfect solution for any WordPress website that needs more flexible data types, like other content management systems. 
+Advanced Custom Fields is the perfect solution for any wordpress website which needs more flexible data like other Content Management Systems. 
 
-* Visually create your fields
-* Select from multiple input types (text, textarea, WYSIWYG, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery, and more to come!)
+* Visually create your Fields
+* Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)
 * Assign your fields to multiple edit pages (via custom location rules)
-* Easily load data through a simple, friendly API
+* Easily load data through a simple and friendly API
 * Uses the native WordPress custom post type for ease of use and fast processing
-* Uses native WordPress metadata for ease of use and fast processing
+* Uses the native WordPress metadata for ease of use and fast processing
 
 = Field Types =
-* Tab (group fields into tabs)
-* Text (enter text, API returns the text)
-* Text Area (enter text, API returns the text with `<br />` tags)
-* WYSIWYG (the WordPress WYSIWYG editor, API returns HTML)
-* Image (upload an image, API returns its URL)
-* File (upload a file, API returns its URL)
-* Select (drop-down list of choices, API returns the chosen item)
-* Checkbox (check for a list of choices, API returns an array of choices)
-* Page Link (select 1 or more page, post, or custom post type, API returns the URLs)
-* Post Object (select 1 or more page, post, or custom post type, API returns post objects)
-* Date Picker (jQuery date picker, options for formatting, API returns string)
-* True / False (check box with message, API returns true or false)
-* Relationship	(select and order post objects with a tidy interface)
+* Tab (Group fields into tabs)
+* Text (type text, api returns text)
+* Text Area (type text, api returns text with `<br />` tags)
+* Number (type number, api returns integer)
+* Email (type email, api returns text)
+* Password (type password, api returns text)
+* WYSIWYG (a wordpress wysiwyg editor, api returns html)
+* Image (upload an image, api returns the url)
+* File (upload a file, api returns the url)
+* Select (drop down list of choices, api returns chosen item)
+* Checkbox (tickbox list of choices, api returns array of choices)
+* Radio Buttons ( radio button list of choices, api returns chosen item)
+* True / False (tick box with message, api returns true or false)
+* Page Link (select 1 or more page, post or custom post types, api returns the selected url)
+* Post Object (select 1 or more page, post or custom post types, api returns the selected post objects)
+* Relationship (search, select and order post objects with a tidy interface, api returns the selected post objects)
+* Taxonomy (select taxonomy terms with options to load, display and save, api returns the selected term objects)
+* User (select 1 or more WP users, api returns the selected user objects)
+* Date Picker (jquery date picker, options for format, api returns string)
 * Color Picker (Farbtastic!)
-* Repeater (ability to create repeatable blocks of fields)
-* Flexible Content (ability to create flexible blocks of fields)
-* Gallery (add, edit, and order multiple images in 1 simple field)
+* Repeater (ability to create repeatable blocks of fields!)
+* Flexible Content (ability to create flexible blocks of fields!)
+* Gallery (Add, edit and order multiple images in 1 simple field)
+* [Custom](http://www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/) (Create your own field type!)
 
 = Tested on =
 * Mac Firefox 	:)
 * Mac Safari 	:)
 * Mac Chrome	:)
 * PC Firefox	:)
-* PC ie7	:S
+* PC ie7		:S
 
 = Website =
 http://www.advancedcustomfields.com/
 
 = Documentation =
-http://www.advancedcustomfields.com/docs/getting-started/
-
-= Field Type Info =
-http://www.advancedcustomfields.com/docs/field-types/
+* [Getting Started](http://www.advancedcustomfields.com/resources/#getting-started)
+* [Field Types](http://www.advancedcustomfields.com/resources/#field-types)
+* [Functions](http://www.advancedcustomfields.com/resources/#functions)
+* [Actions](http://www.advancedcustomfields.com/resources/#actions)
+* [Filters](http://www.advancedcustomfields.com/resources/#filters)
+* [How to guides](http://www.advancedcustomfields.com/resources/#how-to)
+* [Tutorials](http://www.advancedcustomfields.com/resources/#tutorials)
 
 = Bug Submission and Forum Support =
 http://support.advancedcustomfields.com/
@@ -72,7 +83,7 @@ Your votes really make a difference! Thanks.
 
 == Frequently Asked Questions ==
 
-= Q. I have a question. =
+= Q. I have a question =
 A. Chances are, someone else has asked it. Check out the support forum at: 
 http://support.advancedcustomfields.com/
 
@@ -85,17 +96,50 @@ http://support.advancedcustomfields.com/
 
 3. The Page edit screen after creating the Advanced Custom Fields
 
-4. Simple and intuitive API. Read the documentation at: http://www.advancedcustomfields.com/docs/functions/
+4. Simple and intuitive API. Read the documentation at: http://www.advancedcustomfields.com/resources/
 
 
 == Changelog ==
 
-= 3.5.8.2 =
-* [Fixed] Fix field data not saving caused by Types 1.2
-* [Fixed] Fix featured image issue - http://support.advancedcustomfields.com/discussion/5032/featured-image-broken
-* [Fixed] Fix WP 3.5 uploader not attaching images to posts - http://support.advancedcustomfields.com/discussion/4960/image-photo039s-uploaded-through-image-field-not-attached-to-post
-* [Added] Add filter 'acf_load_field' for sub field - http://support.advancedcustomfields.com/discussion/4153/select-an-image-from-a-drop-down-list
-* [Fixed] Fix WYSWYG field showing the upload image button in full screen - http://support.advancedcustomfields.com/discussion/4981/media-button-on-fullscreen-wysiwyg-editor
+= 4.0.2 =
+* [Added] Add auto video filter to WYSIWYG value - http://support.advancedcustomfields.com/discussion/5378/video-embed-in-wysiwyg-field
+* [Fixed] Fix Repeater + WYSIWYG loosing p tags on drag/drop - http://support.advancedcustomfields.com/discussion/5476/acf-4-0-0-wysiwyg-p-tag-disappearing-after-drag-drop-save
+* [Fixed] Fix upgrade message appearing in iframe
+* [Fixed] Fix value sanitation - http://support.advancedcustomfields.com/discussion/5499/post-relationship-field-value-storage-in-update-to-acf4
+* [Added] Add JS field name validation - http://support.advancedcustomfields.com/discussion/5500/replace-foreign-letters-when-creating-input-name-from-label-in-javascript
+* [Fixed] Fix error when duplicating field group in WPML - http://support.advancedcustomfields.com/discussion/5501/4-0-1-broke-wpml-functionality-
+* [Fixed] Fix pares_type issue. Maybe remove it? - http://support.advancedcustomfields.com/discussion/5502/zeros-get-removed-major-bug
+
+= 4.0.1 =
+* [Improved] Improving welcome message with download instructions
+* [Fixed] Text / Fix JS issue where metaboxes are not hiding - http://support.advancedcustomfields.com/discussion/5443/bug-content-editor
+* [Fixed] Test / Fix lite mode issue causing category / user fields not to show
+* [Fixed] Sanitize field names - http://support.advancedcustomfields.com/discussion/5262/sanitize_title-on-field-name
+* [Fixed] Test / Fix conditional logic not working for mutli-select - http://support.advancedcustomfields.com/discussion/5409/conditional-logic-with-multiple-select-field
+* [Fixed] Test / Fix field group duplication in WooCommerce category w SEO plugin - http://support.advancedcustomfields.com/discussion/5440/acf-woocommerce-product-category-taxonomy-bug
+
+= 4.0.0 =
+* [IMPORTANT] This update contains major changes to premium and custom field type Add-ons. Please read the [Migrating from v3 to v4 guide](http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/)
+* [Optimized] Optimize performance by removing heavy class structure and implementing light weight hooks & filters!
+* [Changed] Remove all Add-on code from the core plugin and separate into individual plugins with self hosted updates
+* [Added] Add field 'Taxonomy'
+* [Added] Add field 'User'
+* [Added] Add field 'Email'
+* [Added] Add field 'Password'
+* [Added] Add field group title validation
+* [Fixed] Fix issue where get_field_object returns the wrong field when using WPML
+* [Fixed] Fix duplicate functionality - http://support.advancedcustomfields.com/discussion/4471/duplicate-fields-in-admin-doesn039t-replicate-repeater-fields 
+* [Added] Add conditional statements to tab field - http://support.advancedcustomfields.com/discussion/4674/conditional-tabs
+* [Fixed] Fix issue with Preview / Draft where preview would not save custom field data - http://support.advancedcustomfields.com/discussion/4401/cannot-preview-or-schedule-content-to-be-published
+* [Added] Add function get_field_groups()
+* [Added] Add function delete_field() - http://support.advancedcustomfields.com/discussion/4788/deleting-a-field-through-php
+* [Added] Add get_sub_field_object function - http://support.advancedcustomfields.com/discussion/4991/select-inside-repeaterfield
+* [Added] Add 'Top Level' option to page type location rule
+* [Fixed] Fix taxonomy location rule - http://support.advancedcustomfields.com/discussion/5004/field-group-rules-issue
+* [Fixed] Fix tab field with conditional logic - https://github.com/elliotcondon/acf4/issues/14
+* [Fixed] Revert back to original field_key idea. attractive field key's cause too many issues with import / export
+* [Added] Add message field - http://support.advancedcustomfields.com/discussion/5263/additional-description-field
+* [Removed] Removed the_content filter from WYSIWYG field
 
 = 3.5.8.1 =
 * [Fixed] Fix PHP error in text / textarea fields

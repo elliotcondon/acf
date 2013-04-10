@@ -126,9 +126,10 @@
 						$.ajax({
 							url: ajaxurl,
 							data: {
-								action : 'acf_input',
+								action : 'acf/input/render_fields',
 								acf_id : v,
-								post_id : acf.post_id
+								post_id : acf.post_id,
+								nonce : acf.nonce
 							},
 							type: 'post',
 							dataType: 'html',
@@ -148,8 +149,9 @@
 				$.ajax({
 					url: ajaxurl,
 					data: {
-						action : 'get_input_style',
-						acf_id : result[0]
+						action : 'acf/input/get_style',
+						acf_id : result[0],
+						nonce : acf.nonce
 					},
 					type: 'post',
 					dataType: 'html',

@@ -1,6 +1,6 @@
 <?php
 
-class acf_field_color_picker extends acf_field
+class acf_field_message extends acf_field
 {
 	
 	/*
@@ -15,14 +15,12 @@ class acf_field_color_picker extends acf_field
 	function __construct()
 	{
 		// vars
-		$this->name = 'color_picker';
-		$this->label = __("Color Picker",'acf');
-		$this->category = __("jQuery",'acf');
-		
+		$this->name = 'message';
+		$this->label = __("Message",'acf');
+		$this->category = __("Layout",'acf');
 		
 		// do not delete!
     	parent::__construct();
-    	
 	}
 	
 	
@@ -40,7 +38,7 @@ class acf_field_color_picker extends acf_field
 	
 	function create_field( $field )
 	{
-		echo '<input type="text" value="' . $field['value'] . '" id="' . $field['id'] . '" class="acf_color_picker" name="' . $field['name'] . '"  />';
+		echo wpautop( $field['message'] );
 	}
 	
 	
@@ -50,18 +48,18 @@ class acf_field_color_picker extends acf_field
 	*  Create extra options for your field. This is rendered when editing a field.
 	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
 	*
+	*  @param	$field	- an array holding all the field's data
+	*
 	*  @type	action
 	*  @since	3.6
 	*  @date	23/01/13
-	*
-	*  @param	$field	- an array holding all the field's data
 	*/
 	
 	function create_options( $field )
 	{
 		// vars
 		$defaults = array(
-			'default_value'	=>	'',
+			'message'		=>	'',
 		);
 		
 		$field = array_merge($defaults, $field);
@@ -70,15 +68,17 @@ class acf_field_color_picker extends acf_field
 		?>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
-		<label><?php _e("Default Value",'acf'); ?></label>
-		<p class="description"><?php _e("eg: #ffffff",'acf'); ?></p>
+		<label for=""><?php _e("Message",'acf'); ?></label>
+		<p class="description"><?php _e("Text &amp; HTML entered here will appear inline with the fields",'acf'); ?><br /><br />
+		<?php _e("Please note that all text will first be passed through the wp function ",'acf'); ?><a href="http://codex.wordpress.org/Function_Reference/wpautop" target="_blank">wpautop</a></p>
 	</td>
 	<td>
 		<?php 
 		do_action('acf/create_field', array(
-			'type'	=>	'text',
-			'name'	=>	'fields[' .$key.'][default_value]',
-			'value'	=>	$field['default_value'],
+			'type'	=>	'textarea',
+			'class' => 	'textarea',
+			'name'	=>	'fields['.$key.'][message]',
+			'value'	=>	$field['message'],
 		));
 		?>
 	</td>
@@ -89,6 +89,6 @@ class acf_field_color_picker extends acf_field
 	
 }
 
-new acf_field_color_picker();
+new acf_field_message();
 
 ?>

@@ -18,13 +18,14 @@
 	
 	$(document).live('acf/setup_fields', function(e, postbox){
 		
-		$(postbox).find('.acf-tab').each(function(){
+		$(postbox).find('.field_type-tab').each(function(){
 			
 			// vars
-			var tab = $(this),
+			var field = $(this),
+				tab = field.find('.acf-tab'),
 				id = tab.attr('data-id'),
 				label = tab.html(),
-				postbox = tab.closest('.acf_postbox'),
+				postbox = field.closest('.acf_postbox'),
 				inside = postbox.children('.inside');
 			
 
@@ -40,12 +41,12 @@
 			// create tab group if it doesnt exist
 			if( ! inside.children('.acf-tab-group').exists() )
 			{
-				inside.children('.field-tab:first').before('<ul class="hl clearfix acf-tab-group"></ul>');
+				inside.children('.field_type-tab:first').before('<ul class="hl clearfix acf-tab-group"></ul>');
 			}
 			
 			
 			// add tab
-			inside.children('.acf-tab-group').append('<li><a class="acf-tab-button" href="#" data-id="' + id + '">' + label + '</a></li>');
+			inside.children('.acf-tab-group').append('<li data-field_key="' + id + '"><a class="acf-tab-button" href="#" data-id="' + id + '">' + label + '</a></li>');
 			
 			
 		});
@@ -85,17 +86,17 @@
 		
 		
 		// hide / show
-		inside.children('.field-tab').each(function(){
+		inside.children('.field_type-tab').each(function(){
 			
 			var tab = $(this);
 			
-			if( tab.hasClass('field-' + id) )
+			if( tab.hasClass('field_key-' + id) )
 			{
-				tab.nextUntil('.field-tab').removeClass('acf-tab_group-hide').addClass('acf-tab_group-show');
+				tab.nextUntil('.field_type-tab').removeClass('acf-tab_group-hide').addClass('acf-tab_group-show');
 			}
 			else
 			{
-				tab.nextUntil('.field-tab').removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
+				tab.nextUntil('.field_type-tab').removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
 			}
 			
 		});

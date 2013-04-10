@@ -1,6 +1,6 @@
 <?php
 
-class acf_field_tab extends acf_field
+class acf_field_email extends acf_field
 {
 	
 	/*
@@ -15,14 +15,14 @@ class acf_field_tab extends acf_field
 	function __construct()
 	{
 		// vars
-		$this->name = 'tab';
-		$this->label = __("Tab",'acf');
-		$this->category = __("Layout",'acf');
+		$this->name = 'email';
+		$this->label = __("Email",'acf');
+		
 		
 		// do not delete!
     	parent::__construct();
 	}
-	
+		
 	
 	/*
 	*  create_field()
@@ -38,9 +38,8 @@ class acf_field_tab extends acf_field
 	
 	function create_field( $field )
 	{
-		echo '<div class="acf-tab" data-id="' . $field['key'] . '">' . $field['label'] . '</div>';
+		echo '<input type="email" value="' . esc_attr( $field['value'] ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" />';
 	}
-	
 	
 	
 	/*
@@ -49,31 +48,45 @@ class acf_field_tab extends acf_field
 	*  Create extra options for your field. This is rendered when editing a field.
 	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
 	*
-	*  @param	$field	- an array holding all the field's data
-	*
 	*  @type	action
 	*  @since	3.6
 	*  @date	23/01/13
+	*
+	*  @param	$field	- an array holding all the field's data
 	*/
 	
 	function create_options( $field )
 	{
+		// vars
+		$defaults = array(
+			'default_value'	=>	'',
+		);
+		
+		$field = array_merge($defaults, $field);
+		$key = $field['name'];
+		
 		?>
 		<tr class="field_option field_option_<?php echo $this->name; ?>">
 			<td class="label">
-				<label><?php _e("Instructions",'acf'); ?></label>
+				<label><?php _e("Default Value",'acf'); ?></label>
 			</td>
 			<td>
-				<p><?php _e("All fields proceeding this \"tab field\" (or until another \"tab field\"  is defined) will appear grouped on the edit screen.",'acf'); ?></p>
-				<p><?php _e("You can use multiple tabs to break up your fields into sections.",'acf'); ?></p>
+				<?php
+				
+				do_action('acf/create_field', array(
+					'type'	=>	'text',
+					'name'	=>	'fields['.$key.'][default_value]',
+					'value'	=>	$field['default_value'],
+				));
+
+				?>
 			</td>
 		</tr>
 		<?php
-		
-	}
+	}	
 	
 }
 
-new acf_field_tab();
+new acf_field_email();
 
 ?>

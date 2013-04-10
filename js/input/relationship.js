@@ -234,36 +234,50 @@
 		
 		
 		// vars
-		var s = div.attr('data-s'),
-			paged = parseInt( div.attr('data-paged') ),
-			taxonomy = div.attr('data-taxonomy'),
-			post_type = div.attr('data-post_type'),
-			lang = div.attr('data-lang'),
+		var attributes = {},
 			left = div.find('.relationship_left .relationship_list'),
-			right = div.find('.relationship_right .relationship_list');
+			right = div.find('.relationship_right .relationship_list'); 
 		
+		
+		// find attributes
+        $.each( div[0].attributes, function( index, attr ) {
+        	
+        	// must have 'data-'
+        	if( attr.name.substr(0, 5) != 'data-' )
+        	{
+	        	return;
+        	}
+        	
+        	
+        	// ignore
+        	if( attr.name == 'data-max' )
+        	{
+	        	return;
+        	}
+        	
+        	
+        	// add to attributes
+            attributes[ attr.name.replace('data-', '') ] = attr.value;
+        }); 
+        
 		
 		// get results
 	    $.ajax({
 			url: ajaxurl,
 			type: 'post',
 			dataType: 'html',
-			data: { 
-				'action' : 'acf_get_relationship_results', 
-				's' : s,
-				'paged' : paged,
-				'taxonomy' : taxonomy,
-				'post_type' : post_type,
-				'lang' : lang,
-				'field_name' : div.parent().attr('data-field_name'),
-				'field_key' : div.parent().attr('data-field_key')
-			},
+			data: $.extend( attributes, { 
+				action : 'acf/fields/relationship/query_posts', 
+				field_name : div.parent().attr('data-field_name'),
+				field_key : div.parent().attr('data-field_key'),
+				nonce : acf.nonce
+			}),
 			success: function( html ){
 				
 				div.removeClass('no-results').removeClass('loading');
 				
 				// new search?
-				if( paged == 1 )
+				if( attributes.paged == 1 )
 				{
 					left.find('li:not(.load-more)').remove();
 				}
@@ -294,6 +308,7 @@
 				
 			}
 		});
-	};	
+	};
+	
 
 })(jQuery);

@@ -261,7 +261,7 @@ table.widefat.acf td {
 	background: #FCFCFC;
 }
 
-.fields .field-field_clone {
+.fields .field_key-field_clone {
 	display: none;
 }
 
@@ -534,42 +534,6 @@ ul.checkbox_list li input {
 } 
 
 
-/*---------------------------------------------------------------------------------------------
-*
-*	Flexible Content
-*	
-*---------------------------------------------------------------------------------------------*/
-table.acf_input table.acf_cf_meta {
-	width: 100%;
-	border: 0 none;
-}
-
-table.acf_input table.acf_cf_meta td {
-	border: 0 none;
-	width: 33%;
-}
-
-table.acf_input table.acf_cf_meta label {
-	width: 20%;
-	color: #333333;
-	font-weight: bold;
-}
-
-table.acf_input table.acf_cf_meta input {
-	width: 80%;
-}
-
-table.acf_input table.acf_cf_meta select {
-	width: 75%;
-}
-
-.acf_fc_reorder {
-	cursor: move;
-}
-
-
-
-
 
 /*---------------------------------------------------------------------------------------------
 *
@@ -637,12 +601,12 @@ table.acf_input table.acf_cf_meta select {
 
 #acf_fields select optgroup,
 #acf_location select optgroup {
-	padding: 5px 2px;
+	padding: 5px 5px;
 	background: #fff;
 }
 
-#acf_fields select optgroup:first-child,
-#acf_location select optgroup:first-child {
+#acf_fields select optgroup option:first-child,
+#acf_location select optgroup option:first-child{
 	
 }
 
@@ -653,7 +617,7 @@ table.acf_input table.acf_cf_meta select {
 
 #acf_fields select optgroup option,
 #acf_location select optgroup option {
-	padding-left: 6px;
+	padding-left: 5px;
 }
 
 #acf_fields select optgroup:nth-child(2n),
@@ -686,14 +650,28 @@ table.conditional-logic-rules tbody td {
 *	
 *---------------------------------------------------------------------------------------------*/
 
-
-#acf_fields .fields .field-tab tr.field_name,
-#acf_fields .fields .field-tab tr.field_instructions,
-#acf_fields .fields .field-tab tr.required,
-#acf_fields .fields .field-tab tr.conditional-logic {
+#acf_fields .fields .field_type-tab tr.field_name,
+#acf_fields .fields .field_type-tab tr.field_instructions,
+#acf_fields .fields .field_type-tab tr.required {
 	display: none;
 }
 
+
+/*---------------------------------------------------------------------------------------------
+*
+*	Field: Message
+*	
+*---------------------------------------------------------------------------------------------*/
+
+#acf_fields .fields .field_type-message tr.field_name,
+#acf_fields .fields .field_type-message tr.field_instructions,
+#acf_fields .fields .field_type-message tr.required {
+	display: none;
+}
+
+#acf_fields .fields .field_type-message textarea {
+	height: 175px;
+}
 
 /*--------------------------------------------------------------------------
 *
@@ -714,14 +692,6 @@ only screen and (                min-resolution: 2dppx) {
 		background-image: url(../images/sprite@2x.png);
 		background-size: 100px 600px;
 	}
-	
-	
-	/*
-#toplevel_page_edit-post_type-acf .wp-menu-image { 
-		background-image: url("../../../../wp-admin/images/menu-2x.png") !important;
-	}
-*/
-
 	
 }
 

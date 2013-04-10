@@ -1,37 +1,267 @@
 <?php
 
-class acf_Image extends acf_Field
+class acf_field_image extends acf_field
 {
 	
-	/*--------------------------------------------------------------------------------------
+	/*
+	*  __construct
 	*
-	*	Constructor
+	*  Set name / label needed for actions / filters
 	*
-	*	@author Elliot Condon
-	*	@since 1.0.0
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
 	
-	function __construct($parent)
+	function __construct()
 	{
-    	parent::__construct($parent);
+		// vars
+		$this->name = 'image';
+		$this->label = __("Image",'acf');
+		$this->category = __("Content",'acf');
+		
+		
+		// do not delete!
+    	parent::__construct();
     	
-    	$this->name = 'image';
-		$this->title = __('Image','acf');
-		
+    	
+    	// extra
+		add_filter('get_media_item_args', array($this, 'get_media_item_args'));
+		add_action('acf_head-update_attachment-' . $this->name, array($this, 'acf_head_update_attachment'));
 		add_action('admin_head-media-upload-popup', array($this, 'popup_head'));
-		add_filter('get_media_item_args', array($this, 'allow_img_insertion'));
-		add_action('acf_head-update_attachment-image', array($this, 'acf_head_update_attachment'));
 		
-		add_action('wp_ajax_acf/fields/image/get_images', array($this, 'ajax_get_images'));
-		//add_filter('image_size_names_choose', array($this, 'image_size_names_choose'));
+		add_action('wp_ajax_acf/fields/image/get_images', array($this, 'ajax_get_images'), 10, 1);
+		add_action('wp_ajax_nopriv_acf/fields/image/get_images', array($this, 'ajax_get_images'), 10, 1);
 		add_action('wp_prepare_attachment_for_js', array($this, 'wp_prepare_attachment_for_js'), 10, 3);
+	}
+	
+	
+	/*
+	*  create_field()
+	*
+	*  Create the HTML interface for your field
+	*
+	*  @param	$field - an array holding all the field's data
+	*
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
+	
+	function create_field( $field )
+	{
+		// vars
+		$class = "";
+		$file_src = "";
+		$preview_size = isset($field['preview_size']) ? $field['preview_size'] : 'thumbnail';
 		
-   	}
-   	
-   	
-   	/*
+		// get image url
+		if($field['value'] != '' && is_numeric($field['value']))
+		{
+			$file_src = wp_get_attachment_image_src($field['value'], $preview_size);
+			$file_src = $file_src[0];
+			
+			if($file_src)
+			{
+				$class = "active";
+			}
+		}
+		
+		?>
+<div class="acf-image-uploader clearfix <?php echo $class; ?>" data-preview_size="<?php echo $preview_size; ?>">
+	<input class="acf-image-value" type="hidden" name="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" />
+	<div class="has-image">
+		<div class="hover">
+			<ul class="bl">
+				<li><a class="acf-button-delete ir" href="#"><?php _e("Remove",'acf'); ?></a></li>
+				<li><a class="acf-button-edit ir" href="#"><?php _e("Edit",'acf'); ?></a></li>
+			</ul>
+		</div>
+		<img src="<?php echo $file_src; ?>" alt=""/>
+	</div>
+	<div class="no-image">
+		<p><?php _e('No image selected','acf'); ?> <input type="button" class="button add-image" value="<?php _e('Add Image','acf'); ?>" />
+	</div>
+</div>
+		<?php
+	}
+	
+	
+	/*
+	*  create_options()
+	*
+	*  Create extra options for your field. This is rendered when editing a field.
+	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+	*
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$field	- an array holding all the field's data
+	*/
+	
+	function create_options( $field )
+	{
+		// vars
+		$defaults = array(
+			'save_format'	=>	'id',
+			'preview_size'	=>	'thumbnail',
+		);
+		
+		$field = array_merge($defaults, $field);
+		$key = $field['name'];
+		
+		?>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label><?php _e("Return Value",'acf'); ?></label>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+					'type'		=>	'radio',
+					'name'		=>	'fields['.$key.'][save_format]',
+					'value'		=>	$field['save_format'],
+					'layout'	=>	'horizontal',
+					'choices'	=> array(
+						'object'	=>	__("Image Object",'acf'),
+						'url'		=>	__("Image URL",'acf'),
+						'id'		=>	__("Image ID",'acf')
+					)
+				));
+				?>
+			</td>
+		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label><?php _e("Preview Size",'acf'); ?></label>
+			</td>
+			<td>
+				<?php
+				
+				do_action('acf/create_field', array(
+					'type'		=>	'radio',
+					'name'		=>	'fields['.$key.'][preview_size]',
+					'value'		=>	$field['preview_size'],
+					'layout'	=>	'horizontal',
+					'choices' 	=>	apply_filters('acf/get_image_sizes', array())
+				));
+
+				?>
+			</td>
+		</tr>
+		<?php
+		
+	}
+	
+	
+	/*
+	*  format_value_for_api()
+	*
+	*  This filter is appied to the $value after it is loaded from the db and before it is passed back to the api functions such as the_field
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value	- the value which was loaded from the database
+	*  @param	$post_id - the $post_id from which the value was loaded
+	*  @param	$field	- the field array holding all the field options
+	*
+	*  @return	$value	- the modified value
+	*/
+	
+	function format_value_for_api( $value, $post_id, $field )
+	{
+		// vars
+		$defaults = array(
+			'save_format'	=>	'url',
+		);
+		
+		$field = array_merge($defaults, $field);
+		
+		
+		// validate
+		if( !$value )
+		{
+			return false;
+		}
+		
+		
+		// format
+		if( $field['save_format'] == 'url' )
+		{
+			$value = wp_get_attachment_url( $value );
+		}
+		elseif( $field['save_format'] == 'object' )
+		{
+			$attachment = get_post( $value );
+			
+			
+			// validate
+			if( !$attachment )
+			{
+				return false;	
+			}
+			
+			
+			// create array to hold value data
+			$src = wp_get_attachment_image_src( $attachment->ID, 'full' );
+			
+			$value = array(
+				'id' => $attachment->ID,
+				'alt' => get_post_meta($attachment->ID, '_wp_attachment_image_alt', true),
+				'title' => $attachment->post_title,
+				'caption' => $attachment->post_excerpt,
+				'description' => $attachment->post_content,
+				'url' => $src[0],
+				'width' => $src[1],
+				'height' => $src[2],
+				'sizes' => array(),
+			);
+			
+			
+			// find all image sizes
+			$image_sizes = get_intermediate_image_sizes();
+			
+			if( $image_sizes )
+			{
+				foreach( $image_sizes as $image_size )
+				{
+					// find src
+					$src = wp_get_attachment_image_src( $attachment->ID, $image_size );
+					
+					// add src
+					$value[ 'sizes' ][ $image_size ] = $src[0];
+					$value[ 'sizes' ][ $image_size . '-width' ] = $src[1];
+					$value[ 'sizes' ][ $image_size . '-height' ] = $src[2];
+				}
+				// foreach( $image_sizes as $image_size )
+			}
+			// if( $image_sizes )
+			
+		}
+		
+		return $value;
+		
+	}
+	
+	
+	/*
+	*  get_media_item_args
+	*
+	*  @description: 
+	*  @since: 3.6
+	*  @created: 27/01/13
+	*/
+	
+	function get_media_item_args( $vars )
+	{
+	    $vars['send'] = true;
+	    return($vars);
+	}
+	
+	
+	/*
    	*  acf_head_update_attachment
    	*
    	*  @description: 
@@ -111,137 +341,7 @@ class acf_Image extends acf_Field
    	}
    	
    	
-   	/*--------------------------------------------------------------------------------------
-	*
-	*	admin_print_scripts / admin_print_styles
-	*
-	*	@author Elliot Condon
-	*	@since 3.0.1
-	* 
-	*-------------------------------------------------------------------------------------*/
-	
-	function allow_img_insertion($vars)
-	{
-	    $vars['send'] = true;
-	    return($vars);
-	}
-	
-	
-	/*--------------------------------------------------------------------------------------
-	*
-	*	create_field
-	*
-	*	@author Elliot Condon
-	*	@since 2.0.5
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
-	
-	function create_field($field)
-	{
-		// vars
-		$class = "";
-		$file_src = "";
-		$preview_size = isset($field['preview_size']) ? $field['preview_size'] : 'thumbnail';
-		
-		// get image url
-		if($field['value'] != '' && is_numeric($field['value']))
-		{
-			$file_src = wp_get_attachment_image_src($field['value'], $preview_size);
-			$file_src = $file_src[0];
-			
-			if($file_src)
-			{
-				$class = "active";
-			}
-		}
-		
-		?>
-<div class="acf-image-uploader clearfix <?php echo $class; ?>" data-preview_size="<?php echo $preview_size; ?>">
-	<input class="acf-image-value" type="hidden" name="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" />
-	<div class="has-image">
-		<div class="hover">
-			<ul class="bl">
-				<li><a class="acf-button-delete ir" href="#"><?php _e("Remove",'acf'); ?></a></li>
-				<li><a class="acf-button-edit ir" href="#"><?php _e("Edit",'acf'); ?></a></li>
-			</ul>
-		</div>
-		<img src="<?php echo $file_src; ?>" alt=""/>
-	</div>
-	<div class="no-image">
-		<p><?php _e('No image selected','acf'); ?> <input type="button" class="button add-image" value="<?php _e('Add Image','acf'); ?>" />
-	</div>
-</div>
-		<?php
-	}
-	
-	
-	/*--------------------------------------------------------------------------------------
-	*
-	*	create_options
-	*
-	*	@author Elliot Condon
-	*	@since 2.0.6
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
-	
-	function create_options($key, $field)
-	{	
-		// vars
-		$defaults = array(
-			'save_format'	=>	'id',
-			'preview_size'	=>	'thumbnail',
-		);
-		
-		$field = array_merge($defaults, $field);
-		
-		?>
-		<tr class="field_option field_option_<?php echo $this->name; ?>">
-			<td class="label">
-				<label><?php _e("Return Value",'acf'); ?></label>
-			</td>
-			<td>
-				<?php
-				do_action('acf/create_field', array(
-					'type'		=>	'radio',
-					'name'		=>	'fields['.$key.'][save_format]',
-					'value'		=>	$field['save_format'],
-					'layout'	=>	'horizontal',
-					'choices'	=> array(
-						'object'	=>	__("Image Object",'acf'),
-						'url'		=>	__("Image URL",'acf'),
-						'id'		=>	__("Image ID",'acf')
-					)
-				));
-				?>
-			</td>
-		</tr>
-		<tr class="field_option field_option_<?php echo $this->name; ?>">
-			<td class="label">
-				<label><?php _e("Preview Size",'acf'); ?></label>
-			</td>
-			<td>
-				<?php
-				
-				$image_sizes = $this->parent->get_all_image_sizes();
-				
-				do_action('acf/create_field', array(
-					'type'		=>	'radio',
-					'name'		=>	'fields['.$key.'][preview_size]',
-					'value'		=>	$field['preview_size'],
-					'layout'	=>	'horizontal',
-					'choices' 	=>	$image_sizes
-				));
-
-				?>
-			</td>
-		</tr>
-		<?php
-	}
-
-	
-	/*
+   	/*
 	*  popup_head
 	*
 	*  @description: css + js for thickbox
@@ -655,87 +755,6 @@ class acf_Image extends acf_Field
 
 	}
 	
-
-	/*--------------------------------------------------------------------------------------
-	*
-	*	get_value_for_api
-	*
-	*	@author Elliot Condon
-	*	@since 3.0.0
-	* 
-	*-------------------------------------------------------------------------------------*/
-	
-	function get_value_for_api($post_id, $field)
-	{
-		// vars
-		$format = isset($field['save_format']) ? $field['save_format'] : 'url';
-		$value = parent::get_value($post_id, $field);
-		
-		
-		// validate
-		if( !$value )
-		{
-			return false;
-		}
-		
-		
-		// format
-		if($format == 'url')
-		{
-			$value = wp_get_attachment_url($value);
-		}
-		elseif($format == 'object')
-		{
-			$attachment = get_post( $value );
-			
-			
-			// validate
-			if( !$attachment )
-			{
-				return false;	
-			}
-			
-			
-			// create array to hold value data
-			$src = wp_get_attachment_image_src( $attachment->ID, 'full' );
-			
-			$value = array(
-				'id' => $attachment->ID,
-				'alt' => get_post_meta($attachment->ID, '_wp_attachment_image_alt', true),
-				'title' => $attachment->post_title,
-				'caption' => $attachment->post_excerpt,
-				'description' => $attachment->post_content,
-				'url' => $src[0],
-				'width' => $src[1],
-				'height' => $src[2],
-				'sizes' => array(),
-			);
-
-			
-			// find all image sizes
-			$image_sizes = get_intermediate_image_sizes();
-			
-			if( $image_sizes )
-			{
-				foreach( $image_sizes as $image_size )
-				{
-					// find src
-					$src = wp_get_attachment_image_src( $attachment->ID, $image_size );
-					
-					// add src
-					$value[ 'sizes' ][ $image_size ] = $src[0];
-					$value[ 'sizes' ][ $image_size . '-width' ] = $src[1];
-					$value[ 'sizes' ][ $image_size . '-height' ] = $src[2];
-				}
-				// foreach( $image_sizes as $image_size )
-			}
-			// if( $image_sizes )
-			
-		}
-		
-		return $value;
-	}
-	
 	
 	/*
 	*  image_size_names_choose
@@ -813,7 +832,8 @@ class acf_Image extends acf_Field
 		return $response;
 	}
 	
-		
 }
+
+new acf_field_image();
 
 ?>

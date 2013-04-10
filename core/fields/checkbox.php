@@ -1,96 +1,100 @@
 <?php
 
-class acf_Checkbox extends acf_Field
+class acf_field_checkbox extends acf_field
 {
 	
-	/*--------------------------------------------------------------------------------------
+	/*
+	*  __construct
 	*
-	*	Constructor
+	*  Set name / label needed for actions / filters
 	*
-	*	@author Elliot Condon
-	*	@since 1.0.0
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
 	
-	function __construct($parent)
+	function __construct()
 	{
-    	parent::__construct($parent);
-    	
-    	$this->name = 'checkbox';
-		$this->title = __("Checkbox",'acf');
+		// vars
+		$this->name = 'checkbox';
+		$this->label = __("Checkbox",'acf');
+		$this->category = __("Choice",'acf');
 		
-   	}
-   	
-
-	/*--------------------------------------------------------------------------------------
-	*
-	*	create_field
-	*
-	*	@author Elliot Condon
-	*	@since 2.0.5
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
+		
+		// do not delete!
+    	parent::__construct();
+	}
+		
 	
-	function create_field($field)
+	/*
+	*  create_field()
+	*
+	*  Create the HTML interface for your field
+	*
+	*  @param	$field - an array holding all the field's data
+	*
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
+	
+	function create_field( $field )
 	{
-		// defaults
-		if(empty($field['value']))
-		{
-			$field['value'] = array();
-		}
+		// vars
+		$defaults = array(
+			'layout'		=>	'vertical',
+			'choices'		=>	array(),
+		);
+		
+		$field = array_merge($defaults, $field);
 		
 		
-		// single value to array conversion
+		// value must be array
 		if( !is_array($field['value']) )
 		{
 			$field['value'] = array( $field['value'] );
 		}
 		
 		
-		// no choices
-		if(empty($field['choices']))
-		{
-			echo '<p>' . __("No choices to choose from",'acf') . '</p>';
-			return false;
-		}
+		echo '<input type="hidden" name="' . $field['name'] . '" value="" />';
+		echo '<ul class="checkbox_list ' . $field['class'] . '">';
 		
 		
-		// html
-		echo '<ul class="checkbox_list '.$field['class'].'">';
-		echo '<input type="hidden" name="'.$field['name'].'" value="" />';
 		// checkbox saves an array
 		$field['name'] .= '[]';
+		
 		
 		// foreach choices
 		foreach($field['choices'] as $key => $value)
 		{
 			$selected = '';
-			if(in_array($key, $field['value']))
+			if( in_array($key, $field['value']) )
 			{
 				$selected = 'checked="yes"';
 			}
+			
+			
 			echo '<li><label><input id="' . $field['id'] . '-' . $key . '" type="checkbox" class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . $key . '" ' . $selected . ' />' . $value . '</label></li>';
 		}
 		
 		echo '</ul>';
-
 	}
-
-
-	/*--------------------------------------------------------------------------------------
-	*
-	*	create_options
-	*
-	*	@author Elliot Condon
-	*	@since 2.0.6
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
 	
-	function create_options($key, $field)
-	{	
+	
+	/*
+	*  create_options()
+	*
+	*  Create extra options for your field. This is rendered when editing a field.
+	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+	*
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$field	- an array holding all the field's data
+	*/
+	
+	function create_options( $field )
+	{
 		// vars
 		$defaults = array(
 			'default_value'	=>	'',
@@ -98,6 +102,7 @@ class acf_Checkbox extends acf_Field
 		);
 		
 		$field = array_merge($defaults, $field);
+		$key = $field['name'];
 		
 		
 		// implode checkboxes so they work in a textarea
@@ -153,7 +158,11 @@ class acf_Checkbox extends acf_Field
 	</td>
 </tr>
 		<?php
-	}
 		
+	}
+	
 }
+
+new acf_field_checkbox();
+
 ?>

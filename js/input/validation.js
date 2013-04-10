@@ -55,6 +55,7 @@
 				var id = div.find('.wp-editor-area').attr('id'),
 					editor = tinyMCE.get( id );
 
+
 				if( editor && !editor.getContent() )
 				{
 					div.data('validation', false);
@@ -139,7 +140,7 @@
 				div.closest('.field').addClass('error');
 			}
 			
-			
+
 		});
 		
 		

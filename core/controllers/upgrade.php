@@ -12,9 +12,6 @@
 class acf_upgrade 
 {
 
-	var $parent;
-		
-	
 	/*
 	*  __construct
 	*
@@ -23,18 +20,12 @@ class acf_upgrade
 	*  @created: 23/06/12
 	*/
 	
-	function __construct($parent)
+	function __construct()
 	{
-	
-		// vars
-		$this->parent = $parent;
-		
-		
 		// actions
-		add_action('init', array($this,'init'));
 		add_action('admin_menu', array($this,'admin_menu'), 11);
 		add_action('wp_ajax_acf_upgrade', array($this, 'upgrade_ajax'));
-		
+		//add_action('admin_footer', array($this, 'admin_footer'), 99);
 	}
 	
 	
@@ -48,36 +39,66 @@ class acf_upgrade
 	
 	function admin_menu()
 	{
+		// dont run on plugin activate!
+		if( isset($_GET['action']) && $_GET['action'] == 'activate-plugin' )
+		{
+			return;
+		}
+		
+		
+		// vars
+		$new_version = apply_filters('acf/get_info', 'version');
+		$old_version = get_option('acf_version', false);
+		
+		
+		if( $new_version != $old_version )
+		{
+			update_option('acf_version', $new_version );
+			
+			if( !$old_version )
+			{
+				// do nothing, this is a fresh install
+			}
+			elseif( $new_version > $old_version )
+			{
+				// this is a newer version (update)
+				$url = admin_url('edit.php?post_type=acf&info=changelog');
+				
+				if( $new_version == '4.0.0' )
+				{
+					$url = admin_url('edit.php?post_type=acf&info=whats-new');
+				}
+				
+				wp_redirect( $url );
+				exit;
+				
+			}
+		}
+		
+
 		add_submenu_page('edit.php?post_type=acf', __('Upgrade','acf'), __('Upgrade','acf'), 'manage_options','acf-upgrade', array($this,'html') );
 	}
 	
 	
 	/*
-	*  init
+	*  admin_footer
 	*
 	*  @description: 
-	*  @since 3.1.8
-	*  @created: 23/06/12
+	*  @since: 3.6
+	*  @created: 3/04/13
 	*/
 	
-	function init()
+	function admin_footer()
 	{
-		$version = get_option('acf_version', false);
-		if( $version )
+		// Mesages
+		$dismissed = get_option('acf_dismissed', array());
+		
+		if( !in_array('download_addons', $dismissed) )
 		{
-			if( $version < $this->parent->upgrade_version )
-			{
-				$this->parent->admin_message('<p>' . __("Advanced Custom Fields",'acf') . ' v' . $this->parent->version . ' ' . __("requires a database upgrade",'acf') .' (<a class="thickbox" href="' . admin_url() . 'plugin-install.php?tab=plugin-information&plugin=advanced-custom-fields&section=changelog&TB_iframe=true&width=640&height=559">' . __("why?",'acf') .'</a>). ' . __("Please",'acf') .' <a href="http://codex.wordpress.org/Backing_Up_Your_Database">' . __("backup your database",'acf') .'</a>, '. __("then click",'acf') . ' <a href="' . admin_url() . 'edit.php?post_type=acf&page=acf-upgrade" class="button">' . __("Upgrade Database",'acf') . '</a></p>');
-				
-			}
-			elseif( $version < $this->parent->version)
-			{
-				update_option('acf_version', $this->parent->version );
-			}
-		}
-		else
-		{
-			update_option('acf_version', $this->parent->version );
+			// update db
+			//$dismissed[] = 'download_addons';
+			//update_option('acf_dismissed', $dismissed );
+			
 		}
 	}
 	
@@ -826,5 +847,7 @@ class acf_upgrade
 	
 			
 }
+
+new acf_upgrade();
 
 ?>

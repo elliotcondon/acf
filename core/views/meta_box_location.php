@@ -12,7 +12,7 @@ global $post;
 		
 		
 // vars
-$location = $this->parent->get_acf_location($post->ID);
+$location = apply_filters('acf/field_group/get_location', array(), $post->ID);
 
 
 // at lease 1 location rule
@@ -61,18 +61,20 @@ if( empty($location['rules']) )
 									'taxonomy'		=>	__("Taxonomy",'acf'),
 								),
 								__("Other",'acf') => array(
-									'ef_taxonomy'	=>	__("Taxonomy (Add / Edit)",'acf'),
+									'ef_taxonomy'	=>	__("Taxonomy Term (Add / Edit)",'acf'),
 									'ef_user'		=>	__("User (Add / Edit)",'acf'),
-									'ef_media'		=>	__("Media (Edit)",'acf')
+									'ef_media'		=>	__("Media Attachment (Edit)",'acf')
 								)
 							);
 							
 
 							// validate
-							if($this->parent->is_field_unlocked('options_page'))
+							/*
+if($this->parent->is_field_unlocked('options_page'))
 							{
 								$choices[__("Options Page",'acf')]['options_page'] = __("Options Page",'acf');
 							}
+*/
 							
 							
 							// allow custom location rules
@@ -114,7 +116,7 @@ if( empty($location['rules']) )
 						?></td>
 						<td class="value"><?php 
 							
-							$this->ajax_acf_location(array(
+							$this->ajax_render_location(array(
 								'key' => $k,
 								'value' => $rule['value'],
 								'param' => $rule['param'],

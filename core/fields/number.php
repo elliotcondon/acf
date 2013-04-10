@@ -1,55 +1,61 @@
 <?php
 
-class acf_Number extends acf_Field
+class acf_field_number extends acf_field
 {
 	
-	/*--------------------------------------------------------------------------------------
+	/*
+	*  __construct
 	*
-	*	Constructor
+	*  Set name / label needed for actions / filters
 	*
-	*	@author Elliot Condon
-	*	@since 1.0.0
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
 	
-	function __construct($parent)
+	function __construct()
 	{
-    	parent::__construct($parent);
-    	
-    	$this->name = 'number';
-		$this->title = __("Number",'acf');
+		// vars
+		$this->name = 'number';
+		$this->label = __("Number",'acf');
 		
-   	}
-   
-
-	/*--------------------------------------------------------------------------------------
-	*
-	*	create_field
-	*
-	*	@author Elliot Condon
-	*	@since 2.0.5
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
+		
+		// do not delete!
+    	parent::__construct();
+	}
+		
 	
-	function create_field($field)
+	/*
+	*  create_field()
+	*
+	*  Create the HTML interface for your field
+	*
+	*  @param	$field - an array holding all the field's data
+	*
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
+	
+	function create_field( $field )
 	{
-		echo '<input type="number" step="any" value="' . $field['value'] . '" id="' . $field['id'] . '" class="' . $field['class'] . '" name="' . $field['name'] . '" />';
+		echo '<input type="number" step="any" value="' . esc_attr( $field['value'] ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" />';
 	}
 	
 	
-	/*--------------------------------------------------------------------------------------
+	/*
+	*  create_options()
 	*
-	*	create_options
+	*  Create extra options for your field. This is rendered when editing a field.
+	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
 	*
-	*	@author Elliot Condon
-	*	@since 2.0.6
-	*	@updated 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$field	- an array holding all the field's data
+	*/
 	
-	function create_options($key, $field)
+	function create_options( $field )
 	{
 		// vars
 		$defaults = array(
@@ -57,7 +63,7 @@ class acf_Number extends acf_Field
 		);
 		
 		$field = array_merge($defaults, $field);
-
+		$key = $field['name'];
 		
 		?>
 		<tr class="field_option field_option_<?php echo $this->name; ?>">
@@ -79,16 +85,24 @@ class acf_Number extends acf_Field
 		<?php
 	}
 	
-	/*--------------------------------------------------------------------------------------
-	*
-	*	update_value
-	*
-	*	@author Elliot Condon
-	*	@since 2.2.0
-	* 
-	*-------------------------------------------------------------------------------------*/
 	
-	function update_value($post_id, $field, $value)
+	/*
+	*  update_value()
+	*
+	*  This filter is appied to the $value before it is updated in the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value - the value which will be saved in the database
+	*  @param	$field - the field array holding all the field options
+	*  @param	$post_id - the $post_id of which the value will be saved
+	*
+	*  @return	$value - the modified value
+	*/
+	
+	function update_value( $value, $post_id, $field )
 	{
 		// remove ','
 		$value = str_replace(',', '', $value);
@@ -102,11 +116,12 @@ class acf_Number extends acf_Field
 		$value = (string) $value;
 		
 		
-		// update value
-		parent::update_value($post_id, $field, $value);
-		
+		return $value;
 	}
 	
+	
 }
+
+new acf_field_number();
 
 ?>

@@ -13,7 +13,7 @@ global $post;
 
 	
 // vars
-$options = $this->parent->get_acf_options($post->ID);
+$options =  apply_filters('acf/field_group/get_options', array(), $post->ID);
 	
 
 ?>

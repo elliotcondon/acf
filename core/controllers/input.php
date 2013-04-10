@@ -3,17 +3,16 @@
 /*
 *  Input
 *
-*  @description: All the functionality for adding fields to a page / post
-*  @since 3.2.6
-*  @created: 23/06/12
+*  @description: controller for adding field HTML to edit screens
+*  @since: 3.6
+*  @created: 25/01/13
 */
- 
+
 class acf_input
 {
-
-	var $parent,
-		$data;
-		
+	
+	var $action;
+	
 	
 	/*
 	*  __construct
@@ -23,39 +22,36 @@ class acf_input
 	*  @created: 23/06/12
 	*/
 	
-	function __construct($parent)
+	function __construct()
 	{
-	
-		// vars
-		$this->parent = $parent;
-		
-		
 		// actions
-		add_action('admin_print_scripts', array($this,'admin_print_scripts'));
-		add_action('admin_print_styles', array($this,'admin_print_styles'));
-		add_action('admin_head', array($this,'admin_head'));
+		add_action('admin_enqueue_scripts', array($this,'admin_enqueue_scripts'));
 		
 		
 		// save
-		add_action('save_post', array($this, 'save_post'), 10, 1); 
+		add_action('save_post', array($this, 'save_post'), 10, 1);
 		
 		
-		// custom actions (added in 3.1.8)
-		add_action('acf_head-input', array($this, 'acf_head_input'));
-		add_action('acf_print_scripts-input', array($this, 'acf_print_scripts_input'));
-		add_action('acf_print_styles-input', array($this, 'acf_print_styles_input'));
+		// actions
+		add_action('acf/input/admin_head', array($this, 'input_admin_head'));
+		add_action('acf/input/admin_enqueue_scripts', array($this, 'input_admin_enqueue_scripts'));
+		
+		
 		add_action('wp_restore_post_revision', array($this, 'wp_restore_post_revision'), 10, 2 );
+		
+		
+		// filters
 		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields') );
 		
-		// ajax
-		add_action('wp_ajax_acf_input', array($this, 'ajax_acf_input'));
-		add_action('wp_ajax_get_input_style', array($this, 'ajax_get_input_style'));
+		
+		// ajax acf/update_field_groups
+		add_action('wp_ajax_acf/input/render_fields', array($this, 'ajax_render_fields'));
+		add_action('wp_ajax_acf/input/get_style', array($this, 'ajax_get_style'));
 		
 		
 		// edit attachment hooks (used by image / file / gallery)
 		add_action('admin_head-media.php', array($this, 'admin_head_media'));
 		add_action('admin_head-upload.php', array($this, 'admin_head_upload'));
-		
 	}
 	
 	
@@ -105,43 +101,28 @@ class acf_input
 	
 	
 	/*
-	*  admin_print_scripts
+	*  admin_enqueue_scripts
 	*
-	*  @description: 
-	*  @since 3.1.8
-	*  @created: 23/06/12
+	*  @description: run after post query but before any admin script / head actions. A good place to register all actions.
+	*  @since: 3.6
+	*  @created: 26/01/13
 	*/
 	
-	function admin_print_scripts()
+	function admin_enqueue_scripts()
 	{
 		// validate page
-		if( ! $this->validate_page() ) return;
-		
-		
-		do_action('acf_print_scripts-input');
-		
+		if( ! $this->validate_page() ){ return; }
+
 		
 		// only "edit post" input pages need the ajax
 		wp_enqueue_script(array(
 			'acf-input-ajax',	
 		));
-	}
-	
-	
-	/*
-	*  admin_print_styles
-	*
-	*  @description: 
-	*  @since 3.1.8
-	*  @created: 23/06/12
-	*/
-	
-	function admin_print_styles()
-	{
-		// validate page
-		if( ! $this->validate_page() ) return;
 		
-		do_action('acf_print_styles-input');
+		
+		// actions
+		do_action('acf/input/admin_enqueue_scripts');
+		add_action('admin_head', array($this,'admin_head'));
 	}
 	
 	
@@ -155,10 +136,6 @@ class acf_input
 	
 	function admin_head()
 	{
-		// validate page
-		if( ! $this->validate_page() ) return;
-		
-		
 		// globals
 		global $post, $pagenow, $typenow;
 		
@@ -187,7 +164,7 @@ class acf_input
 		$style = '';
 		if( isset($metabox_ids[0]) )
 		{
-			$style = $this->get_input_style( $metabox_ids[0] );
+			$style = $this->get_style( $metabox_ids[0] );
 		}
 		
 		
@@ -197,19 +174,23 @@ class acf_input
 		
 		
 		// add user js + css
-		do_action('acf_head-input');
+		do_action('acf/input/admin_head');
 		
 		
-		// get acf's
-		$acfs = apply_filters('acf/get_field_groups', false);
+		// get field groups
+		$acfs = apply_filters('acf/get_field_groups', array());
 		
 		
-		if($acfs)
+		if( $acfs )
 		{
-			foreach($acfs as $acf)
+			foreach( $acfs as $acf )
 			{
-				// hide / show
-				$show = in_array($acf['id'], $metabox_ids) ? 1 : 0;
+				// load options
+				$acf['options'] = apply_filters('acf/field_group/get_options', array(), $acf['id']);
+				
+				
+				// vars
+				$show = in_array( $acf['id'], $metabox_ids ) ? 1 : 0;
 				$priority = 'high';
 				if( $acf['options']['position'] == 'side' )
 				{
@@ -225,7 +206,7 @@ class acf_input
 					$typenow, 
 					$acf['options']['position'], 
 					$priority, 
-					array( 'fields' => $acf['fields'], 'options' => $acf['options'], 'show' => $show, 'post_id' => $post->ID )
+					array( 'field_group' => $acf, 'show' => $show, 'post_id' => $post_id )
 				);
 				
 			}
@@ -236,109 +217,111 @@ class acf_input
 	
 	
 	/*
-	*  get_input_style
+	*  get_style
 	*
 	*  @description: called by admin_head to generate acf css style (hide other metaboxes)
 	*  @since 2.0.5
 	*  @created: 23/06/12
 	*/
 
-	function get_input_style($acf_id = false)
+	function get_style( $acf_id )
 	{
 		// vars
-		$acfs = apply_filters('acf/get_field_groups', false);
-		$html = "";
+		$options = apply_filters('acf/field_group/get_options', array(), $acf_id);
+		$html = '';
 		
-		// find acf
-		if($acfs)
+		
+		// add style to html 
+		if( in_array('the_content',$options['hide_on_screen']) )
 		{
-			foreach($acfs as $acf)
-			{
-				if($acf['id'] != $acf_id) continue;
-				
-
-				// add style to html 
-				if( in_array('the_content',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#postdivrich {display: none;} ';
-				}
-				if( in_array('excerpt',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#postexcerpt, #screen-meta label[for=postexcerpt-hide] {display: none;} ';
-				}
-				if( in_array('custom_fields',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#postcustom, #screen-meta label[for=postcustom-hide] { display: none; } ';
-				}
-				if( in_array('discussion',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#commentstatusdiv, #screen-meta label[for=commentstatusdiv-hide] {display: none;} ';
-				}
-				if( in_array('comments',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#commentsdiv, #screen-meta label[for=commentsdiv-hide] {display: none;} ';
-				}
-				if( in_array('slug',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#slugdiv, #screen-meta label[for=slugdiv-hide] {display: none;} ';
-				}
-				if( in_array('author',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#authordiv, #screen-meta label[for=authordiv-hide] {display: none;} ';
-				}
-				if( in_array('format',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#formatdiv, #screen-meta label[for=formatdiv-hide] {display: none;} ';
-				}
-				if( in_array('featured_image',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#postimagediv, #screen-meta label[for=postimagediv-hide] {display: none;} ';
-				}
-				if( in_array('revisions',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#revisionsdiv, #screen-meta label[for=revisionsdiv-hide] {display: none;} ';
-				}
-				if( in_array('categories',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#categorydiv, #screen-meta label[for=categorydiv-hide] {display: none;} ';
-				}
-				if( in_array('tags',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#tagsdiv-post_tag, #screen-meta label[for=tagsdiv-post_tag-hide] {display: none;} ';
-				}
-				if( in_array('send-trackbacks',$acf['options']['hide_on_screen']) )
-				{
-					$html .= '#trackbacksdiv, #screen-meta label[for=trackbacksdiv-hide] {display: none;} ';
-				}
-				
-				
-				break;
-
-			}
-			// foreach($acfs as $acf)
+			$html .= '#postdivrich {display: none;} ';
 		}
-		//if($acfs)
+		if( in_array('excerpt',$options['hide_on_screen']) )
+		{
+			$html .= '#postexcerpt, #screen-meta label[for=postexcerpt-hide] {display: none;} ';
+		}
+		if( in_array('custom_fields',$options['hide_on_screen']) )
+		{
+			$html .= '#postcustom, #screen-meta label[for=postcustom-hide] { display: none; } ';
+		}
+		if( in_array('discussion',$options['hide_on_screen']) )
+		{
+			$html .= '#commentstatusdiv, #screen-meta label[for=commentstatusdiv-hide] {display: none;} ';
+		}
+		if( in_array('comments',$options['hide_on_screen']) )
+		{
+			$html .= '#commentsdiv, #screen-meta label[for=commentsdiv-hide] {display: none;} ';
+		}
+		if( in_array('slug',$options['hide_on_screen']) )
+		{
+			$html .= '#slugdiv, #screen-meta label[for=slugdiv-hide] {display: none;} ';
+		}
+		if( in_array('author',$options['hide_on_screen']) )
+		{
+			$html .= '#authordiv, #screen-meta label[for=authordiv-hide] {display: none;} ';
+		}
+		if( in_array('format',$options['hide_on_screen']) )
+		{
+			$html .= '#formatdiv, #screen-meta label[for=formatdiv-hide] {display: none;} ';
+		}
+		if( in_array('featured_image',$options['hide_on_screen']) )
+		{
+			$html .= '#postimagediv, #screen-meta label[for=postimagediv-hide] {display: none;} ';
+		}
+		if( in_array('revisions',$options['hide_on_screen']) )
+		{
+			$html .= '#revisionsdiv, #screen-meta label[for=revisionsdiv-hide] {display: none;} ';
+		}
+		if( in_array('categories',$options['hide_on_screen']) )
+		{
+			$html .= '#categorydiv, #screen-meta label[for=categorydiv-hide] {display: none;} ';
+		}
+		if( in_array('tags',$options['hide_on_screen']) )
+		{
+			$html .= '#tagsdiv-post_tag, #screen-meta label[for=tagsdiv-post_tag-hide] {display: none;} ';
+		}
+		if( in_array('send-trackbacks',$options['hide_on_screen']) )
+		{
+			$html .= '#trackbacksdiv, #screen-meta label[for=trackbacksdiv-hide] {display: none;} ';
+		}
 		
+				
 		return $html;
 	}
 	
 	
 	/*
-	*  the_input_style
+	*  ajax_get_input_style
 	*
 	*  @description: called by input-actions.js to hide / show other metaboxes
 	*  @since 2.0.5
 	*  @created: 23/06/12
 	*/
 	
-	function ajax_get_input_style()
+	function ajax_get_style()
 	{
-		// overrides
-		if(isset($_POST['acf_id']))
+		// vars
+		$options = array(
+			'acf_id' => 0,
+			'nonce' => ''
+		);
+		
+		// load post options
+		$options = array_merge($options, $_POST);
+		
+		
+		// verify nonce
+		if( ! wp_verify_nonce($options['nonce'], 'acf_nonce') )
 		{
-			echo $this->get_input_style($_POST['acf_id']);
+			die(0);
 		}
 		
+		
+		// return style
+		echo $this->get_style( $options['acf_id'] );
+		
+		
+		// die
 		die;
 	}
 	
@@ -351,75 +334,68 @@ class acf_input
 	*  @created: 23/06/12
 	*/
 	
-	function meta_box_input($post, $args)
+	function meta_box_input( $post, $args )
 	{
 		// vars
-		$options = array(
-			'fields' => array(),
-			'options' => array(
-				'layout'	=>	'default'
-			),
-			'show' => 0,
-			'post_id' => 0,
-		);
-		$options = array_merge( $options, $args['args'] );
+		$options = $args['args'];
 		
+		echo '<input type="hidden" name="acf_nonce" value="' . wp_create_nonce( 'input' ) . '" />';
+		echo '<div class="options" data-layout="' . $options['field_group']['options']['layout'] . '" data-show="' . $options['show'] . '" style="display:none"></div>';
 		
-		// needs fields
-		if( $options['fields'] )
+		if( $options['show'] )
 		{
-			echo '<input type="hidden" name="save_input" value="true" />';
-			echo '<div class="options" data-layout="' . $options['options']['layout'] . '" data-show="' . $options['show'] . '" style="display:none"></div>';
-			
-			if( $options['show'] )
-			{
-				$this->parent->render_fields_for_input( $options['fields'], $options['post_id'] );
-			}
-			else
-			{
-				echo '<div class="acf-replace-with-fields"><div class="acf-loading"></div></div>';
-			}
-			
+			$fields = apply_filters('acf/field_group/get_fields', array(), $options['field_group']['id']);
+	
+			do_action('acf/create_fields', $fields, $options['post_id']);
+		}
+		else
+		{
+			echo '<div class="acf-replace-with-fields"><div class="acf-loading"></div></div>';
 		}
 	}
 	
 	
 	/*
-	*  ajax_acf_input
+	*  ajax_render_fields
 	*
 	*  @description: 
 	*  @since 3.1.6
 	*  @created: 23/06/12
 	*/
 
-	function ajax_acf_input()
+	function ajax_render_fields()
 	{
 		
 		// defaults
-		$defaults = array(
-			'acf_id' => null,
-			'post_id' => null,
+		$options = array(
+			'acf_id' => 0,
+			'post_id' => 0,
+			'nonce' => ''
 		);
 		
-		// load post options
-		$options = array_merge($defaults, $_POST);
 		
-		// required
-		if(!$options['acf_id'] || !$options['post_id'])
+		// load post options
+		$options = array_merge($options, $_POST);
+		
+		
+		// verify nonce
+		if( ! wp_verify_nonce($options['nonce'], 'acf_nonce') )
 		{
-			echo "";
-			die();
+			die(0);
 		}
 		
+		
 		// get acfs
-		$acfs = apply_filters('acf/get_field_groups', false);
+		$acfs = apply_filters('acf/get_field_groups', array());
 		if( $acfs )
 		{
 			foreach( $acfs as $acf )
 			{
 				if( $acf['id'] == $options['acf_id'] )
 				{
-					$this->parent->render_fields_for_input( $acf['fields'], $options['post_id']);
+					$fields = apply_filters('acf/field_group/get_fields', array(), $acf['id']);
+					
+					do_action('acf/create_fields', $fields, $options['post_id']);
 					
 					break;
 				}
@@ -439,97 +415,43 @@ class acf_input
 	*  @created: 23/06/12
 	*/
 	
-	function save_post($post_id)
+	function save_post( $post_id )
 	{	
 		
 		// do not save if this is an auto save routine
-		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
-		
-		
-		// only for save acf
-		if( ! isset($_POST['save_input']) || $_POST['save_input'] != 'true')
+		if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
 		{
 			return $post_id;
 		}
 		
 		
-		// Save revision (copy and paste of current metadata. ie: what it was)
-		$parent_id = wp_is_post_revision( $post_id );
-		if( $parent_id )
+		// verify nonce
+		if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input') )
 		{
-			$this->save_post_revision( $parent_id, $post_id );
-        }
-        else
-        {
-	        do_action('acf_save_post', $post_id);
-        }
-        
-	}
-	
-	
-	/*
-	*  save_post_revision
-	*
-	*  @description: simple copy and paste of fields
-	*  @since 3.4.4
-	*  @created: 4/09/12
-	*/
-	
-	function save_post_revision( $parent_id, $revision_id )
-	{
+			return $post_id;
+		}
 
-		// load from post
-		if( !isset($_POST['fields']) )
-		{
-			return false;
-		}
 		
-		
-		// field data was posted. Find all values (not references) and copy / paste them over.
-		
-		global $wpdb;
-		
-		
-		// get field from postmeta
-		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
-			$parent_id, 
-			'\_%'
-		), ARRAY_A);
-		
-		
-		if( $rows )
-		{
-			foreach( $rows as $row )
-			{
-				$wpdb->insert( 
-					$wpdb->postmeta, 
-					array(
-						'post_id' => $revision_id,
-						'meta_key' => $row['meta_key'],
-						'meta_value' => $row['meta_value']
-					)
-				);
-			}
-		}
-		
-		return true;
+		// update the post (may even be a revision / autosave preview)
+		do_action('acf/save_post', $post_id);
+        
+        
 	}
 	
 		
 	
 	/*--------------------------------------------------------------------------------------
 	*
-	*	acf_head_input
+	*	input_admin_head
 	*
-	*	This is fired from an action: acf_head-input
+	*	This is fired from an action: acf/input/admin_head
 	*
 	*	@author Elliot Condon
 	*	@since 3.0.6
 	* 
 	*-------------------------------------------------------------------------------------*/
 	
-	function acf_head_input()
+	function input_admin_head()
 	{
 		// global
 		global $wp_version, $post;
@@ -550,6 +472,7 @@ class acf_input
 acf.post_id = <?php echo $post_id; ?>;
 acf.nonce = "<?php echo wp_create_nonce( 'acf_nonce' ); ?>";
 acf.admin_url = "<?php echo admin_url(); ?>";
+acf.ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
 acf.wp_version = "<?php echo $wp_version; ?>";
 	
 	
@@ -565,9 +488,6 @@ acf.fields.image.text.button_add = "Select Image";
 acf.fields.file.text.title_add = "Select File";
 acf.fields.file.text.title_edit = "Edit File";
 acf.fields.file.text.button_add = "Select File";
-
-acf.fields.gallery.title_add = "<?php _e("Add Image to Gallery",'acf'); ?>";
-acf.fields.gallery.title_edit = "<?php _e("Edit Image",'acf'); ?>";
 
 
 // WYSIWYG
@@ -590,26 +510,21 @@ endif;
 ?>
 </script>
 		<?php
-		
-		
-		foreach($this->parent->fields as $field)
-		{
-			$field->admin_head();
-		}
 	}
 	
 	
-	/*--------------------------------------------------------------------------------------
+	/*
+	*  input_admin_enqueue_scripts
 	*
-	*	acf_print_scripts
-	*
-	*	@author Elliot Condon
-	*	@since 3.1.8
-	* 
-	*-------------------------------------------------------------------------------------*/
+	*  @description: 
+	*  @since: 3.6
+	*  @created: 30/01/13
+	*/
 	
-	function acf_print_scripts_input()
+	function input_admin_enqueue_scripts()
 	{
+
+		// scripts
 		wp_enqueue_script(array(
 			'jquery',
 			'jquery-ui-core',
@@ -623,31 +538,14 @@ endif;
 		));
 
 		
-		foreach($this->parent->fields as $field)
-		{
-			$field->admin_print_scripts();
-		}
-		
-		
 		// 3.5 media gallery
 		if( function_exists('wp_enqueue_media') && !did_action( 'wp_enqueue_media' ))
 		{
 			wp_enqueue_media();
 		}
-	}
-	
-	
-	/*--------------------------------------------------------------------------------------
-	*
-	*	acf_print_styles
-	*
-	*	@author Elliot Condon
-	*	@since 3.1.8
-	* 
-	*-------------------------------------------------------------------------------------*/
-	
-	function acf_print_styles_input()
-	{
+		
+		
+		// styles
 		wp_enqueue_style(array(
 			'thickbox',
 			'farbtastic',
@@ -655,11 +553,6 @@ endif;
 			'acf-input',
 			'acf-datepicker',	
 		));
-		
-		foreach($this->parent->fields as $field)
-		{
-			$field->admin_print_styles();
-		}
 	}
 	
 	
@@ -863,10 +756,10 @@ html.wp-toolbar {
 		return $fields;
 	
 	}
-
 	
-
-	
+			
 }
+
+new acf_input();
 
 ?>

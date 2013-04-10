@@ -1,19 +1,16 @@
 <?php 
 
 /*
-*  acf_location
+*  Locations
 *
-*  @description: 
-*  @since: 3.5.7
-*  @created: 3/01/13
+*  @description: controller for location match functionality
+*  @since: 3.6
+*  @created: 25/01/13
 */
 
 class acf_location
 {
 
-	var $parent,
-		$data;
-		
 	/*
 	*  __construct
 	*
@@ -22,12 +19,8 @@ class acf_location
 	*  @created: 23/06/12
 	*/
 	
-	function __construct($parent)
+	function __construct()
 	{
-		// vars
-		$this->parent = $parent;
-		
-		
 		// ajax
 		add_action('wp_ajax_acf/location/match_field_groups_ajax', array($this, 'match_field_groups_ajax'));
 		
@@ -59,11 +52,8 @@ class acf_location
 		
 		// Options Page
 		add_filter('acf/location/rule_match/options_page', array($this, 'rule_match_options_page'), 10, 3);
-
-		
-		
 	}
-
+	
 	
 	/*
 	*  match_field_groups_ajax
@@ -117,6 +107,7 @@ class acf_location
 	
 	function match_field_groups( $return, $options )
 	{
+		
 		// vars
 		$defaults = array(
 			'post_id' => 0,
@@ -140,7 +131,7 @@ class acf_location
 		
 		
 		// Parse values
-		$options = apply_filters( 'acf_parse_value', $options );
+		$options = apply_filters( 'acf/parse_types', $options );
 		
 
 		// WPML
@@ -154,8 +145,8 @@ class acf_location
 		
 		
 		// find all acf objects
-		$acfs = apply_filters('acf/get_field_groups', false);
-		
+		$acfs = apply_filters('acf/get_field_groups', array());
+
 		
 		// blank array to hold acfs
 		$return = array();
@@ -165,6 +156,10 @@ class acf_location
 		{
 			foreach( $acfs as $acf )
 			{
+				// load location
+				$acf['location'] = apply_filters('acf/field_group/get_location', array(), $acf['id']);
+
+				
 				// vars
 				$add_box = false;
 				
@@ -196,6 +191,7 @@ class acf_location
 						$match = apply_filters( 'acf/location/rule_match/' . $rule['param'] , $match, $rule, $options );
 						
 						
+						
 						if( $acf['location']['allorany'] == 'all' && !$match )
 						{
 							// if all of the rules are required to match and this rule did not, don't add this box!
@@ -210,11 +206,13 @@ class acf_location
 					}
 				}
 					
+		
 				
 				// add ID to array	
 				if( $add_box )
 				{
 					$return[] = $acf['id'];
+					
 				}
 				
 			}
@@ -247,7 +245,7 @@ class acf_location
 			$post_type = get_post_type( $options['post_id'] );
 		}
 		
-
+		
         if( $rule['operator'] == "==" )
         {
         	$match = ( $post_type === $rule['value'] );
@@ -256,7 +254,7 @@ class acf_location
         {
         	$match = ( $post_type !== $rule['value'] );
         }
-		
+        
 	
 		return $match;
 	}
@@ -348,6 +346,25 @@ class acf_location
 	        elseif($rule['operator'] == "!=")
 	        {
 	        	$match = ( $posts_page != $post->ID );
+	        }
+	        
+        }
+        elseif( $rule['value'] == 'top_level')
+        {
+        	$post_parent = $post->post_parent;
+        	if( $options['page_parent'] )
+        	{
+	        	$post_parent = $options['page_parent'];
+        	}
+        	
+        	
+	        if($rule['operator'] == "==")
+	        {
+	        	$match = ( $post_parent == 0 );
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( $post_parent != 0 );
 	        }
 	        
         }
@@ -542,6 +559,7 @@ class acf_location
 				}
 			}
 		}
+		
 
         
         if($rule['operator'] == "==")
@@ -573,7 +591,7 @@ class acf_location
     
         
         return $match;
-
+        
     }
     
     
@@ -688,7 +706,7 @@ class acf_location
 				}
 			}
 		}
-		
+
        	
        	if($rule['operator'] == "==")
         {
@@ -701,8 +719,8 @@ class acf_location
         }
         
         
-        return $match;
         
+        return $match;
         
     }
     
@@ -825,7 +843,7 @@ class acf_location
 	        	$match = ( $ef_taxonomy == $rule['value'] );
 	        	
 	        	// override for "all"
-		        if( $rule['value'] === "all" )
+		        if( $rule['value'] == "all" )
 				{
 					$match = true;
 				}
@@ -836,7 +854,7 @@ class acf_location
 	        	$match = ( $ef_taxonomy != $rule['value'] );
 	        		
 	        	// override for "all"
-		        if( $rule['value'] === "all" )
+		        if( $rule['value'] == "all" )
 				{
 					$match = false;
 				}
@@ -880,12 +898,12 @@ class acf_location
 					$match = true;
 				}
 	        }
-	        elseif($rule['operator'] === "!=")
+	        elseif($rule['operator'] == "!=")
 	        {
 	        	$match = ( !user_can($ef_user, $rule['value']) );
 	        	
 	        	// override for "all"
-		        if( $rule['value'] == "all" )
+		        if( $rule['value'] === "all" )
 				{
 					$match = false;
 				}
@@ -947,7 +965,10 @@ class acf_location
         return $match;
         
     }
-
+	
+			
 }
+
+new acf_location();
 
 ?>

@@ -47,9 +47,9 @@
 
 h3.h2 {
 	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
-	font-size: 23px;
+	font-size: 25px;
     line-height: 29px;
-    padding: 9px 15px 4px 0;
+    padding: 5px 0 4px 0;
     margin: 0;
     font-weight: normal;
 }
@@ -65,51 +65,6 @@ h3.h2 span {
 }
 
 
-
-table.acf_activate {
-	border: 0 none;
-	border-collapse:separate; 
-	border-spacing:0; 
-	vertical-align:top; 
-	width: 100%;
-	background: #FEFEFE;
-	border-radius: 0;
-}
-
-table.acf_activate tr:nth-child(even) {
-	background: #F9F9F9
-}
-
-table.acf_activate tr:nth-child(odd) {
-	background: transparent;
-}
-
-table.acf_activate tr.field_save {
-	background: #EAF2FA;
-}
-
-table.acf_activate tr td,
-table.acf_activate tr th {
-	padding: 8px;
-}
-
-table.acf_activate tr:last-child  td {
-	border-bottom: 0 none;
-}
-
-table.acf_activate tr td:last-child {
-	border-right: 0 none;
-}
-
-table.acf_activate input[type="text"] {
-	padding: 7px;
-	width: 200px;
-}
-
-table.acf_activate input[type="submit"] {
-	margin-left: 5px;
-	margin-right: 5px;
-}
 
 .acf-form-table {
 	max-width: 1100px;
@@ -168,6 +123,207 @@ body.custom-fields_page_acf-settings .wp-pointer-arrow {
 
 /*--------------------------------------------------------------------------
 *
+*	Add-Ons
+*	
+*-------------------------------------------------------------------------*/
+
+#add-ons {
+	
+}
+
+#add-ons .add-on {
+	float: left;
+	width: 220px;
+	margin: 10px;
+}
+
+#add-ons .add-on h3 {
+	margin-top: 0.5em;
+}
+
+#add-ons .add-on-active .button {
+	padding-left: 4px;
+}
+
+#add-ons .add-on-active .tick {
+	width: 14px;
+	height: 14px;
+	display: block;
+	float: left;
+	margin: 4px 5px 0 0;
+	background: url(../images/sprite.png) -18px -318px no-repeat;
+}
+
+
+/*--------------------------------------------------------------------------
+*
+*	About (post update information)
+*	
+*-------------------------------------------------------------------------*/
+
+.acf-content {
+	font-size: 15px;
+    margin: 25px 40px 0 20px;
+    max-width: 1050px;
+    position: relative;
+}
+
+
+/*
+*  Title
+*/
+
+.acf-content-title h1 {
+    color: #333333;
+    font-size: 2.8em;
+    font-weight: 200;
+    line-height: 1.2em;
+    margin: 0.2em 0 0;
+}
+
+.acf-content-title h2 {
+    color: #777777;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.6em;
+    margin: 1em 0 1.4em;
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+}
+
+
+/*
+*  Tabs
+*/
+
+.acf-content .nav-tab-wrapper {
+	padding-left: 6px;
+	margin-bottom: 30px;
+}
+
+.acf-content .nav-tab-wrapper .nav-tab {
+    color: #21759B;
+    font-size: 18px;
+    margin: 0 3px -1px 0;
+    padding: 4px 10px 6px;
+    vertical-align: top;
+}
+
+.acf-tab-content {
+	display: none;
+}
+
+.acf-tab-content.active {
+	display: block;
+}
+
+
+
+/*
+*  Body
+*/
+
+.acf-content-body {
+	margin: 0 0 30px;
+}
+
+.acf-content-body hr {	
+	border: 0 none;
+	border-top: #DFDFDF solid 1px;
+	background: transparent;
+	margin: 30px 0;
+	clear: both;
+}
+
+.acf-content-body h3 {
+	font-size: 24px;
+	margin: 2em 0 1em;
+}
+
+.acf-content-body h4 {
+	color: #464646;
+	font-size: 1em;
+	margin: 2em 0 0.6em;
+}
+
+.acf-content-body h4 + p {
+	 margin-top: 0.6em;
+}
+
+.acf-content-body p {
+	line-height: 1.6em;
+   
+}
+
+#acf-add-ons-table {
+	
+}
+
+#acf-add-ons-table img {
+	display: block;
+	width: 120px;
+}
+
+
+/*
+*  Footer
+*/ 
+
+.acf-content-footer {
+	margin: 60px 0 30px;
+}
+
+
+/*
+*  Cangelog
+*/
+
+.acf-content-body ul {
+	list-style: disc outside none;
+	padding-left: 30px;
+}
+
+.acf-content-body ul li {
+	margin: 12px 0;
+}
+
+.acf-content-body ul li a {
+	
+}
+
+
+/*
+*  Download
+*/
+
+
+#acf-download-add-ons-table {
+	width: auto;
+	min-width: 500px;
+}
+
+#acf-download-add-ons-table img {
+	width: 50px;
+}
+
+#acf-download-add-ons-table td {
+	vertical-align: middle;
+}
+
+#acf-download-add-ons-table td.td-image {
+	width: 50px;
+}
+
+#acf-download-add-ons-table td.td-name {
+	
+}
+
+#acf-download-add-ons-table td.td-download {
+	width: 90px;
+}
+
+
+/*--------------------------------------------------------------------------
+*
 *	Retina
 *	
 *-------------------------------------------------------------------------*/
@@ -181,7 +337,8 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
 	
 	#icon-edit,
-	#icon-acf  {
+	#icon-acf,
+	#add-ons .add-on.active .tick  {
 		background-image: url(../images/sprite@2x.png);
 		background-size: 100px 600px;
 	}
