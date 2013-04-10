@@ -60,7 +60,6 @@ class acf_field_post_object extends acf_field
 
 		$field = array_merge($defaults, $field);
 		
-		
 		// validate taxonomy
 		if( !is_array($field['taxonomy']) )
 		{
@@ -68,11 +67,10 @@ class acf_field_post_object extends acf_field
 		}
 		
 		// load all post types by default
-		if( !$field['post_type'] || !is_array($field['post_type']) || $field['post_type'][0] == "" )
+		if( !$field['post_type'] || !is_array($field['post_type']) || ($field['post_type'][0] == "" && !in_array(ACF_NONE_VALUE,$field['post_type'])) )
 		{
 			$field['post_type'] = apply_filters('acf/get_post_types', array());
 		}
-		
 		
 		// create tax queries
 		if( ! in_array('all', $field['taxonomy']) )
@@ -119,80 +117,125 @@ class acf_field_post_object extends acf_field
 		$field['choices'] = array();
 		$field['optgroup'] = false;
 		
-		
-		foreach( $field['post_type'] as $post_type )
-		{
-			// set post_type
-			$args['post_type'] = $post_type;
-			
-			
-			// set order
-			if( is_post_type_hierarchical($post_type) && !isset($args['tax_query']) )
+		if (!in_array(ACF_NONE_VALUE,$field['post_type'])) {
+			foreach( $field['post_type'] as $post_type )
 			{
-				$args['sort_column'] = 'menu_order, post_title';
-				$args['sort_order'] = 'ASC';
-
-				$posts = get_pages( $args );
-			}
-			else
-			{
-				$posts = get_posts( $args );
-			}
-			
-			
-			if($posts)
-			{
-				foreach( $posts as $post )
+				// set post_type
+				$args['post_type'] = $post_type;
+				
+				// set order
+				if( is_post_type_hierarchical($post_type) && !isset($args['tax_query']) )
 				{
-					// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
-					$title = '';
-					$ancestors = get_ancestors( $post->ID, $post->post_type );
-					if($ancestors)
-					{
-						foreach($ancestors as $a)
-						{
-							$title .= '–';
-						}
-					}
-					$title .= ' ' . apply_filters( 'the_title', $post->post_title, $post->ID );
-					
-					
-					// status
-					if($post->post_status != "publish")
-					{
-						$title .= " ($post->post_status)";
-					}
-					
-					// WPML
-					if( defined('ICL_LANGUAGE_CODE') )
-					{
-						$title .= ' (' . ICL_LANGUAGE_CODE . ')';
-					}
-					
-					// add to choices
-					if( count($field['post_type']) == 1 )
-					{
-						$field['choices'][ $post->ID ] = $title;
-					}
-					else
-					{
-						// group by post type
-						$post_type_object = get_post_type_object( $post->post_type );
-						$post_type_name = $post_type_object->labels->name;
-					
-						$field['choices'][ $post_type_name ][ $post->ID ] = $title;
-						$field['optgroup'] = true;
-					}
-					
-					
+					$args['sort_column'] = 'menu_order, post_title';
+					$args['sort_order'] = 'ASC';
+
+					$posts = get_pages( $args );
 				}
-				// foreach( $posts as $post )
+				else
+				{
+					$posts = get_posts( $args );
+				}
+				
+				//If this is for a page link field, and the post type has an archive, add it as an option
+				if (isset($field['is_page_link']) && $field['is_page_link'])
+				{
+					if (get_post_type_archive_link($post_type)) {
+						$post_type_object = get_post_type_object( $post_type );
+						$post_type_name = $post_type_object->labels->name;
+						if( $this->has_only_one_post_type_or_taxonomy($field) ) $field['choices'][ 'ptarchive:' . $post_type ] = 'Archive';
+						else $field['choices'][ $post_type_name ][ 'ptarchive:' . $post_type ] = 'Archive';
+					}
+				}
+				
+				if($posts)
+				{
+					foreach( $posts as $post )
+					{
+						// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
+						$title = '';
+						$ancestors = get_ancestors( $post->ID, $post->post_type );
+						if($ancestors)
+						{
+							foreach($ancestors as $a)
+							{
+								$title .= '–';
+							}
+						}
+						$title .= ' ' . apply_filters( 'the_title', $post->post_title, $post->ID );
+						
+						
+						// status
+						if($post->post_status != "publish")
+						{
+							$title .= " ($post->post_status)";
+						}
+						
+						// WPML
+						if( defined('ICL_LANGUAGE_CODE') )
+						{
+							$title .= ' (' . ICL_LANGUAGE_CODE . ')';
+						}
+						
+						// add to choices
+						if( $this->has_only_one_post_type_or_taxonomy($field) )
+						{
+							$field['choices'][ $post->ID ] = $title;
+						}
+						else
+						{
+							// group by post type
+							$post_type_object = get_post_type_object( $post->post_type );
+							$post_type_name = $post_type_object->labels->name;
+						
+							$field['choices'][ $post_type_name ][ $post->ID ] = $title;
+						}
+						
+						
+					}
+					// foreach( $posts as $post )
+				}
+				// if($posts)
 			}
-			// if($posts)
 		}
 		// foreach( $field['post_type'] as $post_type )
 		
-		
+		// Only load taxonomy archives as options if menu is for a page link
+		if (isset($field['is_page_link']) && $field['is_page_link'])
+		{
+			// load all taxonomies by default
+			if( !$field['taxonomies'] || !is_array($field['taxonomies']) || ($field['taxonomies'][0] === "" && !in_array(ACF_NONE_VALUE,$field['taxonomies'])) )
+			{
+				$field['taxonomies'] = array_keys(apply_filters('acf/get_taxonomies_with_post_type_names', array()));
+			}
+			if (!in_array(ACF_NONE_VALUE,$field['taxonomies'])) {
+				
+				//Load individual taxonomies
+				foreach ($field['taxonomies'] as $tax_value)
+				{
+					$tax_arr = explode(':',$tax_value);
+					$tax_post_type = $tax_arr[0];
+					$tax_name = $tax_arr[1];
+					if ($tax_name == 'category') $tax_label = 'Categories';
+					else {
+						$tax_obj = get_taxonomy($tax_name);
+						
+						if ($tax_obj) $tax_label = $tax_obj->labels->name;
+					}
+					$post_type_obj = get_post_type_object($tax_post_type);
+					if ($post_type_obj) $post_type_label = $post_type_obj->labels->name;
+					if ($tax_label && $post_type_label) {
+						$terms = get_terms($tax_name, array('hide_empty' => false));
+						foreach ($terms as $term) {
+							$term_identifier = 'tax:' . $tax_name . ':' . $term->term_id;
+							if ($this->has_only_one_post_type_or_taxonomy($field)) $field['choices'][ $term_identifier ] = $term->name;
+							else $field['choices'][$tax_label . ' (' . $post_type_label . ') Archives'][ $term_identifier ] = $term->name;
+						}
+					}
+				}
+			}
+		}
+		if (!$this->has_only_one_post_type_or_taxonomy($field)) $field['optgroup'] = true;
+		//print_r($field);
 		// create field
 		do_action('acf/create_field', $field );
 	}
@@ -397,6 +440,45 @@ class acf_field_post_object extends acf_field
 		
 		// return the value
 		return $value;
+	}
+	
+	/*
+	*  has_only_one_post_type_or_taxonomy()
+	*
+	*  Checks if the selection dropdown only has one heading (either a post type or taxonomy) and so options shouldn't be grouped
+	*
+	*  @type	filter
+	*  @date	10/04/13
+	*
+	*  @param	$field	- The field array passed to create_field
+	*
+	*  @return	either boolean true or false
+	*/
+	
+	function has_only_one_post_type_or_taxonomy($field)
+	{
+		if( !$field['post_type'] || !is_array($field['post_type']) || ($field['post_type'][0] == "" && !in_array(ACF_NONE_VALUE,$field['post_type'])) )
+		{
+			$field['post_type'] = apply_filters('acf/get_post_types', array());
+		}
+		if (in_array(ACF_NONE_VALUE,$field['post_type'])) $post_type_count = 0;
+		else $post_type_count = count($field['post_type']);
+		
+		//Only count taxonomies if field is a page link
+		if (isset($field['is_page_link']) && $field['is_page_link'])
+		{
+			if( !$field['taxonomies'] || !is_array($field['taxonomies']) || ($field['taxonomies'][0] == "" && !in_array(ACF_NONE_VALUE,$field['taxonomies'])) )
+			{
+				$field['taxonomies'] = array_keys(apply_filters('acf/get_taxonomies_with_post_type_names', array()));
+			}
+			if (in_array(ACF_NONE_VALUE,$field['taxonomies'])) $taxonomy_count = 0;
+			else $taxonomy_count = count($field['taxonomies']);
+		}
+		else $taxonomy_count = 0;
+		
+		$total = $post_type_count + $taxonomy_count;
+		if ($total === 1) return true;
+		return false;
 	}
 	
 }

@@ -42,7 +42,7 @@ class acf_field_page_link extends acf_field
 	{
 		// let post_object create the field
 		$field['type'] = 'post_object';
-		
+		$field['is_page_link'] = true;
 		do_action('acf/create_field', $field );
 	}
 	
@@ -65,6 +65,7 @@ class acf_field_page_link extends acf_field
 		// defaults
 		$defaults = array(
 			'post_type' 	=>	'',
+			'taxonomies'    => '',
 			'multiple'		=>	0,
 			'allow_null'	=>	0,
 		);
@@ -84,12 +85,38 @@ class acf_field_page_link extends acf_field
 			''	=>	__("All",'acf')
 		);
 		$choices = apply_filters('acf/get_post_types', $choices);
+		$choices[ACF_NONE_VALUE] = __("None",'acf');
 		
 		
 		do_action('acf/create_field', array(
 			'type'	=>	'select',
 			'name'	=>	'fields['.$key.'][post_type]',
 			'value'	=>	$field['post_type'],
+			'choices'	=>	$choices,
+			'multiple'	=>	1,
+		));
+		
+		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label for=""><?php _e("Taxonomy Listings",'acf'); ?></label>
+	</td>
+	<td>
+		<?php 
+		
+		$choices = array(
+			''	=>	__("All",'acf')
+		);
+		
+		$choices = apply_filters('acf/get_taxonomies_with_post_type_names', $choices);
+		$choices[ACF_NONE_VALUE] = __("None",'acf');
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'select',
+			'name'	=>	'fields['.$key.'][taxonomies]',
+			'value'	=>	$field['taxonomies'],
 			'choices'	=>	$choices,
 			'multiple'	=>	1,
 		));
@@ -176,17 +203,30 @@ class acf_field_page_link extends acf_field
 		{
 			foreach( $value as $k => $v )
 			{
-				$value[ $k ] = get_permalink($v);
+				$value[$k] = $this->get_page_link_value($v);
 			}
 		}
 		else
 		{
-			$value = get_permalink($value);
+			$value = $this->get_page_link_value($value);
 		}
 		
 		return $value;
 	}
 	
+	function get_page_link_value($v) {
+		if (strpos($v,'tax:') === 0) {
+			$tax_arr = explode(':',$v);
+			if ($tax_arr[1] == 'category') return get_category_link($tax_arr[2]);
+			else return get_term_link((int)$tax_arr[2],$tax_arr[1]);
+		}
+		else if (strpos($v,'ptarchive:') === 0) {
+			$ptype_arr = explode(':',$v);
+			return get_post_type_archive_link($ptype_arr[1]);
+		}
+		else return get_permalink($v);
+	}
+
 }
 
 new acf_field_page_link();

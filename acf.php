@@ -17,6 +17,11 @@ if( !defined('ACF_LITE') )
 	define( 'ACF_LITE', false );
 }
 
+//Value to represent 'none' when selected on page link post type/taxonomy filter choice. Contains a space because post type and taxonomy names can't. Has "none" on each side of the space to make debugging with print_r easier.
+if( !defined('ACF_NONE_VALUE') )
+{
+	define( 'ACF_NONE_VALUE', 'none none' );
+}
 
 // API
 include_once('core/api.php');
@@ -44,9 +49,9 @@ if( is_admin() )
 
 class Acf
 { 
+
 	var $settings;
-		
-		
+	
 	/*
 	*  Constructor
 	*
@@ -87,6 +92,7 @@ class Acf
 		add_filter('acf/get_taxonomies_for_select', array($this, 'get_taxonomies_for_select'), 1, 2);
 		add_filter('acf/get_image_sizes', array($this, 'get_image_sizes'), 1, 1);
 		add_action('acf/create_fields', array($this, 'create_fields'), 1, 2);
+		add_filter('acf/get_taxonomies_with_post_type_names', array($this, 'get_taxonomies_with_post_type_names'), 1, 1);
 		
 		
 		// admin only
@@ -527,6 +533,36 @@ class Acf
 		
 		return $post_types;
 		
+	}
+	
+	/*
+	*  get_taxonomies_with_post_type_names
+	*
+	*  @description: returns an array of taxonomies and their post types for use in the page link taxonomy list
+	*  @created: 04/04/13
+	*/
+	
+	function get_taxonomies_with_post_type_names($choices = array())
+	{	
+		$post_types = get_post_types();
+		if($post_types)
+		{
+			foreach($post_types as $post_type)
+			{
+				$post_type_object = get_post_type_object($post_type);
+				$taxonomies = get_object_taxonomies($post_type);
+				if($taxonomies)
+				{
+					foreach($taxonomies as $taxonomy)
+					{
+						if(!is_taxonomy_hierarchical($taxonomy)) continue;
+						$choices[$post_type.':'.$taxonomy] = "$taxonomy ($post_type)";
+					}
+				}
+			}
+		}
+		
+		return $choices;
 	}
 	
 	
