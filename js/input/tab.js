@@ -46,7 +46,7 @@
 			
 			
 			// add tab
-			inside.children('.acf-tab-group').append('<li data-field_key="' + id + '"><a class="acf-tab-button" href="#" data-id="' + id + '">' + label + '</a></li>');
+			inside.children('.acf-tab-group').append('<li class="field_key-' + id + '" data-field_key="' + id + '"><a class="acf-tab-button" href="#" data-id="' + id + '">' + label + '</a></li>');
 			
 			
 		});

@@ -101,6 +101,16 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 4.0.3 =
+* [Fixed] Fix bug when appending taxonomy terms - http://support.advancedcustomfields.com/discussion/5522/append-taxonomies
+* [Fixed] Fix embed shortcode for WYSIWYG field - http://support.advancedcustomfields.com/discussion/5503/embed-video-wysiwyg-field-doesn039t-work-since-update
+* [Fixed] Fix issues with loading numbers - http://support.advancedcustomfields.com/discussion/5538/zero-first-number-problem-in-text-fields
+* [Fixed] Fix bug with user field and format_value_for_api - http://support.advancedcustomfields.com/discussion/5542/user-field-weirdness-after-update
+* [Fixed] Fix capitalization issue on field name - http://support.advancedcustomfields.com/discussion/5527/field-name-retains-capitalization-from-field-title
+* [Fixed] Fix tabs not hiding from conditional logic - http://support.advancedcustomfields.com/discussion/5506/conditional-logic-not-working-with-tabs
+* [Updated] Update dir / path to allow for SSL - http://support.advancedcustomfields.com/discussion/5518/in-admin-page-got-error-javascript-when-open-with-https
+* [Updated] Updated relationship JS - http://support.advancedcustomfields.com/discussion/5550/relationship-field-search-box
+
 = 4.0.2 =
 * [Added] Add auto video filter to WYSIWYG value - http://support.advancedcustomfields.com/discussion/5378/video-embed-in-wysiwyg-field
 * [Fixed] Fix Repeater + WYSIWYG loosing p tags on drag/drop - http://support.advancedcustomfields.com/discussion/5476/acf-4-0-0-wysiwyg-p-tag-disappearing-after-drag-drop-save

@@ -264,7 +264,9 @@ class acf_field_wysiwyg extends acf_field
 		// wp_embed convert urls to videos
 		if(	isset($GLOBALS['wp_embed']) )
 		{
-			$value = $GLOBALS['wp_embed']->autoembed( $value );
+			$embed = $GLOBALS['wp_embed'];
+            $value = $embed->run_shortcode( $value );
+            $value = $embed->autoembed( $value );
 		}
 		
 		

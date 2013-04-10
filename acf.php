@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields
 Plugin URI: http://www.advancedcustomfields.com/
 Description: Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerfull API, it’s a must have for any web developer working with WordPress. Field types include: Wysiwyg, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker, repeater, flexible content, gallery and more!
-Version: 4.0.2
+Version: 4.0.3
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 License: GPL
@@ -71,7 +71,7 @@ class Acf
 		$this->settings = array(
 			'path' => apply_filters('acf/helpers/get_path', __FILE__),
 			'dir' => apply_filters('acf/helpers/get_dir', __FILE__),
-			'version' => '4.0.2',
+			'version' => '4.0.3',
 			'upgrade_version' => '3.4.1',
 		);
 		
@@ -143,14 +143,14 @@ class Acf
         
         // if file is in plugins folder
         $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR); 
-        $dir = str_replace($wp_plugin_dir, WP_PLUGIN_URL, $dir, $count);
+        $dir = str_replace($wp_plugin_dir, plugins_url(), $dir, $count);
         
         
         if( $count < 1 )
         {
 	        // if file is in wp-content folder
 	        $wp_content_dir = str_replace('\\' ,'/', WP_CONTENT_DIR); 
-	        $dir = str_replace($wp_content_dir, WP_CONTENT_URL, $dir, $count);
+	        $dir = str_replace($wp_content_dir, content_url(), $dir, $count);
         }
         
         
@@ -215,6 +215,12 @@ class Acf
 		{
 			foreach( $value as $k => $v )
 			{
+				// if $field was passed, never modify the value! NEVER!
+				if( $k === 'value' )
+				{
+					continue;
+				}
+				
 				$value[ $k ] = apply_filters( 'acf/parse_types', $v );
 			}	
 		}

@@ -108,6 +108,9 @@ class acf_field_taxonomy extends acf_field
 		
 		if( $field['load_save_terms'] )
 		{
+			// Parse values
+			$value = apply_filters( 'acf/parse_types', $value );
+		
 			wp_set_object_terms( $post_id, $value, $field['taxonomy'], false );
 		}
 		

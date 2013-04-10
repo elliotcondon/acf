@@ -52,7 +52,7 @@ class acf_field_user extends acf_field
 	*  @return	$value	- the modified value
 	*/
 	
-	function format_value_for_api( $value, $field )
+	function format_value_for_api( $value, $post_id, $field )
 	{
 
 		// format value
