@@ -188,7 +188,6 @@ class acf_field_post_object extends acf_field
 							$post_type_name = $post_type_object->labels->name;
 						
 							$field['choices'][ $post_type_name ][ $post->ID ] = $title;
-							$field['optgroup'] = true;
 						}
 						
 						
@@ -207,7 +206,6 @@ class acf_field_post_object extends acf_field
 			if( !$field['taxonomies'] || !is_array($field['taxonomies']) || ($field['taxonomies'][0] === "" && !in_array(ACF_NONE_VALUE,$field['taxonomies'])) )
 			{
 				$field['taxonomies'] = array_keys(apply_filters('acf/get_taxonomies_with_post_type_names', array()));
-				
 			}
 			if (!in_array(ACF_NONE_VALUE,$field['taxonomies'])) {
 				
@@ -236,6 +234,7 @@ class acf_field_post_object extends acf_field
 				}
 			}
 		}
+		if (!$this->has_only_one_post_type_or_taxonomy($field)) $field['optgroup'] = true;
 		//print_r($field);
 		// create field
 		do_action('acf/create_field', $field );
