@@ -200,6 +200,10 @@ class acf_field_taxonomy extends acf_field
 		}
 		elseif( $field['field_type'] == 'checkbox' )
 		{
+			$field['multiple'] = null;
+		}
+		elseif( $field['field_type'] == 'checkbox' )
+		{
 			$field['name'] .= '[]';
 		}
 		
