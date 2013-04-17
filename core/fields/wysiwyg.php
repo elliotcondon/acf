@@ -1,4 +1,4 @@
-<?php
+://github.com/minustalent/acf.git?php
 
 class acf_field_wysiwyg extends acf_field
 {
@@ -270,8 +270,9 @@ class acf_field_wysiwyg extends acf_field
 		}
 		
 		
-		// auto p
-		$value = wpautop( $value );
+		// apply wpautop if the_content has it applied
+		if( has_filter( "the_content", "wpautop" ) )
+			$value = wpautop( $value );
 		
 		
 		// run all normal shortcodes
