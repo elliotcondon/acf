@@ -11,7 +11,8 @@
 class acf_addons
 {
 	
-	var $action;
+	var $action,
+		$activation_codes;
 	
 	
 	/*
@@ -25,7 +26,58 @@ class acf_addons
 	function __construct()
 	{
 		// actions
+		add_action('init', array($this, 'init'));
+		add_filter('plugins_api', array($this, 'plugins_api'), 10, 3);
 		add_action('admin_menu', array($this,'admin_menu'), 11, 0);
+	}
+
+
+	/*
+	*  init
+	*
+	*  @description: 
+	*  @created: 16/04/13
+	*/
+
+	function init()
+	{
+		$defaults = array(
+			'activation_codes' => array(
+				'repeater'			=> get_option('acf_repeater_ac'),
+				'options_page'		=> get_option('acf_options_page_ac'),
+				'flexible_content'	=> get_option('acf_flexible_content_ac'),
+				'gallery'			=> get_option('acf_gallery_ac'),
+			)
+		);
+		$defaults = apply_filters('acf_settings', $defaults);
+		$this->activation_codes = array(
+			'acf-repeater.php'			=> $defaults['activation_codes']['repeater'],
+			'acf-options-page.php'		=> $defaults['activation_codes']['options_page'],
+			'acf-flexible-content.php'	=> $defaults['activation_codes']['flexible_content'],
+			'acf-gallery.php'			=> $defaults['activation_codes']['gallery'],
+		);
+	}
+
+
+	/*
+	*  plugins_api
+	*
+	*  @description: 
+	*  @created: 16/04/13
+	*/
+
+	function plugins_api($api, $action, $args)
+	{
+		if($action == "plugin_information" && empty($api) && !empty($_GET['acf']) && !empty($this->activation_codes[$args->slug]))
+		{
+			// Get the remote info
+			$request = wp_remote_post("http://download.advancedcustomfields.com/" . $this->activation_codes[$args->slug] . "/info/");
+			if( !is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
+			{
+				$api = @unserialize($request['body']);
+			}
+		}
+		return $api;
 	}
 	
 	
@@ -61,7 +113,7 @@ class acf_addons
 	
 	function load()
 	{
-		
+
 	}
 	
 	
@@ -156,6 +208,8 @@ class acf_addons
 			<div class="footer">
 				<?php if( $active['repeater'] ): ?>
 					<a class="button button-disabled"><span class="tick"></span><?php _e("Installed",'acf'); ?></a>
+				<?php elseif( $this->activation_codes['acf-repeater.php'] ): ?>
+					<a href="<?php echo wp_nonce_url("update.php?action=install-plugin&plugin=acf-repeater.php&acf=1", "install-plugin_acf-repeater.php"); ?>" class="button"><?php _e("Install",'acf'); ?></a>
 				<?php else: ?>
 					<a target="_blank" href="http://www.advancedcustomfields.com/add-ons/repeater-field/" class="button"><?php _e("Purchase & Install",'acf'); ?></a>
 				<?php endif; ?>
@@ -172,6 +226,8 @@ class acf_addons
 			<div class="footer">
 				<?php if( $active['gallery'] ): ?>
 					<a class="button button-disabled"><span class="tick"></span><?php _e("Installed",'acf'); ?></a>
+				<?php elseif( $this->activation_codes['acf-gallery.php'] ): ?>
+					<a href="<?php echo wp_nonce_url("update.php?action=install-plugin&plugin=acf-gallery.php&acf=1", "install-plugin_acf-gallery.php"); ?>" class="button"><?php _e("Install",'acf'); ?></a>
 				<?php else: ?>
 					<a target="_blank" href="http://www.advancedcustomfields.com/add-ons/gallery-field/" class="button"><?php _e("Purchase & Install",'acf'); ?></a>
 				<?php endif; ?>
@@ -188,6 +244,8 @@ class acf_addons
 			<div class="footer">
 				<?php if( $active['options_page'] ): ?>
 					<a class="button button-disabled"><span class="tick"></span><?php _e("Installed",'acf'); ?></a>
+				<?php elseif( $this->activation_codes['acf-options-page.php'] ): ?>
+					<a href="<?php echo wp_nonce_url("update.php?action=install-plugin&plugin=acf-options-page.php&acf=1", "install-plugin_acf-options-page.php"); ?>" class="button"><?php _e("Install",'acf'); ?></a>
 				<?php else: ?>
 					<a target="_blank" href="http://www.advancedcustomfields.com/add-ons/options-page/" class="button"><?php _e("Purchase & Install",'acf'); ?></a>
 				<?php endif; ?>
@@ -204,6 +262,8 @@ class acf_addons
 			<div class="footer">
 				<?php if( $active['flexible_content'] ): ?>
 					<a class="button button-disabled"><span class="tick"></span><?php _e("Installed",'acf'); ?></a>
+				<?php elseif( $this->activation_codes['acf-flexible-content.php'] ): ?>
+					<a href="<?php echo wp_nonce_url("update.php?action=install-plugin&plugin=acf-flexible-content.php&acf=1", "install-plugin_acf-flexible-content.php"); ?>" class="button"><?php _e("Install",'acf'); ?></a>
 				<?php else: ?>
 					<a target="_blank" href="http://www.advancedcustomfields.com/add-ons/flexible-content-field/" class="button"><?php _e("Purchase & Install",'acf'); ?></a>
 				<?php endif; ?>
