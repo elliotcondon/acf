@@ -179,5 +179,3 @@ class acf_field_text extends acf_field
 }
 
 new acf_field_text();
-
-?>

@@ -480,5 +480,3 @@ class acf_taxonomy_field_walker extends Walker
 	}
 	
 }
-
-?>

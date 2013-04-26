@@ -576,5 +576,3 @@ foreach( $field['conditional_logic']['rules'] as $rule ):
 }
 
 new acf_field_functions();
-
-?>

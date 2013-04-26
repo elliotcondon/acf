@@ -230,5 +230,3 @@ class acf_third_party
 }
 
 new acf_third_party();
-
-?>

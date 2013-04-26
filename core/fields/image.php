@@ -835,5 +835,3 @@ class acf_field_image extends acf_field
 }
 
 new acf_field_image();
-
-?>

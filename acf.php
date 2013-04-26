@@ -61,7 +61,6 @@ class Acf
 		add_filter('acf/helpers/get_path', array($this, 'helpers_get_path'), 1, 1);
 		add_filter('acf/helpers/get_dir', array($this, 'helpers_get_dir'), 1, 1);
 		
-		
 		// vars
 		$this->settings = array(
 			'path' => apply_filters('acf/helpers/get_path', __FILE__),
@@ -70,15 +69,10 @@ class Acf
 			'upgrade_version' => '3.4.1',
 		);
 		
-		
-		// set text domain
-		load_plugin_textdomain('acf', false, basename(dirname(__FILE__)).'/lang' );
-		
-		
 		// actions
+		add_action('init', array($this, 'init_translation'), 10);
 		add_action('init', array($this, 'init'), 1);
 		add_action('acf/save_post', array($this, 'save_post'), 10);
-		
 		
 		// filters
 		add_filter('acf/get_info', array($this, 'get_info'), 1, 1);
@@ -88,7 +82,6 @@ class Acf
 		add_filter('acf/get_image_sizes', array($this, 'get_image_sizes'), 1, 1);
 		add_action('acf/create_fields', array($this, 'create_fields'), 1, 2);
 		
-		
 		// admin only
 		if( is_admin() && !ACF_LITE )
 		{
@@ -97,10 +90,22 @@ class Acf
 			add_filter('post_updated_messages', array($this, 'post_updated_messages'));
 		}
 		
-		
 		return true;
 	}
-	
+
+	/*
+    *  init_translation
+    *
+    *  @description: load plugin translation file
+    *  @since: 4.0.3
+    *  @created: 26/04/2013
+    */
+    
+    function init_translation()
+    {
+        // set text domain
+		load_plugin_textdomain('acf', false, basename(dirname(__FILE__)).'/lang' );
+    }
 	
 	/*
     *  helpers_get_path
@@ -114,8 +119,6 @@ class Acf
     {
         return trailingslashit(dirname($file));
     }
-    
-    
     
     /*
     *  helpers_get_dir
@@ -667,5 +670,3 @@ class Acf
 }
 
 $acf = new Acf();
-
-?>

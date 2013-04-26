@@ -1456,6 +1456,3 @@ function the_flexible_field($field_name, $post_id = false)
 {
 	return has_sub_field($field_name, $post_id);
 }
-
-
-?>

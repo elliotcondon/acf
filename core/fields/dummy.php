@@ -275,5 +275,3 @@ function my_register_fields()
 {
 	include_once('fields/dummy.php');
 }
-
-?>

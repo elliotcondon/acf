@@ -123,5 +123,3 @@ class acf_field_number extends acf_field
 }
 
 new acf_field_number();
-
-?>

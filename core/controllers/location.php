@@ -955,5 +955,3 @@ class acf_location
 }
 
 new acf_location();
-
-?>

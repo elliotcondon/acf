@@ -223,5 +223,3 @@ class acf_addons
 }
 
 new acf_addons();
-
-?>

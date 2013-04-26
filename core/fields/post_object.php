@@ -399,5 +399,3 @@ class acf_field_post_object extends acf_field
 }
 
 new acf_field_post_object();
-
-?>

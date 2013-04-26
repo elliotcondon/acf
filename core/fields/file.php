@@ -712,5 +712,3 @@ class acf_field_file extends acf_field
 }
 
 new acf_field_file();
-
-?>

@@ -933,5 +933,3 @@ class acf_field_group
 }
 
 new acf_field_group();
-
-?>

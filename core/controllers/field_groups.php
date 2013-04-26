@@ -528,5 +528,3 @@ class acf_field_groups
 }
 
 new acf_field_groups();
-
-?>

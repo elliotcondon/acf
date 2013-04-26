@@ -44,5 +44,3 @@ header("Cache-Control: public, max-age=$expires_offset");
 
 echo $out;
 exit;
-
-?>

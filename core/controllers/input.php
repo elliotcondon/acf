@@ -761,5 +761,3 @@ html.wp-toolbar {
 }
 
 new acf_input();
-
-?>

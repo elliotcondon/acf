@@ -674,5 +674,3 @@ $(document).ready(function(){
 }
 
 new acf_everything_fields();
-
-?>
