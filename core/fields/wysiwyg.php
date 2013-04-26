@@ -284,5 +284,3 @@ class acf_field_wysiwyg extends acf_field
 }
 
 new acf_field_wysiwyg();
-
-?>

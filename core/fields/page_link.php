@@ -190,5 +190,3 @@ class acf_field_page_link extends acf_field
 }
 
 new acf_field_page_link();
-
-?>

@@ -75,5 +75,3 @@ class acf_field_tab extends acf_field
 }
 
 new acf_field_tab();
-
-?>

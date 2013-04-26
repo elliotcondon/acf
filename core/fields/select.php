@@ -362,5 +362,3 @@ class acf_field_select extends acf_field
 }
 
 new acf_field_select();
-
-?>

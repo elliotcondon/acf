@@ -681,5 +681,3 @@ class acf_field_relationship extends acf_field
 }
 
 new acf_field_relationship();
-
-?>

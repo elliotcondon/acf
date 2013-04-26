@@ -306,5 +306,3 @@ class acf_field_user extends acf_field
 }
 
 new acf_field_user();
-
-?>

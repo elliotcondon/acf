@@ -849,5 +849,3 @@ class acf_upgrade
 }
 
 new acf_upgrade();
-
-?>

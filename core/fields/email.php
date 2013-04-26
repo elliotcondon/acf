@@ -88,5 +88,3 @@ class acf_field_email extends acf_field
 }
 
 new acf_field_email();
-
-?>

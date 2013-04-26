@@ -667,5 +667,3 @@ class Acf
 }
 
 $acf = new Acf();
-
-?>

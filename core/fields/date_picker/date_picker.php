@@ -130,5 +130,3 @@ class acf_field_date_picker extends acf_field
 }
 
 new acf_field_date_picker();
-
-?>
