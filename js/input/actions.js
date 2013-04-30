@@ -35,6 +35,9 @@ var acf = {
 		type : function(){}
 	},
 	fields : {
+		date_picker : {
+			text : {}	
+		},
 		color_picker : {
 			farbtastic : null
 		},

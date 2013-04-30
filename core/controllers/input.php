@@ -596,7 +596,7 @@ endif;
 <body>
 	
 </body>
-</html
+</html>
 		<?php
 		
 		die;

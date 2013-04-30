@@ -51,8 +51,21 @@ class acf_field_checkbox extends acf_field
 		// value must be array
 		if( !is_array($field['value']) )
 		{
-			$field['value'] = array( $field['value'] );
+			// perhaps this is a default value with new lines in it?
+			if( strpos($field['value'], "\n") !== false )
+			{
+				// found multiple lines, explode it
+				$field['value'] = explode("\n", $field['value']);
+			}
+			else
+			{
+				$field['value'] = array( $field['value'] );
+			}
 		}
+		
+		
+		// trim value
+		$field['value'] = array_map('trim', $field['value']);
 		
 		
 		echo '<input type="hidden" name="' . $field['name'] . '" value="" />';
@@ -70,6 +83,10 @@ class acf_field_checkbox extends acf_field
 			if( in_array($key, $field['value']) )
 			{
 				$selected = 'checked="yes"';
+			}
+			if( isset($field['disabled']) && in_array($key, $field['disabled']) )
+			{
+				$selected .= ' disabled="true"';
 			}
 			
 			
@@ -119,14 +136,9 @@ class acf_field_checkbox extends acf_field
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
 		<label for=""><?php _e("Choices",'acf'); ?></label>
-		<p class="description"><?php _e("Enter your choices one per line",'acf'); ?><br />
-		<br />
-		<?php _e("Red",'acf'); ?><br />
-		<?php _e("Blue",'acf'); ?><br />
-		<br />
-		<?php _e("red : Red",'acf'); ?><br />
-		<?php _e("blue : Blue",'acf'); ?><br />
-		</p>
+		<p><?php _e("Enter each choice on a new line.",'acf'); ?></p>
+		<p><?php _e("For more control, you may specify both a value and label like this:",'acf'); ?></p>
+		<p><?php _e("red : Red",'acf'); ?><br /><?php _e("blue : Blue",'acf'); ?></p>
 	</td>
 	<td>
 		<?php
@@ -144,12 +156,13 @@ class acf_field_checkbox extends acf_field
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
 		<label><?php _e("Default Value",'acf'); ?></label>
+		<p class="description"><?php _e("Enter each default value on a new line",'acf'); ?></p>
 	</td>
 	<td>
 		<?php
 		
 		do_action('acf/create_field', array(
-			'type'	=>	'text',
+			'type'	=>	'textarea',
 			'name'	=>	'fields['.$key.'][default_value]',
 			'value'	=>	$field['default_value'],
 		));

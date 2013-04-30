@@ -11,13 +11,21 @@
 
 // vars
 $defaults = array(
-	'acf_posts' => array()
+	'acf_posts' => array(),
+	'nonce' => ''
 );
 $my_options = array_merge( $defaults, $_POST );
 
 
+// validate nonce
+if( !wp_verify_nonce($my_options['nonce'], 'export') )
+{
+	wp_die(__("Error",'acf'));
+}
+
+
 // check for posts
-if( !$my_options['acf_posts'] )
+if( empty($my_options['acf_posts']) )
 {
 	wp_die(__("No ACF groups selected",'acf'));
 }
@@ -183,9 +191,12 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n";
 
 	global $wp_query, $wpdb;
 	$wp_query->in_the_loop = true; // Fake being in the loop.
-
-	$where = 'WHERE ID IN (' . join( ',', $my_options['acf_posts'] ) . ')';
-	$posts = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} $where" );
+	
+	// create SQL with %d placeholders
+	$where = 'WHERE ID IN (' . substr(str_repeat('%d,', count($my_options['acf_posts'])), 0, -1) . ')';
+	
+	// now prepare the SQL based on the %d + $_POST data
+	$posts = $wpdb->get_results( $wpdb->prepare("SELECT * FROM {$wpdb->posts} $where", $my_options['acf_posts']));
 
 	// Begin Loop
 	foreach ( $posts as $post ) {

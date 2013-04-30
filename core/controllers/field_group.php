@@ -426,9 +426,9 @@ class acf_field_group
 	{
 	    $current .= '<h5>' . __("Fields",'acf') . '</h5>';
 	    
-	    $current .= '<div class="show-field_key">Show Field Key:';
-	    	 $current .= '<label class="show-field_key-no"><input checked="checked" type="radio" value="0" name="show-field_key" /> No</label>';
-	    	 $current .= '<label class="show-field_key-yes"><input type="radio" value="1" name="show-field_key" /> Yes</label>';
+	    $current .= '<div class="show-field_key">' . __("Show Field Key:",'acf');
+			$current .= '<label class="show-field_key-no"><input checked="checked" type="radio" value="0" name="show-field_key" />' . __("No",'acf') . '</label>';
+			$current .= '<label class="show-field_key-yes"><input type="radio" value="1" name="show-field_key" />' . __("Yes",'acf') . '</label>';
 		$current .= '</div>';
 	    
 	    return $current;
@@ -910,9 +910,6 @@ class acf_field_group
 			
 			unset( $_POST['location'] );
 		}
-		
-		
-		
 		
 		
 		/*

@@ -341,8 +341,8 @@ function get_field_object( $field_key, $post_id = false, $options = array() )
 			'key' => 'temp_key_for_' . $orig_field_key,
 		);
 	}
-	
-	
+
+
 	// load value
 	if( $options['load_value'] )
 	{

@@ -128,7 +128,7 @@ body.custom-fields_page_acf-settings .wp-pointer-arrow {
 *-------------------------------------------------------------------------*/
 
 #add-ons {
-	
+	margin-bottom: 20px;
 }
 
 #add-ons .add-on {
@@ -139,6 +139,15 @@ body.custom-fields_page_acf-settings .wp-pointer-arrow {
 
 #add-ons .add-on h3 {
 	margin-top: 0.5em;
+}
+
+#add-ons .add-on h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+
+#add-ons .add-on .inner {
+	min-height: 75px;
 }
 
 #add-ons .add-on-active .button {
@@ -152,6 +161,13 @@ body.custom-fields_page_acf-settings .wp-pointer-arrow {
 	float: left;
 	margin: 4px 5px 0 0;
 	background: url(../images/sprite.png) -18px -318px no-repeat;
+}
+
+#add-ons .add-on-title {
+	float: left;
+	width: 100%;
+	margin: 25px 0 25px;
+	border-top: #F5F5F5 solid 1px;
 }
 
 

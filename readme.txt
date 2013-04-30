@@ -101,6 +101,19 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 4.1.0 =
+* [Added] Field group: location rules can now be grouped into AND / OR statements
+* [Added] Relationship field: Add option for filters (search / post_type)
+* [Added] Relationship field: Add option for elements (featured image / title / post_type)
+* [Added] Relationship field: Add post_id and field parameters to both ajax filter functions
+* [Added] Date Picker field: Add options for first_day
+* [Added] Date Picker field: Add text strings for translation
+* [Added] Select field: Add support for multiple default values
+* [Added] Checkbox field: Add support for multiple default values - http://support.advancedcustomfields.com/discussion/5635/checkbox-field-setting-multiple-defaults
+* [Updated] Minor JS + CSS improvements
+* [Added] Added free Add-ons to the admin page
+* [Fixed] Fixed minor bugs
+
 = 4.0.3 =
 * [Fixed] Fix bug when appending taxonomy terms - http://support.advancedcustomfields.com/discussion/5522/append-taxonomies
 * [Fixed] Fix embed shortcode for WYSIWYG field - http://support.advancedcustomfields.com/discussion/5503/embed-video-wysiwyg-field-doesn039t-work-since-update

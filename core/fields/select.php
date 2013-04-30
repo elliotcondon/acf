@@ -22,10 +22,10 @@ class acf_field_select extends acf_field
 		$this->label = __("Select",'acf');
 		$this->category = __("Choice",'acf');
 		$this->defaults = array(
-			'value'			=>	'',
 			'multiple' 		=>	0,
 			'allow_null' 	=>	0,
 			'choices'		=>	array(),
+			'default_value'	=>	''
 		);
 		
 		
@@ -72,11 +72,24 @@ class acf_field_select extends acf_field
 		}
 		
 		
-		// temp convert value to array
+		// value must be array
 		if( !is_array($field['value']) )
 		{
-			$field['value'] = array( $field['value'] );
+			// perhaps this is a default value with new lines in it?
+			if( strpos($field['value'], "\n") !== false )
+			{
+				// found multiple lines, explode it
+				$field['value'] = explode("\n", $field['value']);
+			}
+			else
+			{
+				$field['value'] = array( $field['value'] );
+			}
 		}
+		
+		
+		// trim value
+		$field['value'] = array_map('trim', $field['value']);
 		
 		
 		// multiple select
@@ -126,7 +139,6 @@ class acf_field_select extends acf_field
 				else
 				{
 					$selected = in_array($key, $field['value']) ? 'selected="selected"' : '';
-					
 					echo '<option value="'.$key.'" '.$selected.'>'.$value.'</option>';
 				}
 			}
@@ -153,8 +165,8 @@ class acf_field_select extends acf_field
 	{
 		$field = array_merge($this->defaults, $field);
 		$key = $field['name'];
-		
-				
+
+
 		// implode choices so they work in a textarea
 		if( is_array($field['choices']) )
 		{		
@@ -169,37 +181,37 @@ class acf_field_select extends acf_field
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
 		<label for=""><?php _e("Choices",'acf'); ?></label>
-		<p class="description"><?php _e("Enter your choices one per line",'acf'); ?><br />
-		<br />
-		<?php _e("Red",'acf'); ?><br />
-		<?php _e("Blue",'acf'); ?><br />
-		<br />
-		<?php _e("red : Red",'acf'); ?><br />
-		<?php _e("blue : Blue",'acf'); ?><br />
-		</p>
+		<p><?php _e("Enter each choice on a new line.",'acf'); ?></p>
+		<p><?php _e("For more control, you may specify both a value and label like this:",'acf'); ?></p>
+		<p><?php _e("red : Red",'acf'); ?><br /><?php _e("blue : Blue",'acf'); ?></p>
 	</td>
 	<td>
-		<?php 
+		<?php
+		
 		do_action('acf/create_field', array(
 			'type'	=>	'textarea',
 			'class' => 	'textarea field_option-choices',
 			'name'	=>	'fields['.$key.'][choices]',
 			'value'	=>	$field['choices'],
 		));
+		
 		?>
 	</td>
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
 		<label><?php _e("Default Value",'acf'); ?></label>
+		<p class="description"><?php _e("Enter each default value on a new line",'acf'); ?></p>
 	</td>
 	<td>
-		<?php 
+		<?php
+		
 		do_action('acf/create_field', array(
-			'type'	=>	'text',
+			'type'	=>	'textarea',
 			'name'	=>	'fields['.$key.'][default_value]',
 			'value'	=>	$field['default_value'],
 		));
+		
 		?>
 	</td>
 </tr>

@@ -8,6 +8,8 @@
 
 (function($){
 
+	var _date_picker = acf.fields.date_picker;
+	
 	
 	/*
 	*  acf/setup_fields
@@ -25,7 +27,8 @@
 			var input = $(this),
 				alt_field = input.siblings('.acf-hidden-datepicker'),
 				save_format = input.attr('data-save_format'),
-				display_format = input.attr('data-display_format');
+				display_format = input.attr('data-display_format'),
+				first_day = input.attr('data-first_day');
 			
 			
 			// is clone field?
@@ -39,8 +42,8 @@
 			input.val( alt_field.val() );
 			
 			
-			// add date picker and refocus
-			input.addClass('active').datepicker({ 
+			// create options
+			var options = $.extend( {}, _date_picker.text, { 
 				dateFormat : save_format,
 				altField : alt_field,
 				altFormat :  save_format,
@@ -48,8 +51,12 @@
 				yearRange: "-100:+100",
 				changeMonth: true,
 				showButtonPanel : true,
-				firstDay: 1
+				firstDay: first_day
 			});
+			
+			
+			// add date picker and refocus
+			input.addClass('active').datepicker(options);
 			
 			
 			// now change the format back to how it should be.

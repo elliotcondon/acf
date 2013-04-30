@@ -30,6 +30,10 @@
 			}
 			
 			
+			// set height of right column
+			$(this).find('.relationship_right .relationship_list').height( $(this).find('.relationship_left').height() -2 );
+			
+			
 			$(this).find('.relationship_right .relationship_list').sortable({
 				axis: "y", // limit the dragging to up/down only
 				items: '> li',
@@ -37,6 +41,7 @@
 				forcePlaceholderSize: true,
 				scroll: true
 			});
+			//////////// on complete, trigger a change event so that the field is saved for an attachment!
 			
 			
 			// load more
@@ -130,6 +135,8 @@
 		// validation
 		div.closest('.field').removeClass('error');
 		
+		
+		$(this).blur();
 		return false;
 		
 	});
@@ -158,7 +165,7 @@
 		// show
 		left.find('a[data-post_id="' + id + '"]').parent('li').removeClass('hide');
 		
-		
+		$(this).blur();
 		return false;
 		
 	});
@@ -306,8 +313,7 @@
 			dataType: 'html',
 			data: $.extend( attributes, { 
 				action : 'acf/fields/relationship/query_posts', 
-				field_name : div.parent().attr('data-field_name'),
-				field_key : div.parent().attr('data-field_key'),
+				post_id : acf.post_id,
 				nonce : acf.nonce
 			}),
 			success: function( html ){

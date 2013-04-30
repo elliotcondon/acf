@@ -74,7 +74,7 @@ class acf_export
 		
 		
 		// verify nonce
-		if( isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'acf_nonce') )
+		if( isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'export') )
 		{
 			if( isset($_POST['export_to_xml']) )
 			{
@@ -210,7 +210,7 @@ class acf_export
 		
 		?>
 <form method="post">
-<input type="hidden" name="nonce" value="<?php echo wp_create_nonce( 'acf_nonce' ); ?>" />
+<input type="hidden" name="nonce" value="<?php echo wp_create_nonce( 'export' ); ?>" />
 <div class="wp-box">
 	<div class="title">
 		<h3><?php _e("Export Field Groups",'acf'); ?></h3>

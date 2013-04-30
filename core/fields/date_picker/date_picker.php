@@ -18,10 +18,53 @@ class acf_field_date_picker extends acf_field
 		$this->name = 'date_picker';
 		$this->label = __("Date Picker",'acf');
 		$this->category = __("jQuery",'acf');
+		$this->defaults = array(
+			'date_format' => 'yymmdd',
+			'display_format' => 'dd/mm/yy',
+			'first_day' => 1, // monday
+		);
 		
 		
 		// do not delete!
     	parent::__construct();
+	}
+	
+	
+	/*
+	*  input_admin_head()
+	*
+	*  This action is called in the admin_head action on the edit screen where your field is created.
+	*  Use this action to add css and javascript to assist your create_field() action.
+	*
+	*  @info	http://codex.wordpress.org/Plugin_API/Action_Reference/admin_head
+	*  @type	action
+	*  @since	3.6
+	*  @date	23/01/13
+	*/
+
+	function input_admin_head()
+	{
+		global $wp_locale;
+		
+		
+	    // localize strings
+	    $l10n = array(
+	        'closeText'         => __( 'Done', 'acf' ),
+	        'currentText'       => __( 'Today', 'acf' ),
+	        'monthNames'        => array_values( $wp_locale->month ),
+	        'monthNamesShort'   => array_values( $wp_locale->month_abbrev ),
+	        'monthStatus'       => __( 'Show a different month', 'acf' ),
+	        'dayNames'          => array_values( $wp_locale->weekday ),
+	        'dayNamesShort'     => array_values( $wp_locale->weekday_abbrev ),
+	        'dayNamesMin'       => array_values( $wp_locale->weekday_initial ),
+	        'isRTL'             => isset($wp_locale->is_rtl) ? $wp_locale->is_rtl : false,
+	    );
+	 
+		?>
+<script type="text/javascript">
+acf.fields.date_picker.text = <?php echo json_encode( $l10n ); ?>;
+</script>
+		<?php
 	}
 	
 	
@@ -40,12 +83,7 @@ class acf_field_date_picker extends acf_field
 	function create_field( $field )
 	{
 		// defaults
-		$defaults = array(
-			'date_format' 		=>	'yymmdd',
-			'display_format'	=>	'dd/mm/yy',
-		);
-		
-		$field = array_merge($defaults, $field);
+		$field = array_merge($this->defaults, $field);
 		
 		
 		// make sure it's not blank
@@ -61,7 +99,7 @@ class acf_field_date_picker extends acf_field
 
 		// html
 		echo '<input type="hidden" value="' . $field['value'] . '" name="' . $field['name'] . '" class="acf-hidden-datepicker" />';
-		echo '<input type="text" value="" class="acf_datepicker" data-save_format="' . $field['date_format'] . '" data-display_format="' . $field['display_format'] . '" />';
+		echo '<input type="text" value="" class="acf_datepicker" data-save_format="' . $field['date_format'] . '" data-display_format="' . $field['display_format'] . '" data-first_day="' . $field['first_day'] . '" />';
 
 	}
 	
@@ -82,15 +120,27 @@ class acf_field_date_picker extends acf_field
 	function create_options( $field )
 	{
 		// vars
-		$defaults = array(
-			'date_format' 		=>	'yymmdd',
-			'display_format'	=>	'dd/mm/yy',
-		);
-		
-		$field = array_merge($defaults, $field);
+		$field = array_merge($this->defaults, $field);
 		$key = $field['name'];
 		
-?>
+		
+		global $wp_locale;
+		
+		
+	    // localize strings
+	    $l10n = array(
+	        'closeText'         => __( 'Done', 'acf' ),
+	        'currentText'       => __( 'Today', 'acf' ),
+	        'monthNames'        => array_values( $wp_locale->month ),
+	        'monthNamesShort'   => array_values( $wp_locale->month_abbrev ),
+	        'monthStatus'       => __( 'Show a different month', 'acf' ),
+	        'dayNames'          => array_values( $wp_locale->weekday ),
+	        'dayNamesShort'     => array_values( $wp_locale->weekday_abbrev ),
+	        'dayNamesMin'       => array_values( $wp_locale->weekday_initial ),
+	        'isRTL'             => isset($wp_locale->is_rtl) ? $wp_locale->is_rtl : false,
+	    );
+	    
+	    ?>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
 		<label><?php _e("Save format",'acf'); ?></label>
@@ -123,7 +173,26 @@ class acf_field_date_picker extends acf_field
 		?>
 	</td>
 </tr>
-<?php
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label for=""><?php _e("Week Starts On",'acf'); ?></label>
+	</td>
+	<td>
+		<?php 
+		
+		$choices = array_values( $wp_locale->weekday );
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'select',
+			'name'	=>	'fields['.$key.'][first_day]',
+			'value'	=>	$field['first_day'],
+			'choices'	=>	$choices,
+		));
+		
+		?>
+	</td>
+</tr>
+		<?php
 		
 	}
 	

@@ -188,7 +188,7 @@ var acf = {
 		
 		
 		// tab - override field_name
-		if( val == 'tab' )
+		if( val == 'tab' || val == 'message' )
 		{
 			tbody.find('tr.field_name input[type="text"]').val('').trigger('keyup');
 		}
@@ -527,13 +527,25 @@ var acf = {
 
 	$('#acf_fields tr.field_label input.label').live('blur', function()
 	{
-		var label = $(this),
-			name = label.closest('tr').siblings('tr.field_name').find('input.name');
-
-		if( name.val() == '' )
+		// vars
+		var $label = $(this),
+			$field = $label.closest('.field'),
+			$name = $field.find('tr.field_name:first input[type="text"]'),
+			type = $field.attr('data-type');
+			
+			
+		// leave blank for tab or message field
+		if( type == 'tab' || type == 'message' )
+		{
+			$name.val('').trigger('keyup');
+			return;
+		}
+			
+		
+		if( $name.val() == '' )
 		{
 			// thanks to https://gist.github.com/richardsweeney/5317392 for this code!
-			var val = label.val(),
+			var val = $label.val(),
 				replace = {
 					'ä': 'a',
 					'æ': 'a',
@@ -561,8 +573,8 @@ var acf = {
 			
 			
 			val = val.toLowerCase();
-			name.val(val);
-			name.trigger('keyup');
+			$name.val( val );
+			$name.trigger('keyup');
 		}
 		
 	});
