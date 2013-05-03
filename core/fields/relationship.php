@@ -215,7 +215,7 @@ class acf_field_relationship extends acf_field
 				// right aligned info
 				$title = '<span class="relationship-item-info">';
 					
-					if( in_array('post_type', $field['result_elements']) )
+					if( is_array($field['result_elements']) && in_array('post_type', $field['result_elements']) )
 					{
 						$title .= $post->post_type;
 					}
@@ -230,7 +230,7 @@ class acf_field_relationship extends acf_field
 				
 				
 				// featured_image
-				if( in_array('featured_image', $field['result_elements']) )
+				if( is_array($field['result_elements']) && in_array('featured_image', $field['result_elements']) )
 				{
 					$image = get_the_post_thumbnail( $post->ID, array(21, 21) );
 					
