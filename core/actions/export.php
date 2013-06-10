@@ -189,7 +189,7 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n";
 <?php wxr_authors_list(); ?>
 <?php if ( $my_options['acf_posts'] ) {
 
-	global $wp_query, $wpdb;
+	global $wp_query, $wpdb, $post;
 	$wp_query->in_the_loop = true; // Fake being in the loop.
 	
 	// create SQL with %d placeholders
