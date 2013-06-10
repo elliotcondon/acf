@@ -267,7 +267,7 @@ class acf_export
 <h3><?php _e("Export to PHP",'acf'); ?></h3>
 <p><?php _e("ACF will create the PHP code to include in your theme.",'acf'); ?></p>
 <p><?php _e("Registered field groups <b>will not</b> appear in the list of editable field groups. This is useful for including fields in themes.",'acf'); ?></p>
-<p><?php _e("Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the origional field group to the trash or remove the code from your functions.php file.",'acf'); ?></p>
+<p><?php _e("Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the original field group to the trash or remove the code from your functions.php file.",'acf'); ?></p>
 <ol>
 	<li><?php _e("Select field group(s) from the list and click \"Create PHP\"",'acf'); ?></li>
 	<li><?php _e("Copy the PHP code generated",'acf'); ?></li>
@@ -308,7 +308,7 @@ class acf_export
 
 <h3><?php _e("Notes",'acf'); ?></h3>
 <p><?php _e("Registered field groups <b>will not</b> appear in the list of editable field groups. This is useful for including fields in themes.",'acf'); ?></p>
-<p><?php _e("Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the origional field group to the trash or remove the code from your functions.php file.",'acf'); ?></p>
+<p><?php _e("Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the original field group to the trash or remove the code from your functions.php file.",'acf'); ?></p>
 
 
 <p><br /></p>
@@ -320,7 +320,7 @@ class acf_export
 include_once('advanced-custom-fields/acf.php');
 </pre>
 
-<p><?php _e("To remove all visual interfaces from the ACF plugin, you can use a constant to enable lite mode. Add the following code to you functions.php file <b>before</b> the include_once code:",'acf'); ?></p>
+<p><?php _e("To remove all visual interfaces from the ACF plugin, you can use a constant to enable lite mode. Add the following code to your functions.php file <b>before</b> the include_once code:",'acf'); ?></p>
 
 <pre>
 define( 'ACF_LITE', true );

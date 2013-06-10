@@ -398,7 +398,7 @@ class acf_field_relationship extends acf_field
 				<?php if(in_array( 'search', $field['filters']) ): ?>
 				<tr>
 					<th>
-						<label class="relationship_label" for="relationship_<?php echo $field['name']; ?>"><?php _e("Search",'acf'); ?>...</label>
+						<label class="relationship_label" for="relationship_<?php echo $field['name']; ?>"><?php _e("Search...",'acf'); ?></label>
 						<input class="relationship_search" type="text" id="relationship_<?php echo $field['name']; ?>" />
 						<!-- <div class="clear_relationship_search"></div> -->
 					</th>
@@ -411,7 +411,7 @@ class acf_field_relationship extends acf_field
 						
 						// vars
 						$choices = array(
-							'all' => 'Filter by post type'
+							'all' => __("Filter by post type",'acf')
 						);
 						
 						
@@ -621,7 +621,7 @@ class acf_field_relationship extends acf_field
 			'name'	=>	'fields['.$key.'][result_elements]',
 			'value'	=>	$field['result_elements'],
 			'choices' => array(
-				'featured_image' => 'Featured Image',
+				'featured_image' => __("Featured Image",'acf'),
 				'post_title' => __("Post Title",'acf'),
 				'post_type' => __("Post Type",'acf'),
 			),
