@@ -11,7 +11,8 @@
 class acf_addons
 {
 	
-	var $action;
+	var $action,
+		$activation_codes;
 	
 	
 	/*
@@ -25,7 +26,57 @@ class acf_addons
 	function __construct()
 	{
 		// actions
+		add_action('init', array($this, 'init'));
+		add_filter('plugins_api', array($this, 'plugins_api'), 10, 3);
 		add_action('admin_menu', array($this,'admin_menu'), 11, 0);
+	}
+
+
+	/*
+	*  init
+	*
+	*  @description: 
+	*  @created: 16/04/13
+	*/
+
+	function init()
+	{
+		$acf_settings = apply_filters('acf_settings', array(
+			'activation_codes' => array(
+				'repeater'         => get_option('acf_repeater_ac'),
+				'options_page'     => get_option('acf_options_page_ac'),
+				'flexible_content' => get_option('acf_flexible_content_ac'),
+				'gallery'          => get_option('acf_gallery_ac'),
+			)
+		));
+		$this->activation_codes = array(
+			'acf_field_repeater'         => $acf_settings['activation_codes']['repeater'],
+			'acf_options_page_plugin'    => $acf_settings['activation_codes']['options_page'],
+			'acf_field_flexible_content' => $acf_settings['activation_codes']['flexible_content'],
+			'acf_field_gallery'          => $acf_settings['activation_codes']['gallery'],
+		);
+	}
+
+
+	/*
+	*  plugins_api
+	*
+	*  @description: 
+	*  @created: 16/04/13
+	*/
+
+	function plugins_api($api, $action, $args)
+	{
+		if($action == "plugin_information" && empty($api) && !empty($_GET['acf']) && !empty($this->activation_codes[$args->slug]))
+		{
+			// Get the remote info
+			$request = wp_remote_post("http://download.advancedcustomfields.com/" . $this->activation_codes[$args->slug] . "/info/");
+			if( !is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
+			{
+				$api = @unserialize($request['body']);
+			}
+		}
+		return $api;
 	}
 	
 	
@@ -61,7 +112,7 @@ class acf_addons
 	
 	function load()
 	{
-		
+	
 	}
 	
 	
@@ -131,6 +182,7 @@ class acf_addons
 			'description' => __("Create infinite rows of repeatable data with this versatile interface!",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/repeater-field-thumb.jpg',
 			'active' => class_exists('acf_field_repeater'),
+			'purchased' => isset($this->activation_codes['acf_field_repeater']) ? 'acf_field_repeater' : false,
 			'url' => 'http://www.advancedcustomfields.com/add-ons/repeater-field/'
 		);
 		$premium[] = array(
@@ -138,6 +190,7 @@ class acf_addons
 			'description' => __("Create image galleries in a simple and intuitive interface!",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/gallery-field-thumb.jpg',
 			'active' => class_exists('acf_field_gallery'),
+			'purchased' => isset($this->activation_codes['acf_field_gallery']) ? 'acf_field_gallery' : false,
 			'url' => 'http://www.advancedcustomfields.com/add-ons/gallery-field/'
 		);
 		$premium[] = array(
@@ -145,6 +198,7 @@ class acf_addons
 			'description' => __("Create global data to use throughout your website!",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/options-page-thumb.jpg',
 			'active' => class_exists('acf_options_page_plugin'),
+			'purchased' => isset($this->activation_codes['acf_options_page_plugin']) ? 'acf_options_page_plugin' : false,
 			'url' => 'http://www.advancedcustomfields.com/add-ons/options-page/'
 		);
 		$premium[] = array(
@@ -152,6 +206,7 @@ class acf_addons
 			'description' => __("Create unique designs with a flexible content layout manager!",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/flexible-content-field-thumb.jpg',
 			'active' => class_exists('acf_field_flexible_content'),
+			'purchased' => isset($this->activation_codes['acf_field_flexible_content']) ? 'acf_field_flexible_content' : false,
 			'url' => 'http://www.advancedcustomfields.com/add-ons/flexible-content-field/'
 		);
 		
@@ -162,6 +217,7 @@ class acf_addons
 			'description' => __("Creates a select field populated with Gravity Forms!",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/gravity-forms-field-thumb.jpg',
 			'active' => class_exists('gravity_forms_field'),
+			'wordpress_plugin_dir' => false,
 			'url' => 'https://github.com/stormuk/Gravity-Forms-ACF-Field/'
 		);
 		$free[] = array(
@@ -169,6 +225,7 @@ class acf_addons
 			'description' => __("jQuery date & time picker",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/date-time-field-thumb.jpg',
 			'active' => class_exists('acf_field_date_time_picker'),
+			'wordpress_plugin_dir' => 'acf-field-date-time-picker',
 			'url' => 'http://wordpress.org/extend/plugins/acf-field-date-time-picker/'
 		);
 		$free[] = array(
@@ -176,6 +233,7 @@ class acf_addons
 			'description' => __("Find addresses and coordinates of a desired location",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/google-maps-field-thumb.jpg',
 			'active' => class_exists('acf_field_location'),
+			'wordpress_plugin_dir' => false,
 			'url' => 'https://github.com/elliotcondon/acf-location-field/'
 		);
 		$free[] = array(
@@ -183,6 +241,7 @@ class acf_addons
 			'description' => __("Assign one or more contact form 7 forms to a post",'acf'),
 			'thumbnail' => $dir . 'images/add-ons/cf7-field-thumb.jpg',
 			'active' => class_exists('acf_field_cf7'),
+			'wordpress_plugin_dir' => false,
 			'url' => 'https://github.com/taylormsj/acf-cf7-field/'
 		);
 		
@@ -216,6 +275,8 @@ class acf_addons
 			<div class="footer">
 				<?php if( $addon['active'] ): ?>
 					<a class="button button-disabled"><span class="tick"></span><?php _e("Installed",'acf'); ?></a>
+				<?php elseif( $addon['purchased'] ): ?>
+					<a href="<?php echo wp_nonce_url("update.php?action=install-plugin&plugin=".$addon['purchased']."&acf=1", "install-plugin_".$addon['purchased']); ?>" class="button"><?php _e("Install",'acf'); ?></a>
 				<?php else: ?>
 					<a target="_blank" href="<?php echo $addon['url']; ?>" class="button"><?php _e("Purchase & Install",'acf'); ?></a>
 				<?php endif; ?>
@@ -237,6 +298,8 @@ class acf_addons
 			<div class="footer">
 				<?php if( $addon['active'] ): ?>
 					<a class="button button-disabled"><span class="tick"></span><?php _e("Installed",'acf'); ?></a>
+				<?php elseif( $addon['wordpress_plugin_dir'] ): ?>
+					<a href="<?php echo wp_nonce_url("update.php?action=install-plugin&plugin=".$addon['wordpress_plugin_dir'], "install-plugin_".$addon['wordpress_plugin_dir']); ?>" class="button"><?php _e("Install",'acf'); ?></a>
 				<?php else: ?>
 					<a target="_blank" href="<?php echo $addon['url']; ?>" class="button"><?php _e("Download",'acf'); ?></a>
 				<?php endif; ?>
