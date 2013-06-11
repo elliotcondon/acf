@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields - Dutch translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-10 08:45+0100\n"
-"PO-Revision-Date: 2012-09-10 09:07+0100\n"
+"PO-Revision-Date: 2013-06-10 18:59-0600\n"
 "Last-Translator: Derk Oosterveld <derk@inpoint.nl>\n"
 "Language-Team: Inpoint <derk@inpoint.nl>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: acf.php:287 core/views/meta_box_options.php:94
@@ -431,7 +432,7 @@ msgid "Registered field groups <b>will not</b> appear in the list of editable fi
 msgstr "Geregistreerde veld groepen verschijnen <b>niet</b> in de lijst met beheerbare veld groepen. Dit is handig voor het insluiten van velden in thema\'s"
 
 #: core/controllers/settings.php:358 core/controllers/settings.php:475
-msgid "Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the origional field group to the trash or remove the code from your functions.php file."
+msgid "Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the original field group to the trash or remove the code from your functions.php file."
 msgstr "Houd er rekening mee dat wanneer je veld groepen exporteert en registreert in dezelfde WP installatie, ze verschijnen als gedupliceerde velden in je edit screens. Om dit te verhelpen: verwijder de originele veld groepen naar de prullenbak of verwijder de code uit je functions.php bestand."
 
 #: core/controllers/settings.php:360

@@ -2,15 +2,16 @@
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
-"Project-Id-Version:  \n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-05-02 01:19:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2013-06-10 19:00-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: acf.php:264
 msgid "Field&nbsp;Groups"
@@ -294,8 +295,8 @@ msgstr ""
 msgid ""
 "Please note that if you export and register field groups within the same WP, "
 "you will see duplicate fields on your edit screens. To fix this, please move "
-"the origional field group to the trash or remove the code from your "
-"functions.php file."
+"the original field group to the trash or remove the code from your functions."
+"php file."
 msgstr ""
 
 #: core/controllers/export.php:272

@@ -263,7 +263,7 @@ class acf_location
 		
 		
 		// translate $rule['value']
-		// - this variable will hold the origional post_id, but $options['post_id'] will hold the translated version
+		// - this variable will hold the original post_id, but $options['post_id'] will hold the translated version
 		//if( function_exists('icl_object_id') )
 		//{
 		//	$rule['value'] = icl_object_id( $rule['value'], $options['post_type'], true );

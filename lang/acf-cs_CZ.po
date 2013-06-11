@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2012-08-11 08:33:20+00:00\n"
-"PO-Revision-Date: 2012-09-18 17:39+0100\n"
+"PO-Revision-Date: 2013-06-10 18:58-0600\n"
 "Last-Translator: Jakub Machala <jakubmachala@webees.cz>\n"
 "Language-Team: webees.cz s.r.o. <jakubmachala@webees.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
 
-#: acf.php:281
-#: core/views/meta_box_options.php:94
+#: acf.php:281 core/views/meta_box_options.php:94
 msgid "Custom Fields"
 msgstr "Vlastní pole"
 
@@ -21,14 +21,12 @@ msgstr "Vlastní pole"
 msgid "Field&nbsp;Groups"
 msgstr "Skupiny&nbsp;polí"
 
-#: acf.php:303
-#: core/controllers/field_groups.php:283
+#: acf.php:303 core/controllers/field_groups.php:283
 #: core/controllers/upgrade.php:70
 msgid "Advanced Custom Fields"
 msgstr "Pokročilá vlastní pole"
 
-#: acf.php:304
-#: core/fields/flexible_content.php:325
+#: acf.php:304 core/fields/flexible_content.php:325
 msgid "Add New"
 msgstr "Přidat nové"
 
@@ -60,8 +58,7 @@ msgstr "Nebyly nalezeny žádné skupiny polí"
 msgid "No Field Groups found in Trash"
 msgstr "V koši nebyly nalezeny žádné skupiny polí"
 
-#: acf.php:346
-#: acf.php:349
+#: acf.php:346 acf.php:349
 msgid "Field group updated."
 msgstr "Skupina polí aktualizována"
 
@@ -98,9 +95,7 @@ msgstr "Skupina polí naplánována."
 msgid "Field group draft updated."
 msgstr "Koncept skupiny polí aktualizován."
 
-#: acf.php:375
-#: core/fields/gallery.php:66
-#: core/fields/gallery.php:229
+#: acf.php:375 core/fields/gallery.php:66 core/fields/gallery.php:229
 msgid "Title"
 msgstr "Název"
 
@@ -120,8 +115,7 @@ msgstr "Střední"
 msgid "Large"
 msgstr "Velký"
 
-#: acf.php:1602
-#: core/fields/wysiwyg.php:85
+#: acf.php:1602 core/fields/wysiwyg.php:85
 msgid "Full"
 msgstr "Plný"
 
@@ -129,8 +123,7 @@ msgstr "Plný"
 msgid "No ACF groups selected"
 msgstr "Nejsou vybrány žádné ACF skupiny"
 
-#: core/controllers/field_group.php:148
-#: core/controllers/field_groups.php:190
+#: core/controllers/field_group.php:148 core/controllers/field_groups.php:190
 msgid "Fields"
 msgstr "Pole"
 
@@ -142,10 +135,8 @@ msgstr "Umístění"
 msgid "Add Fields to Edit Screens"
 msgstr "Přidat pole na obrazovky úprav"
 
-#: core/controllers/field_group.php:150
-#: core/controllers/field_group.php:400
-#: core/controllers/options_page.php:62
-#: core/controllers/options_page.php:74
+#: core/controllers/field_group.php:150 core/controllers/field_group.php:400
+#: core/controllers/options_page.php:62 core/controllers/options_page.php:74
 #: core/views/meta_box_location.php:143
 msgid "Options"
 msgstr "Konfigurace"
@@ -166,34 +157,26 @@ msgstr "Podstránka"
 msgid "Default Template"
 msgstr "Výchozí šablona"
 
-#: core/controllers/field_group.php:424
-#: core/controllers/field_group.php:445
-#: core/controllers/field_group.php:452
-#: core/fields/page_link.php:76
-#: core/fields/post_object.php:222
-#: core/fields/post_object.php:250
-#: core/fields/relationship.php:320
-#: core/fields/relationship.php:349
+#: core/controllers/field_group.php:424 core/controllers/field_group.php:445
+#: core/controllers/field_group.php:452 core/fields/page_link.php:76
+#: core/fields/post_object.php:222 core/fields/post_object.php:250
+#: core/fields/relationship.php:320 core/fields/relationship.php:349
 msgid "All"
 msgstr "Vše"
 
-#: core/controllers/field_groups.php:243
-#: core/views/meta_box_options.php:50
+#: core/controllers/field_groups.php:243 core/views/meta_box_options.php:50
 msgid "Normal"
 msgstr "Normální"
 
-#: core/controllers/field_groups.php:244
-#: core/views/meta_box_options.php:51
+#: core/controllers/field_groups.php:244 core/views/meta_box_options.php:51
 msgid "Side"
 msgstr "Na straně"
 
-#: core/controllers/field_groups.php:254
-#: core/views/meta_box_options.php:70
+#: core/controllers/field_groups.php:254 core/views/meta_box_options.php:70
 msgid "Standard Metabox"
 msgstr "Standardní metabox"
 
-#: core/controllers/field_groups.php:255
-#: core/views/meta_box_options.php:71
+#: core/controllers/field_groups.php:255 core/views/meta_box_options.php:71
 msgid "No Metabox"
 msgstr "Žádný metabox"
 
@@ -210,8 +193,12 @@ msgid "Resources"
 msgstr "Zdroje"
 
 #: core/controllers/field_groups.php:289
-msgid "Read documentation, learn the functions and find some tips &amp; tricks for your next web project."
-msgstr "Přečtěte si dokumentaci, naučte se funkce a objevte zajímavé tipy &amp; triky pro váš další webový projekt."
+msgid ""
+"Read documentation, learn the functions and find some tips &amp; tricks for "
+"your next web project."
+msgstr ""
+"Přečtěte si dokumentaci, naučte se funkce a objevte zajímavé tipy &amp; "
+"triky pro váš další webový projekt."
 
 #: core/controllers/field_groups.php:290
 msgid "Visit the ACF website"
@@ -245,8 +232,7 @@ msgstr "Upravit soubor"
 msgid "Add Image to Field"
 msgstr "Přidat obrázek do pole"
 
-#: core/controllers/input.php:453
-#: core/controllers/input.php:456
+#: core/controllers/input.php:453 core/controllers/input.php:456
 msgid "Edit Image"
 msgstr "Upravit obrázek"
 
@@ -327,19 +313,20 @@ msgid "Activate Add-ons."
 msgstr "Aktivovat přídavky."
 
 #: core/controllers/settings.php:217
-msgid "Add-ons can be unlocked by purchasing a license key. Each key can be used on multiple sites."
-msgstr "Přídavky mohou být odemčeny zakoupením licenčního klíče. Každý klíč může být použit na více webech."
+msgid ""
+"Add-ons can be unlocked by purchasing a license key. Each key can be used on "
+"multiple sites."
+msgstr ""
+"Přídavky mohou být odemčeny zakoupením licenčního klíče. Každý klíč může být "
+"použit na více webech."
 
 #: core/controllers/settings.php:218
 msgid "Find Add-ons"
 msgstr "Hledat přídavky"
 
-#: core/controllers/settings.php:225
-#: core/fields/flexible_content.php:380
-#: core/fields/flexible_content.php:456
-#: core/fields/repeater.php:288
-#: core/fields/repeater.php:364
-#: core/views/meta_box_fields.php:63
+#: core/controllers/settings.php:225 core/fields/flexible_content.php:380
+#: core/fields/flexible_content.php:456 core/fields/repeater.php:288
+#: core/fields/repeater.php:364 core/views/meta_box_fields.php:63
 #: core/views/meta_box_fields.php:136
 msgid "Field Type"
 msgstr "Typ pole"
@@ -356,31 +343,23 @@ msgstr "Aktivační kód"
 msgid "Repeater Field"
 msgstr "Opakovací pole"
 
-#: core/controllers/settings.php:233
-#: core/controllers/settings.php:252
-#: core/controllers/settings.php:271
-#: core/controllers/settings.php:290
+#: core/controllers/settings.php:233 core/controllers/settings.php:252
+#: core/controllers/settings.php:271 core/controllers/settings.php:290
 msgid "Active"
 msgstr "Aktivní"
 
-#: core/controllers/settings.php:233
-#: core/controllers/settings.php:252
-#: core/controllers/settings.php:271
-#: core/controllers/settings.php:290
+#: core/controllers/settings.php:233 core/controllers/settings.php:252
+#: core/controllers/settings.php:271 core/controllers/settings.php:290
 msgid "Inactive"
 msgstr "Neaktivní"
 
-#: core/controllers/settings.php:239
-#: core/controllers/settings.php:258
-#: core/controllers/settings.php:277
-#: core/controllers/settings.php:296
+#: core/controllers/settings.php:239 core/controllers/settings.php:258
+#: core/controllers/settings.php:277 core/controllers/settings.php:296
 msgid "Deactivate"
 msgstr "Deaktivovat"
 
-#: core/controllers/settings.php:245
-#: core/controllers/settings.php:264
-#: core/controllers/settings.php:283
-#: core/controllers/settings.php:302
+#: core/controllers/settings.php:245 core/controllers/settings.php:264
+#: core/controllers/settings.php:283 core/controllers/settings.php:302
 msgid "Activate"
 msgstr "Aktivovat"
 
@@ -392,8 +371,7 @@ msgstr "Pole flexibilního obsahu"
 msgid "Gallery Field"
 msgstr "Pole galerie"
 
-#: core/controllers/settings.php:289
-#: core/views/meta_box_location.php:74
+#: core/controllers/settings.php:289 core/views/meta_box_location.php:74
 msgid "Options Page"
 msgstr "Stránka konfigurace"
 
@@ -402,11 +380,14 @@ msgid "Export Field Groups to XML"
 msgstr "Exportovat skupiny polí do XML"
 
 #: core/controllers/settings.php:315
-msgid "ACF will create a .xml export file which is compatible with the native WP import plugin."
-msgstr "ACF vytvoří soubor .xml exportu, který je kompatibilní s originálním importním pluginem WP."
+msgid ""
+"ACF will create a .xml export file which is compatible with the native WP "
+"import plugin."
+msgstr ""
+"ACF vytvoří soubor .xml exportu, který je kompatibilní s originálním "
+"importním pluginem WP."
 
-#: core/controllers/settings.php:316
-#: core/controllers/settings.php:354
+#: core/controllers/settings.php:316 core/controllers/settings.php:354
 msgid "Instructions"
 msgstr "Instrukce"
 
@@ -415,8 +396,12 @@ msgid "Import Field Groups"
 msgstr "Importovat skupiny polí"
 
 #: core/controllers/settings.php:319
-msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between Wp websites."
-msgstr "Importované skupiny polí <b>budou</b> zobrazeny v seznamu upravitelných skupin polí. Toto je užitečné pro přesouvání skupin polí mezi WP weby."
+msgid ""
+"Imported field groups <b>will</b> appear in the list of editable field "
+"groups. This is useful for migrating fields groups between Wp websites."
+msgstr ""
+"Importované skupiny polí <b>budou</b> zobrazeny v seznamu upravitelných "
+"skupin polí. Toto je užitečné pro přesouvání skupin polí mezi WP weby."
 
 #: core/controllers/settings.php:321
 msgid "Select field group(s) from the list and click \"Export XML\""
@@ -458,39 +443,47 @@ msgstr "Exportujte skupiny polí do PHP"
 msgid "ACF will create the PHP code to include in your theme."
 msgstr "ACF vytvoří PHP kód pro vložení do vaší šablony."
 
-#: core/controllers/settings.php:356
-#: core/controllers/settings.php:473
+#: core/controllers/settings.php:356 core/controllers/settings.php:473
 msgid "Register Field Groups"
 msgstr "Registrovat skupiny polí"
 
-#: core/controllers/settings.php:357
-#: core/controllers/settings.php:474
-msgid "Registered field groups <b>will not</b> appear in the list of editable field groups. This is useful for including fields in themes."
-msgstr "Registrované skupiny polí <b>nebudou</b> zobrazeny v seznamu upravitelných skupin polí. Toto je užitečné při používání polí v šablonách."
+#: core/controllers/settings.php:357 core/controllers/settings.php:474
+msgid ""
+"Registered field groups <b>will not</b> appear in the list of editable field "
+"groups. This is useful for including fields in themes."
+msgstr ""
+"Registrované skupiny polí <b>nebudou</b> zobrazeny v seznamu upravitelných "
+"skupin polí. Toto je užitečné při používání polí v šablonách."
 
-#: core/controllers/settings.php:358
-#: core/controllers/settings.php:475
-msgid "Please note that if you export and register field groups within the same WP, you will see duplicate fields on your edit screens. To fix this, please move the origional field group to the trash or remove the code from your functions.php file."
-msgstr "Mějte prosím na paměti, že pokud exportujete a registrujete skupiny polí v rámci stejného WordPressu, uvidíte na obrazovkách úprav duplikovaná pole. Pro nápravu prosím přesuňte původní skupinu polí do koše nebo odstraňte kód ze souboru functions.php."
+#: core/controllers/settings.php:358 core/controllers/settings.php:475
+msgid ""
+"Please note that if you export and register field groups within the same WP, "
+"you will see duplicate fields on your edit screens. To fix this, please move "
+"the original field group to the trash or remove the code from your functions."
+"php file."
+msgstr ""
+"Mějte prosím na paměti, že pokud exportujete a registrujete skupiny polí v "
+"rámci stejného WordPressu, uvidíte na obrazovkách úprav duplikovaná pole. "
+"Pro nápravu prosím přesuňte původní skupinu polí do koše nebo odstraňte kód "
+"ze souboru functions.php."
 
 #: core/controllers/settings.php:360
 msgid "Select field group(s) from the list and click \"Create PHP\""
 msgstr "Vyberte skupinu(y) polí ze seznamu a klikněte na \"Vytvořit  PHP\""
 
-#: core/controllers/settings.php:361
-#: core/controllers/settings.php:477
+#: core/controllers/settings.php:361 core/controllers/settings.php:477
 msgid "Copy the PHP code generated"
 msgstr "Zkopírujte vygenerovaný PHP kód"
 
-#: core/controllers/settings.php:362
-#: core/controllers/settings.php:478
+#: core/controllers/settings.php:362 core/controllers/settings.php:478
 msgid "Paste into your functions.php file"
 msgstr "Vložte jej do vašeho souboru functions.php"
 
-#: core/controllers/settings.php:363
-#: core/controllers/settings.php:479
+#: core/controllers/settings.php:363 core/controllers/settings.php:479
 msgid "To activate any Add-ons, edit and use the code in the first few lines."
-msgstr "K aktivací kteréhokoli přídavku upravte a použijte kód na prvních několika řádcích."
+msgstr ""
+"K aktivací kteréhokoli přídavku upravte a použijte kód na prvních několika "
+"řádcích."
 
 #: core/controllers/settings.php:382
 msgid "Create PHP"
@@ -504,33 +497,45 @@ msgstr "Zpět na nastavení"
 msgid ""
 "/**\n"
 " * Activate Add-ons\n"
-" * Here you can enter your activation codes to unlock Add-ons to use in your theme. \n"
-" * Since all activation codes are multi-site licenses, you are allowed to include your key in premium themes. \n"
-" * Use the commented out code to update the database with your activation code. \n"
-" * You may place this code inside an IF statement that only runs on theme activation.\n"
+" * Here you can enter your activation codes to unlock Add-ons to use in your "
+"theme. \n"
+" * Since all activation codes are multi-site licenses, you are allowed to "
+"include your key in premium themes. \n"
+" * Use the commented out code to update the database with your activation "
+"code. \n"
+" * You may place this code inside an IF statement that only runs on theme "
+"activation.\n"
 " */"
 msgstr ""
 "/**\n"
 " * Aktivovat přídavky\n"
-" * Zde můžete vložit váš aktivační kód pro odemčení přídavků k použití ve vaší šabloně. \n"
-" * Jelikož jsou všechny aktivační kódy licencovány pro použití na více webech, můžete je použít ve vaší premium šabloně. \n"
-" * Použijte zakomentovaný kód pro aktualizaci databáze s vaším aktivačním kódem. \n"
-" * Tento kód můžete vložit dovnitř IF konstrukce, která proběhne pouze po aktivaci šablony.\n"
+" * Zde můžete vložit váš aktivační kód pro odemčení přídavků k použití ve "
+"vaší šabloně. \n"
+" * Jelikož jsou všechny aktivační kódy licencovány pro použití na více "
+"webech, můžete je použít ve vaší premium šabloně. \n"
+" * Použijte zakomentovaný kód pro aktualizaci databáze s vaším aktivačním "
+"kódem. \n"
+" * Tento kód můžete vložit dovnitř IF konstrukce, která proběhne pouze po "
+"aktivaci šablony.\n"
 " */"
 
 #: core/controllers/settings.php:518
 msgid ""
 "/**\n"
 " * Register field groups\n"
-" * The register_field_group function accepts 1 array which holds the relevant data to register a field group\n"
-" * You may edit the array as you see fit. However, this may result in errors if the array is not compatible with ACF\n"
+" * The register_field_group function accepts 1 array which holds the "
+"relevant data to register a field group\n"
+" * You may edit the array as you see fit. However, this may result in errors "
+"if the array is not compatible with ACF\n"
 " * This code must run every time the functions.php file is read\n"
 " */"
 msgstr ""
 "/**\n"
 " * Registrace skupiny polí\n"
-" * Funkce register_field_group akceptuje pole, které obsahuje relevatní data k registraci skupiny polí\n"
-" * Pole můžete upravit podle potřeb. Může to ovšem vyústit v pole nekompatibilní s ACF\n"
+" * Funkce register_field_group akceptuje pole, které obsahuje relevatní data "
+"k registraci skupiny polí\n"
+" * Pole můžete upravit podle potřeb. Může to ovšem vyústit v pole "
+"nekompatibilní s ACF\n"
 " * Tento kód musí proběhnout při každém čtení souboru functions.php\n"
 " */"
 
@@ -582,44 +587,37 @@ msgstr "Úprava možností pole 'taxonomie'"
 msgid "Checkbox"
 msgstr "Zaškrtávátko"
 
-#: core/fields/checkbox.php:55
-#: core/fields/radio.php:45
+#: core/fields/checkbox.php:55 core/fields/radio.php:45
 #: core/fields/select.php:50
 msgid "No choices to choose from"
 msgstr "Žádné možnosti, z nichž by bylo možné vybírat"
 
-#: core/fields/checkbox.php:113
-#: core/fields/radio.php:114
+#: core/fields/checkbox.php:113 core/fields/radio.php:114
 #: core/fields/select.php:164
 msgid "Choices"
 msgstr "Možnosti"
 
-#: core/fields/checkbox.php:114
-#: core/fields/radio.php:115
+#: core/fields/checkbox.php:114 core/fields/radio.php:115
 #: core/fields/select.php:165
 msgid "Enter your choices one per line"
 msgstr "Vložte vaše možnosti po jedné na řádek"
 
-#: core/fields/checkbox.php:116
-#: core/fields/radio.php:117
+#: core/fields/checkbox.php:116 core/fields/radio.php:117
 #: core/fields/select.php:167
 msgid "Red"
 msgstr "Červená"
 
-#: core/fields/checkbox.php:117
-#: core/fields/radio.php:118
+#: core/fields/checkbox.php:117 core/fields/radio.php:118
 #: core/fields/select.php:168
 msgid "Blue"
 msgstr "Modrá"
 
-#: core/fields/checkbox.php:119
-#: core/fields/radio.php:120
+#: core/fields/checkbox.php:119 core/fields/radio.php:120
 #: core/fields/select.php:170
 msgid "red : Red"
 msgstr "cervena : Červená"
 
-#: core/fields/checkbox.php:120
-#: core/fields/radio.php:121
+#: core/fields/checkbox.php:120 core/fields/radio.php:121
 #: core/fields/select.php:171
 msgid "blue : Blue"
 msgstr "modra: Modrá"
@@ -648,20 +646,15 @@ msgstr "Soubor"
 msgid "File Updated."
 msgstr "Soubor aktualizován."
 
-#: core/fields/file.php:89
-#: core/fields/flexible_content.php:407
-#: core/fields/gallery.php:251
-#: core/fields/gallery.php:281
-#: core/fields/image.php:187
-#: core/fields/repeater.php:314
+#: core/fields/file.php:89 core/fields/flexible_content.php:407
+#: core/fields/gallery.php:251 core/fields/gallery.php:281
+#: core/fields/image.php:187 core/fields/repeater.php:314
 #: core/views/meta_box_fields.php:87
 msgid "Edit"
 msgstr "Upravit"
 
-#: core/fields/file.php:90
-#: core/fields/gallery.php:250
-#: core/fields/gallery.php:280
-#: core/fields/image.php:186
+#: core/fields/file.php:90 core/fields/gallery.php:250
+#: core/fields/gallery.php:280 core/fields/image.php:186
 msgid "Remove"
 msgstr "Odstranit"
 
@@ -673,8 +666,7 @@ msgstr "Nebyl vybrán žádný soubor"
 msgid "Add File"
 msgstr "Přidat soubor"
 
-#: core/fields/file.php:224
-#: core/fields/image.php:223
+#: core/fields/file.php:224 core/fields/image.php:223
 msgid "Return Value"
 msgstr "Vrátit hodnotu"
 
@@ -686,8 +678,7 @@ msgstr "Adresa souboru"
 msgid "Attachment ID"
 msgstr "ID přílohy"
 
-#: core/fields/file.php:268
-#: core/fields/image.php:291
+#: core/fields/file.php:268 core/fields/image.php:291
 msgid "Media attachment updated."
 msgstr "Příloha aktualizována."
 
@@ -711,19 +702,16 @@ msgstr "Aktualizovat soubor"
 msgid "Flexible Content"
 msgstr "Flexibilní obsah"
 
-#: core/fields/flexible_content.php:38
-#: core/fields/flexible_content.php:286
+#: core/fields/flexible_content.php:38 core/fields/flexible_content.php:286
 msgid "+ Add Row"
 msgstr "+ Přidat řádek"
 
-#: core/fields/flexible_content.php:313
-#: core/fields/repeater.php:261
+#: core/fields/flexible_content.php:313 core/fields/repeater.php:261
 #: core/views/meta_box_fields.php:25
 msgid "New Field"
 msgstr "Nové pole"
 
-#: core/fields/flexible_content.php:322
-#: core/fields/radio.php:144
+#: core/fields/flexible_content.php:322 core/fields/radio.php:144
 #: core/fields/repeater.php:440
 msgid "Layout"
 msgstr "Typ zobrazení"
@@ -744,10 +732,8 @@ msgstr "Přidat nový typ zobrazení"
 msgid "Delete Layout"
 msgstr "Smazat typ zobrazení"
 
-#: core/fields/flexible_content.php:326
-#: core/fields/flexible_content.php:410
-#: core/fields/repeater.php:317
-#: core/views/meta_box_fields.php:90
+#: core/fields/flexible_content.php:326 core/fields/flexible_content.php:410
+#: core/fields/repeater.php:317 core/views/meta_box_fields.php:90
 msgid "Delete"
 msgstr "Smazat"
 
@@ -767,120 +753,98 @@ msgstr "Zobrazovat"
 msgid "Table"
 msgstr "Tabulka"
 
-#: core/fields/flexible_content.php:364
-#: core/fields/repeater.php:451
+#: core/fields/flexible_content.php:364 core/fields/repeater.php:451
 msgid "Row"
 msgstr "Řádek"
 
-#: core/fields/flexible_content.php:377
-#: core/fields/repeater.php:285
+#: core/fields/flexible_content.php:377 core/fields/repeater.php:285
 #: core/views/meta_box_fields.php:60
 msgid "Field Order"
 msgstr "Pořadí pole"
 
-#: core/fields/flexible_content.php:378
-#: core/fields/flexible_content.php:425
-#: core/fields/repeater.php:286
-#: core/fields/repeater.php:333
-#: core/views/meta_box_fields.php:61
-#: core/views/meta_box_fields.php:105
+#: core/fields/flexible_content.php:378 core/fields/flexible_content.php:425
+#: core/fields/repeater.php:286 core/fields/repeater.php:333
+#: core/views/meta_box_fields.php:61 core/views/meta_box_fields.php:105
 msgid "Field Label"
 msgstr "Název pole"
 
-#: core/fields/flexible_content.php:379
-#: core/fields/flexible_content.php:441
-#: core/fields/repeater.php:287
-#: core/fields/repeater.php:349
-#: core/views/meta_box_fields.php:62
-#: core/views/meta_box_fields.php:121
+#: core/fields/flexible_content.php:379 core/fields/flexible_content.php:441
+#: core/fields/repeater.php:287 core/fields/repeater.php:349
+#: core/views/meta_box_fields.php:62 core/views/meta_box_fields.php:121
 msgid "Field Name"
 msgstr "Jméno pole"
 
-#: core/fields/flexible_content.php:388
-#: core/fields/repeater.php:296
-msgid "No fields. Click the \"+ Add Sub Field button\" to create your first field."
-msgstr "Žádná pole. Klikněte na tlačítko \"+ Přidat podpole\" pro vytvoření prvního pole."
+#: core/fields/flexible_content.php:388 core/fields/repeater.php:296
+msgid ""
+"No fields. Click the \"+ Add Sub Field button\" to create your first field."
+msgstr ""
+"Žádná pole. Klikněte na tlačítko \"+ Přidat podpole\" pro vytvoření prvního "
+"pole."
 
-#: core/fields/flexible_content.php:404
-#: core/fields/flexible_content.php:407
-#: core/fields/repeater.php:311
-#: core/fields/repeater.php:314
-#: core/views/meta_box_fields.php:84
-#: core/views/meta_box_fields.php:87
+#: core/fields/flexible_content.php:404 core/fields/flexible_content.php:407
+#: core/fields/repeater.php:311 core/fields/repeater.php:314
+#: core/views/meta_box_fields.php:84 core/views/meta_box_fields.php:87
 msgid "Edit this Field"
 msgstr "Upravit toto pole"
 
-#: core/fields/flexible_content.php:408
-#: core/fields/repeater.php:315
+#: core/fields/flexible_content.php:408 core/fields/repeater.php:315
 #: core/views/meta_box_fields.php:88
 msgid "Read documentation for this field"
 msgstr "Přečtěte si dokumentaci pro toto pole"
 
-#: core/fields/flexible_content.php:408
-#: core/fields/repeater.php:315
+#: core/fields/flexible_content.php:408 core/fields/repeater.php:315
 #: core/views/meta_box_fields.php:88
 msgid "Docs"
 msgstr "Dokumenty"
 
-#: core/fields/flexible_content.php:409
-#: core/fields/repeater.php:316
+#: core/fields/flexible_content.php:409 core/fields/repeater.php:316
 #: core/views/meta_box_fields.php:89
 msgid "Duplicate this Field"
 msgstr "Duplikovat toto pole"
 
-#: core/fields/flexible_content.php:409
-#: core/fields/repeater.php:316
+#: core/fields/flexible_content.php:409 core/fields/repeater.php:316
 #: core/views/meta_box_fields.php:89
 msgid "Duplicate"
 msgstr "Duplikovat"
 
-#: core/fields/flexible_content.php:410
-#: core/fields/repeater.php:317
+#: core/fields/flexible_content.php:410 core/fields/repeater.php:317
 #: core/views/meta_box_fields.php:90
 msgid "Delete this Field"
 msgstr "Smazat toto pole"
 
-#: core/fields/flexible_content.php:426
-#: core/fields/repeater.php:334
+#: core/fields/flexible_content.php:426 core/fields/repeater.php:334
 #: core/views/meta_box_fields.php:106
 msgid "This is the name which will appear on the EDIT page"
 msgstr "Toto je jméno, které se zobrazí na stránce úprav"
 
-#: core/fields/flexible_content.php:442
-#: core/fields/repeater.php:350
+#: core/fields/flexible_content.php:442 core/fields/repeater.php:350
 #: core/views/meta_box_fields.php:122
 msgid "Single word, no spaces. Underscores and dashes allowed"
 msgstr "Jedno slovo, bez mezer. Podtržítka a pomlčky jsou povoleny."
 
-#: core/fields/flexible_content.php:476
-#: core/fields/repeater.php:384
+#: core/fields/flexible_content.php:476 core/fields/repeater.php:384
 msgid "Save Field"
 msgstr "Uložit pole"
 
-#: core/fields/flexible_content.php:481
-#: core/fields/repeater.php:389
+#: core/fields/flexible_content.php:481 core/fields/repeater.php:389
 #: core/views/meta_box_fields.php:188
 msgid "Close Field"
 msgstr "Zavřít pole"
 
-#: core/fields/flexible_content.php:481
-#: core/fields/repeater.php:389
+#: core/fields/flexible_content.php:481 core/fields/repeater.php:389
 msgid "Close Sub Field"
 msgstr "Zavřít podpole"
 
-#: core/fields/flexible_content.php:495
-#: core/fields/repeater.php:404
+#: core/fields/flexible_content.php:495 core/fields/repeater.php:404
 #: core/views/meta_box_fields.php:201
 msgid "Drag and drop to reorder"
 msgstr "Chytněte a táhněte pro změnu pořadí"
 
-#: core/fields/flexible_content.php:496
-#: core/fields/repeater.php:405
+#: core/fields/flexible_content.php:496 core/fields/repeater.php:405
 msgid "+ Add Sub Field"
 msgstr "+ Přidat podpole"
 
-#: core/fields/flexible_content.php:503
-#: core/fields/repeater.php:459
+#: core/fields/flexible_content.php:503 core/fields/repeater.php:459
 msgid "Button Label"
 msgstr "Nápis tlačítka"
 
@@ -888,23 +852,19 @@ msgstr "Nápis tlačítka"
 msgid "Gallery"
 msgstr "Galerie"
 
-#: core/fields/gallery.php:70
-#: core/fields/gallery.php:233
+#: core/fields/gallery.php:70 core/fields/gallery.php:233
 msgid "Alternate Text"
 msgstr "Alternativní text"
 
-#: core/fields/gallery.php:74
-#: core/fields/gallery.php:237
+#: core/fields/gallery.php:74 core/fields/gallery.php:237
 msgid "Caption"
 msgstr "Popisek"
 
-#: core/fields/gallery.php:78
-#: core/fields/gallery.php:241
+#: core/fields/gallery.php:78 core/fields/gallery.php:241
 msgid "Description"
 msgstr "Popis"
 
-#: core/fields/gallery.php:117
-#: core/fields/image.php:243
+#: core/fields/gallery.php:117 core/fields/image.php:243
 msgid "Preview Size"
 msgstr "Velikost náhledu"
 
@@ -916,8 +876,7 @@ msgstr "Je doporučen náhled"
 msgid "Image Updated"
 msgstr "Obrázek aktualizován"
 
-#: core/fields/gallery.php:262
-#: core/fields/gallery.php:642
+#: core/fields/gallery.php:262 core/fields/gallery.php:642
 #: core/fields/image.php:193
 msgid "Add Image"
 msgstr "Přidat obrázek"
@@ -930,8 +889,7 @@ msgstr "Mřížka"
 msgid "List"
 msgstr "Seznam"
 
-#: core/fields/gallery.php:266
-#: core/fields/image.php:428
+#: core/fields/gallery.php:266 core/fields/image.php:428
 msgid "No images selected"
 msgstr "Není vybrán žádný obrázek"
 
@@ -951,8 +909,7 @@ msgstr "Obrázek v galerii už existuje"
 msgid "Image Added"
 msgstr "Obrázek přidán"
 
-#: core/fields/gallery.php:645
-#: core/fields/image.php:556
+#: core/fields/gallery.php:645 core/fields/image.php:556
 msgid "Update Image"
 msgstr "Aktualizovat obrázek"
 
@@ -992,43 +949,31 @@ msgstr "Vybrat obrázek"
 msgid "Page Link"
 msgstr "Odkaz stránky"
 
-#: core/fields/page_link.php:70
-#: core/fields/post_object.php:216
-#: core/fields/relationship.php:314
-#: core/views/meta_box_location.php:48
+#: core/fields/page_link.php:70 core/fields/post_object.php:216
+#: core/fields/relationship.php:314 core/views/meta_box_location.php:48
 msgid "Post Type"
 msgstr "Typ příspěvku"
 
-#: core/fields/page_link.php:98
-#: core/fields/post_object.php:267
+#: core/fields/page_link.php:98 core/fields/post_object.php:267
 #: core/fields/select.php:194
 msgid "Allow Null?"
 msgstr "Povolit prázdné?"
 
-#: core/fields/page_link.php:107
-#: core/fields/page_link.php:126
-#: core/fields/post_object.php:276
-#: core/fields/post_object.php:295
-#: core/fields/select.php:203
-#: core/fields/select.php:222
-#: core/fields/wysiwyg.php:104
-#: core/views/meta_box_fields.php:170
+#: core/fields/page_link.php:107 core/fields/page_link.php:126
+#: core/fields/post_object.php:276 core/fields/post_object.php:295
+#: core/fields/select.php:203 core/fields/select.php:222
+#: core/fields/wysiwyg.php:104 core/views/meta_box_fields.php:170
 msgid "Yes"
 msgstr "Ano"
 
-#: core/fields/page_link.php:108
-#: core/fields/page_link.php:127
-#: core/fields/post_object.php:277
-#: core/fields/post_object.php:296
-#: core/fields/select.php:204
-#: core/fields/select.php:223
-#: core/fields/wysiwyg.php:105
-#: core/views/meta_box_fields.php:171
+#: core/fields/page_link.php:108 core/fields/page_link.php:127
+#: core/fields/post_object.php:277 core/fields/post_object.php:296
+#: core/fields/select.php:204 core/fields/select.php:223
+#: core/fields/wysiwyg.php:105 core/views/meta_box_fields.php:171
 msgid "No"
 msgstr "Ne"
 
-#: core/fields/page_link.php:117
-#: core/fields/post_object.php:286
+#: core/fields/page_link.php:117 core/fields/post_object.php:286
 #: core/fields/select.php:213
 msgid "Select multiple values?"
 msgstr "Vybrat více hodnot?"
@@ -1037,8 +982,7 @@ msgstr "Vybrat více hodnot?"
 msgid "Post Object"
 msgstr "Objekt příspěvku"
 
-#: core/fields/post_object.php:244
-#: core/fields/relationship.php:343
+#: core/fields/post_object.php:244 core/fields/relationship.php:343
 msgid "Filter from Taxonomy"
 msgstr "Filtrovat z taxonomie"
 
@@ -1046,10 +990,8 @@ msgstr "Filtrovat z taxonomie"
 msgid "Radio Button"
 msgstr "Přepínač"
 
-#: core/fields/radio.php:130
-#: core/fields/select.php:180
-#: core/fields/text.php:61
-#: core/fields/textarea.php:62
+#: core/fields/radio.php:130 core/fields/select.php:180
+#: core/fields/text.php:61 core/fields/textarea.php:62
 msgid "Default Value"
 msgstr "Výchozí hodnota"
 
@@ -1077,8 +1019,7 @@ msgstr "Maximum příspěvků"
 msgid "Repeater"
 msgstr "Opakovač"
 
-#: core/fields/repeater.php:66
-#: core/fields/repeater.php:248
+#: core/fields/repeater.php:66 core/fields/repeater.php:248
 msgid "Add Row"
 msgstr "Přidat řádek"
 
@@ -1106,8 +1047,7 @@ msgstr "Vybrat"
 msgid "Text"
 msgstr "Text"
 
-#: core/fields/text.php:75
-#: core/fields/textarea.php:76
+#: core/fields/text.php:75 core/fields/textarea.php:76
 msgid "Formatting"
 msgstr "Formátování"
 
@@ -1115,13 +1055,11 @@ msgstr "Formátování"
 msgid "Define how to render html tags"
 msgstr "Definujte způsob vypisování HTML tagů"
 
-#: core/fields/text.php:85
-#: core/fields/textarea.php:86
+#: core/fields/text.php:85 core/fields/textarea.php:86
 msgid "None"
 msgstr "Žádný"
 
-#: core/fields/text.php:86
-#: core/fields/textarea.php:88
+#: core/fields/text.php:86 core/fields/textarea.php:88
 msgid "HTML"
 msgstr "HTML"
 
@@ -1157,8 +1095,7 @@ msgstr "Wysiwyg Editor"
 msgid "Toolbar"
 msgstr "Lišta nástrojů"
 
-#: core/fields/wysiwyg.php:86
-#: core/views/meta_box_location.php:47
+#: core/fields/wysiwyg.php:86 core/views/meta_box_location.php:47
 msgid "Basic"
 msgstr "Základní"
 
@@ -1175,8 +1112,12 @@ msgid "Move to trash. Are you sure?"
 msgstr "Přesunout do koše. Jste si jistí?"
 
 #: core/views/meta_box_fields.php:73
-msgid "No fields. Click the <strong>+ Add Field</strong> button to create your first field."
-msgstr "Žádná pole. Klikněte na tlačítko<strong>+ Přidat pole</strong> pro vytvoření prvního pole."
+msgid ""
+"No fields. Click the <strong>+ Add Field</strong> button to create your "
+"first field."
+msgstr ""
+"Žádná pole. Klikněte na tlačítko<strong>+ Přidat pole</strong> pro vytvoření "
+"prvního pole."
 
 #: core/views/meta_box_fields.php:149
 msgid "Field Instructions"
@@ -1199,8 +1140,12 @@ msgid "Rules"
 msgstr "Pravidla"
 
 #: core/views/meta_box_location.php:36
-msgid "Create a set of rules to determine which edit screens will use these advanced custom fields"
-msgstr "Vytváří sadu pravidel pro určení, na kterých stránkách úprav budou použita tato vlastní pole"
+msgid ""
+"Create a set of rules to determine which edit screens will use these "
+"advanced custom fields"
+msgstr ""
+"Vytváří sadu pravidel pro určení, na kterých stránkách úprav budou použita "
+"tato vlastní pole"
 
 #: core/views/meta_box_location.php:49
 msgid "Logged in User Type"
@@ -1296,7 +1241,8 @@ msgstr "Pořadí"
 
 #: core/views/meta_box_options.php:24
 msgid "Field groups are created in order <br />from lowest to highest."
-msgstr "Skupiny polí jsou vytvořeny v pořadí <br /> od nejnižšího k nejvyššímu."
+msgstr ""
+"Skupiny polí jsou vytvořeny v pořadí <br /> od nejnižšího k nejvyššímu."
 
 #: core/views/meta_box_options.php:40
 msgid "Position"
@@ -1315,8 +1261,12 @@ msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
 msgstr "<b>Vybrat</b> položky pro <b>skrytí</b> z obrazovky úprav"
 
 #: core/views/meta_box_options.php:82
-msgid "If multiple field groups appear on an edit screen, the first field group's options will be used. (the one with the lowest order number)"
-msgstr "Pokud se na obrazovce úprav objeví několik skupin polí, bude použito nastavení první skupiny. (s nejžším pořadovým číslem)"
+msgid ""
+"If multiple field groups appear on an edit screen, the first field group's "
+"options will be used. (the one with the lowest order number)"
+msgstr ""
+"Pokud se na obrazovce úprav objeví několik skupin polí, bude použito "
+"nastavení první skupiny. (s nejžším pořadovým číslem)"
 
 #: core/views/meta_box_options.php:92
 msgid "Content Editor"

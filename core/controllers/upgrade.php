@@ -627,7 +627,7 @@ class acf_upgrade
 				{
 					foreach($rows as $row)
 					{
-						// origional name
+						// original name
 						$field_name = $row['meta_key'];
 						
 						
