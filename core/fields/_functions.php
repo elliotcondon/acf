@@ -52,8 +52,8 @@ class acf_field_functions
 	
 	function load_value($value, $post_id, $field)
 	{
-		$cache = wp_cache_get( 'load_value/post_id=' . $post_id . '/name=' . $field['name'], 'acf' );
-		if( $cache )
+		$cache = wp_cache_get( 'load_value/post_id=' . $post_id . '/name=' . $field['name'], 'acf', $found );
+		if( $cache || $found )
 		{
 			return $cache;
 		}
