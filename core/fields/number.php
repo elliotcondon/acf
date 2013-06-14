@@ -19,9 +19,6 @@ class acf_field_number extends acf_field
 		$this->label = __("Number",'acf');
 		$this->defaults = array(
 			'default_value'	=>	'',
-			'min' => '',
-			'max' => '',
-			'step' => ''
 		);
 		
 		
@@ -44,19 +41,8 @@ class acf_field_number extends acf_field
 	
 	function create_field( $field )
 	{
-		$o = array( 'id', 'class', 'min', 'max', 'step', 'name', 'value' );
-		
-		$e = '<input type="number"';
-		
-		foreach( $o as $k )
-		{
-			$e .= ' ' . $k . '="' . esc_attr( $field[ $k ] ) . '"';	
-		}
-		
-		$e .= ' />';
-		
-		echo $e;
-		
+		$step = ($field['step'] != '' ? esc_attr($field['step']) : 'any');
+		echo '<input type="number" step="' . $step . '" min="' . esc_attr( $field['min'] ) . '" max="' . esc_attr( $field['max'] ) . '" value="' . esc_attr( $field['value'] ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" />';
 	}
 	
 	
@@ -79,73 +65,62 @@ class acf_field_number extends acf_field
 		$key = $field['name'];
 		
 		?>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Default Value",'acf'); ?></label>
-	</td>
-	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'	=>	'number',
-			'name'	=>	'fields['.$key.'][default_value]',
-			'value'	=>	$field['default_value'],
-		));
-
-		?>
-	</td>
-</tr>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Min",'acf'); ?></label>
-		<p><?php _e("Specifies the minimum value allowed",'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'	=>	'number',
-			'name'	=>	'fields['.$key.'][min]',
-			'value'	=>	$field['min'],
-		));
-
-		?>
-	</td>
-</tr>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Max",'acf'); ?></label>
-		<p><?php _e("Specifies the maximim value allowed",'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'	=>	'number',
-			'name'	=>	'fields['.$key.'][max]',
-			'value'	=>	$field['max'],
-		));
-
-		?>
-	</td>
-</tr>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Step",'acf'); ?></label>
-		<p><?php _e("Specifies the legal number intervals",'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'	=>	'number',
-			'name'	=>	'fields['.$key.'][step]',
-			'value'	=>	$field['step'],
-		));
-
-		?>
-	</td>
-</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label><?php _e("Default Value",'acf'); ?></label>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+					'type'	=>	'text',
+					'name'	=>	'fields['.$key.'][default_value]',
+					'value'	=>	$field['default_value'],
+				));
+				?>
+			</td>
+		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label><?php _e("Min",'acf'); ?></label>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+					'type'	=>	'number',
+					'name'	=>	'fields['.$key.'][min]',
+					'value'	=>	$field['min'],
+				));
+				?>
+			</td>
+		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label><?php _e("Max",'acf'); ?></label>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+					'type'	=>	'number',
+					'name'	=>	'fields['.$key.'][max]',
+					'value'	=>	$field['max'],
+				));
+				?>
+			</td>
+		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?>">
+			<td class="label">
+				<label><?php _e("Step",'acf'); ?></label>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+					'type'	=>	'number',
+					'name'	=>	'fields['.$key.'][step]',
+					'value'	=>	$field['step'],
+				));
+				?>
+			</td>
+		</tr>
 
 		<?php
 	}
