@@ -41,7 +41,8 @@ class acf_field_number extends acf_field
 	
 	function create_field( $field )
 	{
-		echo '<input type="number" step="' . esc_attr( $field['step'] ) . '" min="' . esc_attr( $field['min'] ) . '" max="' . esc_attr( $field['max'] ) . '" value="' . esc_attr( $field['value'] ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" />';
+		$step = ($field['step'] != '' ? esc_attr($field['step']) : 'any');
+		echo '<input type="number" step="' . $step . '" min="' . esc_attr( $field['min'] ) . '" max="' . esc_attr( $field['max'] ) . '" value="' . esc_attr( $field['value'] ) . '" id="' . esc_attr( $field['id'] ) . '" class="' . esc_attr( $field['class'] ) . '" name="' . esc_attr( $field['name'] ) . '" />';
 	}
 	
 	
@@ -70,13 +71,11 @@ class acf_field_number extends acf_field
 			</td>
 			<td>
 				<?php
-				
 				do_action('acf/create_field', array(
 					'type'	=>	'text',
 					'name'	=>	'fields['.$key.'][default_value]',
 					'value'	=>	$field['default_value'],
 				));
-
 				?>
 			</td>
 		</tr>
@@ -86,13 +85,11 @@ class acf_field_number extends acf_field
 			</td>
 			<td>
 				<?php
-				
 				do_action('acf/create_field', array(
 					'type'	=>	'number',
 					'name'	=>	'fields['.$key.'][min]',
 					'value'	=>	$field['min'],
 				));
-
 				?>
 			</td>
 		</tr>
@@ -102,13 +99,11 @@ class acf_field_number extends acf_field
 			</td>
 			<td>
 				<?php
-				
 				do_action('acf/create_field', array(
 					'type'	=>	'number',
 					'name'	=>	'fields['.$key.'][max]',
 					'value'	=>	$field['max'],
 				));
-
 				?>
 			</td>
 		</tr>
@@ -118,13 +113,11 @@ class acf_field_number extends acf_field
 			</td>
 			<td>
 				<?php
-				
 				do_action('acf/create_field', array(
 					'type'	=>	'number',
 					'name'	=>	'fields['.$key.'][step]',
 					'value'	=>	$field['step'],
 				));
-
 				?>
 			</td>
 		</tr>
