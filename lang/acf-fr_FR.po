@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Field - version 3.4.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-05-02 01:19:51+00:00\n"
-"PO-Revision-Date: 2013-06-10 18:59-0600\n"
+"PO-Revision-Date: 2013-06-17 11:09+0100\n"
 "Last-Translator: Maxime BERNARD-JACQUET <maxime@smoothie-creative.com>\n"
 "Language-Team: RVOLA <hello@rvola.com>\n"
 "Language: French\n"
@@ -710,7 +710,7 @@ msgstr "Nouveaux types de champs"
 
 #: core/controllers/field_groups.php:343
 msgid "Taxonomy Field"
-msgstr "Champ taxinomie"
+msgstr "Champ taxonomie"
 
 # @ acf
 #: core/controllers/field_groups.php:344
@@ -982,7 +982,7 @@ msgstr "Modification du groupe de champs 'montrer sur la page'"
 
 #: core/controllers/upgrade.php:670
 msgid "Modifying field option 'taxonomy'"
-msgstr "Modifier le champ 'taxinomie'"
+msgstr "Modifier le champ 'taxonomie'"
 
 #: core/controllers/upgrade.php:767
 msgid "Moving user custom fields from wp_options to wp_usermeta'"
@@ -1311,7 +1311,7 @@ msgstr "Relation"
 #: core/fields/relationship.php:523 core/fields/relationship.php:602
 #: core/views/meta_box_location.php:72
 msgid "Post Type"
-msgstr "Type d‘article"
+msgstr "Type de publication"
 
 # @ acf
 #: core/fields/page_link.php:102 core/fields/post_object.php:277
@@ -1759,7 +1759,7 @@ msgstr "Article"
 
 #: core/views/meta_box_location.php:83
 msgid "Post Category"
-msgstr "Type d‘articles"
+msgstr "Catégorie"
 
 # @ acf
 #: core/views/meta_box_location.php:84
@@ -1777,7 +1777,7 @@ msgstr "Autres"
 
 #: core/views/meta_box_location.php:88
 msgid "Taxonomy Term (Add / Edit)"
-msgstr "Taxinomie (Ajouter / Modifier)"
+msgstr "Taxonomie (Ajouter / Modifier)"
 
 #: core/views/meta_box_location.php:89
 msgid "User (Add / Edit)"
