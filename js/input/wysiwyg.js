@@ -68,7 +68,12 @@
 				return;
 			}
 			
-			
+			// Has tinyMCE failed to initialize?
+			if (!tinyMCE.settings)
+			{
+				return;
+			}
+
 			// reset tinyMCE settings
 			tinyMCE.settings.theme_advanced_buttons1 = '';
 			tinyMCE.settings.theme_advanced_buttons2 = '';
