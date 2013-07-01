@@ -326,7 +326,7 @@ var acf = {
 		}
 		
 		return false;
-	}
+	};
 	
 	
 	/*
