@@ -110,7 +110,7 @@ var acf = {
 		
 		  return retId;
 
-    }
+    };
         
     
     /*
@@ -285,7 +285,7 @@ var acf = {
 			$(this).attr('name', $(this).attr('name').replace(old_id, new_id) );
 		});
 		
-	}
+	};
 	
 	
 	/*
@@ -811,7 +811,7 @@ var acf = {
 			$group.remove();
 			
 		}
-	}
+	};
 	
 	
 
@@ -865,7 +865,7 @@ var acf = {
 		// dafaults
 		var defaults = {
 			'type' : 'text',
-			'class' : '',
+			'classname' : '',
 			'name' : '',
 			'value' : ''
 		};
@@ -877,11 +877,11 @@ var acf = {
 		
 		if( options.type == "text" )
 		{
-			html += '<input class="text ' + options.class + '" type="text" id="' + options.name + '" name="' + options.name + '" value="' + options.value + '" />';
+			html += '<input class="text ' + options.classname + '" type="text" id="' + options.name + '" name="' + options.name + '" value="' + options.value + '" />';
 		}
 		else if( options.type == "select" )
 		{
-			html += '<select class="select ' + options.class + '" id="' + options.name + '" name="' + options.name + '">';
+			html += '<select class="select ' + options.classname + '" id="' + options.name + '" name="' + options.name + '">';
 			if( options.choices )
 			{
 				for( i = 0; i < options.choices.length; i++ )
@@ -942,7 +942,7 @@ var acf = {
 			// create select
 			select = acf.helpers.create_field({
 				'type' : 'select',
-				'class' : 'conditional-logic-field',
+				'classname' : 'conditional-logic-field',
 				'name' : name,
 				'value' : val,
 				'choices' : choices
@@ -1039,7 +1039,7 @@ var acf = {
 		// create select
 		select = acf.helpers.create_field({
 			'type' : 'select',
-			'class' : 'conditional-logic-value',
+			'classname' : 'conditional-logic-value',
 			'name' : conditional_function.attr('name'),
 			'value' : conditional_function.val(),
 			'choices' : choices

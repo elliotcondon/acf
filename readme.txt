@@ -101,6 +101,9 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 4.1.7 +
+* Fixed JS error that was occurring on the Edit Field Group screen when using Internet Explorer 8
+
 = 4.1.6 =
 * General: Improved load_value function to better handle false and default values
 * Number field: Added new options for min, max and step - http://support.advancedcustomfields.com/discussion/6263/fork-on-numbers-field
