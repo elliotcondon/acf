@@ -8,10 +8,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-06-14 18:22+0100\n"
-"Last-Translator: Alex Torscho <alex.torscho@gmail.com>\n"
+"PO-Revision-Date: 2013-07-08 09:41+0600\n"
+"Last-Translator: casepress.org <box.case.press@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: acf.php:264
 msgid "Field&nbsp;Groups"
@@ -1711,3 +1711,11 @@ msgstr "Метки"
 #: core/views/meta_box_options.php:104
 msgid "Send Trackbacks"
 msgstr "Отправить обратные ссылки"
+
+#: core/api.php:1093
+msgid "Update"
+msgstr "Обновить"
+
+#: core/api.php:1094
+msgid "Post updated"
+msgstr "Данные обновлены"
