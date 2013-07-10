@@ -225,14 +225,25 @@ class acf_field_taxonomy extends acf_field
 	<?php endif; ?>
 			
 			<?php 
-	
-			wp_list_categories( array(
-				'taxonomy'      => $field['taxonomy'],
+			
+			// default args
+			$args = array(
+				'taxonomy'     => $field['taxonomy'],
 				'hide_empty'   => false,
 				'style'        => 'none',
 				'walker'       => new acf_taxonomy_field_walker( $field ),
-			));
+			);
+			
+			// hacky, but field[name] contains the key...
+			$field_name = trim( str_replace( 'acf-field-', '', $field['id'] ) );
+			
+			// filters
+			$args = apply_filters( 'acf/fields/taxonomy/query', $args, $field );
+			$args = apply_filters( 'acf/fields/taxonomy/query/name=' . $field_name, $args, $field );
+			$args = apply_filters( 'acf/fields/taxonomy/query/key=' . $field['key'], $args, $field );
 	
+			wp_list_categories( $args );
+			
 			?>
 	
 	<?php if( $field['field_type'] == 'select' ): ?>
