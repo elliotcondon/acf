@@ -68,6 +68,8 @@
 				return;
 			}
 			
+			// save existing tinyMCE settings
+			var saved_settings = jQuery.extend({},tinyMCE.settings);
 			
 			// reset tinyMCE settings
 			tinyMCE.settings.theme_advanced_buttons1 = '';
@@ -94,6 +96,9 @@
 			// add events (click, focus, blur) for inserting image into correct editor
 			_wysiwyg.add_events( id );
 			
+			// restore tinyMCE settings
+			tinyMCE.settings = saved_settings;
+
 		});
 		
 		
