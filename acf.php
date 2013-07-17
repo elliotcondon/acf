@@ -668,7 +668,7 @@ class Acf
 			if( $field['required'] )
 			{
 				$required_class = ' required';
-				$required_label = ' <span class="required">*</span>';
+				$required_label = apply_filters('acf/required_label',' <span class="required">*</span>');
 			}
 			
 			
