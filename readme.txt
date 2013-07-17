@@ -50,7 +50,11 @@ Advanced Custom Fields is the perfect solution for any wordpress website which n
 * Mac Firefox 	:)
 * Mac Safari 	:)
 * Mac Chrome	:)
+* PC Safari 	:)
+* PC Chrome		:)
 * PC Firefox	:)
+* iPhone Safari :)
+* iPad Safari 	:)
 * PC ie7		:S
 
 = Website =
