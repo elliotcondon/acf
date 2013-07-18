@@ -71,7 +71,7 @@ function wxr_site_url() {
 		return network_home_url();
 	// wp: the blog url
 	else
-		return get_bloginfo_rss( 'url' );
+		return get_site_url();
 }
 
 /**
