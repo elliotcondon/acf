@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Advanced Custom Fields 4.1.8\n"
+"Project-Id-Version: Advanced Custom Fields 4.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
-"POT-Creation-Date: 2013-07-09 03:49:07+00:00\n"
-"PO-Revision-Date: 2013-07-11 21:45+0100\n"
+"POT-Creation-Date: 2013-07-17 14:09+0100\n"
+"PO-Revision-Date: 2013-07-17 14:10+0100\n"
 "Last-Translator: Mikael Jorhult <mikael@jorhult.se>\n"
 "Language-Team: Mikael Jorhult <mikael@jorhult.se>\n"
 "Language: Swedish\n"
@@ -16,103 +16,113 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: acf.php:325
+#: acf.php:330
 msgid "Field&nbsp;Groups"
 msgstr "Fältgrupper"
 
-#: acf.php:326 core/controllers/field_groups.php:214
+#: acf.php:331 core/controllers/field_groups.php:214
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
 
-#: acf.php:327
+#: acf.php:332
 msgid "Add New"
 msgstr "Lägg till ny"
 
-#: acf.php:328
+#: acf.php:333
 msgid "Add New Field Group"
 msgstr "Lägg till ny fältgrupp"
 
-#: acf.php:329
+#: acf.php:334
 msgid "Edit Field Group"
 msgstr "Redigera fältgrupp"
 
-#: acf.php:330
+#: acf.php:335
 msgid "New Field Group"
 msgstr "Ny fältgrupp"
 
-#: acf.php:331
+#: acf.php:336
 msgid "View Field Group"
 msgstr "Visa fältgrupp"
 
-#: acf.php:332
+#: acf.php:337
 msgid "Search Field Groups"
 msgstr "Sök fältgrupp"
 
-#: acf.php:333
+#: acf.php:338
 msgid "No Field Groups found"
 msgstr "Inga fältgrupper hittades"
 
-#: acf.php:334
+#: acf.php:339
 msgid "No Field Groups found in Trash"
 msgstr "Inga fältgrupper finns i papperskorgen"
 
-#: acf.php:447 core/views/meta_box_options.php:96
+#: acf.php:452 core/views/meta_box_options.php:96
 msgid "Custom Fields"
 msgstr "Egna fält"
 
-#: acf.php:465 acf.php:468
+#: acf.php:470 acf.php:473
 msgid "Field group updated."
 msgstr "Fältgruppen uppdaterades."
 
-#: acf.php:466
+#: acf.php:471
 msgid "Custom field updated."
 msgstr "Eget fält uppdaterades."
 
-#: acf.php:467
+#: acf.php:472
 msgid "Custom field deleted."
 msgstr "Eget fält raderades."
 
-#. translators: %s: date and time of the revision
-#: acf.php:470
+#: acf.php:475
+#, php-format
 msgid "Field group restored to revision from %s"
 msgstr "Fältgruppen återställdes till revision %s"
 
-#: acf.php:471
+#: acf.php:476
 msgid "Field group published."
 msgstr "Fältgruppen publicerades."
 
-#: acf.php:472
+#: acf.php:477
 msgid "Field group saved."
 msgstr "Fältgruppen sparades."
 
-#: acf.php:473
+#: acf.php:478
 msgid "Field group submitted."
 msgstr "Fältgruppen skickades."
 
-#: acf.php:474
+#: acf.php:479
 msgid "Field group scheduled for."
 msgstr "Fältgruppen schemalades."
 
-#: acf.php:475
+#: acf.php:480
 msgid "Field group draft updated."
 msgstr "Utkastet till fältgrupp uppdaterades."
 
-#: acf.php:610
+#: acf.php:615
 msgid "Thumbnail"
 msgstr "Tumnagel"
 
-#: acf.php:611
+#: acf.php:616
 msgid "Medium"
 msgstr "Medium"
 
-#: acf.php:612
+#: acf.php:617
 msgid "Large"
 msgstr "Stor"
 
-#: acf.php:613
+#: acf.php:618
 msgid "Full"
 msgstr "Full"
+
+#: core/api.php:1094
+msgid "Update"
+msgstr "Uppdatera"
+
+#: core/api.php:1095
+msgid "Post updated"
+msgstr "Inlägget uppdaterades"
 
 #: core/actions/export.php:23 core/views/meta_box_fields.php:58
 msgid "Error"
@@ -121,14 +131,6 @@ msgstr "Fel"
 #: core/actions/export.php:30
 msgid "No ACF groups selected"
 msgstr "Inga ACF-grupper har valts"
-
-#: core/api.php:1093
-msgid "Update"
-msgstr "Uppdatera"
-
-#: core/api.php:1094
-msgid "Post updated"
-msgstr "Inlägget uppdaterades"
 
 #: core/controllers/addons.php:42 core/controllers/field_groups.php:311
 msgid "Add-ons"
@@ -429,8 +431,8 @@ msgstr ""
 "com/terms-conditions/\n"
 " */"
 
-#: core/controllers/export.php:370 core/controllers/field_group.php:366
-#: core/controllers/field_group.php:428 core/controllers/field_groups.php:148
+#: core/controllers/export.php:370 core/controllers/field_group.php:367
+#: core/controllers/field_group.php:429 core/controllers/field_groups.php:148
 msgid "Fields"
 msgstr "Fält"
 
@@ -458,19 +460,19 @@ msgstr ""
 msgid "No field groups were selected"
 msgstr "Inga fältgrupper var valda"
 
-#: core/controllers/field_group.php:367
+#: core/controllers/field_group.php:368
 msgid "Location"
 msgstr "Plats"
 
-#: core/controllers/field_group.php:368
+#: core/controllers/field_group.php:369
 msgid "Options"
 msgstr "Inställningar"
 
-#: core/controllers/field_group.php:430
+#: core/controllers/field_group.php:431
 msgid "Show Field Key:"
 msgstr "Visa fältnyckel:"
 
-#: core/controllers/field_group.php:431 core/fields/page_link.php:138
+#: core/controllers/field_group.php:432 core/fields/page_link.php:138
 #: core/fields/page_link.php:159 core/fields/post_object.php:328
 #: core/fields/post_object.php:349 core/fields/select.php:224
 #: core/fields/select.php:243 core/fields/taxonomy.php:341
@@ -479,7 +481,7 @@ msgstr "Visa fältnyckel:"
 msgid "No"
 msgstr "Nej"
 
-#: core/controllers/field_group.php:432 core/fields/page_link.php:137
+#: core/controllers/field_group.php:433 core/fields/page_link.php:137
 #: core/fields/page_link.php:158 core/fields/post_object.php:327
 #: core/fields/post_object.php:348 core/fields/select.php:223
 #: core/fields/select.php:242 core/fields/taxonomy.php:340
@@ -488,33 +490,33 @@ msgstr "Nej"
 msgid "Yes"
 msgstr "Ja"
 
-#: core/controllers/field_group.php:609
+#: core/controllers/field_group.php:610
 msgid "Front Page"
 msgstr "Förstasida"
 
-#: core/controllers/field_group.php:610
+#: core/controllers/field_group.php:611
 msgid "Posts Page"
 msgstr "Inläggssida"
 
-#: core/controllers/field_group.php:611
+#: core/controllers/field_group.php:612
 msgid "Top Level Page (parent of 0)"
 msgstr "Toppsida (förälder satt till 0)"
 
-#: core/controllers/field_group.php:612
+#: core/controllers/field_group.php:613
 msgid "Parent Page (has children)"
 msgstr "Föräldersida (har undersidor)"
 
-#: core/controllers/field_group.php:613
+#: core/controllers/field_group.php:614
 msgid "Child Page (has parent)"
 msgstr "Undersida (har föräldersida)"
 
-#: core/controllers/field_group.php:621
+#: core/controllers/field_group.php:622
 msgid "Default Template"
 msgstr "Standardmall"
 
-#: core/controllers/field_group.php:713 core/controllers/field_group.php:734
-#: core/controllers/field_group.php:741 core/fields/file.php:181
-#: core/fields/image.php:166 core/fields/page_link.php:109
+#: core/controllers/field_group.php:714 core/controllers/field_group.php:735
+#: core/controllers/field_group.php:742 core/fields/file.php:184
+#: core/fields/image.php:167 core/fields/page_link.php:109
 #: core/fields/post_object.php:274 core/fields/post_object.php:298
 #: core/fields/relationship.php:553 core/fields/relationship.php:577
 #: core/fields/user.php:229
@@ -880,7 +882,15 @@ msgstr "Tillägget har nu installerats och aktiverats!"
 msgid "Awesome. Let's get to work"
 msgstr "Grymt! Dags att återgå till arbetet."
 
-#: core/controllers/input.php:510
+#: core/controllers/input.php:503
+msgid "Expand Details"
+msgstr "Visa detaljer"
+
+#: core/controllers/input.php:504
+msgid "Collapse Details"
+msgstr "Dölj detaljer"
+
+#: core/controllers/input.php:507
 msgid "Validation Failed. One or more fields below are required."
 msgstr "Valideringen misslyckades. Ett eller flera fält nedan måste fyllas i."
 
@@ -981,61 +991,6 @@ msgstr "jQuery"
 msgid "eg: #ffffff"
 msgstr "exempel: #ffffff"
 
-#: core/fields/date_picker/date_picker.php:22
-msgid "Date Picker"
-msgstr "Datumväljare"
-
-#: core/fields/date_picker/date_picker.php:30
-msgid "Done"
-msgstr "Klar"
-
-#: core/fields/date_picker/date_picker.php:31
-msgid "Today"
-msgstr "Idag"
-
-#: core/fields/date_picker/date_picker.php:34
-msgid "Show a different month"
-msgstr "Visa en annan månad"
-
-#: core/fields/date_picker/date_picker.php:105
-msgid "Save format"
-msgstr "Lagringsformat"
-
-#: core/fields/date_picker/date_picker.php:106
-msgid ""
-"This format will determin the value saved to the database and returned via "
-"the API"
-msgstr ""
-"Detta format avgör hur värdet sparas i databasen och returneras via "
-"tilläggets API"
-
-#: core/fields/date_picker/date_picker.php:107
-msgid "\"yymmdd\" is the most versatile save format. Read more about"
-msgstr "\"yymmdd\" är det mest flexibla formatet. Läs mer om"
-
-#: core/fields/date_picker/date_picker.php:107
-#: core/fields/date_picker/date_picker.php:123
-msgid "jQuery date formats"
-msgstr "jQuery datumformat"
-
-#: core/fields/date_picker/date_picker.php:121
-msgid "Display format"
-msgstr "Visningsformat"
-
-#: core/fields/date_picker/date_picker.php:122
-msgid "This format will be seen by the user when entering a value"
-msgstr "Detta format är det som visas när användaren anger ett värde"
-
-#: core/fields/date_picker/date_picker.php:123
-msgid ""
-"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
-"about"
-msgstr "\"yy-mm-dd\" är set vanligaste visningsformatet. Läs mer om"
-
-#: core/fields/date_picker/date_picker.php:137
-msgid "Week Starts On"
-msgstr "Veckor börjar på"
-
 #: core/fields/dummy.php:19
 msgid "Dummy"
 msgstr "Dummy"
@@ -1052,7 +1007,7 @@ msgstr "Fil"
 msgid "Content"
 msgstr "Innehåll"
 
-#: core/fields/file.php:26 core/fields/file.php:711
+#: core/fields/file.php:26
 msgid "Select File"
 msgstr "Välj fil"
 
@@ -1060,68 +1015,52 @@ msgstr "Välj fil"
 msgid "Edit File"
 msgstr "Redigera fil"
 
-#: core/fields/file.php:28 core/fields/image.php:29
+#: core/fields/file.php:28
+msgid "Update File"
+msgstr "Uppdatera fil"
+
+#: core/fields/file.php:29 core/fields/image.php:30
 msgid "uploaded to this post"
 msgstr "uppladdade till detta inlägg"
 
-#: core/fields/file.php:118
+#: core/fields/file.php:121
 msgid "No File Selected"
 msgstr "Ingen fil vald"
 
-#: core/fields/file.php:118
+#: core/fields/file.php:121
 msgid "Add File"
 msgstr "Lägg till fil"
 
-#: core/fields/file.php:148 core/fields/image.php:117
+#: core/fields/file.php:151 core/fields/image.php:118
 #: core/fields/taxonomy.php:365
 msgid "Return Value"
 msgstr "Returvärde"
 
-#: core/fields/file.php:159
+#: core/fields/file.php:162
 msgid "File Object"
 msgstr "Filobjekt"
 
-#: core/fields/file.php:160
+#: core/fields/file.php:163
 msgid "File URL"
 msgstr "Filadress"
 
-#: core/fields/file.php:161
+#: core/fields/file.php:164
 msgid "File ID"
 msgstr "Filens ID"
 
-#: core/fields/file.php:170 core/fields/image.php:155
+#: core/fields/file.php:173 core/fields/image.php:156
 msgid "Library"
 msgstr "Bibliotek"
 
-#: core/fields/file.php:182 core/fields/image.php:167
+#: core/fields/file.php:185 core/fields/image.php:168
 msgid "Uploaded to post"
 msgstr "Uppladdade till detta inlägg"
-
-#: core/fields/file.php:286
-msgid "File Updated."
-msgstr "Filen uppdaterad."
-
-#: core/fields/file.php:379 core/fields/image.php:396
-msgid "Media attachment updated."
-msgstr "Mediabilagan uppdaterades."
-
-#: core/fields/file.php:537
-msgid "No files selected"
-msgstr "Inga filer valda"
-
-#: core/fields/file.php:678
-msgid "Add Selected Files"
-msgstr "Lägg till valda filer"
-
-#: core/fields/file.php:714
-msgid "Update File"
-msgstr "Uppdatera fil"
 
 #: core/fields/image.php:19
 msgid "Image"
 msgstr "Bild"
 
-#: core/fields/image.php:27 core/fields/image.php:718
+#: core/fields/image.php:27
 msgid "Select Image"
 msgstr "Välj bild"
 
@@ -1129,53 +1068,41 @@ msgstr "Välj bild"
 msgid "Edit Image"
 msgstr "Redigera bild"
 
-#: core/fields/image.php:82
+#: core/fields/image.php:29
+msgid "Update Image"
+msgstr "Uppdatera bild"
+
+#: core/fields/image.php:83
 msgid "Remove"
 msgstr "Radera"
 
-#: core/fields/image.php:83 core/views/meta_box_fields.php:122
+#: core/fields/image.php:84 core/views/meta_box_fields.php:122
 msgid "Edit"
 msgstr "Redigera"
 
-#: core/fields/image.php:89
+#: core/fields/image.php:90
 msgid "No image selected"
 msgstr "Ingen bild vald"
 
-#: core/fields/image.php:89
+#: core/fields/image.php:90
 msgid "Add Image"
 msgstr "Läge till bild"
 
-#: core/fields/image.php:127
+#: core/fields/image.php:128
 msgid "Image Object"
 msgstr "Bildobjekt"
 
-#: core/fields/image.php:128
+#: core/fields/image.php:129
 msgid "Image URL"
 msgstr "Bildadress"
 
-#: core/fields/image.php:129
+#: core/fields/image.php:130
 msgid "Image ID"
 msgstr "Bildens ID"
 
-#: core/fields/image.php:137
+#: core/fields/image.php:138
 msgid "Preview Size"
 msgstr "Förhandsvisningens storlek"
-
-#: core/fields/image.php:305
-msgid "Image Updated."
-msgstr "Bild uppdaterades."
-
-#: core/fields/image.php:547
-msgid "No images selected"
-msgstr "Inga bilder valda"
-
-#: core/fields/image.php:689
-msgid "Add Selected Images"
-msgstr "Lägg till valda bilder"
-
-#: core/fields/image.php:721
-msgid "Update Image"
-msgstr "Uppdatera bild"
 
 #: core/fields/message.php:19 core/fields/message.php:70
 #: core/fields/true_false.php:79
@@ -1456,6 +1383,61 @@ msgstr "Verktygsfält"
 msgid "Show Media Upload Buttons?"
 msgstr "Visa knappar för mediauppladdning"
 
+#: core/fields/date_picker/date_picker.php:22
+msgid "Date Picker"
+msgstr "Datumväljare"
+
+#: core/fields/date_picker/date_picker.php:30
+msgid "Done"
+msgstr "Klar"
+
+#: core/fields/date_picker/date_picker.php:31
+msgid "Today"
+msgstr "Idag"
+
+#: core/fields/date_picker/date_picker.php:34
+msgid "Show a different month"
+msgstr "Visa en annan månad"
+
+#: core/fields/date_picker/date_picker.php:105
+msgid "Save format"
+msgstr "Lagringsformat"
+
+#: core/fields/date_picker/date_picker.php:106
+msgid ""
+"This format will determin the value saved to the database and returned via "
+"the API"
+msgstr ""
+"Detta format avgör hur värdet sparas i databasen och returneras via "
+"tilläggets API"
+
+#: core/fields/date_picker/date_picker.php:107
+msgid "\"yymmdd\" is the most versatile save format. Read more about"
+msgstr "\"yymmdd\" är det mest flexibla formatet. Läs mer om"
+
+#: core/fields/date_picker/date_picker.php:107
+#: core/fields/date_picker/date_picker.php:123
+msgid "jQuery date formats"
+msgstr "jQuery datumformat"
+
+#: core/fields/date_picker/date_picker.php:121
+msgid "Display format"
+msgstr "Visningsformat"
+
+#: core/fields/date_picker/date_picker.php:122
+msgid "This format will be seen by the user when entering a value"
+msgstr "Detta format är det som visas när användaren anger ett värde"
+
+#: core/fields/date_picker/date_picker.php:123
+msgid ""
+"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
+"about"
+msgstr "\"yy-mm-dd\" är set vanligaste visningsformatet. Läs mer om"
+
+#: core/fields/date_picker/date_picker.php:137
+msgid "Week Starts On"
+msgstr "Veckor börjar på"
+
 #: core/views/meta_box_fields.php:24
 msgid "New Field"
 msgstr "Nytt fält"
@@ -1660,8 +1642,8 @@ msgid "User (Add / Edit)"
 msgstr "Användare (Lägg till / Redigera)"
 
 #: core/views/meta_box_location.php:93
-msgid "Media Attachment (Edit)"
-msgstr "Mediabilaga (Redigera)"
+msgid "Media Attachment (Add / Edit)"
+msgstr "Mediabilaga (Lägg till / Redigera)"
 
 #: core/views/meta_box_location.php:145
 msgid "and"
@@ -1762,6 +1744,27 @@ msgstr "Etiketter"
 #: core/views/meta_box_options.php:106
 msgid "Send Trackbacks"
 msgstr "Skicka trackbacks"
+
+#~ msgid "File Updated."
+#~ msgstr "Filen uppdaterad."
+
+#~ msgid "Media attachment updated."
+#~ msgstr "Mediabilagan uppdaterades."
+
+#~ msgid "No files selected"
+#~ msgstr "Inga filer valda"
+
+#~ msgid "Add Selected Files"
+#~ msgstr "Lägg till valda filer"
+
+#~ msgid "Image Updated."
+#~ msgstr "Bild uppdaterades."
+
+#~ msgid "No images selected"
+#~ msgstr "Inga bilder valda"
+
+#~ msgid "Add Selected Images"
+#~ msgstr "Lägg till valda bilder"
 
 #~ msgid "new_field"
 #~ msgstr "nytt_falt"
