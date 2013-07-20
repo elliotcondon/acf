@@ -20,6 +20,7 @@ class acf_field_textarea extends acf_field
 		$this->defaults = array(
 			'default_value'	=>	'',
 			'formatting' 	=>	'br',
+			'max_length' => 0
 		);
 		
 		
@@ -43,8 +44,9 @@ class acf_field_textarea extends acf_field
 	function create_field( $field )
 	{
 		$field['value'] = esc_textarea($field['value']);
+		$maxlength = (!empty($field['max_length'])) ? 'maxlength="'.esc_attr($field['max_length']).'"' : '';
 		
-		echo '<textarea id="' . $field['id'] . '" rows="4" class="' . $field['class'] . '" name="' . $field['name'] . '" >' . $field['value'] . '</textarea>';
+		echo '<textarea id="' . $field['id'] . '" rows="4" class="' . $field['class'] . '" name="' . $field['name'] . '" '.$maxlength.'>' . $field['value'] . '</textarea>';
 	}
 	
 	/*
@@ -99,6 +101,22 @@ class acf_field_textarea extends acf_field
 		));
 		?>
 	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+    <td class="label">
+        <label><?php _e("Max Length",'acf'); ?></label>
+        <p class="description"><?php _e("Set a character limit for this field.<br />(0 = unlimited)",'acf'); ?></p>
+    </td>
+    <td>
+        <?php 
+        do_action('acf/create_field', array(
+            'type'  =>  'number',
+            'name'  =>  'fields[' .$key.'][max_length]',
+            'value' =>  $field['max_length'],
+            'maxlength' => 100
+        ));
+        ?>
+    </td>
 </tr>
 		<?php
 		
