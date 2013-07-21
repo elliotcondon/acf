@@ -120,7 +120,7 @@ class acf_field_group
 
 		
 		// get field from postmeta
-		$rows = $wpdb->get_results( $wpdb->prepare("SELECT meta_key FROM $wpdb->postmeta WHERE post_id = %d AND meta_key LIKE %s", $post_id, 'field\_%'), ARRAY_A);
+		$rows = $wpdb->get_results( $wpdb->prepare("SELECT meta_key FROM $wpdb->postmeta WHERE post_id = %d AND meta_key LIKE 'field\_%%'", $post_id, false), ARRAY_A);
 		
 		
 		if( $rows )
