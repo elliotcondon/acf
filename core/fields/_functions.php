@@ -188,6 +188,7 @@ class acf_field_functions
 			$value = stripslashes_deep($value);
 		//}
 		
+		$post_type = get_post_type( $post_id );
 		
 		// apply filters		
 		foreach( array('key', 'name', 'type') as $key )
@@ -201,8 +202,8 @@ class acf_field_functions
 		if( is_numeric($post_id) )
 		{
 			// allow ACF to save to revision!
-			update_metadata('post', $post_id, $field['name'], $value );
-			update_metadata('post', $post_id, '_' . $field['name'], $field['key']);
+			update_metadata($post_type, $post_id, $field['name'], $value );
+			update_metadata($post_type, $post_id, '_' . $field['name'], $field['key']);
 		}
 		elseif( strpos($post_id, 'user_') !== false )
 		{
