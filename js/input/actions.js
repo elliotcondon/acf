@@ -652,7 +652,7 @@ var acf = {
 			// compare values
 			if( $field.hasClass('field_type-true_false') || $field.hasClass('field_type-checkbox') || $field.hasClass('field_type-radio') )
 			{
-				var exists = toggle.find('input[value="' + rule.value + '"]:checked').exists();
+				var exists = $field.find('input[value="' + rule.value + '"]:checked').exists();
 				
 				
 				if( rule.operator == "==" )
