@@ -106,7 +106,7 @@ class acf_field_select extends acf_field
 		// null
 		if( $field['allow_null'] )
 		{
-			echo '<option value="null"> - Select - </option>';
+			echo '<option value="null">' . __(" - Select - ",'acf') . '</option>';
 		}
 		
 		// loop through values and add them as options
