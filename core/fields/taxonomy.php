@@ -405,7 +405,7 @@ class acf_taxonomy_field_walker extends Walker
 
 	
 	// start_el
-	function start_el( &$output, $term, $depth, $args = array(), $current_object_id = 0)
+	function start_el( &$output, $term, $depth = 0, $args = array(), $current_object_id = 0)
 	{
 		// vars
 		$selected = in_array( $term->term_id, $this->field['value'] );
