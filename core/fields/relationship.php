@@ -22,7 +22,8 @@ class acf_field_relationship extends acf_field
 			'max' 		=>	'',
 			'taxonomy' 	=>	array('all'),
 			'filters'	=>	array('search'),
-			'result_elements' => array('post_title', 'post_type')
+			'result_elements' => array('post_title', 'post_type'),
+			'output' => 'post_object'
 		);
 		$this->l10n = array(
 			'max' => __("Maximum values reached ( {max} values )",'acf')
@@ -634,6 +635,24 @@ class acf_field_relationship extends acf_field
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
+		<label><?php _e("Output",'acf'); ?></label>
+	</td>
+	<td>
+		<?php 
+		do_action('acf/create_field', array(
+			'type'	=>	'radio',
+			'name'	=>	'fields['.$key.'][output]',
+			'value'	=>	$field['output'],
+			'choices' => array(
+				'post_object' => __("Post Object",'acf'),
+				'post_id' => __("Post ID",'acf'),
+			)
+		));
+		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
 		<label><?php _e("Maximum posts",'acf'); ?></label>
 	</td>
 	<td>
@@ -686,6 +705,11 @@ class acf_field_relationship extends acf_field
 		// empty?
 		if( empty($value) )
 		{
+			return $value;
+		}
+		
+		//Want just the IDs?
+		if($field['output'] == 'post_id'){
 			return $value;
 		}
 		
