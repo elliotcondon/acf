@@ -129,16 +129,16 @@ class acf_field_group
 			{
 				$field = apply_filters('acf/load_field', false, $row['meta_key'], $post_id );
 	
-			 	$fields[ $field['order_no'] ] = $field;
+				$fields[ $field['order_no'] ] = $field;
 			}
-		 	
-		 	// sort
-		 	ksort( $fields );
-	 	}
-	 	
-	 	
-	 	
-	 	// return
+			
+			// sort
+			ksort( $fields );
+		}
+		
+		
+		
+		// return
 		return $fields;
 		
 	}
@@ -167,46 +167,46 @@ class acf_field_group
 		
 		
 		// get all rules
-	 	$rules = get_post_meta($post_id, 'rule', false);
-	 	
-	 	
-	 	if( is_array($rules) )
-	 	{
-		 	foreach( $rules as $rule )
-		 	{
-		 		// if field group was duplicated, it may now be a serialized string!
-		 		$rule = maybe_unserialize($rule);
-		 		
-		 		
-			 	// does this rule have a group?
-			 	// + groups were added in 4.0.4
-			 	if( !isset($rule['group_no']) )
-			 	{
-				 	$rule['group_no'] = $group_no;
-				 	
-				 	// sperate groups?
-				 	if( get_post_meta($post_id, 'allorany', true) == 'any' )
-				 	{
-					 	$group_no++;
-				 	}
-			 	}
-			 	
-			 	
-			 	// add to group
-			 	$groups[ $rule['group_no'] ][ $rule['order_no'] ] = $rule;
-			 	
-			 	
-			 	// sort rules
-			 	ksort( $groups[ $rule['group_no'] ] );
-	 	
-		 	}
-		 	
-		 	// sort groups
+		$rules = get_post_meta($post_id, 'rule', false);
+		
+		
+		if( is_array($rules) )
+		{
+			foreach( $rules as $rule )
+			{
+				// if field group was duplicated, it may now be a serialized string!
+				$rule = maybe_unserialize($rule);
+				
+				
+				// does this rule have a group?
+				// + groups were added in 4.0.4
+				if( !isset($rule['group_no']) )
+				{
+					$rule['group_no'] = $group_no;
+					
+					// sperate groups?
+					if( get_post_meta($post_id, 'allorany', true) == 'any' )
+					{
+						$group_no++;
+					}
+				}
+				
+				
+				// add to group
+				$groups[ $rule['group_no'] ][ $rule['order_no'] ] = $rule;
+				
+				
+				// sort rules
+				ksort( $groups[ $rule['group_no'] ] );
+		
+			}
+			
+			// sort groups
 			ksort( $groups );
-	 	}
-	 		 	
-	 	
-	 	// return fields
+		}
+				
+		
+		// return fields
 		return $groups;
 	}
 	
@@ -229,36 +229,36 @@ class acf_field_group
 		
 		
 		// defaults
-	 	$options = array(
-	 		'position'			=>	'normal',
-	 		'layout'			=>	'no_box',
-	 		'hide_on_screen'	=>	array(),
-	 	);
-	 	
-	 	
-	 	// vars
-	 	$position = get_post_meta($post_id, 'position', true);
-	 	if( $position )
+		$options = array(
+			'position'			=>	'normal',
+			'layout'			=>	'no_box',
+			'hide_on_screen'	=>	array(),
+		);
+		
+		
+		// vars
+		$position = get_post_meta($post_id, 'position', true);
+		if( $position )
 		{
 			$options['position'] = $position;
 		}
 		
 		$layout = get_post_meta($post_id, 'layout', true);
-	 	if( $layout )
+		if( $layout )
 		{
 			$options['layout'] = $layout;
 		}
 		
 		$hide_on_screen = get_post_meta($post_id, 'hide_on_screen', true);
-	 	if( $hide_on_screen )
+		if( $hide_on_screen )
 		{
 			$hide_on_screen = maybe_unserialize($hide_on_screen);
 			$options['hide_on_screen'] = $hide_on_screen;
 		}
 		
-	 	
-	 	// return
-	 	return $options;
+		
+		// return
+		return $options;
 	}
 	
 	
@@ -434,14 +434,14 @@ class acf_field_group
 	
 	function screen_settings( $current )
 	{
-	    $current .= '<h5>' . __("Fields",'acf') . '</h5>';
-	    
-	    $current .= '<div class="show-field_key">' . __("Show Field Key:",'acf');
+		$current .= '<h5>' . __("Fields",'acf') . '</h5>';
+		
+		$current .= '<div class="show-field_key">' . __("Show Field Key:",'acf');
 			$current .= '<label class="show-field_key-no"><input checked="checked" type="radio" value="0" name="show-field_key" />' . __("No",'acf') . '</label>';
 			$current .= '<label class="show-field_key-yes"><input type="radio" value="1" name="show-field_key" />' . __("Yes",'acf') . '</label>';
 		$current .= '</div>';
-	    
-	    return $current;
+		
+		return $current;
 	}
 	
 	
@@ -706,7 +706,11 @@ class acf_field_group
 				global $wp_roles;
 				
 				$choices = $wp_roles->get_names();
-								
+
+				if (is_multisite())
+				{
+					$choices = array_merge($choices, array('super_admin' => __('Super Admin')));
+				}
 				break;
 			
 			case "taxonomy" :
@@ -741,7 +745,7 @@ class acf_field_group
 				global $wp_roles;
 				
 				$choices = array_merge( array('all' => __('All', 'acf')), $wp_roles->get_names() );
-			
+
 				break;
 				
 				
@@ -801,10 +805,10 @@ class acf_field_group
 		}
 		
 		
-        $name = 'acf_' . sanitize_title_with_dashes($_POST['post_title']);
-        
-        
-        return $name;
+		$name = 'acf_' . sanitize_title_with_dashes($_POST['post_title']);
+		
+		
+		return $name;
 	}
 	
 	
@@ -835,8 +839,8 @@ class acf_field_group
 		// only save once! WordPress save's a revision as well.
 		if( wp_is_post_revision($post_id) )
 		{
-	    	return $post_id;
-        }
+			return $post_id;
+		}
 		
 		
 		/*
