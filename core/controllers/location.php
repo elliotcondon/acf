@@ -231,15 +231,15 @@ class acf_location
 		}
 		
 		
-		if( $rule['operator'] == "==" )
-		{
-			$match = ( $post_type === $rule['value'] );
-		}
-		elseif( $rule['operator'] == "!=" )
-		{
-			$match = ( $post_type !== $rule['value'] );
-		}
-		
+        if( $rule['operator'] == "==" )
+        {
+        	$match = ( $post_type === $rule['value'] );
+        }
+        elseif( $rule['operator'] == "!=" )
+        {
+        	$match = ( $post_type !== $rule['value'] );
+        }
+        
 	
 		return $match;
 	}
@@ -270,16 +270,16 @@ class acf_location
 		//}
 		
 		
-		if($rule['operator'] == "==")
-		{
-			$match = ( $options['post_id'] == $rule['value'] );
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = ( $options['post_id'] != $rule['value'] );
-		}
-		
-		return $match;
+        if($rule['operator'] == "==")
+        {
+        	$match = ( $options['post_id'] == $rule['value'] );
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = ( $options['post_id'] != $rule['value'] );
+        }
+        
+        return $match;
 
 	}
 	
@@ -301,99 +301,99 @@ class acf_location
 		}
 
 		$post = get_post( $options['post_id'] );
-				
-		if( $rule['value'] == 'front_page')
-		{
-			
-			$front_page = (int) get_option('page_on_front');
-			
-			
-			if($rule['operator'] == "==")
-			{
-				$match = ( $front_page == $post->ID );
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( $front_page != $post->ID );
-			}
-			
-		}
-		elseif( $rule['value'] == 'posts_page')
-		{
-		
-			$posts_page = (int) get_option('page_for_posts');
-			
-			
-			if($rule['operator'] == "==")
-			{
-				$match = ( $posts_page == $post->ID );
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( $posts_page != $post->ID );
-			}
-			
-		}
-		elseif( $rule['value'] == 'top_level')
-		{
-			$post_parent = $post->post_parent;
-			if( $options['page_parent'] )
-			{
-				$post_parent = $options['page_parent'];
-			}
-			
-			
-			if($rule['operator'] == "==")
-			{
-				$match = ( $post_parent == 0 );
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( $post_parent != 0 );
-			}
-			
-		}
-		elseif( $rule['value'] == 'parent')
-		{
-		
-			$children = get_pages(array(
-				'post_type' => $post->post_type,
-				'child_of' =>  $post->ID,
-			));
-			
-			
-			if($rule['operator'] == "==")
-			{
-				$match = ( count($children) > 0 );
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( count($children) == 0 );
-			}
-			
-		}
-		elseif( $rule['value'] == 'child')
-		{
-		
-			$post_parent = $post->post_parent;
-			if( $options['page_parent'] )
-			{
-				$post_parent = $options['page_parent'];
-			}
-			
-			
-			if($rule['operator'] == "==")
-			{
-				$match = ( $post_parent != 0 );
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( $post_parent == 0 );
-			}
-			
-		}
-		
-		return $match;
+		        
+        if( $rule['value'] == 'front_page')
+        {
+        	
+	        $front_page = (int) get_option('page_on_front');
+	        
+	        
+	        if($rule['operator'] == "==")
+	        {
+	        	$match = ( $front_page == $post->ID );
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( $front_page != $post->ID );
+	        }
+	        
+        }
+        elseif( $rule['value'] == 'posts_page')
+        {
+        
+	        $posts_page = (int) get_option('page_for_posts');
+	        
+	        
+	        if($rule['operator'] == "==")
+	        {
+	        	$match = ( $posts_page == $post->ID );
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( $posts_page != $post->ID );
+	        }
+	        
+        }
+        elseif( $rule['value'] == 'top_level')
+        {
+        	$post_parent = $post->post_parent;
+        	if( $options['page_parent'] )
+        	{
+	        	$post_parent = $options['page_parent'];
+        	}
+        	
+        	
+	        if($rule['operator'] == "==")
+	        {
+	        	$match = ( $post_parent == 0 );
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( $post_parent != 0 );
+	        }
+	        
+        }
+        elseif( $rule['value'] == 'parent')
+        {
+        
+        	$children = get_pages(array(
+        		'post_type' => $post->post_type,
+        		'child_of' =>  $post->ID,
+        	));
+        	
+	        
+	        if($rule['operator'] == "==")
+	        {
+	        	$match = ( count($children) > 0 );
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( count($children) == 0 );
+	        }
+	        
+        }
+        elseif( $rule['value'] == 'child')
+        {
+        
+        	$post_parent = $post->post_parent;
+        	if( $options['page_parent'] )
+        	{
+	        	$post_parent = $options['page_parent'];
+        	}
+	        
+	        
+	        if($rule['operator'] == "==")
+	        {
+	        	$match = ( $post_parent != 0 );
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( $post_parent == 0 );
+	        }
+	        
+        }
+        
+        return $match;
 
 	}
 	
@@ -419,23 +419,23 @@ class acf_location
 		$post = get_post( $options['post_id'] );
 		
 		$post_parent = $post->post_parent;
-		if( $options['page_parent'] )
-		{
-			$post_parent = $options['page_parent'];
-		}
-		
-		
-		if($rule['operator'] == "==")
-		{
-			$match = ( $post_parent == $rule['value'] );
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = ( $post_parent != $rule['value'] );
-		}
-		
-		
-		return $match;
+    	if( $options['page_parent'] )
+    	{
+        	$post_parent = $options['page_parent'];
+    	}
+        
+        
+        if($rule['operator'] == "==")
+        {
+        	$match = ( $post_parent == $rule['value'] );
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = ( $post_parent != $rule['value'] );
+        }
+        
+        
+        return $match;
 
 	}
 	
@@ -474,16 +474,16 @@ class acf_location
 		
 		
 		
-		if($rule['operator'] == "==")
-		{
-			$match = ( $page_template === $rule['value'] );
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = ( $page_template !== $rule['value'] );
-		}
-				
-		return $match;
+        if($rule['operator'] == "==")
+        {
+        	$match = ( $page_template === $rule['value'] );
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = ( $page_template !== $rule['value'] );
+        }
+                
+        return $match;
 
 	}
 	
@@ -546,12 +546,12 @@ class acf_location
 		}
 		
 
-		
-		if($rule['operator'] == "==")
-		{
-			$match = false;
-			
-			if($terms)
+        
+        if($rule['operator'] == "==")
+        {
+        	$match = false;
+        	
+        	if($terms)
 			{
 				if( in_array($rule['value'], $terms) )
 				{
@@ -559,12 +559,12 @@ class acf_location
 				}
 			}
   
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = true;
-			
-			if($terms)
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = true;
+        	
+        	if($terms)
 			{
 				if( in_array($rule['value'], $terms) )
 				{
@@ -572,15 +572,15 @@ class acf_location
 				}
 			}
 
-		}
-	
-		
-		return $match;
-		
-	}
-	
-	
-	/*
+        }
+    
+        
+        return $match;
+        
+    }
+    
+    
+    /*
 	*  rule_match_user_type
 	*
 	*  @description: 
@@ -615,13 +615,13 @@ class acf_location
 				$match = ( ! in_array( $rule['value'], $user->roles ) );
 			}
 		}
-		
+
 		return $match;
-		
+
 	}
-	
-	
-	/*
+    
+    
+    /*
 	*  rule_match_user_type
 	*
 	*  @description: 
@@ -632,8 +632,8 @@ class acf_location
 	function rule_match_options_page( $match, $rule, $options )
 	{
 		global $plugin_page;
-				
-				
+		    	
+		    	
 		// older location rules may be "options-pagename"
 		if( substr($rule['value'], 0, 8) == 'options-' )
 		{
@@ -655,21 +655,21 @@ class acf_location
 		
 		
 		if($rule['operator'] == "==")
-		{
-			$match = ( $plugin_page === $rule['value'] );
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = ( $plugin_page !== $rule['value'] );
-		}
-		
-		
-		return $match;
-		
-	}
-	
-	
-	/*
+        {
+        	$match = ( $plugin_page === $rule['value'] );
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = ( $plugin_page !== $rule['value'] );
+        }
+        
+        
+        return $match;
+        
+    }
+    
+    
+    /*
 	*  rule_match_post_format
 	*
 	*  @description: 
@@ -709,25 +709,25 @@ class acf_location
 			}
 		}
 
-		
-		if($rule['operator'] == "==")
-		{
-			$match = ( $post_format === $rule['value'] );
-			 
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = ( $post_format !== $rule['value'] );
-		}
-		
-		
-		
-		return $match;
-		
-	}
-	
-	
-	/*
+       	
+       	if($rule['operator'] == "==")
+        {
+        	$match = ( $post_format === $rule['value'] );
+        	 
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = ( $post_format !== $rule['value'] );
+        }
+        
+        
+        
+        return $match;
+        
+    }
+    
+    
+    /*
 	*  rule_match_taxonomy
 	*
 	*  @description: 
@@ -762,9 +762,9 @@ class acf_location
 			// no terms? Load them from the post_id
 			if( empty($terms) )
 			{
-				if( is_array($taxonomies) )
-				{
-					foreach( $taxonomies as $tax )
+	        	if( is_array($taxonomies) )
+	        	{
+		        	foreach( $taxonomies as $tax )
 					{
 						$all_terms = get_the_terms( $options['post_id'], $tax );
 						if($all_terms)
@@ -790,12 +790,12 @@ class acf_location
 			}
 		}
 
-		
-		if($rule['operator'] == "==")
-		{
-			$match = false;
-			
-			if($terms)
+        
+        if($rule['operator'] == "==")
+        {
+        	$match = false;
+        	
+        	if($terms)
 			{
 				if( in_array($rule['value'], $terms) )
 				{
@@ -803,12 +803,12 @@ class acf_location
 				}
 			}
   
-		}
-		elseif($rule['operator'] == "!=")
-		{
-			$match = true;
-			
-			if($terms)
+        }
+        elseif($rule['operator'] == "!=")
+        {
+        	$match = true;
+        	
+        	if($terms)
 			{
 				if( in_array($rule['value'], $terms) )
 				{
@@ -816,15 +816,15 @@ class acf_location
 				}
 			}
 
-		}
-	
-		
-		return $match;
-		
-	}
-	
-	
-	/*
+        }
+    
+        
+        return $match;
+        
+    }
+    
+    
+    /*
 	*  rule_match_ef_taxonomy
 	*
 	*  @description: 
@@ -841,40 +841,40 @@ class acf_location
 		if( $ef_taxonomy )
 		{
 			if($rule['operator'] == "==")
-			{
-				$match = ( $ef_taxonomy == $rule['value'] );
-				
-				// override for "all"
-				if( $rule['value'] == "all" )
+	        {
+	        	$match = ( $ef_taxonomy == $rule['value'] );
+	        	
+	        	// override for "all"
+		        if( $rule['value'] == "all" )
 				{
 					$match = true;
 				}
 				
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( $ef_taxonomy != $rule['value'] );
-					
-				// override for "all"
-				if( $rule['value'] == "all" )
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( $ef_taxonomy != $rule['value'] );
+	        		
+	        	// override for "all"
+		        if( $rule['value'] == "all" )
 				{
 					$match = false;
 				}
 				
-			}
+	        }
 			
-			
-			
+	        
+	        
 			
 		}
 		
-		
-		return $match;
-		
-	}
-	
-	
-	/*
+        
+        return $match;
+        
+    }
+    
+    
+    /*
 	*  rule_match_ef_user
 	*
 	*  @description: 
@@ -887,41 +887,39 @@ class acf_location
 	
 		$ef_user = $options['ef_user'];
 		
-		echo $ef_user;
-		print_r($rule);
 		
 		if( $ef_user )
 		{
 			if($rule['operator'] == "==")
-			{
-				$match = ( user_can($ef_user, $rule['value']) );
-				
-				// override for "all"
-				if( $rule['value'] === "all" )
+	        {
+	        	$match = ( user_can($ef_user, $rule['value']) );
+	        	
+	        	// override for "all"
+		        if( $rule['value'] === "all" )
 				{
 					$match = true;
 				}
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				$match = ( !user_can($ef_user, $rule['value']) );
-				
-				// override for "all"
-				if( $rule['value'] === "all" )
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	$match = ( !user_can($ef_user, $rule['value']) );
+	        	
+	        	// override for "all"
+		        if( $rule['value'] === "all" )
 				{
 					$match = false;
 				}
-			}
+	        }
 
 		}
 		
-		
-		return $match;
-		
-	}
-	
-	
-	/*
+        
+        return $match;
+        
+    }
+    
+    
+    /*
 	*  rule_match_ef_media
 	*
 	*  @description: 
@@ -945,30 +943,30 @@ class acf_location
 		
 		$ef_media = $options['ef_media'];
 		
-		if( $ef_media )
+        if( $ef_media )
 		{
 			if($rule['operator'] == "==")
-			{
-				// override for "all"
-				if( $rule['value'] === "all" )
+	        {
+	        	// override for "all"
+		        if( $rule['value'] === "all" )
 				{
 					$match = true;
 				}
-			}
-			elseif($rule['operator'] == "!=")
-			{
-				// override for "all"
-				if( $rule['value'] === "all" )
+	        }
+	        elseif($rule['operator'] == "!=")
+	        {
+	        	// override for "all"
+		        if( $rule['value'] === "all" )
 				{
 					$match = false;
 				}
-			}
+	        }
 
 		}
 		
-		return $match;
-		
-	}
+        return $match;
+        
+    }
 	
 			
 }
