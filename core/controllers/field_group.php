@@ -706,6 +706,11 @@ class acf_field_group
 				global $wp_roles;
 				
 				$choices = $wp_roles->get_names();
+
+				if (is_multisite())
+				{
+					$choices = array_merge($choices, array('super_admin' => __('Super Admin')));
+				}
 								
 				break;
 			
