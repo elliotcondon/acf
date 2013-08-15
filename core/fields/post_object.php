@@ -83,161 +83,168 @@ class acf_field_post_object extends acf_field
 		// global
 		global $post;
 		
-		
-		// vars
-		$args = array(
-			'numberposts' => -1,
-			'post_type' => null,
-			'orderby' => 'title',
-			'order' => 'ASC',
-			'post_status' => array('publish', 'private', 'draft', 'inherit', 'future'),
-			'suppress_filters' => false,
-		);
-		
-		
-		// load all post types by default
-		if( in_array('all', $field['post_type']) )
-		{
-			$field['post_type'] = apply_filters('acf/get_post_types', array());
-		}
-		
-		
-		// create tax queries
-		if( ! in_array('all', $field['taxonomy']) )
-		{
-			// vars
-			$taxonomies = array();
-			$args['tax_query'] = array();
-			
-			foreach( $field['taxonomy'] as $v )
-			{
-				
-				// find term (find taxonomy!)
-				// $term = array( 0 => $taxonomy, 1 => $term_id )
-				$term = explode(':', $v); 
-				
-				
-				// validate
-				if( !is_array($term) || !isset($term[1]) )
-				{
-					continue;
-				}
-				
-				
-				// add to tax array
-				$taxonomies[ $term[0] ][] = $term[1];
-				
-			}
-			
-			
-			// now create the tax queries
-			foreach( $taxonomies as $k => $v )
-			{
-				$args['tax_query'][] = array(
-					'taxonomy' => $k,
-					'field' => 'id',
-					'terms' => $v,
-				);
-			}
-		}
-		
+		$cache_key = 'acf_choices_cache_'.$field['key'];
 		
 		// Change Field into a select
 		$field['type'] = 'select';
 		$field['choices'] = array();
-		
-		
-		foreach( $field['post_type'] as $post_type )
-		{
-			// set post_type
-			$args['post_type'] = $post_type;
+
+		if (! ($choices = get_transient($cache_key)) ) {
+			
+			// vars
+			$args = array(
+				'numberposts' => -1,
+				'post_type' => null,
+				'orderby' => 'title',
+				'order' => 'ASC',
+				'post_status' => array('publish', 'private', 'draft', 'inherit', 'future'),
+				'suppress_filters' => false,
+			);
 			
 			
-			// set order
-			$get_pages = false;
-			if( is_post_type_hierarchical($post_type) && !isset($args['tax_query']) )
+			// load all post types by default
+			if( in_array('all', $field['post_type']) )
 			{
-				$args['sort_column'] = 'menu_order, post_title';
-				$args['sort_order'] = 'ASC';
+				$field['post_type'] = apply_filters('acf/get_post_types', array());
+			}
+			
+			
+			// create tax queries
+			if( ! in_array('all', $field['taxonomy']) )
+			{
+				// vars
+				$taxonomies = array();
+				$args['tax_query'] = array();
 				
-				$get_pages = true;
-			}
-			
-			
-			// filters
-			$args = apply_filters('acf/fields/post_object/query', $args, $field, $post);
-			$args = apply_filters('acf/fields/post_object/query/name=' . $field['name'], $args, $field, $post );
-			$args = apply_filters('acf/fields/post_object/query/key=' . $field['key'], $args, $field, $post );
-			
-			
-			if( $get_pages )
-			{
-				$posts = get_pages( $args );
-			}
-			else
-			{
-				$posts = get_posts( $args );
-			}
-			
-			
-			if($posts)
-			{
-				foreach( $posts as $p )
+				foreach( $field['taxonomy'] as $v )
 				{
-					// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
-					$title = '';
-					$ancestors = get_ancestors( $p->ID, $p->post_type );
-					if($ancestors)
-					{
-						foreach($ancestors as $a)
-						{
-							$title .= '–';
-						}
-					}
-					$title .= ' ' . apply_filters( 'the_title', $p->post_title, $p->ID );
+					
+					// find term (find taxonomy!)
+					// $term = array( 0 => $taxonomy, 1 => $term_id )
+					$term = explode(':', $v); 
 					
 					
-					// status
-					if( $p->post_status != "publish" )
+					// validate
+					if( !is_array($term) || !isset($term[1]) )
 					{
-						$title .= " ($p->post_status)";
-					}
-					
-					// WPML
-					if( defined('ICL_LANGUAGE_CODE') )
-					{
-						$title .= ' (' . ICL_LANGUAGE_CODE . ')';
+						continue;
 					}
 					
 					
-					// filters
-					$title = apply_filters('acf/fields/post_object/result', $title, $p, $field, $post);
-					$title = apply_filters('acf/fields/post_object/result/name=' . $field['name'] , $title, $p, $field, $post);
-					$title = apply_filters('acf/fields/post_object/result/key=' . $field['key'], $title, $p, $field, $post);
-					
-					
-					// add to choices
-					if( count($field['post_type']) == 1 )
-					{
-						$field['choices'][ $p->ID ] = $title;
-					}
-					else
-					{
-						// group by post type
-						$post_type_object = get_post_type_object( $p->post_type );
-						$post_type_name = $post_type_object->labels->name;
-					
-						$field['choices'][ $post_type_name ][ $p->ID ] = $title;
-					}
-					
+					// add to tax array
+					$taxonomies[ $term[0] ][] = $term[1];
 					
 				}
-				// foreach( $posts as $post )
+				
+				
+				// now create the tax queries
+				foreach( $taxonomies as $k => $v )
+				{
+					$args['tax_query'][] = array(
+						'taxonomy' => $k,
+						'field' => 'id',
+						'terms' => $v,
+					);
+				}
 			}
-			// if($posts)
+			
+			
+			
+			
+			foreach( $field['post_type'] as $post_type )
+			{
+				// set post_type
+				$args['post_type'] = $post_type;
+				
+				
+				// set order
+				$get_pages = false;
+				if( is_post_type_hierarchical($post_type) && !isset($args['tax_query']) )
+				{
+					$args['sort_column'] = 'menu_order, post_title';
+					$args['sort_order'] = 'ASC';
+					
+					$get_pages = true;
+				}
+				
+				
+				// filters
+				$args = apply_filters('acf/fields/post_object/query', $args, $field, $post);
+				$args = apply_filters('acf/fields/post_object/query/name=' . $field['name'], $args, $field, $post );
+				$args = apply_filters('acf/fields/post_object/query/key=' . $field['key'], $args, $field, $post );
+				
+				
+				if( $get_pages )
+				{
+					$posts = get_pages( $args );
+				}
+				else
+				{
+					$posts = get_posts( $args );
+				}
+				
+				
+				if($posts)
+				{
+					foreach( $posts as $p )
+					{
+						// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
+						$title = '';
+						$ancestors = get_ancestors( $p->ID, $p->post_type );
+						if($ancestors)
+						{
+							foreach($ancestors as $a)
+							{
+								$title .= '–';
+							}
+						}
+						$title .= ' ' . apply_filters( 'the_title', $p->post_title, $p->ID );
+						
+						
+						// status
+						if( $p->post_status != "publish" )
+						{
+							$title .= " ($p->post_status)";
+						}
+						
+						// WPML
+						if( defined('ICL_LANGUAGE_CODE') )
+						{
+							$title .= ' (' . ICL_LANGUAGE_CODE . ')';
+						}
+						
+						
+						// filters
+						$title = apply_filters('acf/fields/post_object/result', $title, $p, $field, $post);
+						$title = apply_filters('acf/fields/post_object/result/name=' . $field['name'] , $title, $p, $field, $post);
+						$title = apply_filters('acf/fields/post_object/result/key=' . $field['key'], $title, $p, $field, $post);
+						
+						
+						// add to choices
+						if( count($field['post_type']) == 1 )
+						{
+							$field['choices'][ $p->ID ] = $title;
+						}
+						else
+						{
+							// group by post type
+							$post_type_object = get_post_type_object( $p->post_type );
+							$post_type_name = $post_type_object->labels->name;
+						
+							$field['choices'][ $post_type_name ][ $p->ID ] = $title;
+						}
+						
+						
+					}
+					// foreach( $posts as $post )
+				}
+				// if($posts)
+			}
+			// foreach( $field['post_type'] as $post_type )
+			set_transient($cache_key,$field['choices'],30);
+		} else {
+			$field['choices'] = $choices;
 		}
-		// foreach( $field['post_type'] as $post_type )
-		
 		
 		// create field
 		do_action('acf/create_field', $field );
