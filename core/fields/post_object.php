@@ -84,6 +84,14 @@ class acf_field_post_object extends acf_field
 		global $post;
 		
 		
+		// Change Field into a select
+		$field['type'] = 'select';
+		$field['choices'] = array();
+		
+		$cache_key = 'acf_choices_cache_'.$field['key'];		
+		
+		if (! ($choices = get_transient($cache_key)) ) {
+			
 		// vars
 		$args = array(
 			'numberposts' => -1,
@@ -140,11 +148,6 @@ class acf_field_post_object extends acf_field
 				);
 			}
 		}
-		
-		
-		// Change Field into a select
-		$field['type'] = 'select';
-		$field['choices'] = array();
 		
 		
 		foreach( $field['post_type'] as $post_type )
@@ -237,6 +240,10 @@ class acf_field_post_object extends acf_field
 			// if($posts)
 		}
 		// foreach( $field['post_type'] as $post_type )
+			set_transient($cache_key,$field['choices'],30);
+		} else {
+			$field['choices'] = $choices;
+		}
 		
 		
 		// create field
