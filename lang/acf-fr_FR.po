@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Field - version 3.4.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-07-09 03:49:07+00:00\n"
-"PO-Revision-Date: 2013-08-02 14:10+0100\n"
-"Last-Translator: Maxime BERNARD-JACQUET <maxime@smoothie-creative.com>\n"
+"PO-Revision-Date: 2013-08-21 18:17+0100\n"
+"Last-Translator: Jean-Christophe Brebion <pro@jcbrebion.com>\n"
 "Language-Team: RVOLA <hello@rvola.com>\n"
 "Language: French\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 
 # @ acf
 #: acf.php:325
@@ -51,22 +51,22 @@ msgstr "Nouveau groupe de champs"
 # @ default
 #: acf.php:331
 msgid "View Field Group"
-msgstr "Voir le champ groupe"
+msgstr "Voir le groupe de champs"
 
 # @ default
 #: acf.php:332
 msgid "Search Field Groups"
-msgstr "Rechercher un champ groupe"
+msgstr "Rechercher un groupe de champs"
 
 # @ default
 #: acf.php:333
 msgid "No Field Groups found"
-msgstr "Aucun champ groupe trouvé"
+msgstr "Aucun groupe de champs trouvé"
 
 # @ default
 #: acf.php:334
 msgid "No Field Groups found in Trash"
-msgstr "Aucun champ groupe trouvé dans la corbeille"
+msgstr "Aucun groupe de champs trouvé dans la corbeille"
 
 # @ acf
 #: acf.php:447 core/views/meta_box_options.php:96
@@ -106,7 +106,7 @@ msgstr "Groupe de champ enregistré"
 # @ default
 #: acf.php:473
 msgid "Field group submitted."
-msgstr "Groupe de champ enregistré"
+msgstr "Groupe de champ enregistré."
 
 #: acf.php:474
 msgid "Field group scheduled for."
@@ -114,7 +114,7 @@ msgstr "Groupe de champs programmé pour."
 
 #: acf.php:475
 msgid "Field group draft updated."
-msgstr "Brouillon du groupe de champs mis à jour "
+msgstr "Brouillon du groupe de champs mis à jour."
 
 #: acf.php:610
 msgid "Thumbnail"
@@ -649,16 +649,16 @@ msgstr "Votez"
 # @ acf
 #: core/controllers/field_groups.php:236
 msgid "Follow"
-msgstr "twitter"
+msgstr "Twitter"
 
 # @ acf
 #: core/controllers/field_groups.php:248
 msgid "Welcome to Advanced Custom Fields"
-msgstr "Bienvenue sur Advances Custom Fields"
+msgstr "Bienvenue sur Advanced Custom Fields"
 
 #: core/controllers/field_groups.php:249
 msgid "Thank you for updating to the latest version!"
-msgstr "Merci d'être passé sur la dernière version"
+msgstr "Merci d'être passé sur la dernière version !"
 
 #: core/controllers/field_groups.php:249
 msgid "is more polished and enjoyable than ever before. We hope you like it."
@@ -824,7 +824,7 @@ msgid ""
 "filters, your website may not operate correctly. It is important that you "
 "read the full"
 msgstr ""
-"A cause des gros changements effectués autour des Add-ons, types de champs "
+"À cause des gros changements effectués autour des Add-ons, types de champs "
 "et actions/filtres, votre site ne pourrait plus fonctionner correctement "
 "après la migration. Il est important que vous consultiez"
 
@@ -913,7 +913,7 @@ msgstr "Add-ons disponibles"
 
 #: core/controllers/field_groups.php:410
 msgid "The following Add-ons have been detected as activated on this website."
-msgstr "Les Add-ons suivants ont été détéctés et activés pour ce site : "
+msgstr "Les Add-ons suivants ont été détectés et activés pour ce site : "
 
 # @ acf
 #: core/controllers/field_groups.php:423
@@ -923,7 +923,7 @@ msgstr "Nom"
 # @ acf
 #: core/controllers/field_groups.php:424
 msgid "Activation Code"
-msgstr "Code d‘activation"
+msgstr "Code d'activation"
 
 # @ acf
 #: core/controllers/field_groups.php:456
@@ -1131,11 +1131,11 @@ msgstr "Format date jQuery"
 # @ acf
 #: core/fields/date_picker/date_picker.php:121
 msgid "Display format"
-msgstr "Format d‘affichage"
+msgstr "Format d'affichage"
 
 #: core/fields/date_picker/date_picker.php:122
 msgid "This format will be seen by the user when entering a value"
-msgstr "Ce format sera vu par l‘utilisateur lors de la saisie d‘une valeur"
+msgstr "Ce format sera vu par l'utilisateur lors de la saisie d‘une valeur"
 
 #: core/fields/date_picker/date_picker.php:123
 msgid ""
@@ -1358,7 +1358,7 @@ msgstr "Pas"
 
 #: core/fields/number.php:145
 msgid "Specifies the legal number intervals"
-msgstr "Indique l'écart entre chaque interval"
+msgstr "Indique l'écart entre chaque intervalle"
 
 # @ acf
 #: core/fields/page_link.php:18
@@ -1464,7 +1464,7 @@ msgstr "Sélecteur Type d‘article"
 
 #: core/fields/relationship.php:614
 msgid "Elements"
-msgstr "Eléments"
+msgstr "Éléments"
 
 #: core/fields/relationship.php:615
 msgid "Selected elements will be displayed in each result"
@@ -1511,7 +1511,7 @@ msgstr ""
 # @ acf
 #: core/fields/taxonomy.php:18 core/fields/taxonomy.php:276
 msgid "Taxonomy"
-msgstr "Taxonimie"
+msgstr "Taxonomie"
 
 #: core/fields/taxonomy.php:211 core/fields/taxonomy.php:220
 #: core/fields/text.php:95 core/fields/textarea.php:95
@@ -1617,7 +1617,7 @@ msgstr "Filtrer par rôle"
 # @ acf
 #: core/fields/wysiwyg.php:19
 msgid "Wysiwyg Editor"
-msgstr "Editeur WYSIWYG"
+msgstr "Éditeur WYSIWYG"
 
 # @ acf
 #: core/fields/wysiwyg.php:185
@@ -1642,7 +1642,7 @@ msgstr "Ce type de champ n‘existe pas !"
 # @ acf
 #: core/views/meta_box_fields.php:63
 msgid "Move to trash. Are you sure?"
-msgstr "Mettre à la corbeille. Etes-vous sûr ?"
+msgstr "Mettre à la corbeille. Êtes-vous sûr ?"
 
 #: core/views/meta_box_fields.php:64
 msgid "checked"
@@ -1782,7 +1782,7 @@ msgstr "au moins une règle est respectée"
 # Volontairement laissé vide car la tournure de la phrase en français n'a pas besoin de complément à la fin.
 #: core/views/meta_box_fields.php:301
 msgid "these rules are met"
-msgstr " "
+msgstr "ces règles sont respectées"
 
 # @ acf
 #: core/views/meta_box_fields.php:315
@@ -1856,7 +1856,7 @@ msgstr "Format d‘article"
 # @ acf
 #: core/views/meta_box_location.php:88
 msgid "Post Taxonomy"
-msgstr "Taxonimie"
+msgstr "Taxonomie"
 
 #: core/views/meta_box_location.php:91
 msgid "Taxonomy Term (Add / Edit)"
