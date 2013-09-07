@@ -20,7 +20,8 @@ class acf_field_textarea extends acf_field
 		$this->defaults = array(
 			'default_value'	=>	'',
 			'formatting' 	=>	'br',
-			'maxlength'		=>	'',
+			'maxlength'	=>	'',
+			'rows'		=>	5,
 			'placeholder'	=>	'',
 		);
 		
@@ -56,7 +57,7 @@ class acf_field_textarea extends acf_field
 		}
 		
 
-		$e .= '<textarea rows="4"';
+		$e .= '<textarea rows="' . $field['rows'] . '"';
 		
 		foreach( $o as $k )
 		{
@@ -132,6 +133,29 @@ class acf_field_textarea extends acf_field
 			'type'	=>	'number',
 			'name'	=>	'fields[' .$key.'][maxlength]',
 			'value'	=>	$field['maxlength'],
+		));
+		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label><?php _e("Rows number",'acf'); ?></label>
+	</td>
+	<td>
+		<?php 
+		do_action('acf/create_field', array(
+			'type'	=>	'select',
+			'name'	=>	'fields[' .$key.'][rows]',
+			'value'	=>	$field['rows'],
+			'choices' => array(
+				2 => 2,
+				3 => 3,
+				4 => 4,
+				5 => 5,
+				10 => 10,
+				15 => 15,
+				20 => 20,
+			)
 		));
 		?>
 	</td>
