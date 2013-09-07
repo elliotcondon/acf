@@ -218,7 +218,9 @@ class acf_field_radio extends acf_field
 					'layout' => 'horizontal', 
 					'choices' => array(
 						'vertical' => __("Vertical",'acf'), 
-						'horizontal' => __("Horizontal",'acf')
+						'horizontal' => __("Horizontal",'acf'),
+						'two-columns' => __("2 Columns",'acf'),
+						'three-columns' => __("3 Columns",'acf')
 					)
 				));
 				
