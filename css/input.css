@@ -134,7 +134,6 @@
 
 .acf_postbox .field textarea {
 	resize: vertical;
-	min-height: 150px;
 }
 
 .acf_postbox .field select{
