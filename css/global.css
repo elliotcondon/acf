@@ -393,6 +393,28 @@ ul.acf-checkbox-list.horizontal li {
 	margin-right: 20px;
 }
 
+ul.acf-radio-list.two-columns,
+ul.checkbox_list.two-columns {
+	display: list-item;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 2em;  
+	-moz-column-count: 2;
+	-moz-column-gap: 2em;
+	column-count: 2;
+	column-gap: 2em;
+}
+
+ul.acf-radio-list.three-columns,
+ul.checkbox_list.three-columns {
+	display: list-item;
+	-webkit-column-count: 3;
+	-webkit-column-gap: 2em;  
+	-moz-column-count: 3;
+	-moz-column-gap: 2em;
+	column-count: 3;
+	column-gap: 2em;
+}
+
 ul.acf-radio-list li input,
 ul.acf-checkbox-list li input {
 	margin-top: -1px;
