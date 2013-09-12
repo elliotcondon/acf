@@ -374,7 +374,7 @@ table.acf_input select:focus {
 
 
 ul.acf-radio-list,
-ul.acf-checkbox-list {
+ul.checkbox_list {
 	background: transparent !important;
 	position: relative;
 	display: block;
@@ -383,18 +383,86 @@ ul.acf-checkbox-list {
 }
 
 ul.acf-radio-list.horizontal,
-ul.acf-checkbox-list.horizontal {
+ul.checkbox_list.horizontal {
 	overflow: hidden;
 }
 
 ul.acf-radio-list.horizontal li,
-ul.acf-checkbox-list.horizontal li {
+ul.checkbox_list.horizontal li {
 	float: left;
 	margin-right: 20px;
 }
 
+ul.acf-radio-list.two-columns li,
+ul.checkbox_list.two-columns li {
+	float: left;
+	width: 45%;
+	margin-right: 4%;
+}
+
+ul.acf-radio-list.three-columns li,
+ul.checkbox_list.three-columns li {
+	float: left;
+	width: 30%;
+	margin-right: 3%;
+}
+
+ul.acf-radio-list.two-columns,
+ul.checkbox_list.two-columns,
+ul.acf-radio-list.three-columns,
+ul.checkbox_list.three-columns {
+	overflow: hidden;
+}
+
+@supports (column-count: 2) or 
+	  (-webkit-column-count: 2) or 
+	  (-moz-column-count: 2) or 
+	  (-o-column-count: 2) or 
+	  (-ms-column-count: 2) {
+
+	ul.acf-radio-list.two-columns li,
+	ul.checkbox_list.two-columns li,
+	ul.acf-radio-list.three-columns li,
+	ul.checkbox_list.three-columns li {
+		float: inherit;
+		width: auto;
+		margin-right: 0;
+	}
+
+	ul.acf-radio-list.two-columns,
+	ul.checkbox_list.two-columns {
+		display: list-item;
+		-webkit-column-count: 2;
+		-webkit-column-gap: 2em;  
+		-moz-column-count: 2;
+		-moz-column-gap: 2em;
+		-o-column-count: 2;
+		-o-column-gap: 2em;
+		-ms-column-count: 2;
+		-ms-column-gap: 2em;
+		column-count: 2;
+		column-gap: 2em;
+	}
+	
+	ul.acf-radio-list.three-columns,
+	ul.checkbox_list.three-columns {
+		display: list-item;
+		-webkit-column-count: 3;
+		-webkit-column-gap: 2em;  
+		-moz-column-count: 3;
+		-moz-column-gap: 2em;
+		-o-column-count: 3;
+		-o-column-gap: 2em;
+		-ms-column-count: 3;
+		-ms-column-gap: 2em;
+		column-count: 3;
+		column-gap: 2em;
+	}
+
+}
+
 ul.acf-radio-list li input,
-ul.acf-checkbox-list li input {
+ul.checkbox_list li input {
 	margin-top: -1px;
 	margin-right: 5px !important;
 	width: auto !important;
