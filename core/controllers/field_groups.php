@@ -381,8 +381,9 @@ class acf_field_groups
 		<?php
 		
 		$items = file_get_contents( $path . 'readme.txt' );
+		$items = explode('= ' . $version . ' =', $items);
 		
-		$items = end( explode('= ' . $version . ' =', $items) );
+		$items = end( $items );
 		$items = current( explode("\n\n", $items) );
 		$items = array_filter( array_map('trim', explode("*", $items)) );
 		
