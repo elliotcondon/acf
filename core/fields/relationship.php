@@ -268,6 +268,11 @@ class acf_field_relationship extends acf_field
 		$options = apply_filters('acf/fields/relationship/query/name=' . $field['name'], $options, $field, $the_post );
 		$options = apply_filters('acf/fields/relationship/query/key=' . $field['key'], $options, $field, $the_post );
 		
+		// Filter for Post Children
+		if( !in_array('post_children', $field['result_elements']) )
+		{
+			$options['post_parent'] = 0;
+		}
 		
 		// query
 		$wp_query = new WP_Query( $options );
@@ -325,6 +330,11 @@ class acf_field_relationship extends acf_field
 			$title = apply_filters('acf/fields/relationship/result/name=' . $field['name'] , $title, $post, $field, $the_post);
 			$title = apply_filters('acf/fields/relationship/result/key=' . $field['key'], $title, $post, $field, $the_post);
 			
+			// Post Children prepend Parent Title
+			if ( in_array('post_children', $field['result_elements']) && $post->post_parent !== 0 ) {
+				$parent = get_post($post->post_parent);
+				$title = "{$parent->post_title} - $title";
+			}
 			
 			// update html
 			$r['html'] .= '<li><a href="' . get_permalink() . '" data-post_id="' . get_the_ID() . '">' . $title .  '<span class="acf-button-add"></span></a></li>';
@@ -645,6 +655,7 @@ class acf_field_relationship extends acf_field
 			'value'	=>	$field['filters'],
 			'choices'	=>	array(
 				'search'	=>	__("Search",'acf'),
+				'post_children' =>	__("Post Children",'acf'),
 				'post_type'	=>	__("Post Type Select",'acf'),
 			)
 		));
