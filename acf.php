@@ -545,7 +545,11 @@ class acf
 	
 	function admin_menu()
 	{
-		add_utility_page(__("Custom Fields",'acf'), __("Custom Fields",'acf'), 'manage_options', 'edit.php?post_type=acf');
+		global $_wp_last_utility_menu;
+		
+		$acf_menu_position = $_wp_last_utility_menu++;
+		
+		add_menu_page(__("Custom Fields",'acf'), __("Custom Fields",'acf'), 'manage_options', 'edit.php?post_type=acf', '', '', apply_filters('acf/menu_position', $acf_menu_position));
 	}
 	
 	
