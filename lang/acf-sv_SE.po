@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Custom Fields 4.3.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
-"POT-Creation-Date: 2013-09-25 22:42+0100\n"
-"PO-Revision-Date: 2013-09-25 22:42+0100\n"
+"POT-Creation-Date: 2013-10-30 17:22+0100\n"
+"PO-Revision-Date: 2013-10-30 17:24+0100\n"
 "Last-Translator: Mikael Jorhult <mikael@jorhult.se>\n"
 "Language-Team: Mikael Jorhult <mikael@jorhult.se>\n"
 "Language: Swedish\n"
@@ -59,68 +59,68 @@ msgstr "Inga fältgrupper hittades"
 msgid "No Field Groups found in Trash"
 msgstr "Inga fältgrupper finns i papperskorgen"
 
-#: acf.php:543 core/views/meta_box_options.php:98
+#: acf.php:548 core/views/meta_box_options.php:98
 msgid "Custom Fields"
 msgstr "Egna fält"
 
-#: acf.php:561 acf.php:564
+#: acf.php:566 acf.php:569
 msgid "Field group updated."
 msgstr "Fältgruppen uppdaterades."
 
-#: acf.php:562
+#: acf.php:567
 msgid "Custom field updated."
 msgstr "Eget fält uppdaterades."
 
-#: acf.php:563
+#: acf.php:568
 msgid "Custom field deleted."
 msgstr "Eget fält raderades."
 
-#: acf.php:566
+#: acf.php:571
 #, php-format
 msgid "Field group restored to revision from %s"
 msgstr "Fältgruppen återställdes till revision %s"
 
-#: acf.php:567
+#: acf.php:572
 msgid "Field group published."
 msgstr "Fältgruppen publicerades."
 
-#: acf.php:568
+#: acf.php:573
 msgid "Field group saved."
 msgstr "Fältgruppen sparades."
 
-#: acf.php:569
+#: acf.php:574
 msgid "Field group submitted."
 msgstr "Fältgruppen skickades."
 
-#: acf.php:570
+#: acf.php:575
 msgid "Field group scheduled for."
 msgstr "Fältgruppen schemalades."
 
-#: acf.php:571
+#: acf.php:576
 msgid "Field group draft updated."
 msgstr "Utkastet till fältgrupp uppdaterades."
 
-#: acf.php:706
+#: acf.php:711
 msgid "Thumbnail"
 msgstr "Tumnagel"
 
-#: acf.php:707
+#: acf.php:712
 msgid "Medium"
 msgstr "Medium"
 
-#: acf.php:708
+#: acf.php:713
 msgid "Large"
 msgstr "Stor"
 
-#: acf.php:709
+#: acf.php:714
 msgid "Full"
 msgstr "Full"
 
-#: core/api.php:1097
+#: core/api.php:1147
 msgid "Update"
 msgstr "Uppdatera"
 
-#: core/api.php:1098
+#: core/api.php:1148
 msgid "Post updated"
 msgstr "Inlägget uppdaterades"
 
@@ -1104,6 +1104,18 @@ msgstr "Söker plats"
 #: core/fields/google-map.php:32
 msgid "Sorry, this browser does not support geolocation"
 msgstr "Tyvärr saknar denna webbläsare stöd för platsinformation"
+
+#: core/fields/google-map.php:117
+msgid "Clear location"
+msgstr "Radera plats"
+
+#: core/fields/google-map.php:122
+msgid "Find current location"
+msgstr "Hitta nuvarande plats"
+
+#: core/fields/google-map.php:123
+msgid "Search for address..."
+msgstr "Sök adress..."
 
 #: core/fields/google-map.php:159
 msgid "Center"
