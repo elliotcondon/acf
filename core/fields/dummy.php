@@ -16,7 +16,7 @@ class acf_field_dummy extends acf_field
 	{
 		// vars
 		$this->name = 'dummy';
-		$this->label = __('Dummy');
+		$this->label = __('Dummy','acf');
 		
 		
 		// do not delete!
