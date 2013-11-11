@@ -5,7 +5,7 @@
 *--------------------------------------------------------------------------------------------*/
 
 #icon-edit {
-	background: url(../images/sprite.png) 0 0 no-repeat;
+	background: url('../images/sprite.png') 0 0 no-repeat;
 }
 
 #acf-cols {
@@ -364,7 +364,7 @@ only screen and (                min-resolution: 2dppx) {
 	
 	#icon-edit,
 	#icon-acf {
-		background-image: url(../images/sprite@2x.png);
+		background-image: url('../images/sprite@2x.png');
 		background-size: 100px 600px;
 	}
 

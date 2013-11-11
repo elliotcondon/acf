@@ -385,7 +385,7 @@
 	width: 15px;
 	float: left;
 	
-	background: url(../images/arrows.png) 0 -72px no-repeat;
+	background: url('../images/arrows.png') 0 -72px no-repeat;
 	border: #C7C7C7 solid 1px;
 	
 	border-radius: 10px;
@@ -1295,7 +1295,7 @@ only screen and (                min-resolution: 2dppx) {
 	.acf-popup .bit,
 	.acf-gallery .toolbar .view-grid,
 	.acf-gallery .toolbar .view-list {
-		background-image: url(../images/sprite@2x.png);
+		background-image: url('../images/sprite@2x.png');
 		background-size: 100px 600px;
 	}
 
