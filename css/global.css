@@ -29,11 +29,11 @@ input.ir { border: 0 none; background: none; }
 
 
 #icon-acf {
-	background: url(../images/sprite.png) 0 0 no-repeat;
+	background: url('../images/sprite.png') 0 0 no-repeat;
 }
 
 .acf-loading {
-	background: url(../images/wpspin_light.gif) no-repeat scroll 50% 50% #EAEAEA;
+	background: url('../images/wpspin_light.gif') no-repeat scroll 50% 50% #EAEAEA;
     border-radius: 30px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset;
     height: 16px;
@@ -112,7 +112,7 @@ input.ir { border: 0 none; background: none; }
 	width: 16px;
 	height: 16px;
 	float: left;
-	background: url(../images/sprite.png);
+	background: url('../images/sprite.png');
 	margin: 0;
 }
 
@@ -515,7 +515,7 @@ div.error a.acf-button {
 .acf-button-remove,
 .acf-button-edit,
 .acf-button-delete {
-	background: url(../images/sprite.png) -16px -116px no-repeat #fff;
+	background: url('../images/sprite.png') -16px -116px no-repeat #fff;
     display: block;
     height: 18px;
     width: 18px;
@@ -609,12 +609,12 @@ only screen and (                min-resolution: 2dppx) {
 	.acf-button-delete,
 	[class^="acf-sprite"], 
 	[class*=" acf-sprite"] {
-		background-image: url(../images/sprite@2x.png);
+		background-image: url('../images/sprite@2x.png');
 		background-size: 100px 600px;
 	}
 	
 	.acf-loading {
-		background-image: url(../images/wpspin_light@2x.gif);
+		background-image: url('../images/wpspin_light@2x.gif');
 		background-size: 16px 16px;
 	}
 	
