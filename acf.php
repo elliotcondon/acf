@@ -8,6 +8,8 @@ Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 License: GPL
 Copyright: Elliot Condon
+Text Domain: acf
+Domain Path: /lang
 */
 
 if( !class_exists('acf') ):
