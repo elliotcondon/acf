@@ -107,16 +107,31 @@
 		// hide / show
 		$wrap.children('.field_type-tab').each(function(){
 			
-			var $tab = $(this);
+			// vars
+			var $tab = $(this),
+				show =  false;
+				
 			
 			if( $tab.hasClass('field_key-' + id) )
 			{
-				$tab.nextUntil('.field_type-tab').removeClass('acf-tab_group-hide').addClass('acf-tab_group-show');
+				show = true;
 			}
-			else
-			{
-				$tab.nextUntil('.field_type-tab').removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
-			}
+			
+			
+			$tab.nextUntil('.field_type-tab').each(function(){
+				
+				if( show )
+				{
+					$(this).removeClass('acf-tab_group-hide').addClass('acf-tab_group-show');
+					$(document).trigger('acf/fields/tab/show', [ $(this) ]);
+				}
+				else
+				{
+					$(this).removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
+					$(document).trigger('acf/fields/tab/hide', [ $(this) ]);
+				}
+				
+			});
 			
 		});
 

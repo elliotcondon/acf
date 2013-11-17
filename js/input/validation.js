@@ -39,6 +39,10 @@
 		
 		validate : function( div ){
 			
+			// var
+			var ignore = false;
+			
+			
 			// set validation data
 			div.data('validation', true);
 			
@@ -46,24 +50,45 @@
 			// not visible
 			if( div.is(':hidden') )
 			{
-				return;
+				// ignore validation
+				ignore = true;
+				
+				
+				// if this field is hidden by a tab group, allow validation
+				if( div.hasClass('acf-tab_group-hide') )
+				{
+					ignore = false;
+					
+					
+					// vars
+					var $tab_field = div.prevAll('.field_type-tab:first');
+					
+					// if the tab itself is hidden, bypass validation
+					if( $tab_field.hasClass('acf-conditional_logic-hide') )
+					{
+						ignore = true;
+					}
+					else
+					{
+						// activate this tab as it holds hidden required field!
+						div.prevAll('.acf-tab-group:first').find('.acf-tab-button[data-id="' + $tab_field.attr('data-field_key') + '"]').trigger('click');
+					}
+				}
 			}
+			
 			
 			// if is hidden by conditional logic, ignore
 			if( div.hasClass('acf-conditional_logic-hide') )
 			{
+				ignore = true;
+			}
+			
+			
+			if( ignore )
+			{
 				return;
 			}
 			
-			
-			// if is hidden by conditional logic on a parent tab, ignore
-			if( div.hasClass('acf-tab_group-hide') )
-			{
-				if( div.prevAll('.field_type-tab:first').hasClass('acf-conditional_logic-hide') )
-				{
-					return;
-				}
-			}
 			
 			
 			// text / textarea

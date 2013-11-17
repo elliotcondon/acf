@@ -384,8 +384,8 @@ if(function_exists("register_field_group"))
 				$html = str_replace("\n", "\n\t", $html);
 				
 				// add the WP __() function to specific strings for translation in theme
-				$html = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $html);
-				$html = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $html);
+				//$html = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $html);
+				//$html = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $html);
 				
 								
 ?>	register_field_group(<?php echo $html ?>);

@@ -2,7 +2,7 @@
 Contributors: Elliot Condon
 Tags: custom, field, custom field, advanced, simple fields, magic fields, more fields, repeater, matrix, post, type, text, textarea, file, image, edit, admin
 Requires at least: 3.5.0
-Tested up to: 3.6.0
+Tested up to: 3.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,6 @@ Advanced Custom Fields is the perfect solution for any wordpress website which n
 * Uses the native WordPress metadata for ease of use and fast processing
 
 = Field Types =
-* Tab (Group fields into tabs)
 * Text (type text, api returns text)
 * Text Area (type text, api returns text with `<br />` tags)
 * Number (type number, api returns integer)
@@ -39,8 +38,11 @@ Advanced Custom Fields is the perfect solution for any wordpress website which n
 * Relationship (search, select and order post objects with a tidy interface, api returns the selected post objects)
 * Taxonomy (select taxonomy terms with options to load, display and save, api returns the selected term objects)
 * User (select 1 or more WP users, api returns the selected user objects)
+* Google Maps (interactive map, api returns lat,lng,address data)
 * Date Picker (jquery date picker, options for format, api returns string)
-* Color Picker (Farbtastic!)
+* Color Picker (WP color swatch picker)
+* Tab (Group fields into tabs)
+* Message (Render custom messages into the fields)
 * Repeater (ability to create repeatable blocks of fields!)
 * Flexible Content (ability to create flexible blocks of fields!)
 * Gallery (Add, edit and order multiple images in 1 simple field)
@@ -104,6 +106,30 @@ http://support.advancedcustomfields.com/
 
 
 == Changelog ==
+
+= 4.3.0 =
+* Core: get_field can now be used within the functions.php file
+* Core: Added new Google maps field
+* Core: Added conditional logic support for sub fields - will also require an update to the repeater / flexible content field add-on to work
+* Core: Added required validation support for sub fields - will also require an update to the repeater / flexible content field add-on to work
+* API: Added new function have_rows()
+* API: Added new function the_row()
+* API: Fixed front end form upload issues when editing a user - http://support.advancedcustomfields.com/forums/topic/repeater-image-upload-failing/
+* API: Fixed front end form bug where the wrong post_id is being passed to JS - http://support.advancedcustomfields.com/forums/topic/attachments-parent-id/
+* Export: wrapped title and instructions in __() function - http://support.advancedcustomfields.com/forums/topic/wrap-labels-and-descriptions-with-__-in-the-php-export-file/
+* Core: Filter out ACF fields from the native custom field dropdown - http://support.advancedcustomfields.com/forums/topic/meta-key-instead-of-name-on-add-new-custom-field-instead-of-name/ - http://support.advancedcustomfields.com/forums/topic/odd-sub-field-names-in-custom-fields/
+* Revisions: Improved save functionality to detect post change when custom fields are edited - http://support.advancedcustomfields.com/forums/topic/wordpress-3-6-revisions-custom-fields-no-longer-tracked/
+* Core: Add field group title for user edit screen - http://support.advancedcustomfields.com/forums/topic/can-you-add-a-title-or-hr-tag-when-using-acf-in-taxonomy-edit-screen/
+* Field group: Add 'toggle all' option to hide from screen - http://support.advancedcustomfields.com/forums/topic/hidecheck-all-single-checkbox-when-hiding-items-from-pagepost-edit-screen/
+* Taxonomy field: Add new filter for wp_list_categories args - http://support.advancedcustomfields.com/forums/topic/taxonomy-field-type-filter-to-only-show-parents/
+* Taxonomy field: Fixed JS bug causing attachment field groups to disappear due to incorrect AJAX location data - http://support.advancedcustomfields.com/forums/topic/taxonomy-checkboxes/
+* WYSIWYG field: Fixed JS bug where formatting is removed when drag/drop it's repeater row
+* Tab field: Corrected minor JS bugs with conditional logic - http://support.advancedcustomfields.com/forums/topic/tabs-logic-hide-issue/
+* Relationship field: Values now save correctly as an array of strings (for LIKE querying)
+* Post object field: Values now save correctly as an array of strings (for LIKE querying)
+* Image field: Added mime_type data to returned value
+* Field field: Added mime_type data to returned value
+* Core: Lots of minor improvements
 
 = 4.2.2 =
 * Field group: Added 'High (after title)' position for a metabox - http://support.advancedcustomfields.com/forums/topic/position-after-title-solution-inside/

@@ -712,32 +712,25 @@ class acf_field_relationship extends acf_field
 	function format_value( $value, $post_id, $field )
 	{
 		// empty?
-		if( !$value )
+		if( !empty($value) )
 		{
-			return $value;
+			// Pre 3.3.3, the value is a string coma seperated
+			if( is_string($value) )
+			{
+				$value = explode(',', $value);
+			}
+			
+			
+			// convert to integers
+			if( is_array($value) )
+			{
+				$value = array_map('intval', $value);
+				
+				// convert into post objects
+				$value = $this->get_posts( $value );
+			}
+			
 		}
-		
-		
-		// Pre 3.3.3, the value is a string coma seperated
-		if( is_string($value) )
-		{
-			$value = explode(',', $value);
-		}
-		
-		
-		// empty?
-		if( !is_array($value) || empty($value) )
-		{
-			return $value;
-		}
-		
-		
-		// convert to integers
-		$value = array_map('intval', $value);
-		
-		
-		// convert into post objects
-		$value = $this->get_posts( $value );
 		
 		
 		// return value
@@ -877,17 +870,45 @@ class acf_field_relationship extends acf_field
 	
 	function update_value( $value, $post_id, $field )
 	{
-		// array?
-		if( is_array($value) ){ foreach( $value as $k => $v ){
+		// validate
+		if( empty($value) )
+		{
+			return $value;
+		}
+		
+		if( is_string($value) )
+		{
+			// string
+			$value = explode(',', $value);
 			
-			// object?
-			if( is_object($v) && isset($v->ID) )
-			{
-				$value[ $k ] = $v->ID;
+		}
+		elseif( is_object($value) && isset($value->ID) )
+		{
+			// object
+			$value = array( $value->ID );
+			
+		}
+		elseif( is_array($value) )
+		{
+			// array
+			foreach( $value as $k => $v ){
+			
+				// object?
+				if( is_object($v) && isset($v->ID) )
+				{
+					$value[ $k ] = $v->ID;
+				}
 			}
 			
-		}}
-				
+		}
+		
+		echo '<pre>';
+			var_dump($value);
+		echo '</pre>';
+		
+		// save value as strings, so we can clearly search for them in SQL LIKE statements
+		$value = array_map('strval', $value);
+						
 		
 		return $value;
 	}

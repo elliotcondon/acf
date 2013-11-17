@@ -90,7 +90,7 @@ if( empty($groups) )
 							),
 							__("Other",'acf') => array(
 								'ef_media'		=>	__("Attachment",'acf'),
-								'ef_taxonomy'	=>	__("Term",'acf'),
+								'ef_taxonomy'	=>	__("Taxonomy Term",'acf'),
 								'ef_user'		=>	__("User",'acf'),
 							)
 						);

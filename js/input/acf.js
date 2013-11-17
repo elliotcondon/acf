@@ -588,7 +588,7 @@ var acf = {
 							if( ! $toggle.exists() )
 							{
 								// loop through all the parents that could contain sub fields
-								$target.parents('.row').each(function(){
+								$target.parents('tr').each(function(){
 									
 									// attempt to update $toggle to this parent sub field
 									$toggle = $(this).find('.field_key-' + rule.field)
@@ -613,7 +613,7 @@ var acf = {
 						{
 							hide_all = true;
 							
-							if( $target.is('th') )
+							if( $target.is('th') && $toggle.is('th') )
 							{
 								$toggle = $target.closest('.layout').find('td.field_key-' + rule.field);
 							}
@@ -650,6 +650,7 @@ var acf = {
 					
 					// clear classes
 					$target.removeClass('acf-conditional_logic-hide acf-conditional_logic-show acf-show-blank');
+					
 					
 					// hide / show field
 					if( show )

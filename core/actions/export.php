@@ -8,6 +8,9 @@
 *  @created: 25/01/13
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 
 // vars
 $defaults = array(

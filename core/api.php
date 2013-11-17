@@ -612,9 +612,8 @@ function has_sub_fields( $field_name, $post_id = false )
 *  @return	mixed	$value
 */
 
-function get_sub_field( $field_name )
-{
-
+function get_sub_field( $field_name ) {
+	
 	// no field?
 	if( empty($GLOBALS['acf_field']) )
 	{
@@ -623,20 +622,18 @@ function get_sub_field( $field_name )
 	
 	
 	// vars
-	$depth = count( $GLOBALS['acf_field'] ) - 1;
-	$value = $GLOBALS['acf_field'][$depth]['value'];
-	$field = $GLOBALS['acf_field'][$depth]['field'];
-	$row = $GLOBALS['acf_field'][$depth]['row'];
-
-
-	// no value at i
-	if( !isset($value[ $row ][ $field_name ]) )
-	{
-		return false;
-	}
-
+	$row = end( $GLOBALS['acf_field'] );
 	
-	return $value[ $row ][ $field_name ];
+	
+	// return value
+	if( isset($row['value'][ $row['i'] ][ $field_name ]) )
+	{
+		return $row['value'][ $row['i'] ][ $field_name ];
+	}
+	
+	
+	// return false
+	return false;
 }
 
 

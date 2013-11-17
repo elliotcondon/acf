@@ -241,7 +241,19 @@
 			
 			// vars
 			var position = this.map.marker.getPosition(),
-				latlng = new google.maps.LatLng( position.lat(), position.lng() );
+				lat = this.o.lat,
+				lng = this.o.lng;
+			
+			
+			// if marker exists, center on the marker
+			if( position )
+			{
+				lat = position.lat();
+				lng = position.lng();
+			}
+			
+			
+			var latlng = new google.maps.LatLng( lat, lng );
 				
 			
 			// set center of map
@@ -356,6 +368,16 @@
 			
 			
 			this.$el.find('.search').val( val ).focus();
+			
+		},
+		
+		refresh : function(){
+			
+			// trigger resize on div
+			google.maps.event.trigger(this.map, 'resize');
+			
+			// center map
+			this.center();
 			
 		}
 	
@@ -472,7 +494,17 @@
 		{
 			$el.addClass('active');
 		}
-			
+		
+	});
+	
+	$(document).on('acf/fields/tab/show', function( e, $field ){
+		
+		// validate
+		if( $field.attr('data-field_type') == 'google_map' )
+		{
+			acf.fields.location.set({ $el : $field.find('.acf-google-map') }).refresh();
+		}
+		
 	});
 	
 

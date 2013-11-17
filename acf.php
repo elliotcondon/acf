@@ -72,7 +72,7 @@ class acf
 		
 		
 		// includes
-		add_action('plugins_loaded', array($this, 'include_before_theme'), 1);
+		$this->include_before_theme();
 		add_action('after_setup_theme', array($this, 'include_after_theme'), 1);
 		
 	}
