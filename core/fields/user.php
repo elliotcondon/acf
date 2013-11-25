@@ -21,6 +21,7 @@ class acf_field_user extends acf_field
 			'role' 			=> 'all',
 			'field_type' 	=> 'select',
 			'allow_null' 	=> 0,
+			'taxonomy'		=> '',
 		);
 		
 		
@@ -142,11 +143,11 @@ class acf_field_user extends acf_field
 	
 	function create_field( $field )
 	{
+		
 		// vars
 		$field['choices'] = array();
 		$args = array();
 		$editable_roles = get_editable_roles();
-
 
 		// roles
 		if( !$field['role'] || !is_array( $field['role'] ) || $field['role'][0] == 'all' )
@@ -160,8 +161,9 @@ class acf_field_user extends acf_field
 				$field['role'][] = $role;
 			}
 		}
-				
-		
+
+		$users_to_include = apply_filters( 'acf/include_users/id=' . $field['id'], array() );
+
 		// choices
 		foreach( $field['role'] as $role )
 		{
@@ -169,7 +171,8 @@ class acf_field_user extends acf_field
 			
 			// get users			
 			$users = get_users(array(
-				'role' => $role	
+				'role' => $role,
+				'include' => $users_to_include
 			));
 					
 			
