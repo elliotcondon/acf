@@ -21,7 +21,6 @@ class acf_field_user extends acf_field
 			'role' 			=> 'all',
 			'field_type' 	=> 'select',
 			'allow_null' 	=> 0,
-			'taxonomy'		=> '',
 		);
 		
 		
@@ -148,6 +147,7 @@ class acf_field_user extends acf_field
 		$field['choices'] = array();
 		$args = array();
 		$editable_roles = get_editable_roles();
+
 
 		// roles
 		if( !$field['role'] || !is_array( $field['role'] ) || $field['role'][0] == 'all' )
