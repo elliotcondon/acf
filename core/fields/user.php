@@ -142,7 +142,6 @@ class acf_field_user extends acf_field
 	
 	function create_field( $field )
 	{
-		
 		// vars
 		$field['choices'] = array();
 		$args = array();
