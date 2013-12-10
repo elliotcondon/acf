@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: ACF\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-07-09 03:49:07+00:00\n"
-"PO-Revision-Date: 2013-12-10 17:32+0900\n"
-"Last-Translator: MORIKAWA Tetsushi <tets.morikawa@gmail.com>\n"
+"PO-Revision-Date: 2013-07-26 07:40+0900\n"
+"Last-Translator: Fumito MIZUNO <ounziw@gmail.com>\n"
 "Language-Team: Fumito MIZUNO <ounziw@gmail.com>\n"
 "Language: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: acf.php:325
 msgid "Field&nbsp;Groups"
@@ -93,7 +93,7 @@ msgstr "フィールドグループを公開予約しました"
 
 #: acf.php:475
 msgid "Field group draft updated."
-msgstr "フィールドグループ下書きを更新しました"
+msgstr "フィールドグループ下書きを行進しました"
 
 #: acf.php:610
 msgid "Thumbnail"
@@ -957,7 +957,7 @@ msgstr "選択肢"
 #: core/fields/checkbox.php:137 core/fields/radio.php:144
 #: core/fields/select.php:177
 msgid "Choices"
-msgstr "選択肢"
+msgstr "選択し"
 
 #: core/fields/checkbox.php:138 core/fields/select.php:178
 #, fuzzy
