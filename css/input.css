@@ -212,10 +212,6 @@
 	min-height: 250px;
 }
 
-#post-body .acf_wysiwyg .wp_themeSkin .mceStatusbar a.mceResize {
-	top: -2px !important;
-}
-
 .acf_wysiwyg .wp-editor-container {
 	background: #fff;
 	border-color: #CCCCCC #CCCCCC #DFDFDF;
