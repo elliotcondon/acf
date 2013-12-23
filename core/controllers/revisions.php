@@ -28,11 +28,42 @@ class acf_revisions
 	{
 		// actions		
 		add_action('wp_restore_post_revision', array($this, 'wp_restore_post_revision'), 10, 2 );
-		
-		
+		add_action('_wp_put_post_revision', array($this, 'revision_history'), 10, 1 );
+
 		// filters
 		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields') );
 		add_filter('wp_save_post_revision_check_for_changes', array($this, 'force_save_revision'), 10, 3);
+	}
+
+	/*
+	*  revision_history
+	*
+	*  Wordpress does an update to the original post when restoring, thus creating a new
+	*  revision however ACF fields are not copied by default. This method prevents blank
+	*  diffs from appearing in revision tool by tracking revision for future use.
+	*
+	*  @type	action
+	*  @date	22/12/13
+	*
+	*  @param	$revision_id (int) the id of the revision created
+	*/
+
+	function revision_history($revision_id){
+		global $wpdb;
+
+		// validate we are working with what the user posted
+		if(isset($_GET['revision'], $_GET['action']) && $_GET['action'] == 'restore'){
+			$restore_parent = $wpdb->get_var($wpdb->prepare( "SELECT post_parent FROM $wpdb->posts WHERE ID = %d", $_GET['revision']));
+			$action_parent = $wpdb->get_var($wpdb->prepare( "SELECT post_parent FROM $wpdb->posts WHERE ID = %d", $revision_id));
+
+			if($restore_parent && $action_parent && $restore_parent == $action_parent){
+				$GLOBALS['acf_revision_info'] = array(
+					'restore' => $_GET['revision'],
+					'parent' => $action_parent,
+					'revision' => $revision_id
+				);
+			}
+		}
 	}
 	
 	
@@ -58,8 +89,12 @@ class acf_revisions
 		{
 			$return = false;
 		}
-		
-		
+
+		// during revision restoring, wordpress tries to normalize non-strings and causes exceptions
+		if( isset($_GET['action']) && $_GET['action'] == 'restore' ){
+			$return = false;
+		}
+
 		// return
 		return $return;
 	}
@@ -261,7 +296,7 @@ class acf_revisions
 		$rows = $wpdb->get_results( $wpdb->prepare(
 			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
 			$revision_id, 
-			'_%'
+			'\_%'
 		), ARRAY_A);
 		
 		
@@ -270,6 +305,11 @@ class acf_revisions
 			foreach( $rows as $row )
 			{
 				update_post_meta( $parent_id, $row['meta_key'], $row['meta_value'] );
+
+				if(isset($GLOBALS['acf_revision_info']) && $GLOBALS['acf_revision_info']['parent'] == $parent_id
+					&& $GLOBALS['acf_revision_info']['restore'] == $revision_id){
+					update_metadata('post', $GLOBALS['acf_revision_info']['revision'], $row['meta_key'], $row['meta_value']);
+				}
 			}
 		}
 			
