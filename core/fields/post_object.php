@@ -172,6 +172,7 @@ class acf_field_post_object extends acf_field
 			
 			if( $get_pages )
 			{
+				$args['post_status'] = array('publish', 'private', 'draft', 'inherit', 'future');
 				$posts = get_pages( $args );
 			}
 			else
