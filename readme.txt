@@ -6,7 +6,7 @@ Tested up to: 3.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerfull API, it’s a must have for any web developer working with WordPress.Field types include: Wysiwyg, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker and more!
+Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerful API, it’s a must have for any web developer working with WordPress.Field types include: Wysiwyg, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker and more!
 
 
 == Description ==
@@ -108,8 +108,8 @@ http://support.advancedcustomfields.com/
 == Changelog ==
 
 = 4.3.4 =
-* Post Object field: Fixed get_pages bug cuasing 'pages' to not appear
-* Page Link field: Fixed get_pages bug cuasing 'pages' to not appear
+* Post Object field: Fixed get_pages bug causing 'pages' to not appear
+* Page Link field: Fixed get_pages bug causing 'pages' to not appear
 * Tab field: Fixed JS bug causing multiple tab groups on page to render incorrectly
 * Language: Updated Russian translation - Thanks to Alex Torscho
 
