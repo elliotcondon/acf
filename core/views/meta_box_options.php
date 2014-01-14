@@ -13,10 +13,10 @@
 // global
 global $post;
 
-	
+
 // vars
 $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
-	
+
 
 ?>
 <table class="acf_input widefat" id="acf_options">
@@ -26,14 +26,14 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 			<p class="description"><?php _e("Field groups are created in order <br />from lowest to highest",'acf'); ?></p>
 		</td>
 		<td>
-			<?php 
-			
+			<?php
+
 			do_action('acf/create_field', array(
 				'type'	=>	'number',
 				'name'	=>	'menu_order',
 				'value'	=>	$post->menu_order,
 			));
-			
+
 			?>
 		</td>
 	</tr>
@@ -42,8 +42,8 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 			<label for=""><?php _e("Position",'acf'); ?></label>
 		</td>
 		<td>
-			<?php 
-			
+			<?php
+
 			do_action('acf/create_field', array(
 				'type'	=>	'select',
 				'name'	=>	'options[position]',
@@ -64,8 +64,8 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 			<label for="post_type"><?php _e("Style",'acf'); ?></label>
 		</td>
 		<td>
-			<?php 
-			
+			<?php
+
 			do_action('acf/create_field', array(
 				'type'	=>	'select',
 				'name'	=>	'options[layout]',
@@ -75,7 +75,7 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 					'default'			=>	__("Standard (WP metabox)",'acf'),
 				)
 			));
-			
+
 			?>
 		</td>
 	</tr>
@@ -86,30 +86,30 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 			<p class="description"><?php _e("If multiple field groups appear on an edit screen, the first field group's options will be used. (the one with the lowest order number)",'acf'); ?></p>
 		</td>
 		<td>
-			<?php 
-			
+			<?php
+
 			do_action('acf/create_field', array(
 				'type'	=>	'checkbox',
 				'name'	=>	'options[hide_on_screen]',
 				'value'	=>	$options['hide_on_screen'],
 				'choices' => array(
-					'permalink'			=>	__("Permalink"),
+					'permalink'			=>	__("Permalink", 'acf'),
 					'the_content'		=>	__("Content Editor",'acf'),
-					'excerpt'			=>	__("Excerpt"),
-					'custom_fields'		=>	__("Custom Fields"),
-					'discussion'		=>	__("Discussion"),
-					'comments'			=>	__("Comments"),
-					'revisions'			=>	__("Revisions"),
-					'slug'				=>	__("Slug"),
-					'author'			=>	__("Author"),
-					'format'			=>	__("Format"),
-					'featured_image'	=>	__("Featured Image"),
-					'categories'		=>	__("Categories"),
-					'tags'				=>	__("Tags"),
-					'send-trackbacks'	=>	__("Send Trackbacks"),
+					'excerpt'			=>	__("Excerpt", 'acf'),
+					'custom_fields'		=>	__("Custom Fields", 'acf'),
+					'discussion'		=>	__("Discussion", 'acf'),
+					'comments'			=>	__("Comments", 'acf'),
+					'revisions'			=>	__("Revisions", 'acf'),
+					'slug'				=>	__("Slug", 'acf'),
+					'author'			=>	__("Author", 'acf'),
+					'format'			=>	__("Format", 'acf'),
+					'featured_image'	=>	__("Featured Image", 'acf'),
+					'categories'		=>	__("Categories", 'acf'),
+					'tags'				=>	__("Tags", 'acf'),
+					'send-trackbacks'	=>	__("Send Trackbacks", 'acf'),
 				)
 			));
-			
+
 			?>
 		</td>
 	</tr>
