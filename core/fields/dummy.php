@@ -2,7 +2,7 @@
 
 class acf_field_dummy extends acf_field
 {
-	
+
 	/*
 	*  __construct
 	*
@@ -11,19 +11,19 @@ class acf_field_dummy extends acf_field
 	*  @since	3.6
 	*  @date	23/01/13
 	*/
-	
+
 	function __construct()
 	{
 		// vars
 		$this->name = 'dummy';
-		$this->label = __('Dummy');
-		
-		
+		$this->label = __('Dummy', 'acf');
+
+
 		// do not delete!
     	parent::__construct();
 	}
-	
-	
+
+
 	/*
 	*  load_value()
 	*
@@ -39,13 +39,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @return	$value - the value to be saved in te database
 	*/
-	
+
 	function load_value( $value, $post_id, $field )
 	{
 		return $value;
 	}
-	
-	
+
+
 	/*
 	*  format_value()
 	*
@@ -61,13 +61,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @return	$value	- the modified value
 	*/
-	
+
 	function format_value( $value, $post_id, $field )
 	{
 		return $value;
 	}
-	
-	
+
+
 	/*
 	*  format_value_for_api()
 	*
@@ -83,13 +83,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @return	$value	- the modified value
 	*/
-	
+
 	function format_value_for_api( $value, $post_id, $field )
 	{
 		return $value;
 	}
-	
-	
+
+
 	/*
 	*  update_value()
 	*
@@ -105,13 +105,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @return	$value - the modified value
 	*/
-	
+
 	function update_value( $value, $post_id, $field )
 	{
 		return $value;
 	}
-	
-	
+
+
 	/*
 	*  load_field()
 	*
@@ -125,13 +125,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @return	$field - the field array holding all the field options
 	*/
-	
+
 	function load_field( $field )
 	{
 		return $field;
 	}
-	
-	
+
+
 	/*
 	*  update_field()
 	*
@@ -151,8 +151,8 @@ class acf_field_dummy extends acf_field
 	{
 		return $field;
 	}
-	
-	
+
+
 	/*
 	*  create_field()
 	*
@@ -164,13 +164,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @param	$field - an array holding all the field's data
 	*/
-	
+
 	function create_field( $field )
 	{
-		
+
 	}
-	
-	
+
+
 	/*
 	*  create_options()
 	*
@@ -183,13 +183,13 @@ class acf_field_dummy extends acf_field
 	*
 	*  @param	$field	- an array holding all the field's data
 	*/
-	
+
 	function create_options( $field )
 	{
-		
+
 	}
 
-	
+
 	/*
 	*  input_admin_enqueue_scripts()
 	*
@@ -207,7 +207,7 @@ class acf_field_dummy extends acf_field
 
 	}
 
-	
+
 	/*
 	*  input_admin_head()
 	*
@@ -224,8 +224,8 @@ class acf_field_dummy extends acf_field
 	{
 
 	}
-	
-	
+
+
 	/*
 	*  field_group_admin_enqueue_scripts()
 	*
@@ -243,7 +243,7 @@ class acf_field_dummy extends acf_field
 
 	}
 
-	
+
 	/*
 	*  field_group_admin_head()
 	*
