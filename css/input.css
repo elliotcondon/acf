@@ -809,12 +809,11 @@ td.acf_input-wrap {
 
 
 .acf_relationship .relationship_search {
-	margin: 0;
-	font-size: 12px;
-	line-height: 13px;
-	border-radius: 13px;
-	font-family: sans-serif;
+	margin: 0 auto;
+	font-size: 14px;
+	line-height: 15px;
 	padding: 5px 9px !important;
+	display: block;
 }
 
 .acf_relationship .relationship_list {
