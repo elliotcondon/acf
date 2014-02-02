@@ -140,7 +140,7 @@ class acf_field_wysiwyg extends acf_field
 		?>
 		<div id="wp-<?php echo $id; ?>-wrap" class="acf_wysiwyg wp-editor-wrap" data-toolbar="<?php echo $field['toolbar']; ?>" data-upload="<?php echo $field['media_upload']; ?>">
 			<?php
-				if( version_compare($wp_version, '3.3', '<') ) :
+				if( version_compare($wp_version, '3.3', '>') ) :
 
 					$content = ( user_can_richedit() ) ? wp_richedit_pre( $field['value'] ) : wp_htmledit_pre( $field['value'] );
 					$media_upload = ( user_can_richedit() && $field['media_upload'] ) ? true : false;
