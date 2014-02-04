@@ -21,11 +21,16 @@
 .acf_postbox.no_box {
 	border: 0 none;
 	background: transparent;
+	box-shadow: none;
 }
 
 .acf_postbox.no_box > h3,
 .acf_postbox.no_box > .handlediv {
 	display: none;
+}
+
+.acf_postbox.no_box.closed .inside {
+	display: block;
 }
 
 .acf_postbox .widefat th, 
@@ -65,6 +70,39 @@
 .acf_postbox .field.error {
 	border: #CC0000 solid 1px !important;
 	background: #FFEBE8 !important;
+}
+
+.acf_postbox .field .acf-error-message {
+	display: none;
+	position: relative;
+	
+	background: #CC0000;
+	color: #fff;
+	text-shadow: none;
+	
+	border-radius: 3px;
+	padding: 5px 10px;
+	
+	font-size: 12px;
+	line-height: 14px;
+	
+	margin: 5px 0 0;
+}
+
+.acf_postbox .field .acf-error-message .bit {
+	width: 0;
+	height: 0;
+	border: transparent 5px solid;
+	border-bottom-color: #CC0000;
+	
+	display: block;
+	position: absolute;
+	top: -10px;
+	left: 10px;
+}
+
+.acf_postbox .field.error .acf-error-message {
+	display: inline-block;
 }
 
 .acf_postbox .field.error label.field_label {
@@ -179,10 +217,6 @@
 	min-height: 250px;
 }
 
-#post-body .acf_wysiwyg .wp_themeSkin .mceStatusbar a.mceResize {
-	top: -2px !important;
-}
-
 .acf_wysiwyg .wp-editor-container {
 	background: #fff;
 	border-color: #CCCCCC #CCCCCC #DFDFDF;
@@ -190,6 +224,19 @@
     border-radius: 3px 3px 0 0;
     border-width: 1px;
 }
+
+/*
+
+not needed in WP 3.8
+
+.acf_wysiwyg .mceStatusbar {
+	position: relative;
+}
+
+.acf_wysiwyg .mceStatusbar  a.mceResize {
+	top: -2px !important;
+}
+*/
 
 
 /*
@@ -937,73 +984,74 @@ td.acf_input-wrap {
 
 .field_type-tab {
 	display: none !important;
-	
 }
 
 .acf-tab-group {
-	border-bottom: #DFDFDF solid 1px;
+	background: transparent;
+	border-bottom: #CCCCCC solid 1px;
 	margin: 0 0 10px;
-	padding: 10px 4px 0 10px;
-	
-	background: #F3F3F3;
+	padding: 10px 2px 0 0;
 }
 
 .acf-tab-group li {
-	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+	font-family: "Open Sans",sans-serif;
 	font-size: 23px;
     line-height: 29px;
-    margin: 0 6px -1px 0;
+    margin: 0 8px 0 0;
     
 }
 
 .acf-tab-group li a {
-	padding: 10px;
+	padding: 6px 10px;
 	display: block;
-	border-radius: 3px 3px 0 0;
 	
-	color: #AAAAAA;
-	font-size: 20px;
-    font-weight: 200;
-    line-height: 1em;
-    padding: 5px 10px 7px;
+	color: #555555;
+	font-size: 15px;
+    font-weight: 700;
+    line-height: 24px;
     
-    border: #DFDFDF solid 1px;
+    border: #CCCCCC solid 1px;
+    border-bottom: 0 none;
     text-decoration: none;
-    background: #F8F8F8;
+    background: #E4E4E4;
     
 }
 
 .acf-tab-group li a:hover, 
 .acf-tab-group li.active a {
-    color: #d54e21
+    background: #FFFFFF;
+    outline: none;
 }
 
 .acf-tab-group li.active a {
-	color: #464646;
+	background: #F1F1F1;
+	color: #000;
 	border-color: #CCCCCC;
     border-bottom-color: #F7F7F7;
+    padding-bottom: 7px;
+    margin-bottom: -1px;
 }
 
+.acf_postbox > .inside > .field_type-tab + .field {
+	border-top: 0 none;
+}
 
 
 /*
-*  No Box
+*  Box
 */
 
-.acf_postbox.no_box .acf-tab-group {
-	padding-left: 0;
-	border-bottom-color: #CCC;
-	background: transparent;
+.acf_postbox.default .acf-tab-group {
+	padding-left: 10px;
+	border-bottom-color: #E8E8E8;
 }
 
-.acf_postbox.no_box .acf-tab-group li.active a {
-    border-bottom-color: #fff;
+.acf_postbox.default .acf-tab-group li a {
+    background: #F1F1F1;
 }
 
-
-.acf_postbox.no_box .acf-tab-group li a {
-    background: #fff;
-    
+.acf_postbox.default .acf-tab-group li.active a {
+	background: #FFFFFF;
 }
 
 

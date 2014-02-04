@@ -189,11 +189,15 @@ class acf_controller_post
 				
 				// vars
 				$show = in_array( $acf['id'], $metabox_ids ) ? 1 : 0;
+				
+				
+				// priority
 				$priority = 'high';
 				if( $acf['options']['position'] == 'side' )
 				{
 					$priority = 'core';
 				}
+				$priority = apply_filters('acf/input/meta_box_priority', $priority, $acf);
 				
 				
 				// add meta box
@@ -327,6 +331,10 @@ class acf_controller_post
 		
 		
 		// add style to html 
+		if( in_array('permalink',$options['hide_on_screen']) )
+		{
+			$html .= '#edit-slug-box {display: none;} ';
+		}
 		if( in_array('the_content',$options['hide_on_screen']) )
 		{
 			$html .= '#postdivrich {display: none;} ';

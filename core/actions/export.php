@@ -8,6 +8,9 @@
 *  @created: 25/01/13
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 
 // vars
 $defaults = array(
@@ -39,6 +42,37 @@ if( empty($my_options['acf_posts']) )
  * @since 2.5.0
  */
 define( 'WXR_VERSION', '1.1' );
+
+
+/*
+*  fix_line_breaks
+*
+*  This function will loop through all array pieces and correct double line breaks from DB to XML
+*
+*  @type	function
+*  @date	2/12/2013
+*  @since	5.0.0
+*
+*  @param	$v (mixed)
+*  @return	$v (mixed)
+*/
+
+function fix_line_breaks( $v )
+{
+	if( is_array($v) )
+	{
+		foreach( array_keys($v) as $k )
+		{
+			$v[ $k ] = fix_line_breaks( $v[ $k ] );
+		}
+	}
+	elseif( is_string($v) )
+	{
+		$v = str_replace("\r\n", "\r", $v);
+	}
+	
+	return $v;
+}
 
 
 /**
@@ -221,8 +255,11 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n";
 		<wp:post_password><?php echo $post->post_password; ?></wp:post_password>
 <?php	$postmeta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d", $post->ID ) );
 		foreach( $postmeta as $meta ) : if ( $meta->meta_key != '_edit_lock' ) : 
-			$meta->meta_value = str_replace("\r\n", "\n", $meta->meta_value);
-			$meta->meta_value = str_replace("\r", "\n", $meta->meta_value);
+			
+			$meta->meta_value = maybe_unserialize( $meta->meta_value );
+				$meta->meta_value = fix_line_breaks( $meta->meta_value );
+			$meta->meta_value = maybe_serialize( $meta->meta_value );
+						
 		?>
 		<wp:postmeta>
 			<wp:meta_key><?php echo $meta->meta_key; ?></wp:meta_key>

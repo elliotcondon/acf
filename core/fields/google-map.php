@@ -20,12 +20,14 @@ class acf_field_google_map extends acf_field
 		$this->defaults = array(
 			'height'		=> '',
 			'center_lat'	=> '',
-			'center_lng'	=> ''
+			'center_lng'	=> '',
+			'zoom'			=> ''
 		);
 		$this->default_values = array(
 			'height'		=> '400',
 			'center_lat'	=> '-37.81411',
-			'center_lng'	=> '144.96328'
+			'center_lng'	=> '144.96328',
+			'zoom'			=> '14'
 		);
 		$this->l10n = array(
 			'locating'			=>	__("Locating",'acf'),
@@ -94,7 +96,8 @@ class acf_field_google_map extends acf_field
 		$keys = array( 
 			'data-id'	=> 'id', 
 			'data-lat'	=> 'center_lat',
-			'data-lng'	=> 'center_lng'
+			'data-lng'	=> 'center_lng',
+			'data-zoom'	=> 'zoom'
 		);
 		
 		foreach( $keys as $k => $v )
@@ -114,13 +117,13 @@ class acf_field_google_map extends acf_field
 			<div class="title">
 				
 				<div class="has-value">
-					<a href="#" class="acf-sprite-remove ir" title="Clear location">Remove</a>
+					<a href="#" class="acf-sprite-remove ir" title="<?php _e("Clear location",'acf'); ?>">Remove</a>
 					<h4><?php echo $field['value']['address']; ?></h4>
 				</div>
 				
 				<div class="no-value">
-					<a href="#" class="acf-sprite-locate ir" title="Find current location">Locate</a>
-					<input type="text" placeholder="Search for address..." class="search" />
+					<a href="#" class="acf-sprite-locate ir" title="<?php _e("Find current location",'acf'); ?>">Locate</a>
+					<input type="text" placeholder="<?php _e("Search for address...",'acf'); ?>" class="search" />
 				</div>
 				
 			</div>
@@ -189,6 +192,24 @@ class acf_field_google_map extends acf_field
 			</li>
 		</ul>
 		
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label><?php _e("Zoom",'acf'); ?></label>
+		<p class="description"><?php _e('Set the initial zoom level','acf'); ?></p>
+	</td>
+	<td>
+		<?php 
+		
+		do_action('acf/create_field', array(
+			'type'			=> 'number',
+			'name'			=> 'fields['.$key.'][zoom]',
+			'value'			=> $field['zoom'],
+			'placeholder'	=> $this->default_values['zoom']
+		));
+		
+		?>
 	</td>
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">

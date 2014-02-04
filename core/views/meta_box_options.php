@@ -45,7 +45,7 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 			<?php 
 			
 			do_action('acf/create_field', array(
-				'type'	=>	'radio',
+				'type'	=>	'select',
 				'name'	=>	'options[position]',
 				'value'	=>	$options['position'],
 				'choices' => array(
@@ -67,12 +67,12 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 			<?php 
 			
 			do_action('acf/create_field', array(
-				'type'	=>	'radio',
+				'type'	=>	'select',
 				'name'	=>	'options[layout]',
 				'value'	=>	$options['layout'],
 				'choices' => array(
-					'no_box'	=>	__("No Metabox",'acf'),
-					'default'	=>	__("Standard Metabox",'acf'),
+					'no_box'			=>	__("Seamless (no metabox)",'acf'),
+					'default'			=>	__("Standard (WP metabox)",'acf'),
 				)
 			));
 			
@@ -93,19 +93,20 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 				'name'	=>	'options[hide_on_screen]',
 				'value'	=>	$options['hide_on_screen'],
 				'choices' => array(
+					'permalink'			=>	__("Permalink", 'acf'),
 					'the_content'		=>	__("Content Editor",'acf'),
-					'excerpt'			=>	__("Excerpt"),
-					'custom_fields'		=>	__("Custom Fields"),
-					'discussion'		=>	__("Discussion"),
-					'comments'			=>	__("Comments"),
-					'revisions'			=>	__("Revisions"),
-					'slug'				=>	__("Slug"),
-					'author'			=>	__("Author"),
-					'format'			=>	__("Format"),
-					'featured_image'	=>	__("Featured Image"),
-					'categories'		=>	__("Categories"),
-					'tags'				=>	__("Tags"),
-					'send-trackbacks'	=>	__("Send Trackbacks"),
+					'excerpt'			=>	__("Excerpt", 'acf'),
+					'custom_fields'		=>	__("Custom Fields", 'acf'),
+					'discussion'		=>	__("Discussion", 'acf'),
+					'comments'			=>	__("Comments", 'acf'),
+					'revisions'			=>	__("Revisions", 'acf'),
+					'slug'				=>	__("Slug", 'acf'),
+					'author'			=>	__("Author", 'acf'),
+					'format'			=>	__("Format", 'acf'),
+					'featured_image'	=>	__("Featured Image", 'acf'),
+					'categories'		=>	__("Categories", 'acf'),
+					'tags'				=>	__("Tags", 'acf'),
+					'send-trackbacks'	=>	__("Send Trackbacks", 'acf'),
 				)
 			));
 			

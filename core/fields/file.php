@@ -246,6 +246,7 @@ class acf_field_file extends acf_field
 				'title' => $attachment->post_title,
 				'caption' => $attachment->post_excerpt,
 				'description' => $attachment->post_content,
+				'mime_type'	=> $attachment->post_mime_type,
 				'url' => wp_get_attachment_url( $attachment->ID ),
 			);
 		}

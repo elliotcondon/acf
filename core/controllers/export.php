@@ -384,8 +384,8 @@ if(function_exists("register_field_group"))
 				$html = str_replace("\n", "\n\t", $html);
 				
 				// add the WP __() function to specific strings for translation in theme
-				$html = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $html);
-				$html = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $html);
+				//$html = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $html);
+				//$html = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $html);
 				
 								
 ?>	register_field_group(<?php echo $html ?>);
@@ -457,7 +457,7 @@ if(function_exists("register_field_group"))
 			foreach( $fields as $i => $field )
 			{
 				// unset unneccessary bits
-				unset( $field['id'], $field['class'], $field['order_no'], $field['field_group'] );
+				unset( $field['id'], $field['class'], $field['order_no'], $field['field_group'], $field['_name'] );
 				
 				
 				// instructions

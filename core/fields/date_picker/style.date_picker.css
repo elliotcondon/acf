@@ -67,12 +67,7 @@
 }
 .ui-acf .ui-widget-content a { color: #222222; }
 .ui-acf .ui-widget-header { 
-	background: #2c8bbe;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#2c8bbe), to(#246f99)); /* Safari 4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #2c8bbe, #246f99); /* Chrome 10+, Safari 5.1+, iOS 5+ */
-	background-image:    -moz-linear-gradient(top, #2c8bbe, #246f99); /* Firefox 3.6-15 */
-	background-image:      -o-linear-gradient(top, #2c8bbe, #246f99); /* Opera 11.10+ */
-	background-image:         linear-gradient(to bottom, #2c8bbe, #246f99); /* Firefox 16+ */
+	background: #2EA2CC;
 	color: #e5e5e5; 
 	font-weight: bold; 
 	border-radius: 0 !important;
@@ -407,15 +402,9 @@
 }
 
 .ui-acf .ui-datepicker .ui-state-active {
-	background: #2c8bbe;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#2c8bbe), to(#246f99)); /* Safari 4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #2c8bbe, #246f99); /* Chrome 10+, Safari 5.1+, iOS 5+ */
-	background-image:    -moz-linear-gradient(top, #2c8bbe, #246f99); /* Firefox 3.6-15 */
-	background-image:      -o-linear-gradient(top, #2c8bbe, #246f99); /* Opera 11.10+ */
-	background-image:         linear-gradient(to bottom, #2c8bbe, #246f99); /* Firefox 16+ */
+	background: #2EA2CC;
 	
     color: #FFFFFF;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-    border: #246f99 solid 1px;
+    border: #0074A2 solid 1px;
     
 }

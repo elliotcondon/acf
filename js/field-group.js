@@ -431,6 +431,12 @@ var acf = {
 		field.after( new_field );
 		
 		
+		// set select values
+		new_field.find('select').each(function(){
+			$(this).val( $(this).attr('data-val') ).trigger('change');
+		});
+		
+		
 		// open up form
 		if( field.hasClass('form_open') )
 		{
@@ -445,13 +451,7 @@ var acf = {
 		// update new_field label / name
 		var label = new_field.find('tr.field_label:first input[type="text"]'),
 			name = new_field.find('tr.field_name:first input[type="text"]');
-					
-		
-		// set select values
-		new_field.find('select').each(function(){
-			$(this).val( $(this).attr('data-val') ).trigger('change');
-		});
-		
+				
 		
 		name.val('');
 		label.val( label.val() + ' (' + acf.l10n.copy + ')' );
@@ -850,7 +850,7 @@ var acf = {
 	$(document).ready(function(){
 		
 		// custom Publish metabox
-		$('#submitdiv #publish').attr('class', 'acf-button');
+		$('#submitdiv #publish').attr('class', 'acf-button large');
 		$('#submitdiv a.submitdelete').attr('class', 'delete-field-group').attr('id', 'submit-delete');
 		
 		
@@ -1031,14 +1031,22 @@ var acf = {
 			// events
 			$(document).on('acf/field_form-open', function(e, $field){
 				
-				// populate the triggers
-				_this.sync();
-				
-				
 				// render select elements
 				_this.render( $field );
 			
 			});
+			
+			$(document).on('change', '#acf_fields tr.field_label input.label', function(){
+				
+				// render all open fields
+				$('#acf_fields .field.form_open').each(function(){
+					
+					_this.render( $(this) );
+					
+				});
+				
+			});
+			
 			
 			$(document).on('change', 'tr.conditional-logic input[type="radio"]', function( e ){
 				
@@ -1074,67 +1082,6 @@ var acf = {
 			
 		},
 		
-		sync : function(){
-			
-			// reference
-			var _this = this;
-			
-			
-			// reset
-			this.triggers = {
-				0 : []
-			};
-			
-			
-			// loop through fields
-			$('#acf_fields .field').each(function(){
-				
-				// vars
-				var $field	= $(this),
-					id		= $field.attr('data-id'),
-					type	= $field.attr('data-type'),
-					label	= $field.find('tr.field_label input').val(),
-					parent	= 0;
-				
-				
-				// validate
-				if( id == 'field_clone' )
-				{
-					return;
-				}
-				
-				
-				// parent
-				var $parent = $field.parent().closest('.field');
-				
-				if( $parent.exists() )
-				{
-					parent = $parent.attr('data-id');
-					
-					// add placeholder
-					if( _this.triggers[ parent ] === undefined )
-					{
-						_this.triggers[ parent ] = [];
-					}
-				}
-				
-				
-				// add this field to available triggers
-				if( type == 'select' || type == 'checkbox' || type == 'true_false' || type == 'radio' )
-				{
-					_this.triggers[ parent ].push({
-						id		: id,
-						type	: type,
-						label	: label
-					});
-				}
-				
-				
-			});
-			
-
-		},
-		
 		render : function( $field ){
 			
 			// reference
@@ -1143,50 +1090,51 @@ var acf = {
 			
 			// vars
 			var choices		= [],
-				$ancestors	= $field.parent().parents('.field'),
+				key			= $field.attr('data-id'),
+				$ancestors	= $field.parents('.fields'),
 				$tr			= $field.find('> .field_form_mask > .field_form > table > tbody > tr.conditional-logic');
 				
 			
-			// populate choices
-			$.each( this.triggers[ 0 ], function(k, v){
+			$.each( $ancestors, function( i ){
 				
-				choices.push({
-					value : v.id,
-					label : v.label
+				var group = (i == 0) ? acf.l10n.sibling_fields : acf.l10n.parent_fields;
+				
+				$(this).children('.field').each(function(){
+					
+					
+					// vars
+					var $this_field	= $(this),
+						this_id		= $this_field.attr('data-id'),
+						this_type	= $this_field.attr('data-type'),
+						this_label	= $this_field.find('tr.field_label input').val();
+					
+					
+					// validate
+					if( this_id == 'field_clone' )
+					{
+						return;
+					}
+					
+					if( this_id == key )
+					{
+						return;
+					}
+										
+					
+					// add this field to available triggers
+					if( this_type == 'select' || this_type == 'checkbox' || this_type == 'true_false' || this_type == 'radio' )
+					{
+						choices.push({
+							value	: this_id,
+							label	: this_label,
+							group	: group
+						});
+					}
+					
+					
 				});
 				
 			});
-			
-			
-			// add ancestors
-			if( $ancestors.exists() )
-			{
-				// add group to current options
-				$.each( choices, function(k, v){
-						
-					choices[ k ].group = acf.l10n.fields;
-					
-				});
-				
-				
-				$ancestors.each(function( k ){
-					
-					var id = $(this).attr('data-id'),
-						group = (k == 0) ? acf.l10n.sibling_fields : acf.l10n.parent_fields;
-					
-					// populate choices
-					$.each( _this.triggers[ id ], function(k, v){
-						
-						choices.push({
-							value : v.id,
-							label : v.label,
-							group : group
-						});
-						
-					});
-					
-				});
-			}
 				
 			
 			// empty?
@@ -1310,14 +1258,18 @@ var acf = {
 			// vars
 			var $new_tr = $old_tr.clone(),
 				old_i = parseFloat( $old_tr.attr('data-i') ),
-				new_i = old_i + 1;
+				new_i = acf.helpers.uniqid();
 			
 			
 			// update names
 			$new_tr.find('[name]').each(function(){
 				
-				$(this).attr('name', $(this).attr('name').replace('[' + old_i + ']', '[' + new_i + ']') );
-				$(this).attr('id', $(this).attr('id').replace('[' + old_i + ']', '[' + new_i + ']') );
+				// flexible content uses [0], [1] as the layout index. To avoid conflict, make sure we search for the entire conditional logic string in the name and id
+				var find = '[conditional_logic][rules][' + old_i + ']',
+					replace = '[conditional_logic][rules][' + new_i + ']';
+				
+				$(this).attr('name', $(this).attr('name').replace(find, replace) );
+				$(this).attr('id', $(this).attr('id').replace(find, replace) );
 				
 			});
 				
@@ -1356,7 +1308,7 @@ var acf = {
 				$table.addClass('remove-disabled');
 			}
 			
-		}
+		},
 		
 	};
 	

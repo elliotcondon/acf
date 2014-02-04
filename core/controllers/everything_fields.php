@@ -69,7 +69,14 @@ class acf_everything_fields
 	function attachment_fields_to_edit( $form_fields, $post ) 
 	{
 		// vars
+		$screen = get_current_screen();
 		$post_id = $post->ID;
+		
+		
+		if( !empty($screen) )
+		{
+			return $form_fields;
+		}
 		
 		
 		// get field groups
@@ -694,7 +701,7 @@ $(document).ready(function(){
 				if( $layout == 'tr' )
 				{
 					//nonce
-					echo '<tr><td colspan="2"><input type="hidden" name="acf_nonce" value="' . wp_create_nonce( 'input' ) . '" /></td></tr>';
+					echo '<tr style="display:none;"><td colspan="2"><input type="hidden" name="acf_nonce" value="' . wp_create_nonce( 'input' ) . '" /></td></tr>';
 				}
 				else
 				{

@@ -142,21 +142,31 @@
 		},
 		destroy : function(){
 			
-			// vars
-			var id = this.o.id,
-				editor = tinyMCE.get( id );
-			
-			
 			// Remove tinymcy functionality.
 			// Due to the media popup destroying and creating the field within such a short amount of time,
 			// a JS error will be thrown when launching the edit window twice in a row.
 			try
 			{
-				tinyMCE.execCommand("mceRemoveControl", false, id);
+				// vars
+				var id = this.o.id,
+					editor = tinyMCE.get( id );
+					
+					
+				// store the val, and add it back in to keep line breaks / formating
+				if( editor )
+				{
+					var val = editor.getContent();
+					
+					tinyMCE.execCommand("mceRemoveControl", false, id);
+				
+					this.$textarea.val( val );
+				}
+			
+				
 			} 
 			catch(e)
 			{
-				console.log( e );
+				//console.log( e );
 			}
 			
 			

@@ -10,13 +10,14 @@
 	*
 	*/
 	
-	acf.fields.location = {
+	acf.fields.google_map = {
 		
 		$el : null,
 		$input : null,
 		
 		o : {},
 		
+		ready : false,
 		geocoder : false,
 		map : false,
 		maps : {},
@@ -42,16 +43,23 @@
 			}
 			
 			
-			// geocode
-			this.geocoder = new google.maps.Geocoder();
-			
-				
 			// return this for chaining
 			return this;
 			
 		},
 		init : function(){
-
+			
+			// geocode
+			if( !this.geocoder )
+			{
+				this.geocoder = new google.maps.Geocoder();
+			}
+			
+			
+			// google maps is loaded and ready
+			this.ready = true;
+			
+			
 			// is clone field?
 			if( acf.helpers.is_clone_field(this.$input) )
 			{
@@ -70,7 +78,7 @@
 			
 			// vars
 			var args = {
-        		zoom		: 14,
+        		zoom		: parseInt(this.o.zoom),
         		center		: new google.maps.LatLng(this.o.lat, this.o.lng),
         		mapTypeId	: google.maps.MapTypeId.ROADMAP
         	};
@@ -241,7 +249,19 @@
 			
 			// vars
 			var position = this.map.marker.getPosition(),
-				latlng = new google.maps.LatLng( position.lat(), position.lng() );
+				lat = this.o.lat,
+				lng = this.o.lng;
+			
+			
+			// if marker exists, center on the marker
+			if( position )
+			{
+				lat = position.lat();
+				lng = position.lng();
+			}
+			
+			
+			var latlng = new google.maps.LatLng( lat, lng );
 				
 			
 			// set center of map
@@ -357,6 +377,16 @@
 			
 			this.$el.find('.search').val( val ).focus();
 			
+		},
+		
+		refresh : function(){
+			
+			// trigger resize on div
+			google.maps.event.trigger(this.map, 'resize');
+			
+			// center map
+			this.center();
+			
 		}
 	
 	};
@@ -377,34 +407,42 @@
 	
 	$(document).on('acf/setup_fields', function(e, el){
 		
-		if( $(el).find('.acf-google-map').exists() )
+		// vars
+		$fields = $(el).find('.acf-google-map');
+		
+		
+		// validate
+		if( ! $fields.exists() )
 		{
-			// validate google
-			if( typeof google === 'undefined' )
-			{
-				$.getScript('https://www.google.com/jsapi', function(){
-				
-				    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
-				    
-				        $(el).find('.acf-google-map').each(function(){
+			return;
+		}
+		
+		
+		// validate google
+		if( typeof google === 'undefined' )
+		{
+			$.getScript('https://www.google.com/jsapi', function(){
+			
+			    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
+			    
+			        $fields.each(function(){
+					
+						acf.fields.google_map.set({ $el : $(this) }).init();
 						
-							acf.fields.location.set({ $el : $(this) }).init();
-							
-						});
-				        
-				    }});
-				});
+					});
+			        
+			    }});
+			});
+			
+		}
+		else
+		{
+			$fields.each(function(){
 				
-			}
-			else
-			{
-				$(el).find('.acf-google-map').each(function(){
-					
-					acf.fields.location.set({ $el : $(this) }).init();
-					
-				});
+				acf.fields.google_map.set({ $el : $(this) }).init();
 				
-			}
+			});
+			
 		}
 		
 	});
@@ -426,7 +464,7 @@
 		
 		e.preventDefault();
 		
-		acf.fields.location.set({ $el : $(this).closest('.acf-google-map') }).clear();
+		acf.fields.google_map.set({ $el : $(this).closest('.acf-google-map') }).clear();
 		
 		$(this).blur();
 		
@@ -437,7 +475,7 @@
 		
 		e.preventDefault();
 		
-		acf.fields.location.set({ $el : $(this).closest('.acf-google-map') }).locate();
+		acf.fields.google_map.set({ $el : $(this).closest('.acf-google-map') }).locate();
 		
 		$(this).blur();
 		
@@ -447,7 +485,7 @@
 		
 		e.preventDefault();
 		
-		acf.fields.location.set({ $el : $(this).closest('.acf-google-map') }).edit();
+		acf.fields.google_map.set({ $el : $(this).closest('.acf-google-map') }).edit();
 			
 	});
 	
@@ -472,8 +510,26 @@
 		{
 			$el.addClass('active');
 		}
-			
+		
 	});
+	
+	$(document).on('acf/fields/tab/show acf/conditional_logic/show', function( e, $field ){
+		
+		// validate
+		if( ! acf.fields.google_map.ready )
+		{
+			return;
+		}
+		
+		
+		// validate
+		if( $field.attr('data-field_type') == 'google_map' )
+		{
+			acf.fields.google_map.set({ $el : $field.find('.acf-google-map') }).refresh();
+		}
+		
+	});
+
 	
 
 })(jQuery);
