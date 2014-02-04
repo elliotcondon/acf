@@ -269,7 +269,7 @@ class acf_field_relationship extends acf_field
 		$options = apply_filters('acf/fields/relationship/query/key=' . $field['key'], $options, $field, $the_post );
 		
 		// Filter for Post Children
-		if( !in_array('post_children', $field['result_elements']) )
+		if( !in_array('post_children', $field['filters']) )
 		{
 			$options['post_parent'] = 0;
 		}
@@ -294,6 +294,15 @@ class acf_field_relationship extends acf_field
 				if( in_array('post_type', $field['result_elements']) )
 				{
 					$title .= get_post_type();
+				}
+				
+				// Post Children prepend Parent Title
+				$parent = false;
+				if ( in_array('post_children', $field['filters']) && $post->post_parent !== 0 ) {
+					if ( !$parent || $post->post_parent != $parent->ID )
+						$parent = get_post($post->post_parent);
+					
+					$title .= in_array('post_type', $field['result_elements']) ? " | {$parent->post_title}" : " {$parent->post_title}";
 				}
 				
 				// WPML
@@ -329,12 +338,6 @@ class acf_field_relationship extends acf_field
 			$title = apply_filters('acf/fields/relationship/result', $title, $post, $field, $the_post);
 			$title = apply_filters('acf/fields/relationship/result/name=' . $field['name'] , $title, $post, $field, $the_post);
 			$title = apply_filters('acf/fields/relationship/result/key=' . $field['key'], $title, $post, $field, $the_post);
-			
-			// Post Children prepend Parent Title
-			if ( in_array('post_children', $field['result_elements']) && $post->post_parent !== 0 ) {
-				$parent = get_post($post->post_parent);
-				$title = "{$parent->post_title} - $title";
-			}
 			
 			// update html
 			$r['html'] .= '<li><a href="' . get_permalink() . '" data-post_id="' . get_the_ID() . '">' . $title .  '<span class="acf-button-add"></span></a></li>';
@@ -499,6 +502,15 @@ class acf_field_relationship extends acf_field
 					if( in_array('post_type', $field['result_elements']) )
 					{
 						$title .= $p->post_type;
+					}
+					
+					// Post Children prepend Parent Title
+					$parent = false;
+					if ( in_array('post_children', $field['filters']) && $p->post_parent !== 0 ) {
+						if ( !$parent || $p->post_parent != $parent->ID )
+							$parent = get_post($p->post_parent);
+							
+						$title .= in_array('post_type', $field['result_elements']) ? " | {$parent->post_title}" : " {$parent->post_title}";
 					}
 					
 					// WPML
