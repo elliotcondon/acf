@@ -509,17 +509,19 @@ class acf
 			'show_in_menu'	=> false,
 		));
 		
+		// Use minified libraries if SCRIPT_DEBUG is turned off
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		
 		// register acf scripts
 		$scripts = array();
 		$scripts[] = array(
 			'handle'	=> 'acf-field-group',
-			'src'		=> $this->settings['dir'] . 'js/field-group.min.js',
+			'src'		=> $this->settings['dir'] . 'js/field-group'. $suffix .'.js',
 			'deps'		=> array('jquery')
 		);
 		$scripts[] = array(
 			'handle'	=> 'acf-input',
-			'src'		=> $this->settings['dir'] . 'js/input.min.js',
+			'src'		=> $this->settings['dir'] . 'js/input'. $suffix .'.js',
 			'deps'		=> array('jquery')
 		);
 		$scripts[] = array(
