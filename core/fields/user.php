@@ -160,8 +160,9 @@ class acf_field_user extends acf_field
 				$field['role'][] = $role;
 			}
 		}
-				
-		
+
+		$users_to_include = apply_filters( 'acf/include_users/id=' . $field['id'], array() );
+
 		// choices
 		foreach( $field['role'] as $role )
 		{
@@ -169,7 +170,8 @@ class acf_field_user extends acf_field
 			
 			// get users			
 			$users = get_users(array(
-				'role' => $role	
+				'role' => $role,
+				'include' => $users_to_include
 			));
 					
 			
