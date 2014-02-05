@@ -398,6 +398,75 @@ ul.acf-checkbox-list li input {
 	width: auto !important;
 }
 
+ul.acf-radio-list.two-columns li,
+ul.acf-checkbox-list.two-columns li {
+	float: left;
+	width: 45%;
+	margin-right: 4%;
+}
+
+ul.acf-radio-list.three-columns li,
+ul.acf-checkbox-list.three-columns li {
+	float: left;
+	width: 30%;
+	margin-right: 3%;
+}
+
+ul.acf-radio-list.two-columns,
+ul.acf-checkbox-list.two-columns,
+ul.acf-radio-list.three-columns,
+ul.acf-checkbox-list.three-columns {
+	overflow: hidden;
+}
+
+@supports (column-count: 2) or 
+	(-webkit-column-count: 2) or 
+	(-moz-column-count: 2) or 
+	(-o-column-count: 2) or 
+	(-ms-column-count: 2) {
+
+
+	ul.acf-radio-list.two-columns li,
+	ul.acf-checkbox-list.two-columns li,
+	ul.acf-radio-list.three-columns li,
+	ul.acf-checkbox-list.three-columns li {
+		float: inherit;
+		width: auto;
+		margin-right: 0;
+	}
+	
+	ul.acf-radio-list.two-columns,
+	ul.acf-checkbox-list.two-columns {
+		display: list-item;
+		-webkit-column-count: 2;
+		-webkit-column-gap: 2em;  
+		-moz-column-count: 2;
+		-moz-column-gap: 2em;
+		-o-column-count: 2;
+		-o-column-gap: 2em;
+		-ms-column-count: 2;
+		-ms-column-gap: 2em;
+		column-count: 2;
+		column-gap: 2em;
+	}
+	
+	ul.acf-radio-list.three-columns,
+	ul.acf-checkbox-list.three-columns {
+		display: list-item;
+		-webkit-column-count: 3;
+		-webkit-column-gap: 2em;  
+		-moz-column-count: 3;
+		-moz-column-gap: 2em;
+		-o-column-count: 3;
+		-o-column-gap: 2em;
+		-ms-column-count: 3;
+		-ms-column-gap: 2em;
+		column-count: 3;
+		column-gap: 2em;
+	}
+
+}
+
 
 /*--------------------------------------------------------------------------------------------
 *
