@@ -3888,7 +3888,9 @@ var acf = {
 			$('#publishing-action .spinner').hide();
 			
 			return false;
-		}
+		} else {
+            $(document).trigger('acf/validation_success');
+        }
 
 		
 		// remove hidden postboxes
