@@ -265,7 +265,7 @@ msgstr "ACF создат .xml файл, который совместим с WP 
 #: core/controllers/export.php:254
 msgid ""
 "Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
+"groups. This is useful for migrating fields groups between WP websites."
 msgstr ""
 "Импортированные группы полей <strong>появятся</strong> в списке "
 "редактируемых групп полей. Эта функция очень полезна в случае переезда с "

@@ -308,7 +308,7 @@ msgstr ""
 #: ../core/controllers/export.php:254
 msgid ""
 "Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
+"groups. This is useful for migrating fields groups between WP websites."
 msgstr ""
 "Les groupes de champs importés <b>apparaitront</b> dans ACF. Utile pour "
 "migrer les groupes de champs entre plusieurs site Wordpress."

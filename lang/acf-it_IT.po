@@ -283,7 +283,7 @@ msgstr ""
 #: C:\advanced-custom-fields/core/controllers/export.php:254
 msgid ""
 "Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
+"groups. This is useful for migrating fields groups between WP websites."
 msgstr ""
 "I gruppi di campi importati <b>appariranno</b> nella lista dei gruppi di "
 "campi editabili. Questo è utile per migrare gruppi di campi tra diversi siti "

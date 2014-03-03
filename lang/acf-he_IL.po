@@ -262,7 +262,7 @@ msgstr ""
 #: core/controllers/export.php:254
 msgid ""
 "Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
+"groups. This is useful for migrating fields groups between WP websites."
 msgstr ""
 "קבוצות שדה מיובאות יופיעו ברשימה של קבוצות שדה הניתנות לעריכה. האפשרות הזו "
 "שימושית להעברת קבוצות שדות בין אתרי WP שונים."
