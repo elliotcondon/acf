@@ -177,6 +177,10 @@ class acf_controller_post
 		
 		// get field groups
 		$acfs = apply_filters('acf/get_field_groups', array());
+
+		// get user's screen options prefs
+		$user_id = get_current_user_id();
+		$user_screen_opts_hidden = get_user_meta($user_id, "metaboxhidden_{$typenow}", true);
 		
 		
 		if( $acfs )
@@ -189,6 +193,13 @@ class acf_controller_post
 				
 				// vars
 				$show = in_array( $acf['id'], $metabox_ids ) ? 1 : 0;
+
+				if (is_array($user_screen_opts_hidden)) {
+					// hooks into screen options
+					$hidden = in_array( "acf_" . $acf['id'], $user_screen_opts_hidden ) ? 1 : 0;
+				} else {
+					$hidden = 0;
+				}
 				
 				
 				// priority
@@ -208,7 +219,7 @@ class acf_controller_post
 					$typenow, 
 					$acf['options']['position'], 
 					$priority, 
-					array( 'field_group' => $acf, 'show' => $show, 'post_id' => $post_id )
+					array( 'field_group' => $acf, 'show' => $show, 'hidden' => $hidden, 'post_id' => $post_id )
 				);
 				
 			}
@@ -277,12 +288,13 @@ class acf_controller_post
 		$class = 'acf_postbox ' . $args['field_group']['options']['layout'];
 		$toggle_class = 'acf_postbox-toggle';
 		
+		$display = $args['hidden'] ? 'hide' : 'show';
 		
 		if( ! $args['show'] )
 		{
 			$class .= ' acf-hidden';
 			$toggle_class .= ' acf-hidden';
-		}
+		}	
 		
 		
 		// HTML
@@ -305,7 +317,7 @@ class acf_controller_post
 <script type="text/javascript">
 (function($) {
 	
-	$('#<?php echo $id; ?>').addClass('<?php echo $class; ?>').removeClass('hide-if-js');
+	$('#<?php echo $id; ?>').addClass('<?php echo $class; ?>').removeClass('hide-if-js').<?php echo $display; ?>();
 	$('#adv-settings label[for="<?php echo $id; ?>-hide"]').addClass('<?php echo $toggle_class; ?>');
 	
 })(jQuery);	
