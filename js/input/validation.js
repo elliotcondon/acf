@@ -87,6 +87,14 @@
 			}
 			
 			
+			// if field group is hidden, igrnoe
+			if( div.closest('.postbox.acf-hidden').exists() ) {
+				
+				ignore = true;
+				
+			}
+			
+			
 			if( ignore )
 			{
 				return;
