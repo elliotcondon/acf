@@ -437,12 +437,16 @@
 		}
 		else
 		{
-			$fields.each(function(){
+			google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
 				
-				acf.fields.google_map.set({ $el : $(this) }).init();
+				$fields.each(function(){
+					
+					acf.fields.google_map.set({ $el : $(this) }).init();
+					
+				});
+		        
+		    }});
 				
-			});
-			
 		}
 		
 	});
