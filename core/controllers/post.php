@@ -219,6 +219,10 @@ class acf_controller_post
 		
 		// Allow 'acf_after_title' metabox position
 		add_action('edit_form_after_title', array($this, 'edit_form_after_title'));
+		
+		
+		// remove ACF from meta postbox
+		add_filter( 'is_protected_meta', array($this, 'is_protected_meta'), 10, 3 );
 	}
 	
 	
@@ -518,6 +522,45 @@ class acf_controller_post
 		// update the post (may even be a revision / autosave preview)
 		do_action('acf/save_post', $post_id);
         
+	}
+	
+	
+	/*
+	*  is_protected_meta
+	*
+	*  This function will remove any ACF meta from showing in the meta postbox
+	*
+	*  @type	function
+	*  @date	12/04/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function is_protected_meta( $protected, $meta_key, $meta_type ) {
+		
+		// globals
+		global $post;
+		
+		
+		// if acf_get_field_reference returns a valid key, this is an acf value, so protect it!
+		if( !$protected ) {
+			
+			$reference = get_field_reference( $meta_key, $post->ID );
+			
+			if( substr($reference, 0, 6) === 'field_' ) {
+				
+				$protected = true;
+				
+			} 
+			
+		}
+		
+		
+		// return
+		return $protected;
+				
 	}
 	
 			
