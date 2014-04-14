@@ -502,6 +502,10 @@ class acf_field_functions
 		$field = apply_filters('acf/update_field/type=' . $field['type'], $field, $post_id ); // new filter
 		
 		
+		// clear cache
+		wp_cache_delete( 'load_field/key=' . $field['key'], 'acf' );
+	
+		
 		// save
 		update_post_meta( $post_id, $field['key'], $field );
 	}
@@ -517,6 +521,10 @@ class acf_field_functions
 	
 	function delete_field( $post_id, $field_key )
 	{
+		// clear cache
+		wp_cache_delete( 'load_field/key=' . $field['key'], 'acf' );
+		
+		
 		// delete
 		delete_post_meta($post_id, $field_key);
 	}
