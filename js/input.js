@@ -2321,12 +2321,16 @@ var acf = {
 		}
 		else
 		{
-			$fields.each(function(){
+			google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
 				
-				acf.fields.google_map.set({ $el : $(this) }).init();
+				$fields.each(function(){
+					
+					acf.fields.google_map.set({ $el : $(this) }).init();
+					
+				});
+		        
+		    }});
 				
-			});
-			
 		}
 		
 	});
@@ -3658,6 +3662,14 @@ var acf = {
 			}
 			
 			
+			// if field group is hidden, igrnoe
+			if( div.closest('.postbox.acf-hidden').exists() ) {
+				
+				ignore = true;
+				
+			}
+			
+			
 			if( ignore )
 			{
 				return;
@@ -3963,6 +3975,22 @@ var acf = {
 			return r;
 			
 		},
+		
+		get_toolbar : function(){
+			
+			// safely get toolbar
+			if( acf.helpers.isset( this, 'toolbars', this.o.toolbar ) ) {
+				
+				return this.toolbars[ this.o.toolbar ];
+				
+			}
+			
+			
+			// return
+			return false;
+			
+		},
+		
 		init : function(){
 			
 			// is clone field?
@@ -3972,38 +4000,64 @@ var acf = {
 			}
 			
 			
-			// temp store tinyMCE.settings
-			var tinyMCE_settings = $.extend( {}, tinyMCE.settings );
+			// vars
+			var toolbar = this.get_toolbar(),
+				command = 'mceAddControl',
+				setting = 'theme_advanced_buttons{i}';
 			
 			
-			// reset tinyMCE settings
-			tinyMCE.settings.theme_advanced_buttons1 = '';
-			tinyMCE.settings.theme_advanced_buttons2 = '';
-			tinyMCE.settings.theme_advanced_buttons3 = '';
-			tinyMCE.settings.theme_advanced_buttons4 = '';
+			// backup
+			var _settings = $.extend( {}, tinyMCE.settings );
 			
-			if( acf.helpers.isset( this, 'toolbars', this.o.toolbar ) )
-			{
-				$.each( this.toolbars[ this.o.toolbar ], function( k, v ){
-					tinyMCE.settings[ k ] = v;
-				})
+			
+			// v4 settings
+			if( tinymce.majorVersion == 4 ) {
+				
+				command = 'mceAddEditor';
+				setting = 'toolbar{i}';
+				
 			}
+			
+			
+			// add toolbars
+			if( toolbar ) {
+					
+				for( var i = 1; i < 5; i++ ) {
+					
+					// vars
+					var v = '';
+					
+					
+					// load toolbar
+					if( acf.helpers.isset( toolbar, 'theme_advanced_buttons' + i ) ) {
+						
+						v = toolbar['theme_advanced_buttons' + i];
+						
+					}
+					
+					
+					// update setting
+					tinyMCE.settings[ setting.replace('{i}', i) ] = v;
+					
+				}
 				
-				
-			// add functionality back in
-			tinyMCE.execCommand("mceAddControl", false, this.o.id);
+			}
+			
+			
+			// add editor
+			tinyMCE.execCommand( command, false, this.o.id);
 			
 			
 			// events - load
 			$(document).trigger('acf/wysiwyg/load', this.o.id);
-				
-				
+			
+			
 			// add events (click, focus, blur) for inserting image into correct editor
 			this.add_events();
 				
 			
 			// restore tinyMCE.settings
-			tinyMCE.settings = tinyMCE_settings;
+			tinyMCE.settings = _settings;
 			
 			
 			// set active editor to null
@@ -4052,31 +4106,52 @@ var acf = {
 		},
 		destroy : function(){
 			
+			// vars
+			var id = this.o.id,
+				command = 'mceRemoveControl';
+			
+			
 			// Remove tinymcy functionality.
 			// Due to the media popup destroying and creating the field within such a short amount of time,
 			// a JS error will be thrown when launching the edit window twice in a row.
-			try
-			{
+			try {
+				
 				// vars
-				var id = this.o.id,
-					editor = tinyMCE.get( id );
-					
-					
-				// store the val, and add it back in to keep line breaks / formating
-				if( editor )
-				{
-					var val = editor.getContent();
-					
-					tinyMCE.execCommand("mceRemoveControl", false, id);
+				var editor = tinyMCE.get( id );
 				
-					this.$textarea.val( val );
+				
+				// validate
+				if( !editor ) {
+					
+					return;
+					
 				}
-			
 				
-			} 
-			catch(e)
-			{
+				
+				// v4 settings
+				if( tinymce.majorVersion == 4 ) {
+					
+					command = 'mceRemoveEditor';
+					
+				}
+				
+				
+				// store value
+				var val = editor.getContent();
+				
+				
+				// remove editor
+				tinyMCE.execCommand(command, false, id);
+				
+				
+				// set value
+				this.$textarea.val( val );
+				
+				
+			} catch(e) {
+				
 				//console.log( e );
+				
 			}
 			
 			
