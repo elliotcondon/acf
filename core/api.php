@@ -1165,6 +1165,7 @@ function acf_form( $options = array() )
 			'action' => '',
 			'method' => 'post',
 		),
+		'new_post' => array(),
 		'return' => add_query_arg( 'updated', 'true', get_permalink() ),
 		'html_before_fields' => '',
 		'html_after_fields' => '',
@@ -1204,6 +1205,11 @@ function acf_form( $options = array() )
 			'post_id' => $options['post_id']
 		);
 		
+		if ( isset( $options['new_post'] ) && isset( $options['new_post']['post_type'] ) ) {
+			$filter = array(
+				'post_type' => $options['new_post']['post_type']
+			);
+		}
 		
 		if( strpos($options['post_id'], 'user_') !== false )
 		{
