@@ -48,7 +48,42 @@ class acf_field_wysiwyg extends acf_field
     	
     	// filters
     	add_filter( 'acf/fields/wysiwyg/toolbars', array( $this, 'toolbars'), 1, 1 );
+    	add_filter( 'mce_external_plugins', array( $this, 'mce_external_plugins'), 20, 1 );
 
+	}
+	
+	
+	/*
+	*  mce_external_plugins
+	*
+	*  This filter will add in the tinyMCE 'code' plugin which is missing in WP 3.9
+	*
+	*  @type	function
+	*  @date	18/04/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function mce_external_plugins( $plugins ){
+		
+		// global
+   		global $wp_version;
+   		
+   		
+   		// WP 3.9 an above
+   		if( version_compare($wp_version, '3.9', '>=' ) ) {
+			
+			// add code
+			$plugins['code'] = apply_filters('acf/get_info', 'dir') . 'js/tinymce.code.min.js';
+		
+		}
+		
+		
+		// return
+		return $plugins;
+		
 	}
 	
 	
