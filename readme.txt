@@ -2,7 +2,7 @@
 Contributors: elliotcondon
 Tags: custom, field, custom field, advanced, simple fields, magic fields, more fields, repeater, matrix, post, type, text, textarea, file, image, edit, admin
 Requires at least: 3.5.0
-Tested up to: 3.9.0
+Tested up to: 3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,9 @@ http://support.advancedcustomfields.com/
 
 
 == Changelog ==
+
+= 4.3.7 =
+* WYSIWYG field: Fixed missing tinyMCE buttons in WP 3.9
 
 = 4.3.6 =
 * Core: Improved efficiency and speed when saving values by removing ACF meta from the native WP postmeta box
