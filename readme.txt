@@ -107,6 +107,9 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 4.3.8 =
+* Validation: Fixed disabled button issue in WP 3.9
+
 = 4.3.7 =
 * WYSIWYG field: Fixed missing tinyMCE buttons in WP 3.9
 
