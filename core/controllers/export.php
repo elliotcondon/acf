@@ -349,54 +349,50 @@ define( 'ACF_LITE', true );
 		if( $acfs )
 		{
 
+            $html  = 'if(function_exists("register_field_group"))' . "\n";
+            $html .= '{' . "\n";
 
-$html  = 'if(function_exists("register_field_group"))' . "\n";
-$html .= '{' . "\n";
+                foreach( $acfs as $i => $acf )
+                {
+                    // populate acfs
+                    $var = array(
+                        'id' => $acf->post_name,
+                        'title' => $acf->post_title,
+                        'fields' => apply_filters('acf/field_group/get_fields', array(), $acf->ID),
+                        'location' => apply_filters('acf/field_group/get_location', array(), $acf->ID),
+                        'options' => apply_filters('acf/field_group/get_options', array(), $acf->ID),
+                        'menu_order' => $acf->menu_order,
+                    );
 
-			foreach( $acfs as $i => $acf )
-			{
-				// populate acfs
-				$var = array(
-					'id' => $acf->post_name,
-					'title' => $acf->post_title,
-					'fields' => apply_filters('acf/field_group/get_fields', array(), $acf->ID),
-					'location' => apply_filters('acf/field_group/get_location', array(), $acf->ID),
-					'options' => apply_filters('acf/field_group/get_options', array(), $acf->ID),
-					'menu_order' => $acf->menu_order,
-				);
+                    $var['fields'] = apply_filters('acf/export/clean_fields', $var['fields']);
 
+                    // create html
+                    $group = var_export($var, true);
 
-				$var['fields'] = apply_filters('acf/export/clean_fields', $var['fields']);
+                    // change double spaces to tabs
+                    $group = str_replace("  ", "\t", $group);
 
+                    // correctly formats "=> array("
+                    $group = preg_replace('/([\t\r\n]+?)array/', 'array', $group);
 
-				// create html
-				$fields = var_export($var, true);
+                    // Remove number keys from array
+                    $group = preg_replace('/[0-9]+ => array/', 'array', $group);
 
-				// change double spaces to tabs
-				$fields = str_replace("  ", "\t", $fields);
+                    // add extra tab at start of each line
+                    $group = str_replace("\n", "\n\t", $group);
 
-				// correctly formats "=> array("
-				$fields = preg_replace('/([\t\r\n]+?)array/', 'array', $fields);
+                    // add the WP __() function to specific strings for translation in theme
+                    //$group = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $group);
+                    //$group = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $group);
 
-				// Remove number keys from array
-				$fields = preg_replace('/[0-9]+ => array/', 'array', $fields);
+                    $html .= "\t" . "register_field_group($group);" . "\n";
+                }
 
-				// add extra tab at start of each line
-				$fields = str_replace("\n", "\n\t", $fields);
+            $html .= '}';
 
-				// add the WP __() function to specific strings for translation in theme
-				//$fields = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $html);
-				//$fields = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $html);
+            do_action('acf/export/php/after_export', $html);
 
-
-$html .= "\tregister_field_group($fields);" . "\n";
-
-			}
-
-$html .= '}';
-
-echo $html;
-
+            echo $html;
 		}
 		else
 		{
