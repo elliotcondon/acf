@@ -437,7 +437,7 @@ class acf_field_relationship extends acf_field
 						
 						// vars
 						$choices = array(
-							'all' => __("Filter by post type",'acf')
+							implode(",", $field['post_type']) => __("Filter by post type",'acf')
 						);
 						
 						
