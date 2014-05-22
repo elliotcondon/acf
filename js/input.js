@@ -63,7 +63,7 @@ var acf = {
 	/*
 	*  acf.helpers.isset
 	*
-	*  http://phpjs.org/functions/isset
+	*  description
 	*
 	*  @type	function
 	*  @date	20/07/13
@@ -76,19 +76,25 @@ var acf = {
 		
 		var a = arguments,
 	        l = a.length,
-	        i = 0,
+	        c = null,
 	        undef;
-	
+		
 	    if (l === 0) {
 	        throw new Error('Empty isset');
 	    }
-	
-	    while (i !== l) {
-	        if (a[i] === undef || a[i] === null) {
+		
+		c = a[0];
+		
+	    for (i = 1; i < l; i++) {
+	    	
+	        if (a[i] === undef || c[ a[i] ] === undef) {
 	            return false;
 	        }
-	        i++;
+	        
+	        c = c[ a[i] ];
+	        
 	    }
+	    
 	    return true;
 			
 	};
@@ -323,7 +329,7 @@ var acf = {
 			
 			
 			// if wp exists
-			if( typeof(wp) == "object" )
+			if( typeof wp !== 'undefined' )
 			{
 				type = 'backbone';
 			}
@@ -334,6 +340,20 @@ var acf = {
 			
 		},
 		init : function(){
+			
+			// validate
+			if( this.type() !== 'backbone' )
+			{
+				return false;
+			}
+			
+			
+			// validate prototype
+			if( ! acf.helpers.isset(wp, 'media', 'view', 'AttachmentCompat', 'prototype') )
+			{
+				return false;	
+			}
+			
 			
 			// vars
 			var _prototype = wp.media.view.AttachmentCompat.prototype;
@@ -522,194 +542,246 @@ var acf = {
 					$('#acf-has-changed').val(1);
 				}
 				
-				_this.change();
+				_this.change( $(this) );
 				
 			});
 			
 			
 			$(document).on('acf/setup_fields', function(e, el){
 				
-				_this.change();
+				//console.log('acf/setup_fields calling acf.conditional_logic.refresh()');
+				_this.refresh( $(el) );
 				
 			});
 			
-			
-			_this.change();
+			//console.log('acf.conditional_logic.init() calling acf.conditional_logic.refresh()');
+			_this.refresh();
 			
 		},
-		change : function(){
+		change : function( $el ){
+			
+			//console.log('change %o', $el);
+			// reference
+			var _this = this;
+			
+			
+			// vars
+			var $field = $el.closest('.field'),
+				key = $field.attr('data-field_key');
+			
+			
+			// loop through items and find rules where this field key is a trigger
+			$.each(this.items, function( k, item ){
+				
+				$.each(item.rules, function( k2, rule ){
+					
+					// compare rule against the changed $field
+					if( rule.field == key )
+					{
+						_this.refresh_field( item );
+					}
+					
+				});
+				
+			});
+			
+		},
+		
+		refresh_field : function( item ){
+			
+			//console.log( 'refresh_field: %o ', item );
+			// reference
+			var _this = this;
+			
+			
+			// vars
+			var $targets	=	$('.field_key-' + item.field);
+
+			
+			// may be multiple targets (sub fields)
+			$targets.each(function(){
+				
+				//console.log('target %o', $(this));
+				
+				// vars
+				var show = true;
+				
+				
+				// if 'any' was selected, start of as false and any match will result in show = true
+				if( item.allorany == 'any' )
+				{
+					show = false;
+				}
+				
+				
+				// vars
+				var $target		=	$(this),
+					hide_all	=	true;
+				
+				
+				// loop through rules
+				$.each(item.rules, function( k2, rule ){
+					
+					// vars
+					var $toggle = $('.field_key-' + rule.field);
+					
+					
+					// are any of $toggle a sub field?
+					if( $toggle.hasClass('sub_field') )
+					{
+						// toggle may be a sibling sub field.
+						// if so ,show an empty td but keep the column
+						$toggle = $target.siblings('.field_key-' + rule.field);
+						hide_all = false;
+						
+						
+						// if no toggle was found, we need to look at parent sub fields.
+						// if so, hide the entire column
+						if( ! $toggle.exists() )
+						{
+							// loop through all the parents that could contain sub fields
+							$target.parents('tr').each(function(){
+								
+								// attempt to update $toggle to this parent sub field
+								$toggle = $(this).find('.field_key-' + rule.field)
+								
+								// if the parent sub field actuallly exists, great! Stop the loop
+								if( $toggle.exists() )
+								{
+									return false;
+								}
+								
+							});
+
+							hide_all = true;
+						}
+						
+					}
+					
+					
+					// if this sub field is within a flexible content layout, hide the entire column because 
+					// there will never be another row added to this table
+					var parent = $target.parent('tr').parent().parent('table').parent('.layout');
+					if( parent.exists() )
+					{
+						hide_all = true;
+						
+						if( $target.is('th') && $toggle.is('th') )
+						{
+							$toggle = $target.closest('.layout').find('td.field_key-' + rule.field);
+						}
+
+					}
+					
+					// if this sub field is within a repeater field which has a max row of 1, hide the entire column because 
+					// there will never be another row added to this table
+					var parent = $target.parent('tr').parent().parent('table').parent('.repeater');
+					if( parent.exists() && parent.attr('data-max_rows') == '1' )
+					{
+						hide_all = true;
+						
+						if( $target.is('th') && $toggle.is('th') )
+						{
+							$toggle = $target.closest('table').find('td.field_key-' + rule.field);
+						}
+
+					}
+					
+					
+					var calculate = _this.calculate( rule, $toggle, $target );
+					
+					if( item.allorany == 'all' )
+					{
+						if( calculate == false )
+						{
+							show = false;
+							
+							// end loop
+							return false;
+						}
+					}
+					else
+					{
+						if( calculate == true )
+						{
+							show = true;
+							
+							// end loop
+							return false;
+						}
+					}
+					
+				});
+				// $.each(item.rules, function( k2, rule ){
+				
+				
+				// clear classes
+				$target.removeClass('acf-conditional_logic-hide acf-conditional_logic-show acf-show-blank');
+				
+				
+				// hide / show field
+				if( show )
+				{
+					// remove "disabled"
+					$target.find('input, textarea, select').removeAttr('disabled');
+					
+					$target.addClass('acf-conditional_logic-show');
+					
+					// hook
+					$(document).trigger('acf/conditional_logic/show', [ $target, item ]);
+					
+				}
+				else
+				{
+					// add "disabled"
+					$target.find('input, textarea, select').attr('disabled', 'disabled');
+					
+					$target.addClass('acf-conditional_logic-hide');
+					
+					if( !hide_all )
+					{
+						$target.addClass('acf-show-blank');
+					}
+					
+					// hook
+					$(document).trigger('acf/conditional_logic/hide', [ $target, item ]);
+				}
+				
+				
+			});
+			
+		},
+		
+		refresh : function( $el ){
+			
+			// defaults
+			$el = $el || $('body');
 			
 			
 			// reference
 			var _this = this;
 			
-			//console.clear();
-			//console.log( this.items );
-			// loop through items
+			
+			// loop through items and find rules where this field key is a trigger
 			$.each(this.items, function( k, item ){
 				
-				// vars
-				var $targets	=	$('.field_key-' + item.field);
-
-				
-				// may be multiple targets (sub fields)
-				$targets.each(function(){
+				$.each(item.rules, function( k2, rule ){
 					
-					//console.log('target %o', $(this));
-					
-					// vars
-					var show = true;
-					
-					
-					// if 'any' was selected, start of as false and any match will result in show = true
-					if( item.allorany == 'any' )
+					// is this field within the $el
+					// this will increase performance by ignoring conditional logic outside of this newly appended element ($el)
+					if( ! $el.find('.field[data-field_key="' + item.field + '"]').exists() )
 					{
-						show = false;
+						return;
 					}
 					
-					
-					// vars
-					var $target		=	$(this),
-						hide_all	=	true;
-					
-					
-					// loop through rules
-					$.each(item.rules, function( k2, rule ){
-						
-						// vars
-						var $toggle = $('.field_key-' + rule.field);
-						
-						
-						// are any of $toggle a sub field?
-						if( $toggle.hasClass('sub_field') )
-						{
-							// toggle may be a sibling sub field.
-							// if so ,show an empty td but keep the column
-							$toggle = $target.siblings('.field_key-' + rule.field);
-							hide_all = false;
-							
-							
-							// if no toggle was found, we need to look at parent sub fields.
-							// if so, hide the entire column
-							if( ! $toggle.exists() )
-							{
-								// loop through all the parents that could contain sub fields
-								$target.parents('tr').each(function(){
-									
-									// attempt to update $toggle to this parent sub field
-									$toggle = $(this).find('.field_key-' + rule.field)
-									
-									// if the parent sub field actuallly exists, great! Stop the loop
-									if( $toggle.exists() )
-									{
-										return false;
-									}
-									
-								});
-
-								hide_all = true;
-							}
-							
-						}
-						
-						
-						// if this sub field is within a flexible content layout, hide the entire column because 
-						// there will never be another row added to this table
-						var parent = $target.parent('tr').parent().parent('table').parent('.layout');
-						if( parent.exists() )
-						{
-							hide_all = true;
-							
-							if( $target.is('th') && $toggle.is('th') )
-							{
-								$toggle = $target.closest('.layout').find('td.field_key-' + rule.field);
-							}
-
-						}
-						
-						// if this sub field is within a repeater field which has a max row of 1, hide the entire column because 
-						// there will never be another row added to this table
-						var parent = $target.parent('tr').parent().parent('table').parent('.repeater');
-						if( parent.exists() && parent.attr('data-max_rows') == '1' )
-						{
-							hide_all = true;
-							
-							if( $target.is('th') && $toggle.is('th') )
-							{
-								$toggle = $target.closest('table').find('td.field_key-' + rule.field);
-							}
-
-						}
-						
-						
-						var calculate = _this.calculate( rule, $toggle, $target );
-						
-						if( item.allorany == 'all' )
-						{
-							if( calculate == false )
-							{
-								show = false;
-								
-								// end loop
-								return false;
-							}
-						}
-						else
-						{
-							if( calculate == true )
-							{
-								show = true;
-								
-								// end loop
-								return false;
-							}
-						}
-						
-					});
-					// $.each(item.rules, function( k2, rule ){
-					
-					
-					// clear classes
-					$target.removeClass('acf-conditional_logic-hide acf-conditional_logic-show acf-show-blank');
-					
-					
-					// hide / show field
-					if( show )
-					{
-						// remove "disabled"
-						$target.find('input, textarea, select').removeAttr('disabled');
-						
-						$target.addClass('acf-conditional_logic-show');
-						
-						// hook
-						$(document).trigger('acf/conditional_logic/show', [ $target, item ]);
-						
-					}
-					else
-					{
-						// add "disabled"
-						$target.find('input, textarea, select').attr('disabled', 'disabled');
-						
-						$target.addClass('acf-conditional_logic-hide');
-						
-						if( !hide_all )
-						{
-							$target.addClass('acf-show-blank');
-						}
-						
-						// hook
-						$(document).trigger('acf/conditional_logic/hide', [ $target, item ]);
-					}
-					
+					_this.refresh_field( item );
 					
 				});
-				
-				
-				
 				
 			});
 			
 		},
+		
 		calculate : function( rule, $toggle, $target ){
 			
 			// vars
@@ -1118,11 +1190,73 @@ var acf = {
 	});	
 	
 	
-	$(document).on('change', '.categorychecklist input[type="checkbox"]', function(){
+	function _sync_taxonomy_terms() {
+		
+		// vars
+		var values = [];
+		
+		
+		$('.categorychecklist input:checked, .acf-taxonomy-field input:checked, .acf-taxonomy-field option:selected').each(function(){
+			
+			// validate
+			if( $(this).is(':hidden') || $(this).is(':disabled') )
+			{
+				return;
+			}
+			
+			
+			// validate media popup
+			if( $(this).closest('.media-frame').exists() )
+			{
+				return;
+			}
+			
+			
+			// validate acf
+			if( $(this).closest('.acf-taxonomy-field').exists() )
+			{
+				if( $(this).closest('.acf-taxonomy-field').attr('data-save') == '0' )
+				{
+					return;
+				}
+			}
+			
+			
+			// append
+			if( values.indexOf( $(this).val() ) === -1 )
+			{
+				values.push( $(this).val() );
+			}
+			
+		});
+
+		
+		// update screen
+		acf.screen.post_category = values;
+		acf.screen.taxonomy = values;
+
+		
+		// trigger change
+		$(document).trigger('acf/update_field_groups');
+			
+	}
+	
+	
+	$(document).on('change', '.categorychecklist input, .acf-taxonomy-field input, .acf-taxonomy-field select', function(){
 		
 		// a taxonomy field may trigger this change event, however, the value selected is not
 		// actually a term relatinoship, it is meta data
-		if( $(this).closest('.categorychecklist').hasClass('no-ajax') )
+		if( $(this).closest('.acf-taxonomy-field').exists() )
+		{
+			if( $(this).closest('.acf-taxonomy-field').attr('data-save') == '0' )
+			{
+				return;
+			}
+		}
+		
+		
+		// this may be triggered from editing an imgae in a popup. Popup does not support correct metaboxes so ignore this
+		if( $(this).closest('.media-frame').exists() )
 		{
 			return;
 		}
@@ -1131,31 +1265,13 @@ var acf = {
 		// set timeout to fix issue with chrome which does not register the change has yet happened
 		setTimeout(function(){
 			
-			// vars
-			var values = [];
-			
-			
-			$('.categorychecklist input[type="checkbox"]:checked').each(function(){
-				
-				if( $(this).is(':hidden') || $(this).is(':disabled') )
-				{
-					return;
-				}
-			
-				values.push( $(this).val() );
-			});
-	
-			
-			acf.screen.post_category = values;
-			acf.screen.taxonomy = values;
-	
-	
-			$(document).trigger('acf/update_field_groups');
+			_sync_taxonomy_terms();
 		
 		}, 1);
 		
 		
 	});
+	
 	
 	
 	
@@ -1778,13 +1894,14 @@ var acf = {
 	*
 	*/
 	
-	acf.fields.location = {
+	acf.fields.google_map = {
 		
 		$el : null,
 		$input : null,
 		
 		o : {},
 		
+		ready : false,
 		geocoder : false,
 		map : false,
 		maps : {},
@@ -1810,16 +1927,23 @@ var acf = {
 			}
 			
 			
-			// geocode
-			this.geocoder = new google.maps.Geocoder();
-			
-				
 			// return this for chaining
 			return this;
 			
 		},
 		init : function(){
-
+			
+			// geocode
+			if( !this.geocoder )
+			{
+				this.geocoder = new google.maps.Geocoder();
+			}
+			
+			
+			// google maps is loaded and ready
+			this.ready = true;
+			
+			
 			// is clone field?
 			if( acf.helpers.is_clone_field(this.$input) )
 			{
@@ -2167,34 +2291,46 @@ var acf = {
 	
 	$(document).on('acf/setup_fields', function(e, el){
 		
-		if( $(el).find('.acf-google-map').exists() )
+		// vars
+		$fields = $(el).find('.acf-google-map');
+		
+		
+		// validate
+		if( ! $fields.exists() )
 		{
-			// validate google
-			if( typeof google === 'undefined' )
-			{
-				$.getScript('https://www.google.com/jsapi', function(){
-				
-				    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
-				    
-				        $(el).find('.acf-google-map').each(function(){
+			return;
+		}
+		
+		
+		// validate google
+		if( typeof google === 'undefined' )
+		{
+			$.getScript('https://www.google.com/jsapi', function(){
+			
+			    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
+			    
+			        $fields.each(function(){
+					
+						acf.fields.google_map.set({ $el : $(this) }).init();
 						
-							acf.fields.location.set({ $el : $(this) }).init();
-							
-						});
-				        
-				    }});
-				});
+					});
+			        
+			    }});
+			});
+			
+		}
+		else
+		{
+			google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
 				
-			}
-			else
-			{
-				$(el).find('.acf-google-map').each(function(){
+				$fields.each(function(){
 					
-					acf.fields.location.set({ $el : $(this) }).init();
+					acf.fields.google_map.set({ $el : $(this) }).init();
 					
 				});
+		        
+		    }});
 				
-			}
 		}
 		
 	});
@@ -2216,7 +2352,7 @@ var acf = {
 		
 		e.preventDefault();
 		
-		acf.fields.location.set({ $el : $(this).closest('.acf-google-map') }).clear();
+		acf.fields.google_map.set({ $el : $(this).closest('.acf-google-map') }).clear();
 		
 		$(this).blur();
 		
@@ -2227,7 +2363,7 @@ var acf = {
 		
 		e.preventDefault();
 		
-		acf.fields.location.set({ $el : $(this).closest('.acf-google-map') }).locate();
+		acf.fields.google_map.set({ $el : $(this).closest('.acf-google-map') }).locate();
 		
 		$(this).blur();
 		
@@ -2237,7 +2373,7 @@ var acf = {
 		
 		e.preventDefault();
 		
-		acf.fields.location.set({ $el : $(this).closest('.acf-google-map') }).edit();
+		acf.fields.google_map.set({ $el : $(this).closest('.acf-google-map') }).edit();
 			
 	});
 	
@@ -2265,15 +2401,23 @@ var acf = {
 		
 	});
 	
-	$(document).on('acf/fields/tab/show', function( e, $field ){
+	$(document).on('acf/fields/tab/show acf/conditional_logic/show', function( e, $field ){
+		
+		// validate
+		if( ! acf.fields.google_map.ready )
+		{
+			return;
+		}
+		
 		
 		// validate
 		if( $field.attr('data-field_type') == 'google_map' )
 		{
-			acf.fields.location.set({ $el : $field.find('.acf-google-map') }).refresh();
+			acf.fields.google_map.set({ $el : $field.find('.acf-google-map') }).refresh();
 		}
 		
 	});
+
 	
 
 })(jQuery);
@@ -3146,6 +3290,131 @@ var acf = {
 
 (function($){
 
+	acf.fields.tab = {
+		
+		add_group : function( $wrap ){
+			
+			// vars
+			var html = '';
+			
+			
+			// generate html
+			if( $wrap.is('tbody') )
+			{
+				html = '<tr class="acf-tab-wrap"><td colspan="2"><ul class="hl clearfix acf-tab-group"></ul></td></tr>';
+			}
+			else
+			{
+				html = '<div class="acf-tab-wrap"><ul class="hl clearfix acf-tab-group"></ul></div>';
+			}
+			
+			
+			// append html
+			$wrap.children('.field_type-tab:first').before( html );
+			
+		},
+		
+		add_tab : function( $tab ){
+			
+			// vars
+			var $field	= $tab.closest('.field'),
+				$wrap	= $field.parent(),
+				
+				key		= $field.attr('data-field_key'),
+				label 	= $tab.text();
+				
+				
+			// create tab group if it doesnt exist
+			if( ! $wrap.children('.acf-tab-wrap').exists() )
+			{
+				this.add_group( $wrap );
+			}
+			
+			// add tab
+			$wrap.children('.acf-tab-wrap').find('.acf-tab-group').append('<li><a class="acf-tab-button" href="#" data-key="' + key + '">' + label + '</a></li>');
+			
+		},
+		
+		toggle : function( $a ){
+			
+			// reference
+			var _this = this;
+				
+				
+			//console.log( 'toggle %o ', $a);
+			// vars
+			var $wrap	= $a.closest('.acf-tab-wrap').parent(),
+				key		= $a.attr('data-key');
+			
+			
+			// classes
+			$a.parent('li').addClass('active').siblings('li').removeClass('active');
+			
+			
+			// hide / show
+			$wrap.children('.field_type-tab').each(function(){
+			
+				
+				// vars
+				var $tab = $(this);
+					
+				
+				if( $tab.attr('data-field_key') == key  )
+				{
+					_this.show_tab_fields( $(this) );
+				}
+				else
+				{
+					_this.hide_tab_fields( $(this) );
+				}
+				
+				
+			});
+			
+		},
+		
+		show_tab_fields : function( $field ) {
+			
+			//console.log('show tab fields %o', $field);
+			$field.nextUntil('.field_type-tab').each(function(){
+				
+				$(this).removeClass('acf-tab_group-hide').addClass('acf-tab_group-show');
+				$(document).trigger('acf/fields/tab/show', [ $(this) ]);
+				
+			});
+		},
+		
+		hide_tab_fields : function( $field ) {
+			
+			$field.nextUntil('.field_type-tab').each(function(){
+				
+				$(this).removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
+				$(document).trigger('acf/fields/tab/hide', [ $(this) ]);
+				
+			});
+		},
+		
+		refresh : function( $el ){
+			
+			// reference
+			var _this = this;
+			
+			
+			// trigger
+			$el.find('.acf-tab-group').each(function(){
+				
+				$(this).find('.acf-tab-button:first').each(function(){
+					
+					_this.toggle( $(this) );
+					
+				});
+				
+			});
+
+		}
+		
+	};
+	
 	
 	/*
 	*  acf/setup_fields
@@ -3162,63 +3431,29 @@ var acf = {
 	
 	$(document).on('acf/setup_fields', function(e, el){
 		
-		// validate
-		if( ! $(el).find('.acf-tab').exists() )
-		{
-			return;
-		}
-		
-		
-		// init
+		// add tabs
 		$(el).find('.acf-tab').each(function(){
 			
-			// vars
-			var $el		=	$(this),
-				$field	=	$el.parent(),
-				$wrap	=	$field.parent(),
-				
-				id		=	$el.attr('data-id'),
-				label 	= 	$el.html();
-				
-
-
-			// only run once for each tab
-			if( $el.hasClass('acf-tab-added') )
-			{
-				return;
-			}
-			
-			$el.addClass('acf-tab-added');
-			
-			
-			// create tab group if it doesnt exist
-			if( ! $wrap.children('.acf-tab-group').exists() )
-			{
-				$wrap.children('.field_type-tab:first').before('<ul class="hl clearfix acf-tab-group"></ul>');
-			}
-			
-			
-			// add tab
-			$wrap.children('.acf-tab-group').append('<li class="field_key-' + id + '" data-field_key="' + id + '"><a class="acf-tab-button" href="#" data-id="' + id + '">' + label + '</a></li>');
+			acf.fields.tab.add_tab( $(this) );
 			
 		});
 		
-		// trigger
-		$(el).find('.acf-tab-group').each(function(){
-			
-			$(this).find('li:first a').trigger('click');
-			
-		});
+		
+		// activate first tab
+		acf.fields.tab.refresh( $(el) );
+		
+		
+		// NOTE: this code is defined BEFORE the acf.conditional_logic action. This is becuase the 'acf/setup_fields' listener is defined INSIDE the conditional_logic.init() function which is run on doc.ready
+		
 		// trigger conditional logic
 		// this code ( acf/setup_fields ) is run after the main acf.conditional_logic.init();
-		acf.conditional_logic.change();
+		//console.log('acf/setup_fields (after tab refresh) calling acf.conditional_logic.refresh()');
+		//acf.conditional_logic.refresh();
 		
-		
-		
-
-	
 	});
 	
+	
+		
 	
 	/*
 	*  Events
@@ -3234,57 +3469,11 @@ var acf = {
 	
 	$(document).on('click', '.acf-tab-button', function( e ){
 		
-		
 		e.preventDefault();
 		
+		acf.fields.tab.toggle( $(this) );
 		
-		// vars
-		var $a		=	$(this),
-			$ul		=	$a.closest('ul'),
-			$wrap	=	$ul.parent(),
-			id		=	$a.attr('data-id');
-		
-		
-		// classes
-		$ul.find('li').removeClass('active');
-		$a.parent('li').addClass('active');
-		
-		
-		// hide / show
-		$wrap.children('.field_type-tab').each(function(){
-			
-			// vars
-			var $tab = $(this),
-				show =  false;
-				
-			
-			if( $tab.hasClass('field_key-' + id) )
-			{
-				show = true;
-			}
-			
-			
-			$tab.nextUntil('.field_type-tab').each(function(){
-				
-				if( show )
-				{
-					$(this).removeClass('acf-tab_group-hide').addClass('acf-tab_group-show');
-					$(document).trigger('acf/fields/tab/show', [ $(this) ]);
-				}
-				else
-				{
-					$(this).removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
-					$(document).trigger('acf/fields/tab/hide', [ $(this) ]);
-				}
-				
-			});
-			
-		});
-
-		
-		// blur to remove dotted lines around button
-		$a.trigger('blur');
-
+		$(this).trigger('blur');
 		
 	});
 	
@@ -3292,24 +3481,39 @@ var acf = {
 	$(document).on('acf/conditional_logic/hide', function( e, $target, item ){
 		
 		// validate
-		if( ! $target.parent().hasClass('acf-tab-group') )
+		if( $target.attr('data-field_type') != 'tab' )
+		{
+			return;
+		}
+		
+		//console.log('conditional_logic/hide tab %o', $target);
+		
+		
+		// vars
+		var $tab = $target.siblings('.acf-tab-wrap').find('a[data-key="' + $target.attr('data-field_key') + '"]');
+		
+		
+		// if tab is already hidden, then ignore the following functiolnality
+		if( $tab.is(':hidden') )
 		{
 			return;
 		}
 		
 		
-		var key = $target.attr('data-field_key');
+		// visibility
+		$tab.parent().hide();
 		
 		
-		if( $target.siblings(':visible').exists() )
+		// if 
+		if( $tab.parent().siblings(':visible').exists() )
 		{
 			// if the $target to be hidden is a tab button, lets toggle a sibling tab button
-			$target.siblings(':visible').first().children('a').trigger('click');
+			$tab.parent().siblings(':visible').first().children('a').trigger('click');
 		}
 		else
 		{
 			// no onther tabs
-			$('.field_type-tab[data-field_key="' + key + '"]').nextUntil('.field_type-tab').removeClass('acf-tab_group-show').addClass('acf-tab_group-hide');
+			acf.fields.tab.hide_tab_fields( $target );
 		}
 		
 	});
@@ -3318,25 +3522,43 @@ var acf = {
 	$(document).on('acf/conditional_logic/show', function( e, $target, item ){
 		
 		// validate
-		if( ! $target.parent().hasClass('acf-tab-group') )
+		if( $target.attr('data-field_type') != 'tab' )
 		{
 			return;
 		}
 		
 		
-		// if this is the active tab
-		if( $target.hasClass('active') )
+		//console.log('conditional_logic/show tab %o', $target);
+		
+		
+		// vars
+		var $tab = $target.siblings('.acf-tab-wrap').find('a[data-key="' + $target.attr('data-field_key') + '"]');
+		
+		
+		// if tab is already visible, then ignore the following functiolnality
+		if( $tab.is(':visible') )
 		{
-			$target.children('a').trigger('click');
+			return;
+		}
+		
+		
+		// visibility
+		$tab.parent().show();
+		
+		
+		// if this is the active tab
+		if( $tab.parent().hasClass('active') )
+		{
+			$tab.trigger('click');
 			return;
 		}
 		
 		
 		// if the sibling active tab is actually hidden by conditional logic, take ownership of tabs
-		if( $target.siblings('.active').hasClass('acf-conditional_logic-hide') )
+		if( $tab.parent().siblings('.active').is(':hidden') )
 		{
 			// show this tab group
-			$target.children('a').trigger('click');
+			$tab.trigger('click');
 			return;
 		}
 		
@@ -3393,7 +3615,8 @@ var acf = {
 		validate : function( div ){
 			
 			// var
-			var ignore = false;
+			var ignore = false,
+				$tab = null;
 			
 			
 			// set validation data
@@ -3414,7 +3637,9 @@ var acf = {
 					
 					
 					// vars
-					var $tab_field = div.prevAll('.field_type-tab:first');
+					var $tab_field = div.prevAll('.field_type-tab:first'),
+						$tab_group = div.prevAll('.acf-tab-wrap:first');
+					
 					
 					// if the tab itself is hidden, bypass validation
 					if( $tab_field.hasClass('acf-conditional_logic-hide') )
@@ -3424,7 +3649,7 @@ var acf = {
 					else
 					{
 						// activate this tab as it holds hidden required field!
-						div.prevAll('.acf-tab-group:first').find('.acf-tab-button[data-id="' + $tab_field.attr('data-field_key') + '"]').trigger('click');
+						$tab = $tab_group.find('.acf-tab-button[data-key="' + $tab_field.attr('data-field_key') + '"]');
 					}
 				}
 			}
@@ -3434,6 +3659,14 @@ var acf = {
 			if( div.hasClass('acf-conditional_logic-hide') )
 			{
 				ignore = true;
+			}
+			
+			
+			// if field group is hidden, igrnoe
+			if( div.closest('.postbox.acf-hidden').exists() ) {
+				
+				ignore = true;
+				
 			}
 			
 			
@@ -3546,9 +3779,12 @@ var acf = {
 			// set validation
 			if( ! div.data('validation') )
 			{
+				// show error
 				this.status = false;
 				div.closest('.field').addClass('error');
 				
+				
+				// custom validation message
 				if( div.data('validation_message') )
 				{
 					var $label = div.find('p.label:first'),
@@ -3561,6 +3797,14 @@ var acf = {
 					
 					$label.append( '<span class="acf-error-message"><i class="bit"></i>' + div.data('validation_message') + '</span>' );
 				}
+				
+				
+				// display field (curently hidden due to another tab being active)
+				if( $tab )
+				{
+					$tab.trigger('click');
+				}
+				
 			}
 		}
 		
@@ -3651,9 +3895,18 @@ var acf = {
 			
 			
 			// hide ajax stuff on submit button
-			$('#publish').removeClass('button-primary-disabled');
-			$('#ajax-loading').attr('style','');
-			$('#publishing-action .spinner').hide();
+			if( $('#submitdiv').exists() ) {
+				
+				// remove disabled classes
+				$('#submitdiv').find('.disabled').removeClass('disabled');
+				$('#submitdiv').find('.button-disabled').removeClass('button-disabled');
+				$('#submitdiv').find('.button-primary-disabled').removeClass('button-primary-disabled');
+				
+				
+				// remove spinner
+				$('#submitdiv .spinner').hide();
+				
+			}
 			
 			return false;
 		}
@@ -3731,6 +3984,22 @@ var acf = {
 			return r;
 			
 		},
+		
+		get_toolbar : function(){
+			
+			// safely get toolbar
+			if( acf.helpers.isset( this, 'toolbars', this.o.toolbar ) ) {
+				
+				return this.toolbars[ this.o.toolbar ];
+				
+			}
+			
+			
+			// return
+			return false;
+			
+		},
+		
 		init : function(){
 			
 			// is clone field?
@@ -3740,38 +4009,64 @@ var acf = {
 			}
 			
 			
-			// temp store tinyMCE.settings
-			var tinyMCE_settings = $.extend( {}, tinyMCE.settings );
+			// vars
+			var toolbar = this.get_toolbar(),
+				command = 'mceAddControl',
+				setting = 'theme_advanced_buttons{i}';
 			
 			
-			// reset tinyMCE settings
-			tinyMCE.settings.theme_advanced_buttons1 = '';
-			tinyMCE.settings.theme_advanced_buttons2 = '';
-			tinyMCE.settings.theme_advanced_buttons3 = '';
-			tinyMCE.settings.theme_advanced_buttons4 = '';
+			// backup
+			var _settings = $.extend( {}, tinyMCE.settings );
 			
-			if( acf.helpers.isset( this.toolbars[ this.o.toolbar ] ) )
-			{
-				$.each( this.toolbars[ this.o.toolbar ], function( k, v ){
-					tinyMCE.settings[ k ] = v;
-				})
+			
+			// v4 settings
+			if( tinymce.majorVersion == 4 ) {
+				
+				command = 'mceAddEditor';
+				setting = 'toolbar{i}';
+				
 			}
+			
+			
+			// add toolbars
+			if( toolbar ) {
+					
+				for( var i = 1; i < 5; i++ ) {
+					
+					// vars
+					var v = '';
+					
+					
+					// load toolbar
+					if( acf.helpers.isset( toolbar, 'theme_advanced_buttons' + i ) ) {
+						
+						v = toolbar['theme_advanced_buttons' + i];
+						
+					}
+					
+					
+					// update setting
+					tinyMCE.settings[ setting.replace('{i}', i) ] = v;
+					
+				}
 				
-				
-			// add functionality back in
-			tinyMCE.execCommand("mceAddControl", false, this.o.id);
+			}
+			
+			
+			// add editor
+			tinyMCE.execCommand( command, false, this.o.id);
 			
 			
 			// events - load
 			$(document).trigger('acf/wysiwyg/load', this.o.id);
-				
-				
+			
+			
 			// add events (click, focus, blur) for inserting image into correct editor
 			this.add_events();
 				
 			
 			// restore tinyMCE.settings
-			tinyMCE.settings = tinyMCE_settings;
+			tinyMCE.settings = _settings;
 			
 			
 			// set active editor to null
@@ -3820,31 +4115,52 @@ var acf = {
 		},
 		destroy : function(){
 			
+			// vars
+			var id = this.o.id,
+				command = 'mceRemoveControl';
+			
+			
 			// Remove tinymcy functionality.
 			// Due to the media popup destroying and creating the field within such a short amount of time,
 			// a JS error will be thrown when launching the edit window twice in a row.
-			try
-			{
+			try {
+				
 				// vars
-				var id = this.o.id,
-					editor = tinyMCE.get( id );
-					
-					
-				// store the val, and add it back in to keep line breaks / formating
-				if( editor )
-				{
-					var val = editor.getContent();
-					
-					tinyMCE.execCommand("mceRemoveControl", false, id);
+				var editor = tinyMCE.get( id );
 				
-					this.$textarea.val( val );
+				
+				// validate
+				if( !editor ) {
+					
+					return;
+					
 				}
-			
 				
-			} 
-			catch(e)
-			{
+				
+				// v4 settings
+				if( tinymce.majorVersion == 4 ) {
+					
+					command = 'mceRemoveEditor';
+					
+				}
+				
+				
+				// store value
+				var val = editor.getContent();
+				
+				
+				// remove editor
+				tinyMCE.execCommand(command, false, id);
+				
+				
+				// set value
+				this.$textarea.val( val );
+				
+				
+			} catch(e) {
+				
 				//console.log( e );
+				
 			}
 			
 			
@@ -4142,6 +4458,7 @@ var acf = {
 			
 		}, 11);
 		
+		
 	});
 	
 	
@@ -4166,5 +4483,5 @@ var acf = {
 		
 	});
 	
-
+	
 })(jQuery);

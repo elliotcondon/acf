@@ -425,7 +425,7 @@ $(document).ready(function(){
 				}
 				else
 				{
-					echo "$('#your-profile > p.submit').before( html );";
+					echo "$('#your-profile .form-table:last').after( html );";
 				}
 			}
 			elseif($this->data['page_type'] == "shopp_category")

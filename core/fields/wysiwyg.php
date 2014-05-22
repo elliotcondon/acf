@@ -13,6 +13,7 @@ add_filter( 'acf_the_content', 'convert_smilies' );
 add_filter( 'acf_the_content', 'convert_chars' );
 add_filter( 'acf_the_content', 'wpautop' );
 add_filter( 'acf_the_content', 'shortcode_unautop' );
+add_filter( 'acf_the_content', 'prepend_attachment' );
 add_filter( 'acf_the_content', 'do_shortcode', 11);
 
 
@@ -47,6 +48,42 @@ class acf_field_wysiwyg extends acf_field
     	
     	// filters
     	add_filter( 'acf/fields/wysiwyg/toolbars', array( $this, 'toolbars'), 1, 1 );
+    	add_filter( 'mce_external_plugins', array( $this, 'mce_external_plugins'), 20, 1 );
+
+	}
+	
+	
+	/*
+	*  mce_external_plugins
+	*
+	*  This filter will add in the tinyMCE 'code' plugin which is missing in WP 3.9
+	*
+	*  @type	function
+	*  @date	18/04/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function mce_external_plugins( $plugins ){
+		
+		// global
+   		global $wp_version;
+   		
+   		
+   		// WP 3.9 an above
+   		if( version_compare($wp_version, '3.9', '>=' ) ) {
+			
+			// add code
+			$plugins['code'] = apply_filters('acf/get_info', 'dir') . 'js/tinymce.code.min.js';
+		
+		}
+		
+		
+		// return
+		return $plugins;
+		
 	}
 	
 	
@@ -64,22 +101,64 @@ class acf_field_wysiwyg extends acf_field
 	*  @date	23/01/13
 	*/
 	
-   	function toolbars( $toolbars )
-   	{
+   	function toolbars( $toolbars ) {
+   		
+   		// global
+   		global $wp_version;
+   		
+   		
+   		// vars
    		$editor_id = 'acf_settings';
    		
    		
-   		// Full
-   		$toolbars['Full'] = array();
-   		$toolbars['Full'][1] = apply_filters('mce_buttons', array('bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'justifyleft', 'justifycenter', 'justifyright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv' ), $editor_id);
-   		$toolbars['Full'][2] = apply_filters('mce_buttons_2', array( 'formatselect', 'underline', 'justifyfull', 'forecolor', 'pastetext', 'pasteword', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help', 'code' ), $editor_id);
-   		$toolbars['Full'][3] = apply_filters('mce_buttons_3', array(), $editor_id);
-   		$toolbars['Full'][4] = apply_filters('mce_buttons_4', array(), $editor_id);
+   		if( version_compare($wp_version, '3.9', '>=' ) ) {
    		
+   			// Full
+	   		$toolbars['Full'] = array(
+	   			
+	   			1 => apply_filters( 'mce_buttons', array('bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'hr', 'alignleft', 'aligncenter', 'alignright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv' ), $editor_id ),
+	   			
+	   			2 => apply_filters( 'mce_buttons_2', array( 'formatselect', 'underline', 'alignjustify', 'forecolor', 'pastetext', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help', 'code' ), $editor_id ),
+	   			
+	   			3 => apply_filters('mce_buttons_3', array(), $editor_id),
+	   			
+	   			4 => apply_filters('mce_buttons_4', array(), $editor_id),
+	   			
+	   		);
+	   		
+	   		
+	   		// Basic
+	   		$toolbars['Basic'] = array(
+	   			
+	   			1 => apply_filters( 'teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'alignleft', 'aligncenter', 'alignright', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id ),
+	   			
+	   		);
+	   		  		
+   		} else {
+	   		
+	   		// Full
+	   		$toolbars['Full'] = array(
+	   			
+	   			1 => apply_filters( 'mce_buttons', array('bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'justifyleft', 'justifycenter', 'justifyright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv' ), $editor_id ),
+	   			
+	   			2 => apply_filters( 'mce_buttons_2', array( 'formatselect', 'underline', 'justifyfull', 'forecolor', 'pastetext', 'pasteword', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help', 'code' ), $editor_id ),
+	   			
+	   			3 => apply_filters('mce_buttons_3', array(), $editor_id),
+	   			
+	   			4 => apply_filters('mce_buttons_4', array(), $editor_id),
+	   			
+	   		);
+
+	   		
+	   		// Basic
+	   		$toolbars['Basic'] = array(
+	   			
+	   			1 => apply_filters( 'teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'justifyleft', 'justifycenter', 'justifyright', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id ),
+	   			
+	   		);
+	   		
+   		}
    		
-   		// Basic
-   		$toolbars['Basic'] = array();
-   		$toolbars['Basic'][1] = apply_filters( 'teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'justifyleft', 'justifycenter', 'justifyright', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id );
    		
    		
    		// Custom - can be added with acf/fields/wysiwyg/toolbars filter

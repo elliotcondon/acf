@@ -237,11 +237,73 @@
 	});	
 	
 	
-	$(document).on('change', '.categorychecklist input[type="checkbox"]', function(){
+	function _sync_taxonomy_terms() {
+		
+		// vars
+		var values = [];
+		
+		
+		$('.categorychecklist input:checked, .acf-taxonomy-field input:checked, .acf-taxonomy-field option:selected').each(function(){
+			
+			// validate
+			if( $(this).is(':hidden') || $(this).is(':disabled') )
+			{
+				return;
+			}
+			
+			
+			// validate media popup
+			if( $(this).closest('.media-frame').exists() )
+			{
+				return;
+			}
+			
+			
+			// validate acf
+			if( $(this).closest('.acf-taxonomy-field').exists() )
+			{
+				if( $(this).closest('.acf-taxonomy-field').attr('data-save') == '0' )
+				{
+					return;
+				}
+			}
+			
+			
+			// append
+			if( values.indexOf( $(this).val() ) === -1 )
+			{
+				values.push( $(this).val() );
+			}
+			
+		});
+
+		
+		// update screen
+		acf.screen.post_category = values;
+		acf.screen.taxonomy = values;
+
+		
+		// trigger change
+		$(document).trigger('acf/update_field_groups');
+			
+	}
+	
+	
+	$(document).on('change', '.categorychecklist input, .acf-taxonomy-field input, .acf-taxonomy-field select', function(){
 		
 		// a taxonomy field may trigger this change event, however, the value selected is not
 		// actually a term relatinoship, it is meta data
-		if( $(this).closest('.categorychecklist').hasClass('no-ajax') )
+		if( $(this).closest('.acf-taxonomy-field').exists() )
+		{
+			if( $(this).closest('.acf-taxonomy-field').attr('data-save') == '0' )
+			{
+				return;
+			}
+		}
+		
+		
+		// this may be triggered from editing an imgae in a popup. Popup does not support correct metaboxes so ignore this
+		if( $(this).closest('.media-frame').exists() )
 		{
 			return;
 		}
@@ -250,31 +312,13 @@
 		// set timeout to fix issue with chrome which does not register the change has yet happened
 		setTimeout(function(){
 			
-			// vars
-			var values = [];
-			
-			
-			$('.categorychecklist input[type="checkbox"]:checked').each(function(){
-				
-				if( $(this).is(':hidden') || $(this).is(':disabled') )
-				{
-					return;
-				}
-			
-				values.push( $(this).val() );
-			});
-	
-			
-			acf.screen.post_category = values;
-			acf.screen.taxonomy = values;
-	
-	
-			$(document).trigger('acf/update_field_groups');
+			_sync_taxonomy_terms();
 		
 		}, 1);
 		
 		
 	});
+	
 	
 	
 	

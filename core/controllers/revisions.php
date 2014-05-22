@@ -252,24 +252,58 @@ class acf_revisions
 	*  @return	$revision_id (int) the source post
 	*/
 	
-	function wp_restore_post_revision( $parent_id, $revision_id )
-	{
+	function wp_restore_post_revision( $post_id, $revision_id ) {
+	
+		// global
 		global $wpdb;
+		
+		
+		// vars
+		$fields = array();
 		
 		
 		// get field from postmeta
 		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
-			$revision_id, 
-			'_%'
+			"SELECT * FROM $wpdb->postmeta WHERE post_id=%d", 
+			$revision_id
 		), ARRAY_A);
 		
 		
+		// populate $fields
 		if( $rows )
 		{
 			foreach( $rows as $row )
 			{
-				update_post_meta( $parent_id, $row['meta_key'], $row['meta_value'] );
+				// meta_key must start with '_'
+				if( substr($row['meta_key'], 0, 1) !== '_' )
+				{
+					continue;
+				}
+				
+				
+				// meta_value must start with 'field_'
+				if( substr($row['meta_value'], 0, 6) !== 'field_' )
+				{
+					continue;
+				}
+				
+				
+				// this is an ACF field, append to $fields
+				$fields[] = substr($row['meta_key'], 1);
+				
+			}
+		}
+		
+		
+		// save data
+		if( $rows )
+		{
+			foreach( $rows as $row )
+			{
+				if( in_array($row['meta_key'], $fields) )
+				{
+					update_post_meta( $post_id, $row['meta_key'], $row['meta_value'] );
+				}
 			}
 		}
 			

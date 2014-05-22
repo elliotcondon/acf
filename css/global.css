@@ -172,61 +172,65 @@ input.acf-is-prepended.acf-is-appended {
 *--------------------------------------------------------------------------------------------*/
 
 .wp-box {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #E1E1E1;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
     position: relative;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
+
 .wp-box .title {
-	background: #f1f1f1;
-	background-image: -webkit-gradient(linear, left bottom, left top, from(#ececec), to(#f9f9f9));
-	background-image: -webkit-linear-gradient(bottom, #ececec, #f9f9f9);
-	background-image:    -moz-linear-gradient(bottom, #ececec, #f9f9f9);
-	background-image:      -o-linear-gradient(bottom, #ececec, #f9f9f9);
-	background-image: linear-gradient(to top, #ececec, #f9f9f9);
-}
-.wp-box .title h3 {
-	font-size: 15px;
-    font-weight: normal;
-    line-height: 1;
+	border-bottom: 1px solid #EEEEEE;
     margin: 0;
-    padding: 7px 10px;
-    color: #464646;
-    border-bottom: #DFDFDF solid 1px;
-    box-shadow: 0 1px 0 #FFFFFF;
-    text-shadow: 0 1px 0 #FFFFFF;
-    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+    padding: 15px;
+	background: #FFFFFF;
 }
+
+.wp-box .title h3 {
+	font-size: 14px;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+}
+
 .wp-box .inner {
     padding: 15px;
 }
+
 .wp-box .footer {
-    background: none repeat scroll 0 0 #F5F5F5;
+    background: #F5F5F5;
     border-top: 1px solid #E1E1E1;
     overflow: hidden;
-    padding: 10px;
+    padding: 15px;
     position: relative;
 }
+
 .wp-box .footer ul.left {
     float: left;
 }
+
 .wp-box .footer ul li {
     margin: 0;
     padding: 0;
 }
+
 .wp-box .footer ul.left li {
     margin-right: 10px;
 }
+
 .wp-box .footer ul.right {
     float: right;
 }
+
 .wp-box .footer ul.right li {
     margin-left: 10px;
 }
 
 .wp-box h2 {
-	margin: .25em 0 .75em;
-	padding: 0;
+	color: #333333;
+    font-size: 25px;
+    line-height: 29px;
+    margin: 0.25em 0 0.75em;
+    padding: 0;
 }
 
 .wp-box h3 {
@@ -262,15 +266,9 @@ input.acf-is-prepended.acf-is-appended {
 }
 
 .wp-box .footer-blue {
-	background-color: #8CC1E9;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#8CC1E9), to(#72A7CF)); /* Saf4+, Chrome */
-    background-image: -webkit-linear-gradient(top, #8CC1E9, #72A7CF); /* Chrome 10+, Saf5.1+, iOS 5+ */
-    background-image:    -moz-linear-gradient(top, #8CC1E9, #72A7CF); /* Firefox 3.6-15 */
-    background-image:      -o-linear-gradient(top, #8CC1E9, #72A7CF); /* Opera 11.10+ */
-    background-image:         linear-gradient(to bottom, #8CC1E9, #72A7CF); /* Firefox 16+ */
+	border-top: 0 none;
+	background-color: #52ACCC;
     color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-    
     overflow: hidden;
     padding: 10px;
     position: relative;
@@ -325,7 +323,8 @@ table.acf_input td.label ul.hl li a.acf-button {
 
 table.acf_input tbody tr td.label label {
 	display: block;
-	font-size: 12px;
+	font-size: 13px;
+	line-height: 1.4em;
 	font-weight: bold;
 	padding: 0;
 	margin: 0 0 3px;
@@ -342,6 +341,7 @@ table.acf_input tbody tr td.label label span.required {
 table.acf_input tbody tr td.label p {
 	display: block;
 	font-size: 12px;
+	line-height: 1.4em;
 	padding: 0 !important;
 	margin: 3px 0 0 !important;
 	font-style: normal;
@@ -354,7 +354,7 @@ table.acf_input input[type="number"],
 table.acf_input textarea,
 table.acf_input select{
 	width: 99.95%;
-	padding: 5px;
+	padding: 3px 5px;
 	outline: none;
 }
 
@@ -407,103 +407,74 @@ ul.acf-checkbox-list li input {
 *
 *--------------------------------------------------------------------------------------------*/
 
-a.acf-button,
-input[type="submit"].acf-button {
-	display: block;
-	border-radius: 3px;
-	
-	border: #21759B solid 1px;
-    border-color: #21759B #21759B #1E6A8D;
-    
-    
-	background: #21759B;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#2A95C5), to(#21759B)); /* Safari 4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #2A95C5, #21759B); /* Chrome 10+, Safari 5.1+, iOS 5+ */
-	background-image:    -moz-linear-gradient(top, #2A95C5, #21759B); /* Firefox 3.6-15 */
-	background-image:      -o-linear-gradient(top, #2A95C5, #21759B); /* Opera 11.10+ */
-	background-image:         linear-gradient(to bottom, #2A95C5, #21759B); /* Firefox 16+ */
-	
-    color: #FFFFFF;
-    font-weight: normal;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-    font-size: 13px;
-    line-height: 1em;
-    padding: 6px 11px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 0 rgba(120, 200, 230, 0.5) inset;
-	cursor: pointer;
+.acf-button {
 	position: relative;
-	text-align: center;
-	text-decoration: none;
-}
-
-a.acf-button:hover,
-input[type="submit"].acf-button:hover {
-
-	background-color: #3b97c9;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#3b97c9), to(#246f99)); /* Safari 4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #3b97c9, #246f99); /* Chrome 10+, Safari 5.1+, iOS 5+ */
-	background-image:    -moz-linear-gradient(top, #3b97c9, #246f99); /* Firefox 3.6-15 */
-	background-image:      -o-linear-gradient(top, #3b97c9, #246f99); /* Opera 11.10+ */
-	background-image:         linear-gradient(to bottom, #3b97c9, #246f99); /* Firefox 16+ */
-
-    border-color: #1B607F;
-
-    color: #FFFFFF;
+	display: inline-block;
+	border-radius: 3px;
+	height: 28px;
+	padding: 0 11px 1px;
+    cursor: pointer;
     
-	box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 0 rgba(120, 200, 230, 0.6) inset;
-}
-
-a.acf-button:active,
-input[type="submit"].acf-button:active {
-	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-	top: 1px;
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
 	
-}
-
-a.acf-button.grey,
-input[type="submit"].acf-button.grey {
-	border-color: #bbb;
-	text-shadow: 0 1px 0 #fff;
-	color: #454545;
+    color: #fff;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 26px;
+    text-align: center;
+	text-decoration: none;
 	
-	box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 1px rgba(255, 255, 255, 1) inset;
+	background: #2EA2CC;
 	
-	background: #fff;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ececec)); /* Safari 4+, Chrome */
-	background-image: -webkit-linear-gradient(top, #ffffff, #ececec); /* Chrome 10+, Safari 5.1+, iOS 5+ */
-	background-image:    -moz-linear-gradient(top, #ffffff, #ececec); /* Firefox 3.6-15 */
-	background-image:      -o-linear-gradient(top, #ffffff, #ececec); /* Opera 11.10+ */
-	background-image:         linear-gradient(to bottom, #ffffff, #ececec); /* Firefox 16+ */
-	
+	border: #0074A2 solid 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset;
 }
 
-a.acf-button.grey:hover,
-input[type="submit"].acf-button.grey:hover {
-	border-color: #aaa;
-	
-	box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 1px rgba(255, 255, 255, 1) inset;
-}
-
-a.acf-button[disabled],
-a.acf-button.disabled,
-input[type="submit"].acf-button[disabled] {
-	opacity: 0.7;
-}
-
-a.acf-button[disabled]:hover,
-a.acf-button.disabled:hover,
-input[type="submit"].acf-button[disabled]:hover {
-	
-}
-
-a.acf-button-big {
-	font-size: 16px;
-	padding: 13px;
-}
-
-div.error a.acf-button {
+.acf-button:hover {
+	background-color: #298CBA;
 	color: #fff;
 }
+
+.acf-button:focus,
+.acf-button:active {
+	outline: none;
+	line-height: 28px;
+}
+
+.acf-button:active {
+	box-shadow: none;
+}
+
+.acf-button[disabled] {
+	background: #298CBA !important;
+    border-color: #1B607F !important;
+    box-shadow: none !important;
+    color: #94CDE7 !important;
+    cursor: default !important;
+}
+
+
+.acf-button.grey {
+	color: #333;
+	border-color: #BBBBBB;
+	background: #F9F9F9;
+}
+
+.acf-button.grey:hover {
+	border-color: #999;
+}
+
+
+/* sizes */
+.acf-button.large,
+.acf-button-big {
+	height: 32px;
+	line-height: 31px;
+	font-size: 14px;
+}
+
 
 /*--------------------------------------------------------------------------
 *

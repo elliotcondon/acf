@@ -1,111 +1,111 @@
-# Copyright (C) 2013 
+# Copyright (C) 2014 
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
-"POT-Creation-Date: 2013-12-03 04:25:56+00:00\n"
+"POT-Creation-Date: 2014-01-05 07:41:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: acf.php:437
+#: acf.php:455
 msgid "Field&nbsp;Groups"
 msgstr ""
 
-#: acf.php:438 core/controllers/field_groups.php:214
+#: acf.php:456 core/controllers/field_groups.php:214
 msgid "Advanced Custom Fields"
 msgstr ""
 
-#: acf.php:439
+#: acf.php:457
 msgid "Add New"
 msgstr ""
 
-#: acf.php:440
+#: acf.php:458
 msgid "Add New Field Group"
 msgstr ""
 
-#: acf.php:441
+#: acf.php:459
 msgid "Edit Field Group"
 msgstr ""
 
-#: acf.php:442
+#: acf.php:460
 msgid "New Field Group"
 msgstr ""
 
-#: acf.php:443
+#: acf.php:461
 msgid "View Field Group"
 msgstr ""
 
-#: acf.php:444
+#: acf.php:462
 msgid "Search Field Groups"
 msgstr ""
 
-#: acf.php:445
+#: acf.php:463
 msgid "No Field Groups found"
 msgstr ""
 
-#: acf.php:446
+#: acf.php:464
 msgid "No Field Groups found in Trash"
 msgstr ""
 
-#: acf.php:549 core/views/meta_box_options.php:99
+#: acf.php:567 core/views/meta_box_options.php:99
 msgid "Custom Fields"
 msgstr ""
 
-#: acf.php:567 acf.php:570
+#: acf.php:585 acf.php:588
 msgid "Field group updated."
 msgstr ""
 
-#: acf.php:568
+#: acf.php:586
 msgid "Custom field updated."
 msgstr ""
 
-#: acf.php:569
+#: acf.php:587
 msgid "Custom field deleted."
 msgstr ""
 
 #. translators: %s: date and time of the revision
-#: acf.php:572
+#: acf.php:590
 msgid "Field group restored to revision from %s"
 msgstr ""
 
-#: acf.php:573
+#: acf.php:591
 msgid "Field group published."
 msgstr ""
 
-#: acf.php:574
+#: acf.php:592
 msgid "Field group saved."
 msgstr ""
 
-#: acf.php:575
+#: acf.php:593
 msgid "Field group submitted."
 msgstr ""
 
-#: acf.php:576
+#: acf.php:594
 msgid "Field group scheduled for."
 msgstr ""
 
-#: acf.php:577
+#: acf.php:595
 msgid "Field group draft updated."
 msgstr ""
 
-#: acf.php:712
+#: acf.php:730
 msgid "Thumbnail"
 msgstr ""
 
-#: acf.php:713
+#: acf.php:731
 msgid "Medium"
 msgstr ""
 
-#: acf.php:714
+#: acf.php:732
 msgid "Large"
 msgstr ""
 
-#: acf.php:715
+#: acf.php:733
 msgid "Full"
 msgstr ""
 
@@ -125,11 +125,11 @@ msgstr ""
 msgid "Post updated"
 msgstr ""
 
-#: core/controllers/addons.php:42 core/controllers/field_groups.php:311
+#: core/controllers/addons.php:42 core/controllers/field_groups.php:307
 msgid "Add-ons"
 msgstr ""
 
-#: core/controllers/addons.php:130 core/controllers/field_groups.php:433
+#: core/controllers/addons.php:130 core/controllers/field_groups.php:429
 msgid "Repeater Field"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Create infinite rows of repeatable data with this versatile interface!"
 msgstr ""
 
-#: core/controllers/addons.php:137 core/controllers/field_groups.php:441
+#: core/controllers/addons.php:137 core/controllers/field_groups.php:437
 msgid "Gallery Field"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Create image galleries in a simple and intuitive interface!"
 msgstr ""
 
-#: core/controllers/addons.php:144 core/controllers/field_groups.php:449
+#: core/controllers/addons.php:144 core/controllers/field_groups.php:445
 msgid "Options Page"
 msgstr ""
 
@@ -217,9 +217,9 @@ msgstr ""
 msgid "Purchase & Install"
 msgstr ""
 
-#: core/controllers/addons.php:242 core/controllers/field_groups.php:426
-#: core/controllers/field_groups.php:435 core/controllers/field_groups.php:443
-#: core/controllers/field_groups.php:451 core/controllers/field_groups.php:459
+#: core/controllers/addons.php:242 core/controllers/field_groups.php:422
+#: core/controllers/field_groups.php:431 core/controllers/field_groups.php:439
+#: core/controllers/field_groups.php:447 core/controllers/field_groups.php:455
 msgid "Download"
 msgstr ""
 
@@ -500,7 +500,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: core/controllers/field_groups.php:216 core/controllers/field_groups.php:257
+#: core/controllers/field_groups.php:216 core/controllers/field_groups.php:253
 msgid "Changelog"
 msgstr ""
 
@@ -548,285 +548,277 @@ msgstr ""
 msgid "Created by"
 msgstr ""
 
-#: core/controllers/field_groups.php:235
-msgid "Vote"
-msgstr ""
-
-#: core/controllers/field_groups.php:236
-msgid "Follow"
-msgstr ""
-
-#: core/controllers/field_groups.php:248
+#: core/controllers/field_groups.php:244
 msgid "Welcome to Advanced Custom Fields"
 msgstr ""
 
-#: core/controllers/field_groups.php:249
+#: core/controllers/field_groups.php:245
 msgid "Thank you for updating to the latest version!"
 msgstr ""
 
-#: core/controllers/field_groups.php:249
+#: core/controllers/field_groups.php:245
 msgid "is more polished and enjoyable than ever before. We hope you like it."
 msgstr ""
 
-#: core/controllers/field_groups.php:256
+#: core/controllers/field_groups.php:252
 msgid "What’s New"
 msgstr ""
 
-#: core/controllers/field_groups.php:259
+#: core/controllers/field_groups.php:255
 msgid "Download Add-ons"
 msgstr ""
 
-#: core/controllers/field_groups.php:313
+#: core/controllers/field_groups.php:309
 msgid "Activation codes have grown into plugins!"
 msgstr ""
 
-#: core/controllers/field_groups.php:314
+#: core/controllers/field_groups.php:310
 msgid ""
 "Add-ons are now activated by downloading and installing individual plugins. "
 "Although these plugins will not be hosted on the wordpress.org repository, "
 "each Add-on will continue to receive updates in the usual way."
 msgstr ""
 
-#: core/controllers/field_groups.php:320
+#: core/controllers/field_groups.php:316
 msgid "All previous Add-ons have been successfully installed"
 msgstr ""
 
-#: core/controllers/field_groups.php:324
+#: core/controllers/field_groups.php:320
 msgid "This website uses premium Add-ons which need to be downloaded"
 msgstr ""
 
-#: core/controllers/field_groups.php:324
+#: core/controllers/field_groups.php:320
 msgid "Download your activated Add-ons"
 msgstr ""
 
-#: core/controllers/field_groups.php:329
+#: core/controllers/field_groups.php:325
 msgid ""
 "This website does not use premium Add-ons and will not be affected by this "
 "change."
 msgstr ""
 
-#: core/controllers/field_groups.php:339
+#: core/controllers/field_groups.php:335
 msgid "Easier Development"
 msgstr ""
 
-#: core/controllers/field_groups.php:341
+#: core/controllers/field_groups.php:337
 msgid "New Field Types"
 msgstr ""
 
-#: core/controllers/field_groups.php:343
+#: core/controllers/field_groups.php:339
 msgid "Taxonomy Field"
 msgstr ""
 
-#: core/controllers/field_groups.php:344
+#: core/controllers/field_groups.php:340
 msgid "User Field"
 msgstr ""
 
-#: core/controllers/field_groups.php:345
+#: core/controllers/field_groups.php:341
 msgid "Email Field"
 msgstr ""
 
-#: core/controllers/field_groups.php:346
+#: core/controllers/field_groups.php:342
 msgid "Password Field"
 msgstr ""
 
-#: core/controllers/field_groups.php:348
+#: core/controllers/field_groups.php:344
 msgid "Custom Field Types"
 msgstr ""
 
-#: core/controllers/field_groups.php:349
+#: core/controllers/field_groups.php:345
 msgid ""
 "Creating your own field type has never been easier! Unfortunately, version 3 "
 "field types are not compatible with version 4."
 msgstr ""
 
-#: core/controllers/field_groups.php:350
+#: core/controllers/field_groups.php:346
 msgid "Migrating your field types is easy, please"
 msgstr ""
 
-#: core/controllers/field_groups.php:350
+#: core/controllers/field_groups.php:346
 msgid "follow this tutorial"
 msgstr ""
 
-#: core/controllers/field_groups.php:350
+#: core/controllers/field_groups.php:346
 msgid "to learn more."
 msgstr ""
 
-#: core/controllers/field_groups.php:352
+#: core/controllers/field_groups.php:348
 msgid "Actions &amp; Filters"
 msgstr ""
 
-#: core/controllers/field_groups.php:353
+#: core/controllers/field_groups.php:349
 msgid ""
 "All actions & filters have received a major facelift to make customizing ACF "
 "even easier! Please"
 msgstr ""
 
-#: core/controllers/field_groups.php:353
+#: core/controllers/field_groups.php:349
 msgid "read this guide"
 msgstr ""
 
-#: core/controllers/field_groups.php:353
+#: core/controllers/field_groups.php:349
 msgid "to find the updated naming convention."
 msgstr ""
 
-#: core/controllers/field_groups.php:355
+#: core/controllers/field_groups.php:351
 msgid "Preview draft is now working!"
 msgstr ""
 
-#: core/controllers/field_groups.php:356
+#: core/controllers/field_groups.php:352
 msgid "This bug has been squashed along with many other little critters!"
 msgstr ""
 
-#: core/controllers/field_groups.php:356
+#: core/controllers/field_groups.php:352
 msgid "See the full changelog"
 msgstr ""
 
-#: core/controllers/field_groups.php:360
+#: core/controllers/field_groups.php:356
 msgid "Important"
 msgstr ""
 
-#: core/controllers/field_groups.php:362
+#: core/controllers/field_groups.php:358
 msgid "Database Changes"
 msgstr ""
 
-#: core/controllers/field_groups.php:363
+#: core/controllers/field_groups.php:359
 msgid ""
 "Absolutely <strong>no</strong> changes have been made to the database "
 "between versions 3 and 4. This means you can roll back to version 3 without "
 "any issues."
 msgstr ""
 
-#: core/controllers/field_groups.php:365
+#: core/controllers/field_groups.php:361
 msgid "Potential Issues"
 msgstr ""
 
-#: core/controllers/field_groups.php:366
+#: core/controllers/field_groups.php:362
 msgid ""
 "Do to the sizable changes surounding Add-ons, field types and action/"
 "filters, your website may not operate correctly. It is important that you "
 "read the full"
 msgstr ""
 
-#: core/controllers/field_groups.php:366
+#: core/controllers/field_groups.php:362
 msgid "Migrating from v3 to v4"
 msgstr ""
 
-#: core/controllers/field_groups.php:366
+#: core/controllers/field_groups.php:362
 msgid "guide to view the full list of changes."
 msgstr ""
 
-#: core/controllers/field_groups.php:369
+#: core/controllers/field_groups.php:365
 msgid "Really Important!"
 msgstr ""
 
-#: core/controllers/field_groups.php:369
+#: core/controllers/field_groups.php:365
 msgid ""
 "If you updated the ACF plugin without prior knowledge of such changes, "
 "please roll back to the latest"
 msgstr ""
 
-#: core/controllers/field_groups.php:369
+#: core/controllers/field_groups.php:365
 msgid "version 3"
 msgstr ""
 
-#: core/controllers/field_groups.php:369
+#: core/controllers/field_groups.php:365
 msgid "of this plugin."
 msgstr ""
 
-#: core/controllers/field_groups.php:374
+#: core/controllers/field_groups.php:370
 msgid "Thank You"
 msgstr ""
 
-#: core/controllers/field_groups.php:375
+#: core/controllers/field_groups.php:371
 msgid ""
 "A <strong>BIG</strong> thank you to everyone who has helped test the version "
 "4 beta and for all the support I have received."
 msgstr ""
 
-#: core/controllers/field_groups.php:376
+#: core/controllers/field_groups.php:372
 msgid "Without you all, this release would not have been possible!"
 msgstr ""
 
-#: core/controllers/field_groups.php:380
+#: core/controllers/field_groups.php:376
 msgid "Changelog for"
 msgstr ""
 
-#: core/controllers/field_groups.php:397
+#: core/controllers/field_groups.php:393
 msgid "Learn more"
 msgstr ""
 
-#: core/controllers/field_groups.php:403
+#: core/controllers/field_groups.php:399
 msgid "Overview"
 msgstr ""
 
-#: core/controllers/field_groups.php:405
+#: core/controllers/field_groups.php:401
 msgid ""
 "Previously, all Add-ons were unlocked via an activation code (purchased from "
 "the ACF Add-ons store). New to v4, all Add-ons act as separate plugins which "
 "need to be individually downloaded, installed and updated."
 msgstr ""
 
-#: core/controllers/field_groups.php:407
+#: core/controllers/field_groups.php:403
 msgid ""
 "This page will assist you in downloading and installing each available Add-"
 "on."
 msgstr ""
 
-#: core/controllers/field_groups.php:409
+#: core/controllers/field_groups.php:405
 msgid "Available Add-ons"
 msgstr ""
 
-#: core/controllers/field_groups.php:411
+#: core/controllers/field_groups.php:407
 msgid "The following Add-ons have been detected as activated on this website."
 msgstr ""
 
-#: core/controllers/field_groups.php:424
+#: core/controllers/field_groups.php:420
 msgid "Name"
 msgstr ""
 
-#: core/controllers/field_groups.php:425
+#: core/controllers/field_groups.php:421
 msgid "Activation Code"
 msgstr ""
 
-#: core/controllers/field_groups.php:457
+#: core/controllers/field_groups.php:453
 msgid "Flexible Content"
 msgstr ""
 
-#: core/controllers/field_groups.php:467
+#: core/controllers/field_groups.php:463
 msgid "Installation"
 msgstr ""
 
-#: core/controllers/field_groups.php:469
+#: core/controllers/field_groups.php:465
 msgid "For each Add-on available, please perform the following:"
 msgstr ""
 
-#: core/controllers/field_groups.php:471
+#: core/controllers/field_groups.php:467
 msgid "Download the Add-on plugin (.zip file) to your desktop"
 msgstr ""
 
-#: core/controllers/field_groups.php:472
+#: core/controllers/field_groups.php:468
 msgid "Navigate to"
 msgstr ""
 
-#: core/controllers/field_groups.php:472
+#: core/controllers/field_groups.php:468
 msgid "Plugins > Add New > Upload"
 msgstr ""
 
-#: core/controllers/field_groups.php:473
+#: core/controllers/field_groups.php:469
 msgid "Use the uploader to browse, select and install your Add-on (.zip file)"
 msgstr ""
 
-#: core/controllers/field_groups.php:474
+#: core/controllers/field_groups.php:470
 msgid ""
 "Once the plugin has been uploaded and installed, click the 'Activate Plugin' "
 "link"
 msgstr ""
 
-#: core/controllers/field_groups.php:475
+#: core/controllers/field_groups.php:471
 msgid "The Add-on is now installed and activated!"
 msgstr ""
 
-#: core/controllers/field_groups.php:489
+#: core/controllers/field_groups.php:485
 msgid "Awesome. Let's get to work"
 msgstr ""
 
@@ -1704,11 +1696,11 @@ msgid "Style"
 msgstr ""
 
 #: core/views/meta_box_options.php:74
-msgid "No Metabox"
+msgid "Seamless (no metabox)"
 msgstr ""
 
 #: core/views/meta_box_options.php:75
-msgid "Standard Metabox"
+msgid "Standard (WP metabox)"
 msgstr ""
 
 #: core/views/meta_box_options.php:84

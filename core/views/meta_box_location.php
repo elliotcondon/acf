@@ -75,18 +75,18 @@ if( empty($groups) )
 								'post_type'		=>	__("Post Type",'acf'),
 								'user_type'		=>	__("Logged in User Type",'acf'),
 							),
-							__("Page",'acf') => array(
-								'page'			=>	__("Page",'acf'),
-								'page_type'		=>	__("Page Type",'acf'),
-								'page_parent'	=>	__("Page Parent",'acf'),
-								'page_template'	=>	__("Page Template",'acf'),
-							),
 							__("Post",'acf') => array(
 								'post'			=>	__("Post",'acf'),
 								'post_category'	=>	__("Post Category",'acf'),
 								'post_format'	=>	__("Post Format",'acf'),
 								'post_status'	=>	__("Post Status",'acf'),
 								'taxonomy'		=>	__("Post Taxonomy",'acf'),
+							),
+							__("Page",'acf') => array(
+								'page'			=>	__("Page",'acf'),
+								'page_type'		=>	__("Page Type",'acf'),
+								'page_parent'	=>	__("Page Parent",'acf'),
+								'page_template'	=>	__("Page Template",'acf'),
 							),
 							__("Other",'acf') => array(
 								'ef_media'		=>	__("Attachment",'acf'),

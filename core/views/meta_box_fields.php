@@ -178,6 +178,7 @@ $error_field_type = '<b>' . __('Error', 'acf') . '</b> ' . __('Field type does n
 									'type'	=>	'textarea',
 									'name'	=>	'fields[' .$fake_name . '][instructions]',
 									'value'	=>	$field['instructions'],
+									'rows'	=> 6
 								));
 								?>
 							</td>

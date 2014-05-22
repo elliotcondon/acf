@@ -9,7 +9,8 @@
 }
 
 #acf-cols {
-	position: relative; clear: both;
+	position: relative; 
+	clear: both;
 }
 
 #acf-col-left {
@@ -44,27 +45,6 @@
 	width: 281px; 
 	padding-top: 37px !important;
 }
-
-h3.h2 {
-	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
-	font-size: 25px;
-    line-height: 29px;
-    padding: 5px 0 4px 0;
-    margin: 0;
-    font-weight: normal;
-}
-
-h3.h2 span {
-	color: #ccc;
-}
-
-#acf-col-left .wp-list-table {
-	border-radius: 0;
-	border: 1px solid #E1E1E1;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-
 
 .acf-form-table {
 	max-width: 1100px;
@@ -159,7 +139,7 @@ body.custom-fields_page_acf-settings .wp-pointer-arrow {
 }
 
 #add-ons .add-on .inner {
-	min-height: 75px;
+	min-height: 105px;
 }
 
 #add-ons .add-on-active .button {

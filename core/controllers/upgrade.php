@@ -68,101 +68,13 @@ class acf_upgrade
 
 			}
 		}
-
-
-		// update info
-		global $pagenow;
-
-		if( $pagenow == 'plugins.php' )
-		{
-			$hook = apply_filters('acf/get_info', 'hook');
-
-			wp_enqueue_style( 'acf-global' );
-			add_action( 'in_plugin_update_message-' . $hook, array($this, 'in_plugin_update_message'), 10, 2 );
-		}
-
-
+		
+		
 		// update admin page
 		add_submenu_page('edit.php?post_type=acf', __('Upgrade','acf'), __('Upgrade','acf'), 'manage_options','acf-upgrade', array($this,'html') );
 	}
 
-
-
-
-	/*
-	*  in_plugin_update_message
-	*
-	*  Displays an update message for plugin list screens.
-	*  Shows only the version updates from the current until the newest version
-	*
-	*  @type	function
-	*  @date	5/06/13
-	*
-	*  @param	{array}		$plugin_data
-	*  @param	{object}	$r
-	*/
-
-	function in_plugin_update_message( $plugin_data, $r )
-	{
-		// vars
-		$version = apply_filters('acf/get_info', 'version');
-		$readme = wp_remote_fopen( 'http://plugins.svn.wordpress.org/advanced-custom-fields/trunk/readme.txt' );
-		$regexp = '/== Changelog ==(.*)= ' . $version . ' =/sm';
-		$o = '';
-
-
-		// validate
-		if( !$readme )
-		{
-			return;
-		}
-
-
-		// regexp
-		preg_match( $regexp, $readme, $matches );
-
-
-		if( ! isset($matches[1]) )
-		{
-			return;
-		}
-
-
-		// render changelog
-		$changelog = explode('*', $matches[1]);
-		array_shift( $changelog );
-
-
-		if( !empty($changelog) )
-		{
-			$o .= '<div class="acf-plugin-update-info">';
-			$o .= '<h3>' . __("What's new", 'acf') . '</h3>';
-			$o .= '<ul>';
-
-			foreach( $changelog as $item )
-			{
-				$item = explode('http', $item);
-
-				$o .= '<li>' . $item[0];
-
-				if( isset($item[1]) )
-				{
-					$o .= '<a href="http' . $item[1] . '" target="_blank">' . __("credits",'acf') . '</a>';
-				}
-
-				$o .= '</li>';
-
-
-			}
-
-			$o .= '</ul></div>';
-		}
-
-		echo $o;
-
-
-	}
-
+	
 
 	/*
 	*  html

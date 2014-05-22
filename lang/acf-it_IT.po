@@ -20,7 +20,7 @@ msgstr ""
 
 #: C:\advanced-custom-fields/acf.php:436
 msgid "Field&nbsp;Groups"
-msgstr "Gruddpi di Campi"
+msgstr "Gruppi di Campi"
 
 #: C:\advanced-custom-fields/acf.php:437
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:214

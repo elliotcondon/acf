@@ -212,19 +212,19 @@ class acf_field_taxonomy extends acf_field
 		$args = apply_filters('acf/fields/taxonomy/wp_list_categories', $args, $field );
 		
 		?>
-<div class="acf-taxonomy-field">
+<div class="acf-taxonomy-field" data-load_save="<?php echo $field['load_save_terms']; ?>">
 	<input type="hidden" name="<?php echo $single_name; ?>" value="" />
 	
 	<?php if( $field['field_type'] == 'select' ): ?>
 		
-		<select name="<?php echo $field['name']; ?>" <?php if( $field['multiple'] ): ?>multiple="multiple" size="5"<?php endif; ?>>
+		<select id="<?php echo $field['id']; ?>" name="<?php echo $field['name']; ?>" <?php if( $field['multiple'] ): ?>multiple="multiple" size="5"<?php endif; ?>>
 			<?php if( $field['allow_null'] ): ?>
 				<option value=""><?php _e("None", 'acf'); ?></option>
 			<?php endif; ?>
 	
 	<?php else: ?>
 		<div class="categorychecklist-holder">
-		<ul class="categorychecklist<?php if( !$field['load_save_terms'] ){ echo ' no-ajax'; } ?>">
+		<ul class="acf-checkbox-list">
 			<?php if( $field['allow_null'] ): ?>
 				<li>
 					<label class="selectit">
@@ -280,19 +280,22 @@ class acf_field_taxonomy extends acf_field
 	<td>
 		<?php
 		
+		// vars
 		$choices = array();
-		$taxonomies = get_taxonomies( array('public' => true), 'objects' );
+		$taxonomies = get_taxonomies( array(), 'objects' );
+		$ignore = array( 'post_format', 'nav_menu', 'link_category' );
 		
-		foreach($taxonomies as $taxonomy)
+		
+		foreach( $taxonomies as $taxonomy )
 		{
-			$choices[ $taxonomy->name ] = $taxonomy->labels->name;
+			if( in_array($taxonomy->name, $ignore) )
+			{
+				continue;
+			}
+			
+			$choices[ $taxonomy->name ] = $taxonomy->name;
 		}
 		
-		// unset post_format (why is this a public taxonomy?)
-		if( isset($choices['post_format']) )
-		{
-			unset( $choices['post_format']) ;
-		}
 				
 		do_action('acf/create_field', array(
 			'type'	=>	'select',
@@ -300,6 +303,7 @@ class acf_field_taxonomy extends acf_field
 			'value'	=>	$field['taxonomy'],
 			'choices' => $choices,
 		));
+		
 		?>
 	</td>
 </tr>
@@ -422,8 +426,8 @@ class acf_taxonomy_field_walker extends Walker
 		}
 		elseif( $this->field['field_type'] == 'select' )
 		{
-			$indent = str_repeat("&mdash;", $depth);
-			$output .= '<option value="' . $term->term_id . '" ' . ($selected ? 'selected="selected"' : '') . '>' . $indent . ' ' . $term->name . '</option>';
+			$indent = str_repeat("&mdash; ", $depth);
+			$output .= '<option value="' . $term->term_id . '" ' . ($selected ? 'selected="selected"' : '') . '>' . $indent . $term->name . '</option>';
 		}
 		
 	}

@@ -211,7 +211,7 @@ class acf_field_groups
 
 	<div class="wp-box">
 		<div class="inner">
-			<h3 class="h2"><?php _e("Advanced Custom Fields",'acf'); ?> <?php echo $version; ?></h3>
+			<h2><?php _e("Advanced Custom Fields",'acf'); ?> <?php echo $version; ?></h2>
 
 			<h3><?php _e("Changelog",'acf'); ?></h3>
 			<p><?php _e("See what's new in",'acf'); ?> <a href="<?php echo admin_url('edit.php?post_type=acf&info=changelog'); ?>"><?php _e("version",'acf'); ?> <?php echo $version; ?></a>
@@ -228,12 +228,8 @@ class acf_field_groups
 			</ul>
 		</div>
 		<div class="footer footer-blue">
-			<ul class="left hl">
+			<ul class="hl">
 				<li><?php _e("Created by",'acf'); ?> Elliot Condon</li>
-			</ul>
-			<ul class="right hl">
-				<li><a href="http://wordpress.org/extend/plugins/advanced-custom-fields/"><?php _e("Vote",'acf'); ?></a></li>
-				<li><a href="http://twitter.com/elliotcondon"><?php _e("Follow",'acf'); ?></a></li>
 			</ul>
 		</div>
 	</div>
