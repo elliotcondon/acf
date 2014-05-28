@@ -492,7 +492,7 @@ class acf_field_relationship extends acf_field
 					
 					if( in_array('post_type', $field['result_elements']) )
 					{
-						$post_type_object = get_post_type_object( get_post_type() );
+						$post_type_object = get_post_type_object( $p->post_type );
 						$title .= $post_type_object->labels->singular_name;
 					}
 					
