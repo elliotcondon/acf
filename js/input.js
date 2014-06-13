@@ -523,6 +523,18 @@ var acf = {
 	*  @created: 15/10/12
 	*/
 
+    var defer = function(func){
+
+        return function(){
+            var args = Array.prototype.slice.call(arguments);
+
+            return setTimeout( function(){
+                func.apply(null, args);
+            }, 1);
+        }
+    };
+
+
 	acf.conditional_logic = {
 
 		items : [],
@@ -602,6 +614,7 @@ var acf = {
 			$targets.each(function(){
 
 				//console.log('target %o', $(this));
+                //console.log(_this);
 
 				// vars
 				var show = true;
@@ -716,35 +729,44 @@ var acf = {
 
 
 				// clear classes
-				$target.removeClass('acf-conditional_logic-hide acf-conditional_logic-show acf-show-blank');
+                $target.removeClass('acf-conditional_logic-hide acf-conditional_logic-show acf-show-blank');
+
 
 
 				// hide / show field
 				if( show )
 				{
 					// remove "disabled"
-					$target.find('input, textarea, select').removeAttr('disabled');
 
-					$target.addClass('acf-conditional_logic-show');
+                    $target.find('input, textarea, select').removeAttr('disabled');
 
-					// hook
-					$(document).trigger('acf/conditional_logic/show', [ $target, item ]);
+
+                    $target.addClass('acf-conditional_logic-show');
+                    defer(function($target){
+                        // hook
+                        $(document).trigger('acf/conditional_logic/show', [ $target, item ]);
+                    })($target);
 
 				}
 				else
 				{
-					// add "disabled"
-					$target.find('input, textarea, select').attr('disabled', 'disabled');
 
-					$target.addClass('acf-conditional_logic-hide');
+                    // add "disabled"
+                    $target.find('input, textarea, select').attr('disabled', 'disabled');
 
-					if( !hide_all )
-					{
-						$target.addClass('acf-show-blank');
-					}
+                    $target.addClass('acf-conditional_logic-hide');
 
-					// hook
-					$(document).trigger('acf/conditional_logic/hide', [ $target, item ]);
+                    if( !hide_all )
+                    {
+                        $target.addClass('acf-show-blank');
+                    }
+
+                    defer(function($target){
+                        // hook
+                        $(document).trigger('acf/conditional_logic/hide', [ $target, item ]);
+
+                    })($target);
+
 				}
 
 
@@ -774,8 +796,7 @@ var acf = {
 						return;
 					}
 
-					_this.refresh_field( item );
-
+					defer(function(item){_this.refresh_field( item )})(item);
 				});
 
 			});
