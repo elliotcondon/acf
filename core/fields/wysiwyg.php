@@ -238,7 +238,8 @@ class acf_field_wysiwyg extends acf_field
 				
 				if( user_can_richedit() )
 				{
-					echo wp_richedit_pre( $field['value'] );
+					$content = apply_filters( 'acf_the_content', $field['value'] );
+					echo apply_filters( 'the_editor_content', $content );
 				} 
 				else
 				{
