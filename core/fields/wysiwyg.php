@@ -233,20 +233,26 @@ class acf_field_wysiwyg extends acf_field
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>
-			<div id="wp-<?php echo $id; ?>-editor-container" class="wp-editor-container">
-				<textarea id="<?php echo $id; ?>" class="wp-editor-area" name="<?php echo $field['name']; ?>" ><?php 
-				
-				if( user_can_richedit() )
-				{
-					echo wp_richedit_pre( $field['value'] );
-				} 
-				else
-				{
-					echo wp_htmledit_pre( $field['value'] );
-				}
-				
-				?></textarea>
-			</div>
+
+			<?php
+
+			if( user_can_richedit() )
+			{
+				add_filter('the_editor_content', 'wp_richedit_pre');
+			}
+			else
+			{
+				add_filter('the_editor_content', 'wp_htmledit_pre');
+			}
+
+			$the_editor = apply_filters( 'the_editor', '<div id="wp-' . $editor_id . '-editor-container" class="wp-editor-container">' .
+				'<textarea id="<?php echo $id; ?>" class="wp-editor-area" name="' . $field['name'] . '">%s</textarea></div>' );
+
+			$content = apply_filters( 'the_editor_content', $field['value'] );
+			printf( $the_editor, $content );
+
+			?>
+
 		</div>
 		
 		<?php
