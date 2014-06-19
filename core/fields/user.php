@@ -21,6 +21,7 @@ class acf_field_user extends acf_field
 			'role' 			=> 'all',
 			'field_type' 	=> 'select',
 			'allow_null' 	=> 0,
+			'display_field'	=> 'display_name'
 		);
 		
 		
@@ -225,7 +226,14 @@ class acf_field_user extends acf_field
 				
 				foreach( $this_users as $user )
 				{
-					$field['choices'][ $label ][ $user->ID ] = ucfirst( $user->display_name );
+					switch($field["display_field"]){
+						case 'email':
+							$field['choices'][ $label ][ $user->ID ] = $user->user_email;
+							break;
+						default:
+							$field['choices'][ $label ][ $user->ID ] = ucfirst( $user->display_name );
+							break;
+					}
 				}
 				
 			}
@@ -330,6 +338,25 @@ class acf_field_user extends acf_field
 			'choices'	=>	array(
 				1	=>	__("Yes",'acf'),
 				0	=>	__("No",'acf'),
+			),
+			'layout'	=>	'horizontal',
+		));
+		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label><?php _e("Display Field",'acf'); ?></label>
+	</td>
+	<td>
+		<?php 
+		do_action('acf/create_field', array(
+			'type'	=>	'radio',
+			'name'	=>	'fields['.$key.'][display_field]',
+			'value'	=>	$field['display_field'],
+			'choices'	=>	array(
+				'display_name'	=>	__("Display Name",'acf'),
+				'email'			=>	__("Email",'acf'),
 			),
 			'layout'	=>	'horizontal',
 		));
