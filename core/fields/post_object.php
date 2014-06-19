@@ -238,7 +238,13 @@ class acf_field_post_object extends acf_field
 		}
 		// foreach( $field['post_type'] as $post_type )
 		
-		
+		if($field["cpt_archive"]){
+			$cpts = get_post_types(array('public' => true, '_builtin' => false), 'objects');
+			foreach($cpts as $post_type){
+				$field['choices']['Custom Post Type Archives'][$post_type->rewrite["slug"]] = $post_type->labels->name;
+			}
+		}
+
 		// create field
 		do_action('acf/create_field', $field );
 	}

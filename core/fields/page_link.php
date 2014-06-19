@@ -21,6 +21,7 @@ class acf_field_page_link extends acf_field
 			'post_type' => array('all'),
 			'multiple' => 0,
 			'allow_null' => 0,
+			'cpt_archive' => 0
 		);
 		
 		
@@ -164,6 +165,27 @@ class acf_field_page_link extends acf_field
 		?>
 	</td>
 </tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label><?php _e("Custom Post Type Archive Pages?",'acf'); ?></label>
+	</td>
+	<td>
+		<?php
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'radio',
+			'name'	=>	'fields['.$key.'][cpt_archive]',
+			'value'	=>	$field['cpt_archive'],
+			'choices'	=>	array(
+				1	=>	__("Yes",'acf'),
+				0	=>	__("No",'acf'),
+			),
+			'layout'	=>	'horizontal',
+		));
+		
+		?>
+	</td>
+</tr>
 		<?php
 		
 	}
@@ -196,18 +218,28 @@ class acf_field_page_link extends acf_field
 		{
 			return false;
 		}
-		
+
 		if( is_array($value) )
 		{
 			foreach( $value as $k => $v )
 			{
-				$value[ $k ] = get_permalink($v);
+				if($field["cpt_archive"] && !intval($value)){
+					$value = get_post_type_archive_link($value);
+				}else{
+					$value[ $k ] = get_permalink($v);
+				}
 			}
 		}
 		else
 		{
-			$value = get_permalink($value);
+			//If cpt_archive has been enabled, and this value is not a post_id
+			if($field["cpt_archive"] && !intval($value)){
+				$value = get_post_type_archive_link($value);
+			}else{
+				$value = get_permalink($value);
+			}
 		}
+
 		
 		return $value;
 	}
