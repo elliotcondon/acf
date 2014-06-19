@@ -8,7 +8,7 @@ class acf_field_page_link extends acf_field
 	*  Set name / label needed for actions / filters
 	*
 	*  @since	3.6
-	*  @date	23/01/13
+	*  @date	19/06/14
 	*/
 	
 	function __construct()
@@ -21,6 +21,8 @@ class acf_field_page_link extends acf_field
 			'post_type' => array('all'),
 			'multiple' => 0,
 			'allow_null' => 0,
+			'cpt_archive' => 0,
+			'term_archive' => 0
 		);
 		
 		
@@ -164,6 +166,48 @@ class acf_field_page_link extends acf_field
 		?>
 	</td>
 </tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label><?php _e("Custom Post Type Archive Pages?",'acf'); ?></label>
+	</td>
+	<td>
+		<?php
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'radio',
+			'name'	=>	'fields['.$key.'][cpt_archive]',
+			'value'	=>	$field['cpt_archive'],
+			'choices'	=>	array(
+				1	=>	__("Yes",'acf'),
+				0	=>	__("No",'acf'),
+			),
+			'layout'	=>	'horizontal',
+		));
+		
+		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label><?php _e("Taxonomy Term Archive Pages?",'acf'); ?></label>
+	</td>
+	<td>
+		<?php
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'radio',
+			'name'	=>	'fields['.$key.'][term_archive]',
+			'value'	=>	$field['term_archive'],
+			'choices'	=>	array(
+				1	=>	__("Yes",'acf'),
+				0	=>	__("No",'acf'),
+			),
+			'layout'	=>	'horizontal',
+		));
+		
+		?>
+	</td>
+</tr>
 		<?php
 		
 	}
@@ -196,18 +240,36 @@ class acf_field_page_link extends acf_field
 		{
 			return false;
 		}
-		
+
 		if( is_array($value) )
 		{
 			foreach( $value as $k => $v )
 			{
-				$value[ $k ] = get_permalink($v);
+				if($field["cpt_archive"] && strpos($value, 'acf_cpt_') !== false){
+					$value = get_post_type_archive_link(str_replace("acf_cpt_", "", $value));
+				}else if($field["term_archive"] && strpos($value, 'acf_term_') !== false){
+					$value = str_replace("acf_term_", "", $value);
+					$taxonomy = explode("%", $value);
+					$value = get_term_link($taxonomy[1], $taxonomy[0]);
+				}else{
+					$value[ $k ] = get_permalink($v);
+				}
 			}
 		}
 		else
 		{
-			$value = get_permalink($value);
+			//If cpt_archive or term_archive have been enabled, get the relevant archive page
+			if($field["cpt_archive"] && strpos($value, 'acf_cpt_') !== false){
+				$value = get_post_type_archive_link(str_replace("acf_cpt_", "", $value));
+			}else if($field["term_archive"] && strpos($value, 'acf_term_') !== false){
+				$value = str_replace("acf_term_", "", $value);
+				$taxonomy = explode("%", $value);
+				$value = get_term_link($taxonomy[1], $taxonomy[0]);
+			}else{
+				$value = get_permalink($value);
+			}
 		}
+
 		
 		return $value;
 	}

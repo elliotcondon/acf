@@ -8,7 +8,7 @@ class acf_field_post_object extends acf_field
 	*  Set name / label needed for actions / filters
 	*
 	*  @since	3.6
-	*  @date	23/01/13
+	*  @date	19/06/14
 	*/
 	
 	function __construct()
@@ -238,7 +238,29 @@ class acf_field_post_object extends acf_field
 		}
 		// foreach( $field['post_type'] as $post_type )
 		
-		
+		/*
+		*	Display Custom Post Types using acf_cpt_ to distinguish a cpt value
+		*/
+		if($field["cpt_archive"]){
+			$cpts = get_post_types(array('public' => true, '_builtin' => false), 'objects');
+			foreach($cpts as $post_type){
+				$field['choices']['Custom Post Type Archives']["acf_cpt_" . $post_type->rewrite["slug"]] = $post_type->labels->name;
+			}
+		}
+
+		/*
+		*	Display taxonomy terms using acf_term_ to distinguish a term value, and a % to seperate taxonomy from term
+		*/
+		if($field["term_archive"]){
+			$taxs = get_taxonomies(array('public' => true, '_builtin' => false), 'objects');
+			foreach($taxs as $tax){
+				$terms = get_terms($tax->rewrite["slug"]);
+				foreach($terms as $term){
+					$field['choices']["Term Archive - " . $tax->labels->name]["acf_term_" . $tax->rewrite["slug"] . "%" . $term->slug] = $term->name;
+				}
+			}
+		}
+
 		// create field
 		do_action('acf/create_field', $field );
 	}
