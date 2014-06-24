@@ -371,6 +371,10 @@ class acf_controller_post
 		{
 			$html .= '#formatdiv, #screen-meta label[for=formatdiv-hide] {display: none;} ';
 		}
+		if( in_array('page_attributes',$options['hide_on_screen']) )
+		{
+			$html .= '#pageparentdiv {display: none;} ';
+		}
 		if( in_array('featured_image',$options['hide_on_screen']) )
 		{
 			$html .= '#postimagediv, #screen-meta label[for=postimagediv-hide] {display: none;} ';
