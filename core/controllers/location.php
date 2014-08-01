@@ -555,7 +555,10 @@ class acf_location
 			}
 		}
 		
-
+        if (defined('ICL_LANGUAGE_CODE')) 
+        {
+            $rule['value'] = icl_object_id($rule['value'], 'category');
+        }
         
         if($rule['operator'] == "==")
         {
