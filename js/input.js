@@ -2518,6 +2518,7 @@ var acf = {
 			
 			// vars
 			var id = this.$input.val();
+			var t = this;
 			
 			
 			// set global var
@@ -2579,6 +2580,10 @@ var acf = {
 			
 			// close
 			_media.frame.on('close',function(){
+
+				if( _media.frame.state().get('selection').length === 0 ) {
+					t.remove();
+				}
 			
 				// remove class
 				_media.frame.$el.closest('.media-modal').removeClass('acf-media-modal');
