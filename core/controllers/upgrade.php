@@ -46,28 +46,31 @@ class acf_upgrade
 			return;
 		}
 
-
+		
 		// vars
-		$new_version = apply_filters('acf/get_info', 'version');
-		$old_version = get_option('acf_version', false);
-
-
-		if( $new_version != $old_version )
-		{
-			update_option('acf_version', $new_version );
-
-			if( !$old_version )
-			{
-				// do nothing, this is a fresh install
-			}
-			elseif( $old_version < '4.0.0' && $new_version >= '4.0.0')
-			{
-				$url = admin_url('edit.php?post_type=acf&info=whats-new');
-				wp_redirect( $url );
-				exit;
-
-			}
+		$plugin_version = apply_filters('acf/get_info', 'version');
+		$acf_version = get_option('acf_version');
+		
+		
+		// bail early if a new install
+		if( empty($acf_version) ) {
+		
+			update_option('acf_version', $plugin_version );
+			return;
+			
 		}
+		
+		
+		// bail early if $acf_version is >= $plugin_version
+		if( version_compare( $acf_version, $plugin_version, '>=') ) {
+		
+			return;
+			
+		}
+		
+		
+		// update version
+		update_option('acf_version', $plugin_version );
 		
 		
 		// update admin page
