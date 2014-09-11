@@ -39,20 +39,7 @@
 }
 
 #submitdiv .acf-button {
-	width: 100%;
-}
-
-#submitdiv #delete-action {
-	float: none;
-	margin: 0 0 5px;
-}
-
-#submitdiv #publishing-action {
-	float: none;
-}
-
-#submitdiv #publishing-action img {
-	display: none;
+	margin: 0;
 }
 
 #delete-action .delete-field-group {
