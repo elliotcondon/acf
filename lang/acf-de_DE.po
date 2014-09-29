@@ -433,7 +433,7 @@ msgstr "ACF erstellt eine .xml-Export-Datei welche kompatibel ist zum Standard-W
 
 #: core/controllers/export.php:254
 #@ acf
-msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between Wp websites."
+msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between WP websites."
 msgstr "Importierte Felder-Gruppen <b>werden</b> in der Liste der bearbeitbaren Felder-Gruppen <b>angezeigt</b> um Felder-Gruppen zwischen WP-Websites auszutauschen."
 
 #: core/controllers/export.php:256

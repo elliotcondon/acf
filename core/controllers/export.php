@@ -251,7 +251,7 @@ class acf_export
 <p><br /></p>
 <h3><?php _e("Export to XML",'acf'); ?></h3>
 <p><?php _e("ACF will create a .xml export file which is compatible with the native WP import plugin.",'acf'); ?></p>
-<p><?php _e("Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between Wp websites.",'acf'); ?></p>
+<p><?php _e("Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between WP websites.",'acf'); ?></p>
 <ol>
 	<li><?php _e("Select field group(s) from the list and click \"Export XML\"",'acf'); ?></li>
 	<li><?php _e("Save the .xml file when prompted",'acf'); ?></li>

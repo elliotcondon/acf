@@ -1035,7 +1035,7 @@ msgstr "Exportar como PHP"
 
 #: core/controllers/export.php:254
 #@ acf
-msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between Wp websites."
+msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between WP websites."
 msgstr "Os grupos de campos importados <b>irão</b> aparecer na lista de grupos editáveis. Isso pode ser útil para migrar os grupos de campos entre sites WP."
 
 #: core/controllers/export.php:256

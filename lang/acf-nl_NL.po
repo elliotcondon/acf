@@ -380,7 +380,7 @@ msgid "Import Field Groups"
 msgstr "Importeer groepen"
 
 #: core/controllers/settings.php:319
-msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between Wp websites."
+msgid "Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for migrating fields groups between WP websites."
 msgstr "Ge&iuml;mporteerde veld groepen <b>verschijnen</b> in de lijst van beheerbare veld groepen. Dit is handig voor het migreren van veld groepen tussen WP websites."
 
 #: core/controllers/settings.php:321

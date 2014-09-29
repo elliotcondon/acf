@@ -259,7 +259,7 @@ msgstr "ACF将创建一个兼容WP导入插件的.xml文件。"
 #: ../core/controllers/export.php:254
 msgid ""
 "Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
+"groups. This is useful for migrating fields groups between WP websites."
 msgstr ""
 "导入字段组将出现在可编辑字段组后面，在几个WP站点之间迁移字段组时，这将非常有"
 "用。"
