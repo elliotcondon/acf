@@ -200,7 +200,7 @@ if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input'
 	function validate_page()
 	{
 		// global
-		global $pagenow;
+		global $pagenow, $wp_version;
 		
 		
 		// vars
@@ -218,6 +218,14 @@ if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input'
 		if( $pagenow == "admin.php" && isset( $_GET['page'], $_GET['id'] ) && $_GET['page'] == "shopp-categories" )
 		{
 			$return = true;
+		}
+		
+		
+		// WP4
+		if( $pagenow === 'upload.php' && version_compare($wp_version, '4.0', '>=') ) {
+			
+			$return = true;
+			
 		}
 		
 		
@@ -321,7 +329,7 @@ if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input'
 			$this->data['option_name'] = "";
 
 		}
-		elseif( $pagenow == "media.php" )
+		elseif( $pagenow == "media.php" || $pagenow == 'upload.php' )
 		{
 			
 			$this->data['page_type'] = "media";
@@ -339,7 +347,7 @@ if( !isset($_POST['acf_nonce']) || !wp_verify_nonce($_POST['acf_nonce'], 'input'
 				$this->data['page_action'] = "edit";
 				$this->data['option_name'] = $_GET['attachment_id'];
 			}
-			
+
 		}
 		
 		

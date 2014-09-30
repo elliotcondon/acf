@@ -2,7 +2,7 @@
 Contributors: elliotcondon
 Tags: custom, field, custom field, advanced, simple fields, magic fields, more fields, repeater, matrix, post, type, text, textarea, file, image, edit, admin
 Requires at least: 3.5.0
-Tested up to: 3.9
+Tested up to: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,13 @@ http://support.advancedcustomfields.com/
 
 
 == Changelog ==
+
+= 4.3.9 =
+* Core: Added compatibility for WP4 media grid
+* Relationship field: Fixed bug showing incorrect post type
+* Language: Added Slovak translations - Thanks to wp.sk
+* Language: Added Serbo-Croatian translation - thanks to Borisa Djuraskovic
+* Language: Updating Persian translation - Thanks to Ghaem Omidi
 
 = 4.3.8 =
 * Validation: Fixed disabled button issue in WP 3.9

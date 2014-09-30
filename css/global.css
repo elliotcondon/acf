@@ -492,6 +492,11 @@ ul.acf-checkbox-list li input {
     width: 18px;
     border-radius: 9px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    
+    -webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none; 	
+	transition: none;
 }
 
 .acf-button-edit,
