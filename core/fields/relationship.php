@@ -307,7 +307,14 @@ class acf_field_relationship extends acf_field
 			// featured_image
 			if( in_array('featured_image', $field['result_elements']) )
 			{
-				$image = get_the_post_thumbnail( get_the_ID(), array(21, 21) );
+				if( get_post_type() == 'attachment' )
+				{
+					$image = wp_get_attachment_image( get_the_ID(), array(21, 21) );
+				}
+				else
+				{
+					$image = get_the_post_thumbnail( get_the_ID(), array(21, 21) );
+				}
 				
 				$title .= '<div class="result-thumbnail">' . $image . '</div>';
 			}
@@ -509,7 +516,14 @@ class acf_field_relationship extends acf_field
 				// featured_image
 				if( in_array('featured_image', $field['result_elements']) )
 				{
-					$image = get_the_post_thumbnail( $p->ID, array(21, 21) );
+					if( $p->post_type == 'attachment' )
+					{
+						$image = wp_get_attachment_image( $p->ID, array(21, 21) );
+					}
+					else
+					{
+						$image = get_the_post_thumbnail( $p->ID, array(21, 21) );
+					}
 					
 					$title .= '<div class="result-thumbnail">' . $image . '</div>';
 				}
