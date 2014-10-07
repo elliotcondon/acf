@@ -996,7 +996,12 @@ var acf = {
 		
 		
 		// update post_id
-		acf.screen.post_id = acf.o.post_id;
+		try {
+		    acf.screen.post_id = acf.o.post_id;
+		}
+		catch(err) {
+		    console.log('skip missing post_id');
+		}
 		acf.screen.nonce = acf.o.nonce;
 		
 		
