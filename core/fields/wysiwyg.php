@@ -130,7 +130,7 @@ class acf_field_wysiwyg extends acf_field
 	   		// Basic
 	   		$toolbars['Basic'] = array(
 	   			
-	   			1 => apply_filters( 'teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'alignleft', 'aligncenter', 'alignright', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id ),
+	   			1 => apply_filters( 'teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'alignleft', 'aligncenter', 'alignright', 'removeformat', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id ),
 	   			
 	   		);
 	   		  		
