@@ -8,6 +8,8 @@ Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 License: GPL
 Copyright: Elliot Condon
+Text Domain: acf
+Domain Path: /lang
 */
 
 if( !class_exists('acf') ):
@@ -50,7 +52,7 @@ class acf
 		
 		
 		// set text domain
-		load_textdomain('acf', $this->settings['path'] . 'lang/acf-' . get_locale() . '.mo');
+		load_plugin_textdomain('acf', false, $this->settings['path'] . '/lang');
 		
 		
 		// actions
