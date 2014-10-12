@@ -522,7 +522,7 @@ class acf_field_functions
 	function delete_field( $post_id, $field_key )
 	{
 		// clear cache
-		wp_cache_delete( 'load_field/key=' . $field['key'], 'acf' );
+		wp_cache_delete( 'load_field/key=' . $field_key, 'acf' );
 		
 		
 		// delete
