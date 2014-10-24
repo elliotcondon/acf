@@ -23,7 +23,7 @@ input.ir { border: 0 none; background: none; }
 .bl > li { display: block; margin: 0; padding: 0; float: none; }
 
 
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; visibility: hidden; } 
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; visibility: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
@@ -47,12 +47,12 @@ input.ir { border: 0 none; background: none; }
 	-moz-transition: all 0.4s 0s ease-in-out;
 	-o-transition: all 0.4s 0s ease-in-out;
 	transition: all 0.4s 0s ease-in-out;
-	
+
 	-webkit-transform: translate(25px, 0px);
 	-moz-transform: translate(25px, 0px);
 	-o-transform: translate(25px, 0px);
 	transform: translate(25px, 0px);
-	
+
 	opacity: 0;
 }
 
@@ -106,7 +106,7 @@ input.ir { border: 0 none; background: none; }
 }
 
 /* icon */
-[class^="acf-sprite"], 
+[class^="acf-sprite"],
 [class*=" acf-sprite"] {
 	display: block;
 	width: 16px;
@@ -123,9 +123,9 @@ input.ir { border: 0 none; background: none; }
 	font-size: 12px;
 	line-height: 15px;
 	height: 15px;
-	
+
 	padding: 5px 7px;
-	
+
 	background: #F4F4F4;
 	border: #DFDFDF solid 1px;
 }
@@ -144,7 +144,6 @@ input.ir { border: 0 none; background: none; }
 
 .acf-input-wrap {
 	position: relative;
-	overflow: hidden;
 }
 
 .acf-input-wrap input {
@@ -235,7 +234,7 @@ input.acf-is-prepended.acf-is-appended {
 
 .wp-box h3 {
 	margin: 1.5em 0 0;
-	
+
 }
 
 .wp-box p {
@@ -257,7 +256,7 @@ input.acf-is-prepended.acf-is-appended {
 }
 
 .wp-box-half.right .inner {
-	
+
 }
 
 .wp-box select {
@@ -312,7 +311,7 @@ table.acf_input td.label ul.hl {
 }
 table.acf_input td.label ul.hl li {
 	margin: 0 3px 0 0;
-	
+
 }
 
 table.acf_input td.label ul.hl li a.acf-button {
@@ -414,20 +413,20 @@ ul.acf-checkbox-list li input {
 	height: 28px;
 	padding: 0 11px 1px;
     cursor: pointer;
-    
+
     -webkit-box-sizing: border-box;
 	-moz-box-sizing:    border-box;
 	box-sizing:         border-box;
-	
+
     color: #fff;
     font-weight: normal;
     font-size: 13px;
     line-height: 26px;
     text-align: center;
 	text-decoration: none;
-	
+
 	background: #2EA2CC;
-	
+
 	border: #0074A2 solid 1px;
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset;
 }
@@ -479,7 +478,7 @@ ul.acf-checkbox-list li input {
 /*--------------------------------------------------------------------------
 *
 *	ACF add / remove
-*	
+*
 *-------------------------------------------------------------------------*/
 
 .acf-button-add,
@@ -492,10 +491,10 @@ ul.acf-checkbox-list li input {
     width: 18px;
     border-radius: 9px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-    
+
     -webkit-transition: none;
 	-moz-transition: none;
-	-o-transition: none; 	
+	-o-transition: none;
 	transition: none;
 }
 
@@ -538,7 +537,7 @@ ul.acf-checkbox-list li input {
 /*--------------------------------------------------------------------------
 *
 *	Plugin Update Info
-*	
+*
 *-------------------------------------------------------------------------*/
 
 .plugins #advanced-custom-fields + .plugin-update-tr .update-message {
@@ -554,7 +553,7 @@ ul.acf-checkbox-list li input {
 .acf-plugin-update-info h3 {
 	font-size: 12px;
 	line-height: 1em;
-	margin: 15px 0 10px;	
+	margin: 15px 0 10px;
 }
 
 .acf-plugin-update-info ul {
@@ -567,7 +566,7 @@ ul.acf-checkbox-list li input {
 /*--------------------------------------------------------------------------
 *
 *	Retina
-*	
+*
 *-------------------------------------------------------------------------*/
 
 @media
@@ -576,22 +575,22 @@ only screen and (   min--moz-device-pixel-ratio: 2),
 only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) { 
-	
+only screen and (                min-resolution: 2dppx) {
+
 	#icon-acf,
 	.acf-button-add,
 	.acf-button-remove,
 	.acf-button-edit,
 	.acf-button-delete,
-	[class^="acf-sprite"], 
+	[class^="acf-sprite"],
 	[class*=" acf-sprite"] {
 		background-image: url(../images/sprite@2x.png);
 		background-size: 100px 600px;
 	}
-	
+
 	.acf-loading {
 		background-image: url(../images/wpspin_light@2x.gif);
 		background-size: 16px 16px;
 	}
-	
+
 }
