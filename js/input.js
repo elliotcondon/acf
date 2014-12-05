@@ -1193,8 +1193,8 @@ var acf = {
 	function _sync_taxonomy_terms() {
 		
 		// vars
-		var values = [];
-		
+		var post_category = [], taxonomy = [];
+
 		
 		$('.categorychecklist input:checked, .acf-taxonomy-field input:checked, .acf-taxonomy-field option:selected').each(function(){
 			
@@ -1220,20 +1220,24 @@ var acf = {
 					return;
 				}
 			}
-			
+
 			
 			// append
-			if( values.indexOf( $(this).val() ) === -1 )
+			var val = $(this).val();
+			if ((post_category.indexOf(val) === -1) || (taxonomy.indexOf(val) === -1))
 			{
-				values.push( $(this).val() );
+				if ($(this).attr('name') === 'post_category[]') {
+					post_category.push(val);
+				} else {
+					taxonomy.push(val);
+				}
 			}
-			
 		});
 
 		
 		// update screen
-		acf.screen.post_category = values;
-		acf.screen.taxonomy = values;
+		acf.screen.post_category = post_category;
+		acf.screen.taxonomy = taxonomy;
 
 		
 		// trigger change
