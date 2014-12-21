@@ -75,7 +75,7 @@ class acf_field_number extends acf_field
 		
 		
 		$e .= '<div class="acf-input-wrap">';
-		$e .= '<input type="number"';
+		$e .= '<input type="number" step="any"';
 		
 		foreach( $o as $k )
 		{
