@@ -701,12 +701,11 @@ class acf_field_group
 			
 			case "post_category" :
 				
-				$category_ids = get_all_category_ids();
+				$categories = get_terms('category');
 		
-				foreach($category_ids as $cat_id) 
+				foreach($categories as $category) 
 				{
-				  $cat_name = get_cat_name($cat_id);
-				  $choices[$cat_id] = $cat_name;
+				  $choices[$category->term_id] = $category->name;
 				}
 				
 				break;
