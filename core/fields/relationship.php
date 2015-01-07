@@ -113,7 +113,8 @@ class acf_field_relationship extends acf_field
 	    
 	    if ( $title = $wp_query->get('like_title') )
 	    {
-	        $where .= " AND " . $wpdb->posts . ".post_title LIKE '%" . esc_sql( like_escape(  $title ) ) . "%'";
+	    	$title = $wpdb->esc_like( $title );
+	        $where .= " AND " . $wpdb->posts . ".post_title LIKE '%" . esc_sql( $title ) . "%'";
 	    }
 	    
 	    return $where;
