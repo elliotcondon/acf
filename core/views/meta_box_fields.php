@@ -106,7 +106,6 @@ $error_field_type = '<b>' . __('Error', 'acf') . '</b> ' . __('Field type does n
 						</strong>
 						<div class="row_options">
 							<span><a class="acf_edit_field" title="<?php _e("Edit this Field",'acf'); ?>" href="javascript:;"><?php _e("Edit",'acf'); ?></a> | </span>
-							<span><a title="<?php _e("Read documentation for this field",'acf'); ?>" href="http://www.advancedcustomfields.com/resources/#field-types" target="_blank"><?php _e("Docs",'acf'); ?></a> | </span>
 							<span><a class="acf_duplicate_field" title="<?php _e("Duplicate this Field",'acf'); ?>" href="javascript:;"><?php _e("Duplicate",'acf'); ?></a> | </span>
 							<span><a class="acf_delete_field" title="<?php _e("Delete this Field",'acf'); ?>" href="javascript:;"><?php _e("Delete",'acf'); ?></a></span>
 						</div>
