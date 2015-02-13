@@ -81,7 +81,7 @@ Your votes really make a difference! Thanks.
 
 1. Upload 'advanced-custom-fields' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on the new menu itme "Custom Fields" and create your first Custom Field Group!
+3. Click on the new menu item "Custom Fields" and create your first Custom Field Group!
 4. Your custom field group will now appear on the page / post / template you specified in the field group's location rules!
 5. Read the documentation to display your data: 
 
