@@ -724,6 +724,12 @@ table.acf-input-table > tbody > tr {
 	background: #fff;
 }
 
+table.acf-input-table > tbody > tr:before,
+table.acf-input-table > tbody > tr:after {
+  content: none;
+}
+
+
 table.acf-input-table > tbody > tr > td {
 	background: transparent;
 	border: 0 none;
