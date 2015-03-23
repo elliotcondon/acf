@@ -1410,7 +1410,7 @@ msgstr "Bouton radio"
 
 #: ../core/fields/radio.php:102 ../core/views/meta_box_location.php:91
 msgid "Other"
-msgstr "Sections de l'admin WordPress"
+msgstr "Autre"
 
 #: ../core/fields/radio.php:145
 msgid "Enter your choices one per line"
