@@ -214,7 +214,7 @@ class acf_field_groups
 			<h2><?php _e("Advanced Custom Fields",'acf'); ?> <?php echo $version; ?></h2>
 
 			<h3><?php _e("Changelog",'acf'); ?></h3>
-			<p><?php _e("See what's new in",'acf'); ?> <a href="<?php echo admin_url('edit.php?post_type=acf&info=changelog'); ?>"><?php _e("version",'acf'); ?> <?php echo $version; ?></a>
+			<p><?php printf(__("See what's new in %1$sversion %2$s%3$s",'acf'),'<a href=\"'.admin_url('edit.php?post_type=acf&info=changelog').'\">',$version,'</a>'); ?></p>
 			
 			<h3><?php _e("Resources",'acf'); ?></h3>
 			<ul>
@@ -242,7 +242,7 @@ class acf_field_groups
 	<!-- acf-content-title -->
 	<div class="acf-content-title">
 		<h1><?php _e("Welcome to Advanced Custom Fields",'acf'); ?> <?php echo $version; ?></h1>
-		<h2><?php _e("Thank you for updating to the latest version!",'acf'); ?> <br />ACF <?php echo $version; ?> <?php _e("is more polished and enjoyable than ever before. We hope you like it.",'acf'); ?></h2>
+		<h2><?php _e("Thank you for updating to the latest version!",'acf'); ?> <br /><?php printf(__("ACF %s is more polished and enjoyable than ever before. We hope you like it.",'acf'),$version); ?></h2>
 	</div>
 	<!-- / acf-content-title -->
 	
@@ -465,7 +465,7 @@ class acf_field_groups
 		<p><?php _e("For each Add-on available, please perform the following:",'acf'); ?></p>
 		<ol>
 			<li><?php _e("Download the Add-on plugin (.zip file) to your desktop",'acf'); ?></li>
-			<li><?php _e("Navigate to",'acf'); ?> <a target="_blank" href="<?php echo admin_url('plugin-install.php?tab=upload'); ?>"><?php _e("Plugins > Add New > Upload",'acf'); ?></a></li>
+			<li><?php printf(__("Navigate to %sPlugins > Add New > Upload%s",'acf'),'<a target=\"_blank\" href=\"'.admin_url('plugin-install.php?tab=upload').'\">','</a>'); ?></li>
 			<li><?php _e("Use the uploader to browse, select and install your Add-on (.zip file)",'acf'); ?></li>
 			<li><?php _e("Once the plugin has been uploaded and installed, click the 'Activate Plugin' link",'acf'); ?></li>
 			<li><?php _e("The Add-on is now installed and activated!",'acf'); ?></li>
