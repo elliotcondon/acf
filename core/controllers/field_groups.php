@@ -214,7 +214,7 @@ class acf_field_groups
 			<h2><?php _e("Advanced Custom Fields",'acf'); ?> <?php echo $version; ?></h2>
 
 			<h3><?php _e("Changelog",'acf'); ?></h3>
-			<p><?php printf(__('See what\'s new in %1$sversion %2$s%3$s','acf'),'<a href=\"'.admin_url('edit.php?post_type=acf&info=changelog').'\">',$version,'</a>'); ?></p>
+			<p><?php printf(__('See what\'s new in %1$sversion %2$s%3$s','acf'),'<a href="'.admin_url('edit.php?post_type=acf&info=changelog').'">',$version,'</a>'); ?></p>
 			
 			<h3><?php _e("Resources",'acf'); ?></h3>
 			<ul>
@@ -343,10 +343,10 @@ class acf_field_groups
 		</ul>
 		<h4><?php _e("Custom Field Types",'acf'); ?></h4>
 		<p><?php _e("Creating your own field type has never been easier! Unfortunately, version 3 field types are not compatible with version 4.",'acf'); ?><br />
-		<?php printf(__("Migrating your field types is easy, please %sfollow this tutorial%s to learn more.",'acf'),'<a href=\"http://www.advancedcustomfields.com/docs/tutorials/creating-a-new-field-type/\" target=\"_blank\">','</a>'); ?></p>
+		<?php printf(__('Migrating your field types is easy, please %sfollow this tutorial%s to learn more.','acf'),'<a href="http://www.advancedcustomfields.com/docs/tutorials/creating-a-new-field-type/" target="_blank">','</a>'); ?></p>
 		
 		<h4><?php _e("Actions &amp; Filters",'acf'); ?></h4>
-		<p><?php printf(__("All actions & filters have received a major facelift to make customizing ACF even easier! Please %sread this guide%s to find the updated naming convention.",'acf'),'<a href=\"http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/\" target=\"_blank\">','</a>'); ?></p>
+		<p><?php printf(__('All actions & filters have received a major facelift to make customizing ACF even easier! Please %sread this guide%s to find the updated naming convention.','acf'),'<a href="http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/" target="_blank">','</a>'); ?></p>
 		
 		<h4><?php _e("Preview draft is now working!",'acf'); ?></h4>
 		<p><?php _e("This bug has been squashed along with many other little critters!",'acf'); ?> <a class="acf-tab-toggle" href="<?php echo admin_url('edit.php?post_type=acf&info=changelog'); ?>" data-tab="2"><?php _e("See the full changelog",'acf'); ?></a></p>
@@ -359,10 +359,10 @@ class acf_field_groups
 		<p><?php _e("Absolutely <strong>no</strong> changes have been made to the database between versions 3 and 4. This means you can roll back to version 3 without any issues.",'acf'); ?></p>
 		
 		<h4><?php _e("Potential Issues",'acf'); ?></h4>
-		<p><?php printf(__('Due to the sizable changes surounding Add-ons, field types and action/filters, your website may not operate correctly. It is important that you read the full %sMigrating from v3 to v4%s guide to view the full list of changes.','acf'),'<a href=\"http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/\" target=\"_blank\">','</a>'); ?></p>
+		<p><?php printf(__('Due to the sizable changes surounding Add-ons, field types and action/filters, your website may not operate correctly. It is important that you read the full %sMigrating from v3 to v4%s guide to view the full list of changes.','acf'),'<a href="http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/" target="_blank">','</a>'); ?></p>
 		
 		<div class="acf-alert acf-alert-error">
-			<p><strong><?php _e("Really Important!",'acf'); ?></strong> <?php printf(__("If you updated the ACF plugin without prior knowledge of such changes, please roll back to the latest %sversion 3%s of this plugin.",'acf'),'<a href=\"http://wordpress.org/extend/plugins/advanced-custom-fields/developers/\">','</a>'); ?></p>
+			<p><strong><?php _e("Really Important!",'acf'); ?></strong> <?php printf(__('If you updated the ACF plugin without prior knowledge of such changes, please roll back to the latest %sversion 3%s of this plugin.','acf'),'<a href="http://wordpress.org/extend/plugins/advanced-custom-fields/developers/">','</a>'); ?></p>
 		</div>
 		
 		<hr />
@@ -465,7 +465,7 @@ class acf_field_groups
 		<p><?php _e("For each Add-on available, please perform the following:",'acf'); ?></p>
 		<ol>
 			<li><?php _e("Download the Add-on plugin (.zip file) to your desktop",'acf'); ?></li>
-			<li><?php printf(__('Navigate to %sPlugins > Add New > Upload%s','acf'),'<a target=\"_blank\" href=\"'.admin_url('plugin-install.php?tab=upload').'\">','</a>'); ?></li>
+			<li><?php printf(__('Navigate to %sPlugins > Add New > Upload%s','acf'),'<a target="_blank" href="'.admin_url('plugin-install.php?tab=upload').'">','</a>'); ?></li>
 			<li><?php _e("Use the uploader to browse, select and install your Add-on (.zip file)",'acf'); ?></li>
 			<li><?php _e("Once the plugin has been uploaded and installed, click the 'Activate Plugin' link",'acf'); ?></li>
 			<li><?php _e("The Add-on is now installed and activated!",'acf'); ?></li>
