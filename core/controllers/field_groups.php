@@ -359,7 +359,7 @@ class acf_field_groups
 		<p><?php _e("Absolutely <strong>no</strong> changes have been made to the database between versions 3 and 4. This means you can roll back to version 3 without any issues.",'acf'); ?></p>
 		
 		<h4><?php _e("Potential Issues",'acf'); ?></h4>
-		<p><?php printf(__("Do to the sizable changes surounding Add-ons, field types and action/filters, your website may not operate correctly. It is important that you read the full %sMigrating from v3 to v4%s guide to view the full list of changes.",'acf'),'<a href=\"http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/\" target=\"_blank\">','</a>'); ?></p>
+		<p><?php printf(__('Due to the sizable changes surounding Add-ons, field types and action/filters, your website may not operate correctly. It is important that you read the full %sMigrating from v3 to v4%s guide to view the full list of changes.','acf'),'<a href=\"http://www.advancedcustomfields.com/resources/getting-started/migrating-from-v3-to-v4/\" target=\"_blank\">','</a>'); ?></p>
 		
 		<div class="acf-alert acf-alert-error">
 			<p><strong><?php _e("Really Important!",'acf'); ?></strong> <?php printf(__("If you updated the ACF plugin without prior knowledge of such changes, please roll back to the latest %sversion 3%s of this plugin.",'acf'),'<a href=\"http://wordpress.org/extend/plugins/advanced-custom-fields/developers/\">','</a>'); ?></p>
