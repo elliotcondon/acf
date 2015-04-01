@@ -747,7 +747,7 @@ class acf_upgrade
 			case '3.4.1':
 
 				// vars
-				$message = __("Moving user custom fields from wp_options to wp_usermeta'",'acf') . '...';
+				$message = __("Moving user custom fields from wp_options to wp_usermeta",'acf') . '...';
 
 				$option_row_ids = array();
 				$option_rows = $wpdb->get_results("SELECT option_id, option_name, option_value FROM $wpdb->options WHERE option_name LIKE 'user%' OR option_name LIKE '\_user%'", ARRAY_A);
