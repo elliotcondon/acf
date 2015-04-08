@@ -76,7 +76,7 @@ class acf_field_wysiwyg extends acf_field
    		if( version_compare($wp_version, '3.9', '>=' ) ) {
 			
 			// add code
-			$plugins['code'] = apply_filters('acf/get_info', 'dir') . 'js/tinymce.code.min.js';
+			$plugins['code'] = get_bloginfo('url') . '/wp-content/plugins/advanced-custom-fields/js/tinymce.code.min.js';
 		
 		}
 		
