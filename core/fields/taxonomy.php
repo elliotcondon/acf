@@ -432,6 +432,7 @@ class acf_field_taxonomy extends acf_field
 		$choices = array();
 		$taxonomies = get_taxonomies( array(), 'objects' );
 		$ignore = array( 'post_format', 'nav_menu', 'link_category' );
+		$taxonomy_terms = array();
 		
 		
 		foreach( $taxonomies as $taxonomy )
@@ -442,6 +443,21 @@ class acf_field_taxonomy extends acf_field
 			}
 			
 			$choices[ $taxonomy->name ] = $taxonomy->name;
+			
+			$terms = get_categories(array(
+				'hide_empty' => 0,
+				'taxonomy' => $choices[ $taxonomy->name ]
+			));
+			
+			foreach( $terms as $term )
+			{
+				if( in_array($term->name, $ignore) )
+				{
+					continue;
+				}
+			
+				$taxonomy_terms[ $taxonomy->name ][] = $term->term_id . ':' . $term->name;
+			}
 		}
 		
 				
@@ -452,7 +468,24 @@ class acf_field_taxonomy extends acf_field
 			'choices' => $choices,
 		));
 		
+		$tx_list = implode(PHP_EOL, $taxonomy_terms[ $field['taxonomy'] ]);
+		
 		?>
+		<div style="display:none">
+		<?php
+		do_action('acf/create_field', array(
+			'type'	=>	'textarea',
+			'class' => 	'textarea field_option-choices',
+			'name'	=>	'fields['.$key.'][choices]',
+			'value'	=>	$tx_list,
+		));
+		?>
+		</div>
+		
+
+		<script type="text/javascript">
+			var taxonomy_terms = <?php echo json_encode($taxonomy_terms); ?>;
+		</script>
 	</td>
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
