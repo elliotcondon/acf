@@ -619,6 +619,15 @@ var acf = {
 		$(this).closest('.field').find('td.field_type').first().html(label);
 		
 	});
+
+	$(document).on('change', '#acf_fields .field_form tr.field_option_taxonomy select ', function(){
+
+		var val = $(this).val(),
+			choice = taxonomy_terms[val],
+			choices = (typeof choice !== 'undefined') ? choice.join("\n") : '';
+					
+		$(this).siblings('textarea').html(choices);
+	});
 	
 	
 	// sortable
@@ -1107,7 +1116,8 @@ var acf = {
 					var $this_field	= $(this),
 						this_id		= $this_field.attr('data-id'),
 						this_type	= $this_field.attr('data-type'),
-						this_label	= $this_field.find('tr.field_label input').val();
+						this_label	= $this_field.find('tr.field_label input').val(),
+						this_taxonomy = $this_field.find('select[id$=taxonomy]').val();
 					
 					
 					// validate
@@ -1130,6 +1140,16 @@ var acf = {
 							label	: this_label,
 							group	: group
 						});
+					}
+					
+					// add taxonomy field to available triggers
+					if( this_type == 'taxonomy' )
+					{
+						choices.push({
+							value	: this_id,
+							label	: this_taxonomy,
+							group	: group
+						});						
 					}
 					
 					
@@ -1212,7 +1232,7 @@ var acf = {
 				];
 							
 			}
-			else if( type == "select" || type == "checkbox" || type == "radio" )
+			else if( type == "select" || type == "checkbox" || type == "radio" || type == "taxonomy" )
 			{
 				var field_choices = $trigger.find('.field_option-choices').val().split("\n");
 							
