@@ -163,6 +163,25 @@ class acf_field_checkbox extends acf_field
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
+		<label for=""><?php _e("Check All",'acf'); ?></label>
+	</td>
+	<td>
+		<?php
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'checkbox',
+			'name'	=>	'fields['.$key.'][toggle_all]',
+			'value'	=>	$field['toggle_all'],
+			'choices'	=>	array(
+				'1'	=>	__("Include a 'check all' box?",'acf'),
+			)
+		));
+		
+?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
 		<label><?php _e("Default Value",'acf'); ?></label>
 		<p class="description"><?php _e("Enter each default value on a new line",'acf'); ?></p>
 	</td>
