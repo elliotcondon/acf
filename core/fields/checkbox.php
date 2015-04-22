@@ -66,8 +66,9 @@ class acf_field_checkbox extends acf_field
 		
 		// vars
 		$i = 0;
+		$toggle = ( is_array( $field['toggle_all'] ) && !empty( $field['toggle_all'] ) ) ? 'toggle_all ' : '';
 		$e = '<input type="hidden" name="' .  esc_attr($field['name']) . '" value="" />';
-		$e .= '<ul class="acf-checkbox-list ' . esc_attr($field['class']) . ' ' . esc_attr($field['layout']) . '">';
+		$e .= '<ul class="acf-checkbox-list ' . $toggle . esc_attr($field['class']) . ' ' . esc_attr($field['layout']) . '">';
 		
 		
 		// checkbox saves an array
