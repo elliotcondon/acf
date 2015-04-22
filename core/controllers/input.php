@@ -65,7 +65,8 @@ class acf_controller_input
 			),
 			'validation' => array(
 				'error' => __("Validation Failed. One or more fields below are required.",'acf')
-			)
+			),
+			'check_uncheck_all' => __("Check / Uncheck All", 'acf')
 		));
 		
 		
