@@ -799,7 +799,13 @@ class acf
 			}
 			
 			
-			echo '<div id="acf-' . $field['name'] . '" class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
+			$field_type_class = 'field_type-' . $field['type'];
+			if ( $field['type'] == 'taxonomy' )
+			{
+				$field_type_class .= ' field_type-' . $field['field_type'];
+			}
+
+			echo '<div id="acf-' . $field['name'] . '" class="field ' . $field_type_class . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
 
 				echo '<p class="label">';
 					echo '<label for="' . $field['id'] . '">' . $field['label'] . $required_label . '</label>';
