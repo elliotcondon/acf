@@ -871,6 +871,36 @@ var acf = {
 		$('#metakeyselect option[value^="field_"]').remove();
 		
 	
+		// Include 'check all' checkbox toggles
+		$('.field_type-checkbox ul.toggle_all').each(function(){
+		
+			var $ul = $(this),
+				$li = $('<li class="toggle"><label><input type="checkbox" value="" name="" >' + acf.l10n.check_uncheck_all + '</label></li>');
+
+		
+			// start checked?
+			if( $ul.find('input:not(:checked)').length == 0 )
+			{
+				$li.find('input').attr('checked', 'checked');
+			}
+		
+		
+			// event
+			$li.on('change', 'input', function(){
+			
+				var checked = $(this).is(':checked');
+			
+				$ul.find('input').attr('checked', checked);
+			
+			});
+		
+		
+			// add to ul
+			$ul.prepend( $li );
+
+		});
+		
+		
 	});
 	
 	
