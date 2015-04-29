@@ -291,7 +291,7 @@ msgstr ""
 
 #: C:\advanced-custom-fields/core/controllers/export.php:256
 msgid "Select field group(s) from the list and click \"Export XML\""
-msgstr "Secgli un gruppo di campi dalla lista e clicca su \"Esporta XML\""
+msgstr "Scegli un gruppo di campi dalla lista e clicca su \"Esporta XML\""
 
 #: C:\advanced-custom-fields/core/controllers/export.php:257
 msgid "Save the .xml file when prompted"
