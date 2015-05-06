@@ -66,8 +66,9 @@ class acf_field_checkbox extends acf_field
 		
 		// vars
 		$i = 0;
+		$toggle = ( is_array( $field['toggle_all'] ) && !empty( $field['toggle_all'] ) ) ? 'toggle_all ' : '';
 		$e = '<input type="hidden" name="' .  esc_attr($field['name']) . '" value="" />';
-		$e .= '<ul class="acf-checkbox-list ' . esc_attr($field['class']) . ' ' . esc_attr($field['layout']) . '">';
+		$e .= '<ul class="acf-checkbox-list ' . $toggle . esc_attr($field['class']) . ' ' . esc_attr($field['layout']) . '">';
 		
 		
 		// checkbox saves an array
@@ -159,6 +160,25 @@ class acf_field_checkbox extends acf_field
 		));
 		
 		?>
+	</td>
+</tr>
+<tr class="field_option field_option_<?php echo $this->name; ?>">
+	<td class="label">
+		<label for=""><?php _e("Check All",'acf'); ?></label>
+	</td>
+	<td>
+		<?php
+		
+		do_action('acf/create_field', array(
+			'type'	=>	'checkbox',
+			'name'	=>	'fields['.$key.'][toggle_all]',
+			'value'	=>	$field['toggle_all'],
+			'choices'	=>	array(
+				'1'	=>	__("Include a 'check all' box?",'acf'),
+			)
+		));
+		
+?>
 	</td>
 </tr>
 <tr class="field_option field_option_<?php echo $this->name; ?>">

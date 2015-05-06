@@ -393,6 +393,12 @@ ul.acf-checkbox-list.horizontal li {
 	margin-right: 20px;
 }
 
+ul.acf-radio-list.horizontal li.toggle,
+ul.acf-checkbox-list.horizontal li.toggle {
+	float: none;
+	padding-bottom: 10px;
+}
+
 ul.acf-radio-list li input,
 ul.acf-checkbox-list li input {
 	margin-top: -1px;
