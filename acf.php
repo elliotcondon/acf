@@ -143,7 +143,7 @@ class acf
         }
         
 
-        return $dir;
+        return substr($dir, strpos($dir, ':') + 1);
     }
 	
 	
