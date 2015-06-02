@@ -73,7 +73,7 @@ class acf_everything_fields
 		$post_id = $post->ID;
 		
 		
-		if( !empty($screen) )
+		if( !empty($screen) && $screen->base !== 'async-upload' )
 		{
 			return $form_fields;
 		}
