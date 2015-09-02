@@ -107,6 +107,7 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 					'categories'		=>	__("Categories", 'acf'),
 					'tags'				=>	__("Tags", 'acf'),
 					'send-trackbacks'	=>	__("Send Trackbacks", 'acf'),
+					'block_title'		=>	__("Block Title", 'acf'),
 				)
 			));
 			
