@@ -13,7 +13,7 @@
 }
 
 .acf_postbox .inside,
-#poststuff .acf_postbox .inside {
+.poststuff .acf_postbox .inside {
 	margin: 0;
 	padding: 0;
 }

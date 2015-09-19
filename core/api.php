@@ -1248,8 +1248,8 @@ function acf_form( $options = array() )
 		<?php wp_editor('', 'acf_settings'); ?>
 	</div>
 	
-	<div id="poststuff">
 	<?php
+	echo '<div id="poststuff_' . $options['post_id'] . '" class="poststuff">';
 	
 	// html before fields
 	echo $options['html_before_fields'];
