@@ -931,9 +931,7 @@ function acf()
 
 
 // initialize
-acf();
+add_action('plugins_loaded', 'acf' );
 
 
 endif; // class_exists check
-
-?>
