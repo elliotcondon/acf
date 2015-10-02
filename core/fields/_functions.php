@@ -307,16 +307,14 @@ class acf_field_functions
 	
 	function load_field( $field, $field_key, $post_id = false )
 	{
-		// load cache
-		if( !$field )
+		$found = false;
+		$cache = wp_cache_get( 'load_field/key=' . $field_key, 'acf', false, $found);
+		
+		if ( $found ) 
 		{
-			$field = wp_cache_get( 'load_field/key=' . $field_key, 'acf' );
+			return $cache;
 		}
-		
-		
-		// load from DB
-		if( !$field )
-		{
+
 			// vars
 			global $wpdb;
 			
@@ -375,7 +373,6 @@ class acf_field_functions
 				}
 				
 			}
-		}
 		
 		
 		// apply filters
