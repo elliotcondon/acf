@@ -307,10 +307,17 @@ class acf_field_functions
 	
 	function load_field( $field, $field_key, $post_id = false )
 	{
+		$provided = ! empty($field);
+
 		// load cache
 		if( !$field )
 		{
-			$field = wp_cache_get( 'load_field/key=' . $field_key, 'acf' );
+			$found = false;
+			$cached_field = wp_cache_get( 'load_field/key=' . $field_key, 'acf', false, $found );
+			if ( $found )
+			{
+				return $cached_field;
+			}
 		}
 		
 		
@@ -389,9 +396,11 @@ class acf_field_functions
 			$field = apply_filters('acf/load_field/' . $key . '=' . $field[ $key ], $field); // new filter
 		}
 		
-	
-		// set cache
-		wp_cache_set( 'load_field/key=' . $field_key, $field, 'acf' );
+		if ( ! $provided )
+		{
+			// set cache
+			wp_cache_set( 'load_field/key=' . $field_key, $field, 'acf' );
+		}
 		
 		return $field;
 	}
