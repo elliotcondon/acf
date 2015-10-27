@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Custom Fields 4.3.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
-"POT-Creation-Date: 2013-09-25 22:42+0100\n"
-"PO-Revision-Date: 2013-09-25 22:42+0100\n"
+"POT-Creation-Date: 2013-11-17 20:57+0100\n"
+"PO-Revision-Date: 2013-11-17 20:57+0100\n"
 "Last-Translator: Mikael Jorhult <mikael@jorhult.se>\n"
 "Language-Team: Mikael Jorhult <mikael@jorhult.se>\n"
 "Language: Swedish\n"
@@ -59,76 +59,76 @@ msgstr "Inga fältgrupper hittades"
 msgid "No Field Groups found in Trash"
 msgstr "Inga fältgrupper finns i papperskorgen"
 
-#: acf.php:543 core/views/meta_box_options.php:98
+#: acf.php:548 core/views/meta_box_options.php:98
 msgid "Custom Fields"
 msgstr "Egna fält"
 
-#: acf.php:561 acf.php:564
+#: acf.php:566 acf.php:569
 msgid "Field group updated."
 msgstr "Fältgruppen uppdaterades."
 
-#: acf.php:562
+#: acf.php:567
 msgid "Custom field updated."
 msgstr "Eget fält uppdaterades."
 
-#: acf.php:563
+#: acf.php:568
 msgid "Custom field deleted."
 msgstr "Eget fält raderades."
 
-#: acf.php:566
+#: acf.php:571
 #, php-format
 msgid "Field group restored to revision from %s"
 msgstr "Fältgruppen återställdes till revision %s"
 
-#: acf.php:567
+#: acf.php:572
 msgid "Field group published."
 msgstr "Fältgruppen publicerades."
 
-#: acf.php:568
+#: acf.php:573
 msgid "Field group saved."
 msgstr "Fältgruppen sparades."
 
-#: acf.php:569
+#: acf.php:574
 msgid "Field group submitted."
 msgstr "Fältgruppen skickades."
 
-#: acf.php:570
+#: acf.php:575
 msgid "Field group scheduled for."
 msgstr "Fältgruppen schemalades."
 
-#: acf.php:571
+#: acf.php:576
 msgid "Field group draft updated."
 msgstr "Utkastet till fältgrupp uppdaterades."
 
-#: acf.php:706
+#: acf.php:711
 msgid "Thumbnail"
 msgstr "Tumnagel"
 
-#: acf.php:707
+#: acf.php:712
 msgid "Medium"
 msgstr "Medium"
 
-#: acf.php:708
+#: acf.php:713
 msgid "Large"
 msgstr "Stor"
 
-#: acf.php:709
+#: acf.php:714
 msgid "Full"
 msgstr "Full"
 
-#: core/api.php:1097
+#: core/api.php:1144
 msgid "Update"
 msgstr "Uppdatera"
 
-#: core/api.php:1098
+#: core/api.php:1145
 msgid "Post updated"
 msgstr "Inlägget uppdaterades"
 
-#: core/actions/export.php:23 core/views/meta_box_fields.php:58
+#: core/actions/export.php:26 core/views/meta_box_fields.php:58
 msgid "Error"
 msgstr "Fel"
 
-#: core/actions/export.php:30
+#: core/actions/export.php:33
 msgid "No ACF groups selected"
 msgstr "Inga ACF-grupper har valts"
 
@@ -446,7 +446,7 @@ msgstr "Visa fältnyckel:"
 #: core/fields/page_link.php:159 core/fields/post_object.php:328
 #: core/fields/post_object.php:349 core/fields/select.php:224
 #: core/fields/select.php:243 core/fields/taxonomy.php:343
-#: core/fields/user.php:285 core/fields/wysiwyg.php:245
+#: core/fields/user.php:285 core/fields/wysiwyg.php:256
 #: core/views/meta_box_fields.php:195 core/views/meta_box_fields.php:218
 msgid "No"
 msgstr "Nej"
@@ -455,69 +455,69 @@ msgstr "Nej"
 #: core/fields/page_link.php:158 core/fields/post_object.php:327
 #: core/fields/post_object.php:348 core/fields/select.php:223
 #: core/fields/select.php:242 core/fields/taxonomy.php:342
-#: core/fields/user.php:284 core/fields/wysiwyg.php:244
+#: core/fields/user.php:284 core/fields/wysiwyg.php:255
 #: core/views/meta_box_fields.php:194 core/views/meta_box_fields.php:217
 msgid "Yes"
 msgstr "Ja"
 
-#: core/controllers/field_group.php:638
+#: core/controllers/field_group.php:645
 msgid "Front Page"
 msgstr "Förstasida"
 
-#: core/controllers/field_group.php:639
+#: core/controllers/field_group.php:646
 msgid "Posts Page"
 msgstr "Inläggssida"
 
-#: core/controllers/field_group.php:640
+#: core/controllers/field_group.php:647
 msgid "Top Level Page (parent of 0)"
 msgstr "Toppsida (förälder satt till 0)"
 
-#: core/controllers/field_group.php:641
+#: core/controllers/field_group.php:648
 msgid "Parent Page (has children)"
 msgstr "Föräldersida (har undersidor)"
 
-#: core/controllers/field_group.php:642
+#: core/controllers/field_group.php:649
 msgid "Child Page (has parent)"
 msgstr "Undersida (har föräldersida)"
 
-#: core/controllers/field_group.php:650
+#: core/controllers/field_group.php:657
 msgid "Default Template"
 msgstr "Standardmall"
 
-#: core/controllers/field_group.php:727
+#: core/controllers/field_group.php:734
 msgid "Publish"
 msgstr "Publicerat"
 
-#: core/controllers/field_group.php:728
+#: core/controllers/field_group.php:735
 msgid "Pending Review"
 msgstr "Väntar på granskning"
 
-#: core/controllers/field_group.php:729
+#: core/controllers/field_group.php:736
 msgid "Draft"
 msgstr "Utkast"
 
-#: core/controllers/field_group.php:730
+#: core/controllers/field_group.php:737
 msgid "Future"
 msgstr "Tidsbestämt"
 
-#: core/controllers/field_group.php:731
+#: core/controllers/field_group.php:738
 msgid "Private"
 msgstr "Privat"
 
-#: core/controllers/field_group.php:732
+#: core/controllers/field_group.php:739
 msgid "Revision"
 msgstr "Revision"
 
-#: core/controllers/field_group.php:733
+#: core/controllers/field_group.php:740
 msgid "Trash"
 msgstr "I papperskorgen"
 
-#: core/controllers/field_group.php:746
+#: core/controllers/field_group.php:753
 msgid "Super Admin"
 msgstr "Superadministratör"
 
-#: core/controllers/field_group.php:761 core/controllers/field_group.php:782
-#: core/controllers/field_group.php:789 core/fields/file.php:186
+#: core/controllers/field_group.php:768 core/controllers/field_group.php:789
+#: core/controllers/field_group.php:796 core/fields/file.php:186
 #: core/fields/image.php:170 core/fields/page_link.php:109
 #: core/fields/post_object.php:274 core/fields/post_object.php:298
 #: core/fields/relationship.php:595 core/fields/relationship.php:619
@@ -933,7 +933,7 @@ msgstr "Kryssruta"
 msgid "Choice"
 msgstr "Alternativ"
 
-#: core/fields/checkbox.php:146 core/fields/radio.php:144
+#: core/fields/checkbox.php:146 core/fields/radio.php:147
 #: core/fields/select.php:177
 msgid "Choices"
 msgstr "Alternativ"
@@ -946,21 +946,21 @@ msgstr "Ange ett alternativ per rad"
 msgid "For more control, you may specify both a value and label like this:"
 msgstr "För mer kontroll kan du specificera både värde och etikett enligt:"
 
-#: core/fields/checkbox.php:149 core/fields/radio.php:150
+#: core/fields/checkbox.php:149 core/fields/radio.php:153
 #: core/fields/select.php:180
 msgid "red : Red"
 msgstr "röd : Röd"
 
-#: core/fields/checkbox.php:149 core/fields/radio.php:151
+#: core/fields/checkbox.php:149 core/fields/radio.php:154
 #: core/fields/select.php:180
 msgid "blue : Blue"
 msgstr "blå : Blå"
 
 #: core/fields/checkbox.php:166 core/fields/color_picker.php:89
 #: core/fields/email.php:106 core/fields/number.php:116
-#: core/fields/radio.php:193 core/fields/select.php:197
+#: core/fields/radio.php:196 core/fields/select.php:197
 #: core/fields/text.php:116 core/fields/textarea.php:96
-#: core/fields/true_false.php:94 core/fields/wysiwyg.php:187
+#: core/fields/true_false.php:94 core/fields/wysiwyg.php:198
 msgid "Default Value"
 msgstr "Standardvärde"
 
@@ -969,15 +969,15 @@ msgid "Enter each default value on a new line"
 msgstr "Ange varje värde på en ny rad"
 
 #: core/fields/checkbox.php:183 core/fields/message.php:20
-#: core/fields/radio.php:209 core/fields/tab.php:20
+#: core/fields/radio.php:212 core/fields/tab.php:20
 msgid "Layout"
 msgstr "Layout"
 
-#: core/fields/checkbox.php:194 core/fields/radio.php:220
+#: core/fields/checkbox.php:194 core/fields/radio.php:223
 msgid "Vertical"
 msgstr "Vertikalt"
 
-#: core/fields/checkbox.php:195 core/fields/radio.php:221
+#: core/fields/checkbox.php:195 core/fields/radio.php:224
 msgid "Horizontal"
 msgstr "Horisontellt"
 
@@ -1000,7 +1000,7 @@ msgstr "E-post"
 
 #: core/fields/email.php:107 core/fields/number.php:117
 #: core/fields/text.php:117 core/fields/textarea.php:97
-#: core/fields/wysiwyg.php:188
+#: core/fields/wysiwyg.php:199
 msgid "Appears when creating a new post"
 msgstr "Visas när ett nytt inlägg skapas"
 
@@ -1104,6 +1104,18 @@ msgstr "Söker plats"
 #: core/fields/google-map.php:32
 msgid "Sorry, this browser does not support geolocation"
 msgstr "Tyvärr saknar denna webbläsare stöd för platsinformation"
+
+#: core/fields/google-map.php:117
+msgid "Clear location"
+msgstr "Radera plats"
+
+#: core/fields/google-map.php:122
+msgid "Find current location"
+msgstr "Hitta nuvarande plats"
+
+#: core/fields/google-map.php:123
+msgid "Search for address..."
+msgstr "Sök adress..."
 
 #: core/fields/google-map.php:159
 msgid "Center"
@@ -1253,27 +1265,27 @@ msgstr "Filtera från taxonomi"
 msgid "Radio Button"
 msgstr "Alternativknapp"
 
-#: core/fields/radio.php:102 core/views/meta_box_location.php:91
+#: core/fields/radio.php:105 core/views/meta_box_location.php:91
 msgid "Other"
 msgstr "Annat"
 
-#: core/fields/radio.php:145
+#: core/fields/radio.php:148
 msgid "Enter your choices one per line"
 msgstr "Ange ett värde per rad"
 
-#: core/fields/radio.php:147
+#: core/fields/radio.php:150
 msgid "Red"
 msgstr "Röd"
 
-#: core/fields/radio.php:148
+#: core/fields/radio.php:151
 msgid "Blue"
 msgstr "Blå"
 
-#: core/fields/radio.php:172
+#: core/fields/radio.php:175
 msgid "Add 'other' choice to allow for custom values"
 msgstr "Lägg till värdet \"other\" för att tillåta egna värden"
 
-#: core/fields/radio.php:184
+#: core/fields/radio.php:187
 msgid "Save 'other' values to the field's choices"
 msgstr "Spara \"other\"-värden till fältets alternativ"
 
@@ -1466,11 +1478,11 @@ msgstr "Filtrera efter roll"
 msgid "Wysiwyg Editor"
 msgstr "WYSIWYG-editor"
 
-#: core/fields/wysiwyg.php:202
+#: core/fields/wysiwyg.php:213
 msgid "Toolbar"
 msgstr "Verktygsfält"
 
-#: core/fields/wysiwyg.php:234
+#: core/fields/wysiwyg.php:245
 msgid "Show Media Upload Buttons?"
 msgstr "Visa knappar för mediauppladdning"
 
@@ -1708,8 +1720,8 @@ msgid "Attachment"
 msgstr "Bilaga"
 
 #: core/views/meta_box_location.php:93
-msgid "Term"
-msgstr "Term"
+msgid "Taxonomy Term"
+msgstr "Taxonomiterm"
 
 #: core/views/meta_box_location.php:146
 msgid "and"
@@ -1814,6 +1826,9 @@ msgstr "Etiketter"
 #: core/views/meta_box_options.php:108
 msgid "Send Trackbacks"
 msgstr "Skicka trackbacks"
+
+#~ msgid "Term"
+#~ msgstr "Term"
 
 #~ msgid "This row"
 #~ msgstr "Denna rad"
