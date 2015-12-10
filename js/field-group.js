@@ -145,6 +145,9 @@ var acf = {
 			alert( acf.l10n.title );
 			
 			title.focus();
+
+			$('#publishing-action').find('.spinner').hide();
+			$('#publishing-action').find('input[type="submit"]').removeClass('disabled');
 		
 			return false;
 		}
