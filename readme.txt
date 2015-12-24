@@ -11,7 +11,7 @@ Customise WordPress with powerful, professional and intuitive fields
 
 == Description ==
 
-Advanced Custom Fields is the perfect solution for any wordpress website which needs more flexible data like other Content Management Systems. 
+Advanced Custom Fields is the perfect solution for any wordpress website that needs more flexible data like other Content Management Systems. 
 
 * Visually create your Fields
 * Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)
@@ -158,8 +158,8 @@ http://support.advancedcustomfields.com/
 * Textarea field: Added new `rows` setting
 * API: Added `$format_value` parameter to the `get_fields` function
 * Core: Improved conditional logic & tab JS performance
-* Core: Removed changelog anouncement in plugins update list
-* Core: Fixed anoying `wp is not defined` JS error
+* Core: Removed changelog announcement in plugins update list
+* Core: Fixed annoying `wp is not defined` JS error
 * Core: Added logic to load full or minified scripts using the `SCRIPT_DEBUG` constant
 * Core: Improved loading structure to better allow ACF functions within the functions.php file
 * Core: Fixed revisions bug causing sub field data to not restore
@@ -172,8 +172,8 @@ http://support.advancedcustomfields.com/
 * Language: Updating Czech translations - Thanks to webeescz
 
 = 4.3.4 =
-* Post Object field: Fixed get_pages bug cuasing 'pages' to not appear
-* Page Link field: Fixed get_pages bug cuasing 'pages' to not appear
+* Post Object field: Fixed get_pages bug causing 'pages' to not appear
+* Page Link field: Fixed get_pages bug causing 'pages' to not appear
 * Tab field: Fixed JS bug causing multiple tab groups on page to render incorrectly
 * Language: Updated Russian translation - Thanks to Alex Torscho
 
@@ -261,7 +261,7 @@ http://support.advancedcustomfields.com/
 * Email field: Added new options for prepend, append and placeholder
 * Password field: Added new options for prepend, append and placeholder
 * Image field: fixed safari bug causing all images to appear small
-* Core: Improved save_lock functionality to prevent inifinite loops when creating a post on the fly
+* Core: Improved save_lock functionality to prevent infinite loops when creating a post on the fly
 * Core: Major JS improvements including .live changed to .on
 * Compatibility: Fixed WYSIWYG JS bug with Visual Composer plugin
 * Language: Added Persian Translation - thanks to Ghaem Omidi
@@ -330,11 +330,11 @@ http://support.advancedcustomfields.com/
 = 4.1.2 =
 * [Added] Post Object field: Add filter to customize choices - http://support.advancedcustomfields.com/discussion/5883/show-extra-post-info-in-a-post-object-dropdown-list
 * [Fixed] Relationship field: Fix error when used as grand child - http://support.advancedcustomfields.com/discussion/5898/in_array-errors-on-relationship-field
-* [Added] User field: Add sanitisation into update_value function to allow for array / object with ID attribute
-* [Added] Relationship field: Add sanitisation into update_value function to allow for array of post object to be saved
-* [Added] Post Object field: Add sanitisation into update_value function to allow for a post object or an array of post objects to be saved
-* [Added] Image field: Add sanitisation into update_value function to allow for a post object or an image array to be saved
-* [Added] File field: Add sanitisation into update_value function to allow for a post object or an file array to be saved
+* [Added] User field: Add sanitization into update_value function to allow for array / object with ID attribute
+* [Added] Relationship field: Add sanitization into update_value function to allow for array of post object to be saved
+* [Added] Post Object field: Add sanitization into update_value function to allow for a post object or an array of post objects to be saved
+* [Added] Image field: Add sanitization into update_value function to allow for a post object or an image array to be saved
+* [Added] File field: Add sanitization into update_value function to allow for a post object or an file array to be saved
 * [Fixed] Revisions: Fix PHP warning if array value exists as custom field - http://support.advancedcustomfields.com/discussion/984/solvedwarning-htmlspecialchars-text-php-on-line-109
 * [Updated] Translation: Update French Translation - http://support.advancedcustomfields.com/discussion/5927/french-translation-for-4-1-1
 * [Fixed] General: Minor PHP errors fixed
@@ -659,7 +659,7 @@ http://support.advancedcustomfields.com/
 = 3.2.7 =
 * [Fixed] Rename controller classes - http://www.advancedcustomfields.com/support/discussion/2363/fatal-error-after-update-to-3.2.6
 * [Added] Add edit button to image / file fields
-* [Fixed] WYSIWYG toolbar buttons dissapearing in HTML tab mode
+* [Fixed] WYSIWYG toolbar buttons disappearing in HTML tab mode
 
 = 3.2.6 =
 * [Fixed] Fix flexible content inside repeater add extra row jquery bug - http://www.advancedcustomfields.com/support/discussion/2134/add-flexible-content-button-in-repeater-field-adds-new-repeater-row
@@ -679,7 +679,7 @@ http://support.advancedcustomfields.com/
 * [IMPORTANT] Change field group option "Show on page" to "Hide on Screen" to allow for future proof adding new elements to list. Previously exported and registered field groups via PHP will still work as expected! This change will prompt you for a database upgrade.
 * [Added] Add in edit button to upload image / file thickbox
 * [Improved] Changed loading default values. Now behaves as expected!
-* [Fixed] Test / Fix full screen mode dissapearing from editor - http://www.advancedcustomfields.com/support/discussion/2124/full-screen-button-for-zen-mode-is-gone
+* [Fixed] Test / Fix full screen mode disappearing from editor - http://www.advancedcustomfields.com/support/discussion/2124/full-screen-button-for-zen-mode-is-gone
 * [Fixed] get_field returning false for 0 - http://advancedcustomfields.com/support/discussion/2115/get_field-returns-false-if-field-has-value-0
 * [Improved] Improve relationship sortable code with item param - http://www.advancedcustomfields.com/support/discussion/comment/3536#Comment_3536
 * [Fixed] IE category js bug - http://www.advancedcustomfields.com/support/discussion/2127/ie-78-category-checkbox-bug
@@ -826,7 +826,7 @@ http://support.advancedcustomfields.com/
 = 3.0.3 =
 * New translation: French (thanks to Netactions)
 * Support: added support for new wp3.3 editor
-* Bug fix: fixed WYSIWYG editor localised errors
+* Bug fix: fixed WYSIWYG editor localized errors
 * Bug fix: removed trailing commas for ie7
 
 = 3.0.2 =
