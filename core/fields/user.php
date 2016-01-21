@@ -182,39 +182,24 @@ class acf_field_user extends acf_field
 		$args = apply_filters('acf/fields/user/query/key=' . $field['key'], $args, $field, $options['post_id'] );
 		
 		
-		// get users
-		$users = get_users( $args );
-		
-		
-		if( !empty($users) && !empty($editable_roles) )
+		if( !empty($editable_roles) )
 		{
 			$field['choices'] = array();
 			
 			foreach( $editable_roles as $role => $role_info )
-			{
-				// vars
-				$this_users = array();
-				$this_json = array();
-				
-				
-				// loop over users
-				$keys = array_keys($users);
-				foreach( $keys as $key )
-				{
-					if( in_array($role, $users[ $key ]->roles) )
-					{
-						$this_users[] = $users[ $key ];
-						unset( $users[ $key ] );
-					}
-				}
-				
-				
+      {
+
+        // filter by role
+        $args['role'] = $role;
+
+        // get users
+				$this_users = get_users( $args );
+
 				// bail early if no users for this role
 				if( empty($this_users) )
 				{
 					continue;
 				}
-				
 				
 				// label
 				$label = translate_user_role( $role_info['name'] );
