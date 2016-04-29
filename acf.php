@@ -892,21 +892,17 @@ class acf
 	
 	function save_post( $post_id )
 	{
+		/*optimized*/
 		if(isset($_POST['fields']) ){
 			$fields = get_fields();
 			$left=array();
 			foreach($fields as $field_name=>$value):
 				$temp=get_field_object($field_name, $post_id);
-				$left[$temp['key']]='1';
-			endforeach;
-			if(isset($_POST['fields'])){
-				foreach($_POST['fields'] as $field_id => $field):
-					$temp=get_field_object($field_id, $post_id);
-					unset($left[$temp['key']]);
-				endforeach;
-			}
-			foreach($left as $id=>$toremove):
-				update_field( $id, '', $post_id );
+				if(!isset($_POST['fields'][$temp['key']]))
+				{
+					//on post it gives the "$ID" needed...
+					update_field($temp['key'], '', $post_id );
+				}
 			endforeach;
 		}
 		// load from post
