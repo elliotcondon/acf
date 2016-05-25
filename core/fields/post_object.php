@@ -180,33 +180,45 @@ class acf_field_post_object extends acf_field
 			}
 			
 			
-			if($posts)
-			{
-				foreach( $posts as $p )
-				{
-					// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
-					$title = '';
-					$ancestors = get_ancestors( $p->ID, $p->post_type );
-					if($ancestors)
-					{
-						foreach($ancestors as $a)
-						{
-							$title .= '–';
-						}
+			if($posts) {
+				
+				foreach( $posts as $p ) {
+					
+					// title
+					$title = get_the_title( $p->ID );
+					
+					
+					// empty
+					if( $title === '' ) {
+						
+						$title = __('(no title)', 'acf');
+						
 					}
-					$title .= ' ' . apply_filters( 'the_title', $p->post_title, $p->ID );
+					
+					
+					// ancestors
+					if( $p->post_type != 'attachment' ) {
+						
+						$ancestors = get_ancestors( $p->ID, $p->post_type );
+						
+						$title = str_repeat('- ', count($ancestors)) . $title;
+						
+					}
 					
 					
 					// status
-					if( $p->post_status != "publish" )
-					{
-						$title .= " ($p->post_status)";
+					if( get_post_status( $p->ID ) != "publish" ) {
+						
+						$title .= ' (' . get_post_status( $p->ID ) . ')';
+						
 					}
 					
+					
 					// WPML
-					if( defined('ICL_LANGUAGE_CODE') )
-					{
+					if( defined('ICL_LANGUAGE_CODE') ) {
+						
 						$title .= ' (' . ICL_LANGUAGE_CODE . ')';
+						
 					}
 					
 					

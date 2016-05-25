@@ -265,7 +265,7 @@ function get_field_object( $field_key, $post_id = false, $options = array() ) {
 	
 	
 	// is $field_name a name? pre 3.4.0
-	if( strpos($field_key, "field_") === false )
+	if( substr($field_key, 0, 6) !== 'field_' )
 	{
 		// get field key
 		$field_key = get_field_reference( $field_key, $post_id );
@@ -273,7 +273,7 @@ function get_field_object( $field_key, $post_id = false, $options = array() ) {
 	
 	
 	// get field
-	if( strpos($field_key, "field_") !== false )
+	if( substr($field_key, 0, 6) === 'field_' )
 	{
 		$field = apply_filters('acf/load_field', false, $field_key );
 	}
@@ -343,7 +343,7 @@ function the_field( $field_name, $post_id = false ) {
 *  have_rows
 *
 *  This function will instantiate a global variable containing the rows of a repeater or flexible content field,
-*  afterwhich, it will determin if another row exists to loop through
+*  afterwhich, it will determine if another row exists to loop through
 *
 *  @type	function
 *  @date	2/09/13
@@ -1482,6 +1482,113 @@ function acf_convert_field_names_to_keys( $value, $field )
 
 }
 
+
+/*
+*  acf_force_type_array
+*
+*  This function will force a variable to become an array
+*
+*  @type	function
+*  @date	4/02/2014
+*  @since	5.0.0
+*
+*  @param	$var (mixed)
+*  @return	(array)
+*/
+
+function acf_force_type_array( $var ) {
+	
+	// is array?
+	if( is_array($var) ) {
+	
+		return $var;
+	
+	}
+	
+	
+	// bail early if empty
+	if( empty($var) && !is_numeric($var) ) {
+		
+		return array();
+		
+	}
+	
+	
+	// string 
+	if( is_string($var) ) {
+		
+		return explode(',', $var);
+		
+	}
+	
+	
+	// place in array
+	return array( $var );
+} 
+
+
+/*
+*  acf_get_valid_terms
+*
+*  This function will replace old terms with new split term ids
+*
+*  @type	function
+*  @date	27/02/2015
+*  @since	5.1.5
+*
+*  @param	$terms (int|array)
+*  @param	$taxonomy (string)
+*  @return	$terms
+*/
+
+function acf_get_valid_terms( $terms = false, $taxonomy = 'category' ) {
+	
+	// bail early if function does not yet exist or
+	if( !function_exists('wp_get_split_term') || empty($terms) ) {
+		
+		return $terms;
+		
+	}
+	
+	
+	// vars
+	$is_array = is_array($terms);
+	
+	
+	// force into array
+	$terms = acf_force_type_array( $terms );
+	
+	
+	// force ints
+	$terms = array_map('intval', $terms);
+	
+	
+	// attempt to find new terms
+	foreach( $terms as $i => $term_id ) {
+		
+		$new_term_id = wp_get_split_term($term_id, $taxonomy);
+		
+		if( $new_term_id ) {
+			
+			$terms[ $i ] = $new_term_id;
+			
+		}
+		
+	}
+	
+	
+	// revert array if needed
+	if( !$is_array ) {
+		
+		$terms = $terms[0];
+		
+	}
+	
+	
+	// return
+	return $terms;
+	
+}
 
 
 /*

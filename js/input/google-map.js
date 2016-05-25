@@ -29,7 +29,7 @@
 			
 			
 			// find input
-			this.$input = this.$el.find('.value');
+			this.$input = this.$el.find('.input-address');
 			
 			
 			// get options
@@ -412,38 +412,61 @@
 		
 		
 		// validate
-		if( ! $fields.exists() )
-		{
-			return;
-		}
+		if( ! $fields.exists() ) return false;
 		
 		
-		// validate google
-		if( typeof google === 'undefined' )
-		{
-			$.getScript('https://www.google.com/jsapi', function(){
+		// no google
+		if( !acf.helpers.isset(window, 'google', 'load') ) {
 			
+			// load API
+			$.getScript('https://www.google.com/jsapi', function(){
+				
+				// load maps
 			    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
-			    
-			        $fields.each(function(){
+			    	
+			    	$fields.each(function(){
 					
 						acf.fields.google_map.set({ $el : $(this) }).init();
 						
 					});
 			        
 			    }});
+			    
 			});
 			
+			return false;
+				
 		}
-		else
-		{
-			$fields.each(function(){
-				
-				acf.fields.google_map.set({ $el : $(this) }).init();
-				
-			});
+		
+		
+		// no maps or places
+		if( !acf.helpers.isset(window, 'google', 'maps', 'places') ) {
 			
+			google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
+				
+				$fields.each(function(){
+					
+					acf.fields.google_map.set({ $el : $(this) }).init();
+					
+				});
+		        
+		    }});
+			
+			return false;
+				
 		}
+		
+		
+		// google exists
+		$fields.each(function(){
+					
+			acf.fields.google_map.set({ $el : $(this) }).init();
+			
+		});
+
+		
+		// return
+		return true;
 		
 	});
 	

@@ -57,7 +57,7 @@ var acf = {
 	/*
 	*  acf.helpers.isset
 	*
-	*  http://phpjs.org/functions/isset
+	*  description
 	*
 	*  @type	function
 	*  @date	20/07/13
@@ -70,19 +70,25 @@ var acf = {
 		
 		var a = arguments,
 	        l = a.length,
-	        i = 0,
+	        c = null,
 	        undef;
-	
+		
 	    if (l === 0) {
 	        throw new Error('Empty isset');
 	    }
-	
-	    while (i !== l) {
-	        if (a[i] === undef || a[i] === null) {
+		
+		c = a[0];
+		
+	    for (i = 1; i < l; i++) {
+	    	
+	        if (a[i] === undef || c[ a[i] ] === undef) {
 	            return false;
 	        }
-	        i++;
+	        
+	        c = c[ a[i] ];
+	        
 	    }
+	    
 	    return true;
 			
 	};
@@ -317,7 +323,7 @@ var acf = {
 			
 			
 			// if wp exists
-			if( typeof(wp) == "object" )
+			if( typeof wp !== 'undefined' )
 			{
 				type = 'backbone';
 			}
@@ -328,6 +334,20 @@ var acf = {
 			
 		},
 		init : function(){
+			
+			// validate
+			if( this.type() !== 'backbone' )
+			{
+				return false;
+			}
+			
+			
+			// validate prototype
+			if( ! acf.helpers.isset(wp, 'media', 'view', 'AttachmentCompat', 'prototype') )
+			{
+				return false;	
+			}
+			
 			
 			// vars
 			var _prototype = wp.media.view.AttachmentCompat.prototype;

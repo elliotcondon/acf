@@ -2,18 +2,18 @@
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
-"Project-Id-Version: advanced custom fields\n"
+"Project-Id-Version: Advanced Custom Fields\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-11-09 15:23+0100\n"
-"PO-Revision-Date: 2013-11-09 16:27+0100\n"
-"Last-Translator: Davide De Maestri <davide.demaestri@gmail.com>\n"
-"Language-Team:  <a.mignogna@asernet.it>\n"
+"PO-Revision-Date: 2016-04-04 10:09+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
+"Language-Team: Davide De Maestri <davide.demaestri@gmail.com>\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: C:\\advanced-custom-fields\\\n"
 "X-Poedit-SearchPath-0: C:\\advanced-custom-fields\n"
@@ -79,7 +79,7 @@ msgstr "Campo personalizzato cancellato."
 #: C:\advanced-custom-fields/acf.php:571
 #, php-format
 msgid "Field group restored to revision from %s"
-msgstr "Gruppo di campi ripristinato per la revisione da %s"
+msgstr "Gruppo di campi ripristinato alla revisione del %s"
 
 #: C:\advanced-custom-fields/acf.php:572
 msgid "Field group published."
@@ -173,7 +173,7 @@ msgstr "Flexible Content Field"
 
 #: C:\advanced-custom-fields/core/controllers/addons.php:152
 msgid "Create unique designs with a flexible content layout manager!"
-msgstr "Crea design unici con i contenuti flesisbili ed il gestore di layout!"
+msgstr "Crea design unici con i contenuti flessibili ed il gestore di layout!"
 
 #: C:\advanced-custom-fields/core/controllers/addons.php:161
 msgid "Gravity Forms Field"
@@ -265,7 +265,7 @@ msgstr "Scegli il gruppo di campi da esportare"
 #: C:\advanced-custom-fields/core/controllers/export.php:239
 #: C:\advanced-custom-fields/core/controllers/export.php:252
 msgid "Export to XML"
-msgstr "Esporta XML"
+msgstr "Esporta in XML"
 
 #: C:\advanced-custom-fields/core/controllers/export.php:242
 #: C:\advanced-custom-fields/core/controllers/export.php:267
@@ -277,7 +277,7 @@ msgid ""
 "ACF will create a .xml export file which is compatible with the native WP "
 "import plugin."
 msgstr ""
-"ACF creerà un file di export XML che è compatibile con tutti i pulugin di "
+"ACF creerà un file di export XML che è compatibile con tutti i plugin di "
 "importazione nativi."
 
 #: C:\advanced-custom-fields/core/controllers/export.php:254
@@ -291,11 +291,11 @@ msgstr ""
 
 #: C:\advanced-custom-fields/core/controllers/export.php:256
 msgid "Select field group(s) from the list and click \"Export XML\""
-msgstr "Secgli un gruppo di campi dalla lista e clicca su \"Esporta XML\""
+msgstr "Scegli un gruppo di campi dalla lista e clicca su \"Esporta XML\""
 
 #: C:\advanced-custom-fields/core/controllers/export.php:257
 msgid "Save the .xml file when prompted"
-msgstr "Ssalva il file .xml quando richiesto"
+msgstr "Salva il file .xml quando richiesto"
 
 #: C:\advanced-custom-fields/core/controllers/export.php:258
 msgid "Navigate to Tools &raquo; Import and select WordPress"
@@ -339,13 +339,13 @@ msgid ""
 "php file."
 msgstr ""
 "Per favore considera che se esporti e registri un gruppo di campi nello "
-"stesso WP, vedrai campi duplicati nella schermata di modifica. Per "
-"modificare questo, rimuovi i gruppi di campi originali dal censtino o "
-"rimuovi il codice dal tuo file functions.php"
+"stesso WP, vedrai campi duplicati nella schermata di modifica. Per risolvere "
+"questo, sposta il gruppo di campi originale nel cestino o rimuovi il codice "
+"dal tuo file functions.php"
 
 #: C:\advanced-custom-fields/core/controllers/export.php:272
 msgid "Select field group(s) from the list and click \"Create PHP\""
-msgstr "Seleziona i gruppi di campi dalla lista e clicca su  \"Crea PHP\""
+msgstr "Seleziona i gruppi di campi dalla lista e clicca su \"Crea PHP\""
 
 #: C:\advanced-custom-fields/core/controllers/export.php:273
 #: C:\advanced-custom-fields/core/controllers/export.php:302
@@ -361,7 +361,7 @@ msgstr "Incolla nel tuo file functions.php"
 #: C:\advanced-custom-fields/core/controllers/export.php:304
 msgid "To activate any Add-ons, edit and use the code in the first few lines."
 msgstr ""
-"Per attivare qualsiasi add-ons, modifica e usa il codice nelle prime linee."
+"Per attivare qualsiasi Add-ons, modifica e usa il codice nelle prime linee."
 
 #: C:\advanced-custom-fields/core/controllers/export.php:295
 msgid "Export Field Groups to PHP"
@@ -674,7 +674,7 @@ msgstr "Il sito web utilizza Add-ons premium che devono essere scaricati"
 
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:324
 msgid "Download your activated Add-ons"
-msgstr "Scarica i tuoi add-ons attivati"
+msgstr "Scarica i tuoi Add-ons attivati"
 
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:329
 msgid ""
@@ -788,7 +788,7 @@ msgstr "Potenziali Problemi"
 
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:366
 msgid ""
-"Do to the sizable changes surounding Add-ons, field types and action/"
+"Due to the sizable changes surrounding Add-ons, field types and action/"
 "filters, your website may not operate correctly. It is important that you "
 "read the full"
 msgstr ""
@@ -898,7 +898,7 @@ msgstr "Installazione"
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:469
 msgid "For each Add-on available, please perform the following:"
 msgstr ""
-"Per ogni Add-on disponibilie, per favore procedi come indicato di seguito:"
+"Per ogni Add-on disponibile, per favore procedi come indicato di seguito:"
 
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:471
 msgid "Download the Add-on plugin (.zip file) to your desktop"
@@ -927,7 +927,7 @@ msgstr ""
 
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:475
 msgid "The Add-on is now installed and activated!"
-msgstr "L'Add-om è stato installato ed attivato!"
+msgstr "L'Add-on è stato installato ed attivato!"
 
 #: C:\advanced-custom-fields/core/controllers/field_groups.php:489
 msgid "Awesome. Let's get to work"
@@ -967,7 +967,7 @@ msgstr "Modificare l'opzione del campo 'tassonomia'"
 
 #: C:\advanced-custom-fields/core/controllers/upgrade.php:835
 msgid "Moving user custom fields from wp_options to wp_usermeta'"
-msgstr "Spostare i campi personalizzati da wp_option a wp_usermeta"
+msgstr "Spostare i campi personalizzati da wp_options a wp_usermeta"
 
 #: C:\advanced-custom-fields/core/fields/checkbox.php:19
 #: C:\advanced-custom-fields/core/fields/taxonomy.php:319
@@ -1132,7 +1132,7 @@ msgstr "Seleziona file"
 
 #: C:\advanced-custom-fields/core/fields/file.php:27
 msgid "Edit File"
-msgstr "Modifica Fiel"
+msgstr "Modifica File"
 
 #: C:\advanced-custom-fields/core/fields/file.php:28
 msgid "Update File"
@@ -1193,7 +1193,7 @@ msgstr "Spiacente, questo browser non supporta la geolocalizzazione"
 
 #: C:\advanced-custom-fields/core/fields/google-map.php:117
 msgid "Clear location"
-msgstr "Chiara posizione"
+msgstr "Cancella posizione"
 
 #: C:\advanced-custom-fields/core/fields/google-map.php:122
 msgid "Find current location"
@@ -1201,7 +1201,7 @@ msgstr "Trova località corrente"
 
 #: C:\advanced-custom-fields/core/fields/google-map.php:123
 msgid "Search for address..."
-msgstr "Cerca per l'indirizzo..."
+msgstr "Cerca l'indirizzo..."
 
 #: C:\advanced-custom-fields/core/fields/google-map.php:159
 msgid "Center"
@@ -1218,6 +1218,14 @@ msgstr "Altezza"
 #: C:\advanced-custom-fields/core/fields/google-map.php:197
 msgid "Customise the map height"
 msgstr "Personalizza l'altezza della mappa"
+
+#: C:\advanced-custom-fields/core/fields/google-map.php:199
+msgid "Zoom"
+msgstr "Zoom"
+
+#: C:\advanced-custom-fields/core/fields/google-map.php:200
+msgid "Set the initial zoom level"
+msgstr "Imposta il livello di zoom iniziale"
 
 #: C:\advanced-custom-fields/core/fields/image.php:19
 msgid "Image"
@@ -1370,7 +1378,7 @@ msgstr "Altro"
 
 #: C:\advanced-custom-fields/core/fields/radio.php:145
 msgid "Enter your choices one per line"
-msgstr "Inserisci una opzione per linea"
+msgstr "Inserisci un'opzione per linea"
 
 #: C:\advanced-custom-fields/core/fields/radio.php:147
 msgid "Red"
@@ -1386,7 +1394,7 @@ msgstr "Aggiungi l'opzione 'altro' per permettere valori personalizzati"
 
 #: C:\advanced-custom-fields/core/fields/radio.php:184
 msgid "Save 'other' values to the field's choices"
-msgstr "Salva i valori 'altro' per le scelte del campo"
+msgstr "Salva i valori 'altro' nelle scelte del campo"
 
 #: C:\advanced-custom-fields/core/fields/relationship.php:18
 msgid "Relationship"
@@ -1406,7 +1414,7 @@ msgstr "Filtra per post type"
 
 #: C:\advanced-custom-fields/core/fields/relationship.php:569
 msgid "Return Format"
-msgstr "Restituirsci Formato"
+msgstr "Restituisci Formato"
 
 #: C:\advanced-custom-fields/core/fields/relationship.php:580
 msgid "Post Objects"
@@ -1443,7 +1451,7 @@ msgstr "Titolo del Post"
 
 #: C:\advanced-custom-fields/core/fields/relationship.php:679
 msgid "Maximum posts"
-msgstr "Massimo dei post"
+msgstr "Numero massimo di post"
 
 #: C:\advanced-custom-fields/core/fields/select.php:18
 #: C:\advanced-custom-fields/core/fields/select.php:109
@@ -1542,8 +1550,12 @@ msgstr "Formattazione"
 
 #: C:\advanced-custom-fields/core/fields/text.php:177
 #: C:\advanced-custom-fields/core/fields/textarea.php:142
-msgid "Effects value on front end"
-msgstr "Valore effettivo nel front end"
+msgid "Affects value on front end"
+msgstr "Ha effetto sul valore nel front end"
+
+#: C:\advanced-custom-fields/core/fields/textarea.php:149
+msgid "Sets the textarea height"
+msgstr "Imposta l'altezza della text area"
 
 #: C:\advanced-custom-fields/core/fields/text.php:186
 #: C:\advanced-custom-fields/core/fields/textarea.php:151
@@ -1571,7 +1583,7 @@ msgstr "Text Area"
 
 #: C:\advanced-custom-fields/core/fields/textarea.php:152
 msgid "Convert new lines into &lt;br /&gt; tags"
-msgstr "Converti le nuove linee in tags  &lt;br /&gt;"
+msgstr "Converti le nuove linee in tags &lt;br /&gt;"
 
 #: C:\advanced-custom-fields/core/fields/true_false.php:19
 msgid "True / False"
@@ -1629,7 +1641,7 @@ msgstr "Salva formato"
 
 #: C:\advanced-custom-fields/core/fields/date_picker/date_picker.php:127
 msgid ""
-"This format will determin the value saved to the database and returned via "
+"This format will determine the value saved to the database and returned via "
 "the API"
 msgstr ""
 "Questo formato determinerà il valore salvato nel database e verrà restituito "
@@ -1768,15 +1780,15 @@ msgstr "Mostra questo campo quando"
 
 #: C:\advanced-custom-fields/core/views/meta_box_fields.php:285
 msgid "all"
-msgstr "AND"
+msgstr "tutte"
 
 #: C:\advanced-custom-fields/core/views/meta_box_fields.php:286
 msgid "any"
-msgstr "OR"
+msgstr "almeno una di"
 
 #: C:\advanced-custom-fields/core/views/meta_box_fields.php:289
 msgid "these rules are met"
-msgstr "queste regole incontrano"
+msgstr "queste condizioni sono soddisfatte"
 
 #: C:\advanced-custom-fields/core/views/meta_box_fields.php:303
 msgid "Close Field"
@@ -1887,7 +1899,7 @@ msgstr "Normale (dopo il contenuto)"
 
 #: C:\advanced-custom-fields/core/views/meta_box_options.php:54
 msgid "Side"
-msgstr "lato"
+msgstr "Lato"
 
 #: C:\advanced-custom-fields/core/views/meta_box_options.php:64
 msgid "Style"
@@ -1988,7 +2000,7 @@ msgstr "Invia Trackbacks"
 #~ msgstr "poi clicca"
 
 #~ msgid "Upgrade Database"
-#~ msgstr "Aggiorna database"
+#~ msgstr "Aggiorna Database"
 
 #~ msgid "Repeater field deactivated"
 #~ msgstr "Repeater field disattivato"
@@ -2145,6 +2157,9 @@ msgstr "Invia Trackbacks"
 #~ msgid "+ Add Row"
 #~ msgstr "+ Aggiungi riga"
 
+#~ msgid "Add Row"
+#~ msgstr "Aggiungi riga"
+
 #~ msgid "Reorder Layout"
 #~ msgstr "Riordina il layout"
 
@@ -2173,6 +2188,9 @@ msgstr "Invia Trackbacks"
 #~ "Nessun campo. Clicca su \"+ Aggiungi un campo\" per creare il tuo primo "
 #~ "campo."
 
+#~ msgid "Column Width"
+#~ msgstr "Larghezza Colonna"
+
 #~ msgid "Close Sub Field"
 #~ msgstr "Chiudi il campo"
 
@@ -2192,8 +2210,8 @@ msgstr "Invia Trackbacks"
 #~ "Filter posts by selecting a post type<br />\n"
 #~ "\t\t\t\tTip: deselect all post types to show all post type's posts"
 #~ msgstr ""
-#~ "Filtra i contenuti selezionato un tipo di contenuto<br />\n"
-#~ "\t\t\t\tTrucco: deleziona tutti i tipi di contenuto per visualizzarne "
+#~ "Filtra i contenuti selezionando un tipo di contenuto<br />\n"
+#~ "\t\t\t\tTrucco: deseleziona tutti i tipi di contenuto per visualizzarne "
 #~ "tutti i tipi"
 
 #~ msgid "Set to -1 for infinite"
@@ -2211,8 +2229,11 @@ msgstr "Invia Trackbacks"
 #~ msgid "Table (default)"
 #~ msgstr "Tabella (default)"
 
+#~ msgid "Table"
+#~ msgstr "Tabella"
+
 #~ msgid "Define how to render html tags"
-#~ msgstr "Definisci come gestire i tag html"
+#~ msgstr "Definisci come renderizzare i tag html"
 
 #~ msgid "HTML"
 #~ msgstr "HTML"
@@ -2225,7 +2246,7 @@ msgstr "Invia Trackbacks"
 
 #~ msgid "No Custom Field Group found for the options page"
 #~ msgstr ""
-#~ "Non è stato travato nessun gruppo di campi per la pagina delle opzioni"
+#~ "Non è stato trovato nessun gruppo di campi per la pagina delle opzioni"
 
 #~ msgid "Create a Custom Field Group"
 #~ msgstr "Crea un gruppo di campi"

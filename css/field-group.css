@@ -39,20 +39,7 @@
 }
 
 #submitdiv .acf-button {
-	width: 100%;
-}
-
-#submitdiv #delete-action {
-	float: none;
-	margin: 0 0 5px;
-}
-
-#submitdiv #publishing-action {
-	float: none;
-}
-
-#submitdiv #publishing-action img {
-	display: none;
+	margin: 0;
 }
 
 #delete-action .delete-field-group {
@@ -77,7 +64,7 @@
 	display: none;
 }
 
-.postbox#acf_fields h3.hndle {
+.postbox#acf_fields > .hndle {
 	display: none;
 }
 
@@ -88,6 +75,8 @@
 
 .postbox#acf_fields a {
 	text-decoration: none;
+	box-shadow: none;
+	transition: none;
 }
 
 
@@ -415,10 +404,6 @@ table.widefat.acf td {
 
 .field_save td {
 	line-height: 25px;
-}
-
-.field_instructions textarea {
-	height: 70px;
 }
 
 /*---------------------------------------------------------------------------------------------

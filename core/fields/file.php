@@ -26,7 +26,7 @@ class acf_field_file extends acf_field
 			'select'		=>	__("Select File",'acf'),
 			'edit'			=>	__("Edit File",'acf'),
 			'update'		=>	__("Update File",'acf'),
-			'uploadedTo'	=>	__("uploaded to this post",'acf'),
+			'uploadedTo'	=>	__("Uploaded to this post",'acf'),
 		);
 		
 		
@@ -106,11 +106,11 @@ class acf_field_file extends acf_field
 					<strong class="acf-file-title"><?php echo $o['title']; ?></strong>
 				</p>
 				<p>
-					<strong>Name:</strong>
+					<strong><?php _e('Name', 'acf'); ?>:</strong>
 					<a class="acf-file-name" href="<?php echo $o['url']; ?>" target="_blank"><?php echo $o['name']; ?></a>
 				</p>
 				<p>
-					<strong>Size:</strong>
+					<strong><?php _e('Size', 'acf'); ?>:</strong>
 					<span class="acf-file-size"><?php echo $o['size']; ?></span>
 				</p>
 				

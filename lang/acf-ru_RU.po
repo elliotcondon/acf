@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-12-03 04:25:56+00:00\n"
-"PO-Revision-Date: 2014-01-05 15:33+0100\n"
-"Last-Translator: Alex Torscho <contact@alextorscho.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2016-04-04 10:09+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
+"Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ./acf.pot\n"
 
@@ -749,7 +749,7 @@ msgstr "Потенциальные проблемы"
 
 #: core/controllers/field_groups.php:366
 msgid ""
-"Do to the sizable changes surounding Add-ons, field types and action/"
+"Due to the sizable changes surrounding Add-ons, field types and action/"
 "filters, your website may not operate correctly. It is important that you "
 "read the full"
 msgstr ""
@@ -1023,7 +1023,7 @@ msgstr "Сохранить формат"
 
 #: core/fields/date_picker/date_picker.php:127
 msgid ""
-"This format will determin the value saved to the database and returned via "
+"This format will determine the value saved to the database and returned via "
 "the API"
 msgstr ""
 "Этот формат определит значение сохраненное в базе данных и возвращенное "
@@ -1509,7 +1509,7 @@ msgid "Formatting"
 msgstr "Форматирование"
 
 #: core/fields/text.php:177 core/fields/textarea.php:142
-msgid "Effects value on front end"
+msgid "Affects value on front end"
 msgstr "Значение эффектов в пользовательском интерфейсе"
 
 #: core/fields/text.php:186 core/fields/textarea.php:151

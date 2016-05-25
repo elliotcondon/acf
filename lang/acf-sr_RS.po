@@ -1,0 +1,1833 @@
+# Copyright (C) 2014 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
+"POT-Creation-Date: 2014-01-05 07:41:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-04-04 10:09+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
+"Language-Team: \n"
+"Language: sr_RS\n"
+"X-Generator: Poedit 1.8.1\n"
+
+#: acf.php:455
+msgid "Field&nbsp;Groups"
+msgstr "Field&nbsp;Grupe"
+
+#: acf.php:456 core/controllers/field_groups.php:214
+msgid "Advanced Custom Fields"
+msgstr "Unapredjena Custom Polja"
+
+#: acf.php:457
+msgid "Add New"
+msgstr "Dodati novo"
+
+#: acf.php:458
+msgid "Add New Field Group"
+msgstr "Dodati nova polja grupi"
+
+#: acf.php:459
+msgid "Edit Field Group"
+msgstr "Editovati polje grupi"
+
+#: acf.php:460
+msgid "New Field Group"
+msgstr "Novo polje grupe"
+
+#: acf.php:461
+msgid "View Field Group"
+msgstr "Pregledati polje grupe"
+
+#: acf.php:462
+msgid "Search Field Groups"
+msgstr "Pretraga polja grupa"
+
+#: acf.php:463
+msgid "No Field Groups found"
+msgstr "Nijedno polje grupe nije pronadjeno"
+
+#: acf.php:464
+msgid "No Field Groups found in Trash"
+msgstr "Nijedno polje grupe nije pronadjeno u Djubretu"
+
+#: acf.php:567 core/views/meta_box_options.php:99
+msgid "Custom Fields"
+msgstr "Custom polja"
+
+#: acf.php:585 acf.php:588
+msgid "Field group updated."
+msgstr "Polje grupe updateovan."
+
+#: acf.php:586
+msgid "Custom field updated."
+msgstr "Custom polje updateovano."
+
+#: acf.php:587
+msgid "Custom field deleted."
+msgstr "Custom polje obrisano."
+
+#. translators: %s: date and time of the revision
+#: acf.php:590
+msgid "Field group restored to revision from %s"
+msgstr "Polje grupe vraćeno za reviziju iz %s"
+
+#: acf.php:591
+msgid "Field group published."
+msgstr "Polje grupe objavljeno. "
+
+#: acf.php:592
+msgid "Field group saved."
+msgstr "Polje grupe sačuvano."
+
+#: acf.php:593
+msgid "Field group submitted."
+msgstr "Plje grupe podneto."
+
+#: acf.php:594
+msgid "Field group scheduled for."
+msgstr "Polje grupe zakazano za."
+
+#: acf.php:595
+msgid "Field group draft updated."
+msgstr "Draft polja grupe updateovan."
+
+#: acf.php:730
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+#: acf.php:731
+msgid "Medium"
+msgstr "Medium"
+
+#: acf.php:732
+msgid "Large"
+msgstr "Veliko"
+
+#: acf.php:733
+msgid "Full"
+msgstr "Celo"
+
+#: core/actions/export.php:26 core/views/meta_box_fields.php:58
+msgid "Error"
+msgstr "Greška"
+
+#: core/actions/export.php:33
+msgid "No ACF groups selected"
+msgstr "Nijedna ACF grupa nije izabrana"
+
+#: core/api.php:1162
+msgid "Update"
+msgstr "Upateovano"
+
+#: core/api.php:1163
+msgid "Post updated"
+msgstr "Post updateovan"
+
+#: core/controllers/addons.php:42 core/controllers/field_groups.php:307
+msgid "Add-ons"
+msgstr "Dodaci"
+
+#: core/controllers/addons.php:130 core/controllers/field_groups.php:429
+msgid "Repeater Field"
+msgstr "Ponavljač polja"
+
+#: core/controllers/addons.php:131
+msgid "Create infinite rows of repeatable data with this versatile interface!"
+msgstr ""
+"Stvorite beskonačan broj redova podataka koji se ponavljaju sa svestranim "
+"interfejsom"
+
+#: core/controllers/addons.php:137 core/controllers/field_groups.php:437
+msgid "Gallery Field"
+msgstr "Polje galerije"
+
+#: core/controllers/addons.php:138
+msgid "Create image galleries in a simple and intuitive interface!"
+msgstr "Stvoriti galeriju slika u jednostavnom i svestranom interfejsu!"
+
+#: core/controllers/addons.php:144 core/controllers/field_groups.php:445
+msgid "Options Page"
+msgstr "Opcije stranice"
+
+#: core/controllers/addons.php:145
+msgid "Create global data to use throughout your website!"
+msgstr "Stvorite globane podake da biste ih koristili kroz svoj sajt!"
+
+#: core/controllers/addons.php:151
+msgid "Flexible Content Field"
+msgstr "Fleksibilan sadržaj polja"
+
+#: core/controllers/addons.php:152
+msgid "Create unique designs with a flexible content layout manager!"
+msgstr "Stvorite jedinstveni"
+
+#: core/controllers/addons.php:161
+msgid "Gravity Forms Field"
+msgstr "Polje formi gravitacije"
+
+#: core/controllers/addons.php:162
+msgid "Creates a select field populated with Gravity Forms!"
+msgstr "Stvara izabrano polje naseljeno sa formama gravitacije"
+
+#: core/controllers/addons.php:168
+msgid "Date & Time Picker"
+msgstr "Birač datume i vremena"
+
+#: core/controllers/addons.php:169
+msgid "jQuery date & time picker"
+msgstr "jQuery birač datuma i vremena"
+
+#: core/controllers/addons.php:175
+msgid "Location Field"
+msgstr "Lokacija polja"
+
+#: core/controllers/addons.php:176
+msgid "Find addresses and coordinates of a desired location"
+msgstr "Pronadji adrese i koordinate željenih lokacije"
+
+#: core/controllers/addons.php:182
+msgid "Contact Form 7 Field"
+msgstr "Contact Form 7 polje"
+
+#: core/controllers/addons.php:183
+msgid "Assign one or more contact form 7 forms to a post"
+msgstr "Dodati jednom ili više formu 7 formama za post"
+
+#: core/controllers/addons.php:193
+msgid "Advanced Custom Fields Add-Ons"
+msgstr "Unapredjena custom polja dodaci"
+
+#: core/controllers/addons.php:196
+msgid ""
+"The following Add-ons are available to increase the functionality of the "
+"Advanced Custom Fields plugin."
+msgstr ""
+"Sledeći dodaci su dostupni za uvećavanje funkcionalnosti unapredjenog custom "
+"polja plugina."
+
+#: core/controllers/addons.php:197
+msgid ""
+"Each Add-on can be installed as a separate plugin (receives updates) or "
+"included in your theme (does not receive updates)."
+msgstr ""
+"Svaki dodatak može biti instaliran kao poseban plugin (prima updateove) ili "
+"uključen u vašu temu (ne prima updateove)"
+
+#: core/controllers/addons.php:219 core/controllers/addons.php:240
+msgid "Installed"
+msgstr "Instalirano"
+
+#: core/controllers/addons.php:221
+msgid "Purchase & Install"
+msgstr "Kupljeno i instalirano"
+
+#: core/controllers/addons.php:242 core/controllers/field_groups.php:422
+#: core/controllers/field_groups.php:431 core/controllers/field_groups.php:439
+#: core/controllers/field_groups.php:447 core/controllers/field_groups.php:455
+msgid "Download"
+msgstr "Download"
+
+#: core/controllers/export.php:50 core/controllers/export.php:159
+msgid "Export"
+msgstr "Eksportovanje"
+
+#: core/controllers/export.php:216
+msgid "Export Field Groups"
+msgstr "Eksporovana polja grupe"
+
+#: core/controllers/export.php:221
+msgid "Field Groups"
+msgstr "Polje grupe"
+
+#: core/controllers/export.php:222
+msgid "Select the field groups to be exported"
+msgstr "Selektuj polja grupe za eksport"
+
+#: core/controllers/export.php:239 core/controllers/export.php:252
+msgid "Export to XML"
+msgstr "Eksportuj u XML"
+
+#: core/controllers/export.php:242 core/controllers/export.php:267
+msgid "Export to PHP"
+msgstr "Eksportuj u PHP"
+
+#: core/controllers/export.php:253
+msgid ""
+"ACF will create a .xml export file which is compatible with the native WP "
+"import plugin."
+msgstr ""
+"ACF će stvoriti .xml eksport fajl koji je kompatibilan sa osnovnim WP import "
+"pluginom."
+
+#: core/controllers/export.php:254
+msgid ""
+"Imported field groups <b>will</b> appear in the list of editable field "
+"groups. This is useful for migrating fields groups between Wp websites."
+msgstr ""
+"Importovana polja grupe<b>će se</b> u listi polja grupa koje mogu da se "
+"edituju. Ovo je korisno za migriranje polja grupa izmedju Wp websajtova."
+
+#: core/controllers/export.php:256
+msgid "Select field group(s) from the list and click \"Export XML\""
+msgstr "Selektujte polje grupe iz liste i kliknite na  \"Eksportuj XML\""
+
+#: core/controllers/export.php:257
+msgid "Save the .xml file when prompted"
+msgstr "Sačuvati .xml fajl kada se traži"
+
+#: core/controllers/export.php:258
+msgid "Navigate to Tools &raquo; Import and select WordPress"
+msgstr "Ukažite na  Tools &raquo; Importovati i selektovati WordPress"
+
+#: core/controllers/export.php:259
+msgid "Install WP import plugin if prompted"
+msgstr "Instalirati WP import plugin ako se traži"
+
+#: core/controllers/export.php:260
+msgid "Upload and import your exported .xml file"
+msgstr "Upload ovati i importovati vaš eksportovani .xml fajl"
+
+#: core/controllers/export.php:261
+msgid "Select your user and ignore Import Attachments"
+msgstr "Selektovati sve korisnike i ignorisati Importovati dodatke"
+
+#: core/controllers/export.php:262
+msgid "That's it! Happy WordPressing"
+msgstr "To je to! Srećno WordPressing-ovanje"
+
+#: core/controllers/export.php:268
+msgid "ACF will create the PHP code to include in your theme."
+msgstr "ACF wće stvoriti PHP kod da bi ga uključio u vašu temu."
+
+#: core/controllers/export.php:269 core/controllers/export.php:310
+msgid ""
+"Registered field groups <b>will not</b> appear in the list of editable field "
+"groups. This is useful for including fields in themes."
+msgstr ""
+"Registrovano polje grupe <b> neće < / b > se pojviti u listi uredive polja "
+"grupa . Ovo je korisno za uključivanje polja u temama ."
+
+#: core/controllers/export.php:270 core/controllers/export.php:311
+msgid ""
+"Please note that if you export and register field groups within the same WP, "
+"you will see duplicate fields on your edit screens. To fix this, please move "
+"the original field group to the trash or remove the code from your functions."
+"php file."
+msgstr ""
+"Imajte na umu da ako eksportujete e i registrujete polja grupe u okviru "
+"istog WP, videćete dupliranapolja na stranici Izmena ekrana . Da biste ovo "
+"rešili, molim vas pomerite originalno polje grupu u kantu za otpatke ili "
+"uklonite kod iz vaše functions.php file."
+
+#: core/controllers/export.php:272
+msgid "Select field group(s) from the list and click \"Create PHP\""
+msgstr "Izabrati grupe polja iz liste i klik na \"Napraviti PHP\""
+
+#: core/controllers/export.php:273 core/controllers/export.php:302
+msgid "Copy the PHP code generated"
+msgstr "Kopirati PHP generisani kod"
+
+#: core/controllers/export.php:274 core/controllers/export.php:303
+msgid "Paste into your functions.php file"
+msgstr "Uneti u vašu functions.php file"
+
+#: core/controllers/export.php:275 core/controllers/export.php:304
+msgid "To activate any Add-ons, edit and use the code in the first few lines."
+msgstr "Da biste aktivirali dodatke edotuj i koristi ko u prvih par reečenica"
+
+#: core/controllers/export.php:295
+msgid "Export Field Groups to PHP"
+msgstr "Eksportovati polje grupa u PHP"
+
+#: core/controllers/export.php:300 core/fields/tab.php:65
+msgid "Instructions"
+msgstr "Uputstva"
+
+#: core/controllers/export.php:309
+msgid "Notes"
+msgstr "Beleške"
+
+#: core/controllers/export.php:316
+msgid "Include in theme"
+msgstr "Uključiti u temu"
+
+#: core/controllers/export.php:317
+msgid ""
+"The Advanced Custom Fields plugin can be included within a theme. To do so, "
+"move the ACF plugin inside your theme and add the following code to your "
+"functions.php file:"
+msgstr ""
+"Napredna custom polja plugina mogu biti uključeni u temu . Da biste to "
+"uradili , pomerite ACF plugin u vašu temu i dodajte sledeći kod na vaš "
+"functions.php fajl :"
+
+#: core/controllers/export.php:323
+msgid ""
+"To remove all visual interfaces from the ACF plugin, you can use a constant "
+"to enable lite mode. Add the following code to your functions.php file "
+"<b>before</b> the include_once code:"
+msgstr ""
+"Da biste uklonili sve vizuelne interfejse iz ACF plugina , možete da "
+"koristite konstanta da biste omogućili lagani režim. Dodajte sledeći kod na "
+"svoju functions.php fajl <b> pre < / b >include kod :"
+
+#: core/controllers/export.php:331
+msgid "Back to export"
+msgstr "Nazad na eksport"
+
+#: core/controllers/export.php:400
+msgid "No field groups were selected"
+msgstr "Nijedno polje grupe nije selektovano"
+
+#: core/controllers/field_group.php:358
+msgid "Move to trash. Are you sure?"
+msgstr "Staviti u djubre. Da li ste sigurni?"
+
+#: core/controllers/field_group.php:359
+msgid "checked"
+msgstr "čekirano"
+
+#: core/controllers/field_group.php:360
+msgid "No toggle fields available"
+msgstr "Nijedno toggle polje nije dostupno"
+
+#: core/controllers/field_group.php:361
+msgid "Field group title is required"
+msgstr "Naslov polja grupe je potreban"
+
+#: core/controllers/field_group.php:362
+msgid "copy"
+msgstr "kopirati"
+
+#: core/controllers/field_group.php:363 core/views/meta_box_location.php:62
+#: core/views/meta_box_location.php:159
+msgid "or"
+msgstr "ili"
+
+#: core/controllers/field_group.php:364 core/controllers/field_group.php:395
+#: core/controllers/field_group.php:457 core/controllers/field_groups.php:148
+msgid "Fields"
+msgstr "Polja"
+
+#: core/controllers/field_group.php:365
+msgid "Parent fields"
+msgstr "Roditelj polja"
+
+#: core/controllers/field_group.php:366
+msgid "Sibling fields"
+msgstr "Slična polja"
+
+#: core/controllers/field_group.php:367
+msgid "Hide / Show All"
+msgstr "Sakriti / Prikazati sve"
+
+#: core/controllers/field_group.php:396
+msgid "Location"
+msgstr "Lokacija"
+
+#: core/controllers/field_group.php:397
+msgid "Options"
+msgstr "Opcije"
+
+#: core/controllers/field_group.php:459
+msgid "Show Field Key:"
+msgstr "Prikazati ključ polja.:"
+
+#: core/controllers/field_group.php:460 core/fields/page_link.php:138
+#: core/fields/page_link.php:159 core/fields/post_object.php:328
+#: core/fields/post_object.php:349 core/fields/select.php:224
+#: core/fields/select.php:243 core/fields/taxonomy.php:343
+#: core/fields/user.php:285 core/fields/wysiwyg.php:256
+#: core/views/meta_box_fields.php:195 core/views/meta_box_fields.php:218
+msgid "No"
+msgstr "Ne"
+
+#: core/controllers/field_group.php:461 core/fields/page_link.php:137
+#: core/fields/page_link.php:158 core/fields/post_object.php:327
+#: core/fields/post_object.php:348 core/fields/select.php:223
+#: core/fields/select.php:242 core/fields/taxonomy.php:342
+#: core/fields/user.php:284 core/fields/wysiwyg.php:255
+#: core/views/meta_box_fields.php:194 core/views/meta_box_fields.php:217
+msgid "Yes"
+msgstr "Da"
+
+#: core/controllers/field_group.php:645
+msgid "Front Page"
+msgstr "Prednja stranica"
+
+#: core/controllers/field_group.php:646
+msgid "Posts Page"
+msgstr "Postovi stranice"
+
+#: core/controllers/field_group.php:647
+msgid "Top Level Page (parent of 0)"
+msgstr "Visoki nivo str. (roditelj 0)"
+
+#: core/controllers/field_group.php:648
+msgid "Parent Page (has children)"
+msgstr "Roditelj str. (ima decu)"
+
+#: core/controllers/field_group.php:649
+msgid "Child Page (has parent)"
+msgstr "Dete str. (ima roditelja)"
+
+#: core/controllers/field_group.php:657
+msgid "Default Template"
+msgstr "Default Template"
+
+#: core/controllers/field_group.php:734
+msgid "Publish"
+msgstr "Objaviti"
+
+#: core/controllers/field_group.php:735
+msgid "Pending Review"
+msgstr "Čekanje pregleda"
+
+#: core/controllers/field_group.php:736
+msgid "Draft"
+msgstr "Draft"
+
+#: core/controllers/field_group.php:737
+msgid "Future"
+msgstr "Buduće"
+
+#: core/controllers/field_group.php:738
+msgid "Private"
+msgstr "Privatno"
+
+#: core/controllers/field_group.php:739
+msgid "Revision"
+msgstr "Revizija"
+
+#: core/controllers/field_group.php:740
+msgid "Trash"
+msgstr "Djubre"
+
+#: core/controllers/field_group.php:753
+msgid "Super Admin"
+msgstr "Super Admin"
+
+#: core/controllers/field_group.php:768 core/controllers/field_group.php:789
+#: core/controllers/field_group.php:796 core/fields/file.php:186
+#: core/fields/image.php:170 core/fields/page_link.php:109
+#: core/fields/post_object.php:274 core/fields/post_object.php:298
+#: core/fields/relationship.php:598 core/fields/relationship.php:622
+#: core/fields/user.php:229
+msgid "All"
+msgstr "Sve"
+
+#: core/controllers/field_groups.php:147
+msgid "Title"
+msgstr "Naslov"
+
+#: core/controllers/field_groups.php:216 core/controllers/field_groups.php:253
+msgid "Changelog"
+msgstr "Changelog"
+
+#: core/controllers/field_groups.php:217
+msgid "See what's new in"
+msgstr "Pogledati šta je novo u"
+
+#: core/controllers/field_groups.php:217
+msgid "version"
+msgstr "verziji"
+
+#: core/controllers/field_groups.php:219
+msgid "Resources"
+msgstr "Resursi"
+
+#: core/controllers/field_groups.php:221
+msgid "Getting Started"
+msgstr "Počinjemo"
+
+#: core/controllers/field_groups.php:222
+msgid "Field Types"
+msgstr "Tipovi polja"
+
+#: core/controllers/field_groups.php:223
+msgid "Functions"
+msgstr "Funkcije"
+
+#: core/controllers/field_groups.php:224
+msgid "Actions"
+msgstr "Akcije"
+
+#: core/controllers/field_groups.php:225 core/fields/relationship.php:641
+msgid "Filters"
+msgstr "Filteri"
+
+#: core/controllers/field_groups.php:226
+msgid "'How to' guides"
+msgstr "'Kako da' vodiči"
+
+#: core/controllers/field_groups.php:227
+msgid "Tutorials"
+msgstr "Tutorijali"
+
+#: core/controllers/field_groups.php:232
+msgid "Created by"
+msgstr "Kreirano od starne"
+
+#: core/controllers/field_groups.php:244
+msgid "Welcome to Advanced Custom Fields"
+msgstr "Dobrodošli u Unapredjena Custom polja"
+
+#: core/controllers/field_groups.php:245
+msgid "Thank you for updating to the latest version!"
+msgstr "Hvala na update-u poslednje verzije!"
+
+#: core/controllers/field_groups.php:245
+msgid "is more polished and enjoyable than ever before. We hope you like it."
+msgstr ""
+"je još više poliran i prijatniji nego ikada ranije . Nadamo se da vam se "
+"dopada ."
+
+#: core/controllers/field_groups.php:252
+msgid "What’s New"
+msgstr "Šta je novo"
+
+#: core/controllers/field_groups.php:255
+msgid "Download Add-ons"
+msgstr "Download Add-ons"
+
+#: core/controllers/field_groups.php:309
+msgid "Activation codes have grown into plugins!"
+msgstr "Kod za aktivaciju je u pluginovima!"
+
+#: core/controllers/field_groups.php:310
+msgid ""
+"Add-ons are now activated by downloading and installing individual plugins. "
+"Although these plugins will not be hosted on the wordpress.org repository, "
+"each Add-on will continue to receive updates in the usual way."
+msgstr ""
+"Dodaci su sada aktivirani za preuzimanjei instaliranje pojedinačnih "
+"pluginove . Iako ovi pluginovi neće biti na wordpress.org spremištu , svaki "
+"dodatak će nastaviti da prima updateove na uobičajen način ."
+
+#: core/controllers/field_groups.php:316
+msgid "All previous Add-ons have been successfully installed"
+msgstr "Svi prethodni dodaci su uspešno instalirani"
+
+#: core/controllers/field_groups.php:320
+msgid "This website uses premium Add-ons which need to be downloaded"
+msgstr "Ovaj websajt koristipremium dodatke koji treba da se downloaduju"
+
+#: core/controllers/field_groups.php:320
+msgid "Download your activated Add-ons"
+msgstr "Download your activated Add-ons"
+
+#: core/controllers/field_groups.php:325
+msgid ""
+"This website does not use premium Add-ons and will not be affected by this "
+"change."
+msgstr "Ovaj websajt ne koristi premium dodatke i neće biti zahvaćno promenom."
+
+#: core/controllers/field_groups.php:335
+msgid "Easier Development"
+msgstr "Lakši razvoj"
+
+#: core/controllers/field_groups.php:337
+msgid "New Field Types"
+msgstr "Novi tipovi pola"
+
+#: core/controllers/field_groups.php:339
+msgid "Taxonomy Field"
+msgstr "Polje taksonomije"
+
+#: core/controllers/field_groups.php:340
+msgid "User Field"
+msgstr "Polje korisnika"
+
+#: core/controllers/field_groups.php:341
+msgid "Email Field"
+msgstr "Email polja"
+
+#: core/controllers/field_groups.php:342
+msgid "Password Field"
+msgstr "Šifra polja"
+
+#: core/controllers/field_groups.php:344
+msgid "Custom Field Types"
+msgstr "Custom Field Types"
+
+#: core/controllers/field_groups.php:345
+msgid ""
+"Creating your own field type has never been easier! Unfortunately, version 3 "
+"field types are not compatible with version 4."
+msgstr ""
+"Creating your own field type has never been easier! Unfortunately, version 3 "
+"field types are not compatible with version 4."
+
+#: core/controllers/field_groups.php:346
+msgid "Migrating your field types is easy, please"
+msgstr "Migrating your field types is easy, please"
+
+#: core/controllers/field_groups.php:346
+msgid "follow this tutorial"
+msgstr "follow this tutorial"
+
+#: core/controllers/field_groups.php:346
+msgid "to learn more."
+msgstr "da naucite vise"
+
+#: core/controllers/field_groups.php:348
+msgid "Actions &amp; Filters"
+msgstr "Actions &amp; Filters"
+
+#: core/controllers/field_groups.php:349
+msgid ""
+"All actions & filters have received a major facelift to make customizing ACF "
+"even easier! Please"
+msgstr ""
+"Sve radnje & filteri su dobili veliki fejslifting da se prilagođavaju ACF "
+"još lakše ! molim"
+
+#: core/controllers/field_groups.php:349
+msgid "read this guide"
+msgstr "pročitajte ovaj vodič"
+
+#: core/controllers/field_groups.php:349
+msgid "to find the updated naming convention."
+msgstr "da pronađete ažuriranu konvenciju imenovanja ."
+
+#: core/controllers/field_groups.php:351
+msgid "Preview draft is now working!"
+msgstr "Pregled nacrta sada radi !"
+
+#: core/controllers/field_groups.php:352
+msgid "This bug has been squashed along with many other little critters!"
+msgstr "Ovaj bug je zgnječen zajedno sa mnogim drugim malim stvorenjima !"
+
+#: core/controllers/field_groups.php:352
+msgid "See the full changelog"
+msgstr "Pogledajte punu changelog"
+
+#: core/controllers/field_groups.php:356
+msgid "Important"
+msgstr "važno"
+
+#: core/controllers/field_groups.php:358
+msgid "Database Changes"
+msgstr "Database Changes"
+
+#: core/controllers/field_groups.php:359
+msgid ""
+"Absolutely <strong>no</strong> changes have been made to the database "
+"between versions 3 and 4. This means you can roll back to version 3 without "
+"any issues."
+msgstr ""
+"Apsolutne <strong>no</strong> promene su napravljene na bazi podataka između "
+"verzije 3 i 4 . To znači da možete da se vratite na verziju 3 bez problema ."
+
+#: core/controllers/field_groups.php:361
+msgid "Potential Issues"
+msgstr "Potencijalna izdanja"
+
+#: core/controllers/field_groups.php:362
+msgid ""
+"Due to the sizable changes surrounding Add-ons, field types and action/"
+"filters, your website may not operate correctly. It is important that you "
+"read the full"
+msgstr ""
+"Zbog značajnih promena okolnih dodataka , tipova polja i akcionih / "
+"filtera , vaš sajt neće raditi pravilno . Važno je da ste pročitali sve"
+
+#: core/controllers/field_groups.php:362
+msgid "Migrating from v3 to v4"
+msgstr "Migriranje iz v3 u v4"
+
+#: core/controllers/field_groups.php:362
+msgid "guide to view the full list of changes."
+msgstr "vodič za pregled cele liste promena."
+
+#: core/controllers/field_groups.php:365
+msgid "Really Important!"
+msgstr "Jako važno!"
+
+#: core/controllers/field_groups.php:365
+msgid ""
+"If you updated the ACF plugin without prior knowledge of such changes, "
+"please roll back to the latest"
+msgstr ""
+"Ako ste ažurirali ACF plugin bez prethodnog znanja tih promena , molimo "
+"vratite nanajnoviji"
+
+#: core/controllers/field_groups.php:365
+msgid "version 3"
+msgstr "verzija 3"
+
+#: core/controllers/field_groups.php:365
+msgid "of this plugin."
+msgstr "ovog plugina."
+
+#: core/controllers/field_groups.php:370
+msgid "Thank You"
+msgstr "Hvala"
+
+#: core/controllers/field_groups.php:371
+msgid ""
+"A <strong>BIG</strong> thank you to everyone who has helped test the version "
+"4 beta and for all the support I have received."
+msgstr ""
+"<strong>BIG</strong> hvala svima koji su pomogli testiranju verzije 4 beta i "
+"za svu podršku koju sam dobio ."
+
+#: core/controllers/field_groups.php:372
+msgid "Without you all, this release would not have been possible!"
+msgstr "Bez svih vas ovo ne bi bilo izvodljivo!!"
+
+#: core/controllers/field_groups.php:376
+msgid "Changelog for"
+msgstr "Changelog za"
+
+#: core/controllers/field_groups.php:393
+msgid "Learn more"
+msgstr "Naučiti još"
+
+#: core/controllers/field_groups.php:399
+msgid "Overview"
+msgstr "Pregled"
+
+#: core/controllers/field_groups.php:401
+msgid ""
+"Previously, all Add-ons were unlocked via an activation code (purchased from "
+"the ACF Add-ons store). New to v4, all Add-ons act as separate plugins which "
+"need to be individually downloaded, installed and updated."
+msgstr ""
+"Ranije , svi dodaci su bili otključana preko aktivacionog koda ( kupljenog "
+"od strane ACF prodavnica dodatak ) . Novi na v4 , svi dodaci deluju kao "
+"zasebni pluginovi koje treba pojedinačno preuzeti , instalirati i ažurirati ."
+
+#: core/controllers/field_groups.php:403
+msgid ""
+"This page will assist you in downloading and installing each available Add-"
+"on."
+msgstr ""
+"Ova stranica će vam pomoći u preuzimate i instalirate svaki dostupan "
+"dodatak ."
+
+#: core/controllers/field_groups.php:405
+msgid "Available Add-ons"
+msgstr "Dostupni dodaci"
+
+#: core/controllers/field_groups.php:407
+msgid "The following Add-ons have been detected as activated on this website."
+msgstr "Sledeći dodaci su detektovani kao aktivirani na ovom sajtu."
+
+#: core/controllers/field_groups.php:420
+msgid "Name"
+msgstr "Ime"
+
+#: core/controllers/field_groups.php:421
+msgid "Activation Code"
+msgstr "Kod aktivacije"
+
+#: core/controllers/field_groups.php:453
+msgid "Flexible Content"
+msgstr "Fleksibilan sadržaj"
+
+#: core/controllers/field_groups.php:463
+msgid "Installation"
+msgstr "Instalacija"
+
+#: core/controllers/field_groups.php:465
+msgid "For each Add-on available, please perform the following:"
+msgstr "Za svaki dostupan dodatak, uradite sledeće"
+
+#: core/controllers/field_groups.php:467
+msgid "Download the Add-on plugin (.zip file) to your desktop"
+msgstr "Download plugin podatke (.zip file)za vaš desktop"
+
+#: core/controllers/field_groups.php:468
+msgid "Navigate to"
+msgstr "Navigacija do"
+
+#: core/controllers/field_groups.php:468
+msgid "Plugins > Add New > Upload"
+msgstr "Plugins > Dodati nove > Upload"
+
+#: core/controllers/field_groups.php:469
+msgid "Use the uploader to browse, select and install your Add-on (.zip file)"
+msgstr ""
+"Koristite uploader za pretragu, selektujte i instalirajte vaše dodatke(.zip "
+"file)"
+
+#: core/controllers/field_groups.php:470
+msgid ""
+"Once the plugin has been uploaded and installed, click the 'Activate Plugin' "
+"link"
+msgstr ""
+"Nakon što je plugin uploadovan i instaliran, kliknite na 'Aktivirajte "
+"Plugin' link"
+
+#: core/controllers/field_groups.php:471
+msgid "The Add-on is now installed and activated!"
+msgstr "Podaci su sada instalirani i aktivirani!"
+
+#: core/controllers/field_groups.php:485
+msgid "Awesome. Let's get to work"
+msgstr "Sjajno. Hajde da počnemo"
+
+#: core/controllers/input.php:63
+msgid "Expand Details"
+msgstr "Produžiti detalje"
+
+#: core/controllers/input.php:64
+msgid "Collapse Details"
+msgstr "Srušiti detalje"
+
+#: core/controllers/input.php:67
+msgid "Validation Failed. One or more fields below are required."
+msgstr "Validacija polja. Jedno ili više polja ispod su potrebna."
+
+#: core/controllers/upgrade.php:86
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: core/controllers/upgrade.php:139
+msgid "What's new"
+msgstr "Šta je novo"
+
+#: core/controllers/upgrade.php:150
+msgid "credits"
+msgstr "zaskuge"
+
+#: core/controllers/upgrade.php:684
+msgid "Modifying field group options 'show on page'"
+msgstr "Modifikovati opcije polja grupe 'prikazano na stranici'"
+
+#: core/controllers/upgrade.php:738
+msgid "Modifying field option 'taxonomy'"
+msgstr "Modifikovati opcije polja  'taxonomija'"
+
+#: core/controllers/upgrade.php:835
+msgid "Moving user custom fields from wp_options to wp_usermeta'"
+msgstr "Pomeriti custom polja korisnika iz wp_options u wp_usermeta'"
+
+#: core/fields/_base.php:124 core/views/meta_box_location.php:74
+msgid "Basic"
+msgstr "Osnovno"
+
+#: core/fields/checkbox.php:19 core/fields/taxonomy.php:319
+msgid "Checkbox"
+msgstr "Checkbox"
+
+#: core/fields/checkbox.php:20 core/fields/radio.php:19
+#: core/fields/select.php:19 core/fields/true_false.php:20
+msgid "Choice"
+msgstr "Izbor"
+
+#: core/fields/checkbox.php:146 core/fields/radio.php:147
+#: core/fields/select.php:177
+msgid "Choices"
+msgstr "Izbori"
+
+#: core/fields/checkbox.php:147 core/fields/select.php:178
+msgid "Enter each choice on a new line."
+msgstr "Unesite izbor na novu rečenicu."
+
+#: core/fields/checkbox.php:148 core/fields/select.php:179
+msgid "For more control, you may specify both a value and label like this:"
+msgstr "Za više kontrole možete da odredite obe vrednosti i označite ovako"
+
+#: core/fields/checkbox.php:149 core/fields/radio.php:153
+#: core/fields/select.php:180
+msgid "red : Red"
+msgstr "crveno : Crveno"
+
+#: core/fields/checkbox.php:149 core/fields/radio.php:154
+#: core/fields/select.php:180
+msgid "blue : Blue"
+msgstr "plavo : Plavo"
+
+#: core/fields/checkbox.php:166 core/fields/color_picker.php:89
+#: core/fields/email.php:106 core/fields/number.php:116
+#: core/fields/radio.php:196 core/fields/select.php:197
+#: core/fields/text.php:116 core/fields/textarea.php:96
+#: core/fields/true_false.php:94 core/fields/wysiwyg.php:198
+msgid "Default Value"
+msgstr "Default  vrednost"
+
+#: core/fields/checkbox.php:167 core/fields/select.php:198
+msgid "Enter each default value on a new line"
+msgstr "Uneti default vrednost nanovoj rečenic"
+
+#: core/fields/checkbox.php:183 core/fields/message.php:20
+#: core/fields/radio.php:212 core/fields/tab.php:20
+msgid "Layout"
+msgstr "Layout"
+
+#: core/fields/checkbox.php:194 core/fields/radio.php:223
+msgid "Vertical"
+msgstr "Vertikalno"
+
+#: core/fields/checkbox.php:195 core/fields/radio.php:224
+msgid "Horizontal"
+msgstr "Horizontalno"
+
+#: core/fields/color_picker.php:19
+msgid "Color Picker"
+msgstr "Birač boja"
+
+#: core/fields/color_picker.php:20 core/fields/date_picker/date_picker.php:20
+#: core/fields/google-map.php:19
+msgid "jQuery"
+msgstr "jQuery"
+
+#: core/fields/date_picker/date_picker.php:19
+msgid "Date Picker"
+msgstr "Birač datuma"
+
+#: core/fields/date_picker/date_picker.php:55
+msgid "Done"
+msgstr "Gotovo"
+
+#: core/fields/date_picker/date_picker.php:56
+msgid "Today"
+msgstr "Danas"
+
+#: core/fields/date_picker/date_picker.php:59
+msgid "Show a different month"
+msgstr "Prikazati različit mesec"
+
+#: core/fields/date_picker/date_picker.php:126
+msgid "Save format"
+msgstr "Sačuvati format"
+
+#: core/fields/date_picker/date_picker.php:127
+msgid ""
+"This format will determine the value saved to the database and returned via "
+"the API"
+msgstr ""
+"Ovaj format će odrediti vrednost sačuvanu u bazi podataka i vratiti preko  "
+"API"
+
+#: core/fields/date_picker/date_picker.php:128
+msgid "\"yymmdd\" is the most versatile save format. Read more about"
+msgstr "\"ggmmdd\" je najsvestraniji sačuvani format. Pročitajte više o tome"
+
+#: core/fields/date_picker/date_picker.php:128
+#: core/fields/date_picker/date_picker.php:144
+msgid "jQuery date formats"
+msgstr "jQuery formati datuma"
+
+#: core/fields/date_picker/date_picker.php:142
+msgid "Display format"
+msgstr "Prikazati format"
+
+#: core/fields/date_picker/date_picker.php:143
+msgid "This format will be seen by the user when entering a value"
+msgstr "Ovaj format će videti korisnik kada unosi vrednost"
+
+#: core/fields/date_picker/date_picker.php:144
+msgid ""
+"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
+"about"
+msgstr ""
+"\"dd/mm/gg\" ili \"mm/dd/gg\" su formati koji se najviše koriste. Pročitajte "
+"više o tome"
+
+#: core/fields/date_picker/date_picker.php:158
+msgid "Week Starts On"
+msgstr "Sedmica počinje od"
+
+#: core/fields/dummy.php:19
+msgid "Dummy"
+msgstr "Lažno"
+
+#: core/fields/email.php:19
+msgid "Email"
+msgstr "Email"
+
+#: core/fields/email.php:107 core/fields/number.php:117
+#: core/fields/text.php:117 core/fields/textarea.php:97
+#: core/fields/wysiwyg.php:199
+msgid "Appears when creating a new post"
+msgstr "APojavljuje se kada pravite novi post"
+
+#: core/fields/email.php:123 core/fields/number.php:133
+#: core/fields/password.php:105 core/fields/text.php:131
+#: core/fields/textarea.php:111
+msgid "Placeholder Text"
+msgstr "Šuvar mesta teksta"
+
+#: core/fields/email.php:124 core/fields/number.php:134
+#: core/fields/password.php:106 core/fields/text.php:132
+#: core/fields/textarea.php:112
+msgid "Appears within the input"
+msgstr "Pojavljuje se unutar unosa"
+
+#: core/fields/email.php:138 core/fields/number.php:148
+#: core/fields/password.php:120 core/fields/text.php:146
+msgid "Prepend"
+msgstr "Dodati"
+
+#: core/fields/email.php:139 core/fields/number.php:149
+#: core/fields/password.php:121 core/fields/text.php:147
+msgid "Appears before the input"
+msgstr "Pojavljuje se pre unosa"
+
+#: core/fields/email.php:153 core/fields/number.php:163
+#: core/fields/password.php:135 core/fields/text.php:161
+msgid "Append"
+msgstr "Dodati"
+
+#: core/fields/email.php:154 core/fields/number.php:164
+#: core/fields/password.php:136 core/fields/text.php:162
+msgid "Appears after the input"
+msgstr "Pojavljuje se nakon unosa"
+
+#: core/fields/file.php:19
+msgid "File"
+msgstr "Fajl"
+
+#: core/fields/file.php:20 core/fields/image.php:20 core/fields/wysiwyg.php:36
+msgid "Content"
+msgstr "Sadržaj"
+
+#: core/fields/file.php:26
+msgid "Select File"
+msgstr "Selektuj fajl"
+
+#: core/fields/file.php:27
+msgid "Edit File"
+msgstr "Edituj fajl"
+
+#: core/fields/file.php:28
+msgid "Update File"
+msgstr "Update-ovati fajl"
+
+#: core/fields/file.php:29 core/fields/image.php:30
+msgid "uploaded to this post"
+msgstr "uploadovati u ovaj fajl"
+
+#: core/fields/file.php:123
+msgid "No File Selected"
+msgstr "Nijedan fajl nije izabran"
+
+#: core/fields/file.php:123
+msgid "Add File"
+msgstr "Dodati fajl"
+
+#: core/fields/file.php:153 core/fields/image.php:118
+#: core/fields/taxonomy.php:367
+msgid "Return Value"
+msgstr "Povratna vrednost"
+
+#: core/fields/file.php:164
+msgid "File Object"
+msgstr "Objekat fajla"
+
+#: core/fields/file.php:165
+msgid "File URL"
+msgstr "URL fajl"
+
+#: core/fields/file.php:166
+msgid "File ID"
+msgstr "ID fajla"
+
+#: core/fields/file.php:175 core/fields/image.php:158
+msgid "Library"
+msgstr "Biblioteka"
+
+#: core/fields/file.php:187 core/fields/image.php:171
+msgid "Uploaded to post"
+msgstr "Uploadovano za post"
+
+#: core/fields/google-map.php:18
+msgid "Google Map"
+msgstr "Google Mapa"
+
+#: core/fields/google-map.php:33
+msgid "Locating"
+msgstr "Lokacija"
+
+#: core/fields/google-map.php:34
+msgid "Sorry, this browser does not support geolocation"
+msgstr "Preraživač ne podržava geolokaciju"
+
+#: core/fields/google-map.php:120
+msgid "Clear location"
+msgstr "Obrisati lokaciju"
+
+#: core/fields/google-map.php:125
+msgid "Find current location"
+msgstr "Pronadji trenutnu lokaciju"
+
+#: core/fields/google-map.php:126
+msgid "Search for address..."
+msgstr "Pretraga za adresu..."
+
+#: core/fields/google-map.php:162
+msgid "Center"
+msgstr "Centar"
+
+#: core/fields/google-map.php:163
+msgid "Center the initial map"
+msgstr "Centar inicijalne mape"
+
+#: core/fields/google-map.php:199
+msgid "Zoom"
+msgstr "Zoom"
+
+#: core/fields/google-map.php:200
+msgid "Set the initial zoom level"
+msgstr "Namestiti inicijalni nivo zoom-a"
+
+#: core/fields/google-map.php:217
+msgid "Height"
+msgstr "Visina"
+
+#: core/fields/google-map.php:218
+msgid "Customise the map height"
+msgstr "Customise visinu mape"
+
+#: core/fields/image.php:19
+msgid "Image"
+msgstr "Slika"
+
+#: core/fields/image.php:27
+msgid "Select Image"
+msgstr "Selektuj sliku"
+
+#: core/fields/image.php:28
+msgid "Edit Image"
+msgstr "Edituj sliku"
+
+#: core/fields/image.php:29
+msgid "Update Image"
+msgstr "Updateuj sliku"
+
+#: core/fields/image.php:83
+msgid "Remove"
+msgstr "Ukloniti"
+
+#: core/fields/image.php:84 core/views/meta_box_fields.php:108
+msgid "Edit"
+msgstr "Edituj"
+
+#: core/fields/image.php:90
+msgid "No image selected"
+msgstr "Nijedna slika nje izabrana"
+
+#: core/fields/image.php:90
+msgid "Add Image"
+msgstr "Dodati sliku"
+
+#: core/fields/image.php:119 core/fields/relationship.php:573
+msgid "Specify the returned value on front end"
+msgstr "Odrediti vraćenu vrednost prednjeg kraja"
+
+#: core/fields/image.php:129
+msgid "Image Object"
+msgstr "Objekat slike"
+
+#: core/fields/image.php:130
+msgid "Image URL"
+msgstr "URL slike"
+
+#: core/fields/image.php:131
+msgid "Image ID"
+msgstr " ID slike"
+
+#: core/fields/image.php:139
+msgid "Preview Size"
+msgstr "Pregledati veličinu"
+
+#: core/fields/image.php:140
+msgid "Shown when entering data"
+msgstr "Prikazati kada se unose podaci"
+
+#: core/fields/image.php:159
+msgid "Limit the media library choice"
+msgstr "Limitirati biblioteku medija"
+
+#: core/fields/message.php:19 core/fields/message.php:70
+#: core/fields/true_false.php:79
+msgid "Message"
+msgstr "Poruka"
+
+#: core/fields/message.php:71
+msgid "Text &amp; HTML entered here will appear inline with the fields"
+msgstr "Text &amp; HTML unešen ovde će se pojaviti u sa poljima"
+
+#: core/fields/message.php:72
+msgid "Please note that all text will first be passed through the wp function "
+msgstr "Imajte na umeu da će sav tekst biti prvo prenešen kroz wp funkciju"
+
+#: core/fields/number.php:19
+msgid "Number"
+msgstr "Broj"
+
+#: core/fields/number.php:178
+msgid "Minimum Value"
+msgstr "Minimalna vrednost"
+
+#: core/fields/number.php:194
+msgid "Maximum Value"
+msgstr "Maksimalna vrednost"
+
+#: core/fields/number.php:210
+msgid "Step Size"
+msgstr "Veličina koraka"
+
+#: core/fields/page_link.php:18
+msgid "Page Link"
+msgstr "Link stranice"
+
+#: core/fields/page_link.php:19 core/fields/post_object.php:19
+#: core/fields/relationship.php:19 core/fields/taxonomy.php:19
+#: core/fields/user.php:19
+msgid "Relational"
+msgstr "Odnosno"
+
+#: core/fields/page_link.php:103 core/fields/post_object.php:268
+#: core/fields/relationship.php:592 core/fields/relationship.php:671
+#: core/views/meta_box_location.php:75
+msgid "Post Type"
+msgstr "Tip posta"
+
+#: core/fields/page_link.php:127 core/fields/post_object.php:317
+#: core/fields/select.php:214 core/fields/taxonomy.php:333
+#: core/fields/user.php:275
+msgid "Allow Null?"
+msgstr "Dozvoliti nulul?"
+
+#: core/fields/page_link.php:148 core/fields/post_object.php:338
+#: core/fields/select.php:233
+msgid "Select multiple values?"
+msgstr "Izabrati razne vrednosti?"
+
+#: core/fields/password.php:19
+msgid "Password"
+msgstr "Šifra"
+
+#: core/fields/post_object.php:18
+msgid "Post Object"
+msgstr "Objekat posta"
+
+#: core/fields/post_object.php:292 core/fields/relationship.php:616
+msgid "Filter from Taxonomy"
+msgstr "Filter iz Taksonomije"
+
+#: core/fields/radio.php:18
+msgid "Radio Button"
+msgstr "Radio dugme"
+
+#: core/fields/radio.php:105 core/views/meta_box_location.php:91
+msgid "Other"
+msgstr "Ostalo"
+
+#: core/fields/radio.php:148
+msgid "Enter your choices one per line"
+msgstr "Unesite vaš izbor po rečenici"
+
+#: core/fields/radio.php:150
+msgid "Red"
+msgstr "Crveno"
+
+#: core/fields/radio.php:151
+msgid "Blue"
+msgstr "Plavo"
+
+#: core/fields/radio.php:175
+msgid "Add 'other' choice to allow for custom values"
+msgstr "Dodati 'drugi' izbor da biste dodali za custom vrednost"
+
+#: core/fields/radio.php:187
+msgid "Save 'other' values to the field's choices"
+msgstr "Sačuvati 'druge' vrednosti za izbor polja"
+
+#: core/fields/relationship.php:18
+msgid "Relationship"
+msgstr "Odnos"
+
+#: core/fields/relationship.php:29
+msgid "Maximum values reached ( {max} values )"
+msgstr "Maksimum vrednosti postignute( {max} vrednosti )"
+
+#: core/fields/relationship.php:428
+msgid "Search..."
+msgstr "Pretraga..."
+
+#: core/fields/relationship.php:439
+msgid "Filter by post type"
+msgstr "Filter po postu tipa"
+
+#: core/fields/relationship.php:572
+msgid "Return Format"
+msgstr "Vraćeni format"
+
+#: core/fields/relationship.php:583
+msgid "Post Objects"
+msgstr "Objekti posta"
+
+#: core/fields/relationship.php:584
+msgid "Post IDs"
+msgstr "Post IDs"
+
+#: core/fields/relationship.php:650
+msgid "Search"
+msgstr "Pretraga"
+
+#: core/fields/relationship.php:651
+msgid "Post Type Select"
+msgstr "Izabrati tip posta"
+
+#: core/fields/relationship.php:659
+msgid "Elements"
+msgstr "Elementi"
+
+#: core/fields/relationship.php:660
+msgid "Selected elements will be displayed in each result"
+msgstr "Selektovani elementi koji će biti prikazani u svakom rezultatu"
+
+#: core/fields/relationship.php:669 core/views/meta_box_options.php:106
+msgid "Featured Image"
+msgstr "Trenutne slike"
+
+#: core/fields/relationship.php:670
+msgid "Post Title"
+msgstr "Naslov posta"
+
+#: core/fields/relationship.php:682
+msgid "Maximum posts"
+msgstr "Maksimum postovi"
+
+#: core/fields/select.php:18 core/fields/select.php:109
+#: core/fields/taxonomy.php:324 core/fields/user.php:266
+msgid "Select"
+msgstr "Izabrati"
+
+#: core/fields/tab.php:19
+msgid "Tab"
+msgstr "Tab"
+
+#: core/fields/tab.php:68
+msgid ""
+"Use \"Tab Fields\" to better organize your edit screen by grouping your "
+"fields together under separate tab headings."
+msgstr ""
+"Koristite \" Tab polja \" da bolje organizujete svoj ekran za editovanje "
+"grupisanjem svog polja zajedno pod posebnim tab naslovima."
+
+#: core/fields/tab.php:69
+msgid ""
+"All the fields following this \"tab field\" (or until another \"tab field\" "
+"is defined) will be grouped together."
+msgstr ""
+"Sva polja koja slede ovo \" tab polje \" ( ili dok drugo \" tab polje \" "
+"nije definisano ) će biti grupisana zajedno ."
+
+#: core/fields/tab.php:70
+msgid "Use multiple tabs to divide your fields into sections."
+msgstr "Koristite razne tabove za deljenje vaših polja na sekcije."
+
+#: core/fields/taxonomy.php:18 core/fields/taxonomy.php:278
+msgid "Taxonomy"
+msgstr "Taxonomy"
+
+#: core/fields/taxonomy.php:222 core/fields/taxonomy.php:231
+msgid "None"
+msgstr "Nijedan"
+
+#: core/fields/taxonomy.php:308 core/fields/user.php:251
+#: core/views/meta_box_fields.php:77 core/views/meta_box_fields.php:159
+msgid "Field Type"
+msgstr "Tip polja"
+
+#: core/fields/taxonomy.php:318 core/fields/user.php:260
+msgid "Multiple Values"
+msgstr "Razne vrednosti"
+
+#: core/fields/taxonomy.php:320 core/fields/user.php:262
+msgid "Multi Select"
+msgstr "Više izbora"
+
+#: core/fields/taxonomy.php:322 core/fields/user.php:264
+msgid "Single Value"
+msgstr "Jedna vrednost"
+
+#: core/fields/taxonomy.php:323
+msgid "Radio Buttons"
+msgstr "Radio dugmad"
+
+#: core/fields/taxonomy.php:352
+msgid "Load & Save Terms to Post"
+msgstr "Učitavanje i Sačuvati termine za post"
+
+#: core/fields/taxonomy.php:360
+msgid ""
+"Load value based on the post's terms and update the post's terms on save"
+msgstr ""
+"Učitaj vrednost baziranu na terminima posta i updatuj termine postova na "
+"sačuvati"
+
+#: core/fields/taxonomy.php:377
+msgid "Term Object"
+msgstr "Objekat termina"
+
+#: core/fields/taxonomy.php:378
+msgid "Term ID"
+msgstr "Term ID"
+
+#: core/fields/text.php:19
+msgid "Text"
+msgstr "Tekst"
+
+#: core/fields/text.php:176 core/fields/textarea.php:141
+msgid "Formatting"
+msgstr "Formatiranje"
+
+#: core/fields/text.php:177 core/fields/textarea.php:142
+msgid "Affects value on front end"
+msgstr "Vrednost efekata na prednjem kraju"
+
+#: core/fields/text.php:186 core/fields/textarea.php:151
+msgid "No formatting"
+msgstr "Nema formatiranja"
+
+#: core/fields/text.php:187 core/fields/textarea.php:153
+msgid "Convert HTML into tags"
+msgstr "Konvertuj HTML u tagove"
+
+#: core/fields/text.php:195 core/fields/textarea.php:126
+msgid "Character Limit"
+msgstr "Limit karaktera"
+
+#: core/fields/text.php:196 core/fields/textarea.php:127
+msgid "Leave blank for no limit"
+msgstr "Ostaviti prazno za bez limita"
+
+#: core/fields/textarea.php:19
+msgid "Text Area"
+msgstr "Područje teksta"
+
+#: core/fields/textarea.php:152
+msgid "Convert new lines into &lt;br /&gt; tags"
+msgstr "Konvertovati nove rešenice u &lt;br /&gt; tags"
+
+#: core/fields/true_false.php:19
+msgid "True / False"
+msgstr "Tačno / Pogrešno"
+
+#: core/fields/true_false.php:80
+msgid "eg. Show extra content"
+msgstr "pr. Prikazati ekstra sadržaj"
+
+#: core/fields/user.php:18 core/views/meta_box_location.php:94
+msgid "User"
+msgstr "Korisnik"
+
+#: core/fields/user.php:224
+msgid "Filter by role"
+msgstr "Filter bpo ulozi"
+
+#: core/fields/wysiwyg.php:35
+msgid "Wysiwyg Editor"
+msgstr "Wysiwyg Editor"
+
+#: core/fields/wysiwyg.php:213
+msgid "Toolbar"
+msgstr "Toolbar"
+
+#: core/fields/wysiwyg.php:245
+msgid "Show Media Upload Buttons?"
+msgstr "Prikazati dugmada za upload medija?"
+
+#: core/views/meta_box_fields.php:24
+msgid "New Field"
+msgstr "Novo polje"
+
+#: core/views/meta_box_fields.php:58
+msgid "Field type does not exist"
+msgstr "Tip polja ne postoji"
+
+#: core/views/meta_box_fields.php:74
+msgid "Field Order"
+msgstr "Narudžbina polja"
+
+#: core/views/meta_box_fields.php:75 core/views/meta_box_fields.php:127
+msgid "Field Label"
+msgstr "Oznaka polja"
+
+#: core/views/meta_box_fields.php:76 core/views/meta_box_fields.php:143
+msgid "Field Name"
+msgstr "Ime polja"
+
+#: core/views/meta_box_fields.php:78
+msgid "Field Key"
+msgstr "Ključ polja"
+
+#: core/views/meta_box_fields.php:90
+msgid ""
+"No fields. Click the <strong>+ Add Field</strong> button to create your "
+"first field."
+msgstr ""
+"Nema polja. Klik na <strong>+ Dodat polje</strong> dugme za stvaranje vašeg "
+"prvog polja."
+
+#: core/views/meta_box_fields.php:105 core/views/meta_box_fields.php:108
+msgid "Edit this Field"
+msgstr "Editovati ovo polje"
+
+#: core/views/meta_box_fields.php:109
+msgid "Read documentation for this field"
+msgstr "Pročitati dokumentaciju za ovo polje"
+
+#: core/views/meta_box_fields.php:109
+msgid "Docs"
+msgstr "Docs"
+
+#: core/views/meta_box_fields.php:110
+msgid "Duplicate this Field"
+msgstr "Duplicate this Field"
+
+#: core/views/meta_box_fields.php:110
+msgid "Duplicate"
+msgstr "Duplikovati"
+
+#: core/views/meta_box_fields.php:111
+msgid "Delete this Field"
+msgstr "Obrisati ovo polje"
+
+#: core/views/meta_box_fields.php:111
+msgid "Delete"
+msgstr "Obrisati"
+
+#: core/views/meta_box_fields.php:128
+msgid "This is the name which will appear on the EDIT page"
+msgstr "Ovo je ime koje će se pojaviti na EDIT stranici"
+
+#: core/views/meta_box_fields.php:144
+msgid "Single word, no spaces. Underscores and dashes allowed"
+msgstr "Jedna reč bez razmak. Podvlačenja i tačke dozvoljeno"
+
+#: core/views/meta_box_fields.php:173
+msgid "Field Instructions"
+msgstr "Polja uputstava"
+
+#: core/views/meta_box_fields.php:174
+msgid "Instructions for authors. Shown when submitting data"
+msgstr "Uputstva za autore. Prikazati kada se podnose podaci"
+
+#: core/views/meta_box_fields.php:186
+msgid "Required?"
+msgstr "Potrebno?"
+
+#: core/views/meta_box_fields.php:209
+msgid "Conditional Logic"
+msgstr "Kondicionalna logika"
+
+#: core/views/meta_box_fields.php:260 core/views/meta_box_location.php:117
+msgid "is equal to"
+msgstr "jednako je"
+
+#: core/views/meta_box_fields.php:261 core/views/meta_box_location.php:118
+msgid "is not equal to"
+msgstr "nije jednako"
+
+#: core/views/meta_box_fields.php:279
+msgid "Show this field when"
+msgstr "Prikaži ovo polje kada"
+
+#: core/views/meta_box_fields.php:285
+msgid "all"
+msgstr "sve"
+
+#: core/views/meta_box_fields.php:286
+msgid "any"
+msgstr "bilo koje"
+
+#: core/views/meta_box_fields.php:289
+msgid "these rules are met"
+msgstr "ova pravila su ispunjena"
+
+#: core/views/meta_box_fields.php:303
+msgid "Close Field"
+msgstr "Polje blizu"
+
+#: core/views/meta_box_fields.php:316
+msgid "Drag and drop to reorder"
+msgstr "Drag & drop da biste ponovo naručili"
+
+#: core/views/meta_box_fields.php:317
+msgid "+ Add Field"
+msgstr "+ Dodati polje"
+
+#: core/views/meta_box_location.php:48
+msgid "Rules"
+msgstr "Pravila"
+
+#: core/views/meta_box_location.php:49
+msgid ""
+"Create a set of rules to determine which edit screens will use these "
+"advanced custom fields"
+msgstr ""
+"Napraviti set pravila za ustanovljavanje koji ekran za editovanje će "
+"koristiti ovea unapredjena custom polja"
+
+#: core/views/meta_box_location.php:60
+msgid "Show this field group if"
+msgstr "Prikaži ovo polje grupe ako"
+
+#: core/views/meta_box_location.php:76
+msgid "Logged in User Type"
+msgstr "Ulogovano u tip korisnika"
+
+#: core/views/meta_box_location.php:78 core/views/meta_box_location.php:79
+msgid "Page"
+msgstr "Stranica"
+
+#: core/views/meta_box_location.php:80
+msgid "Page Type"
+msgstr "Tip stranice"
+
+#: core/views/meta_box_location.php:81
+msgid "Page Parent"
+msgstr "Roditelj stranica"
+
+#: core/views/meta_box_location.php:82
+msgid "Page Template"
+msgstr "Template stranice"
+
+#: core/views/meta_box_location.php:84 core/views/meta_box_location.php:85
+msgid "Post"
+msgstr "Post"
+
+#: core/views/meta_box_location.php:86
+msgid "Post Category"
+msgstr "Kategorija posta"
+
+#: core/views/meta_box_location.php:87
+msgid "Post Format"
+msgstr "Format posta"
+
+#: core/views/meta_box_location.php:88
+msgid "Post Status"
+msgstr "Status posta"
+
+#: core/views/meta_box_location.php:89
+msgid "Post Taxonomy"
+msgstr " Taksonomija posta"
+
+#: core/views/meta_box_location.php:92
+msgid "Attachment"
+msgstr "Dodatak"
+
+#: core/views/meta_box_location.php:93
+msgid "Taxonomy Term"
+msgstr "Izraz taksonomije"
+
+#: core/views/meta_box_location.php:146
+msgid "and"
+msgstr "i"
+
+#: core/views/meta_box_location.php:161
+msgid "Add rule group"
+msgstr "Dodati pravilo grupi"
+
+#: core/views/meta_box_options.php:25
+msgid "Order No."
+msgstr "Narudžbina br.."
+
+#: core/views/meta_box_options.php:26
+msgid "Field groups are created in order <br />from lowest to highest"
+msgstr "Polja drupa su stvorena redom <br />od najnižeg do najvišeg"
+
+#: core/views/meta_box_options.php:42
+msgid "Position"
+msgstr "Pozicija"
+
+#: core/views/meta_box_options.php:52
+msgid "High (after title)"
+msgstr "Visoko (nakon naslova)"
+
+#: core/views/meta_box_options.php:53
+msgid "Normal (after content)"
+msgstr "Normalno (nakon sadr\aja)"
+
+#: core/views/meta_box_options.php:54
+msgid "Side"
+msgstr "Strana"
+
+#: core/views/meta_box_options.php:64
+msgid "Style"
+msgstr "Stil"
+
+#: core/views/meta_box_options.php:74
+msgid "Seamless (no metabox)"
+msgstr "Bez cilja (nema metabox)"
+
+#: core/views/meta_box_options.php:75
+msgid "Standard (WP metabox)"
+msgstr "Standardno (WP metabox)"
+
+#: core/views/meta_box_options.php:84
+msgid "Hide on screen"
+msgstr "Sakriti na ekranu"
+
+#: core/views/meta_box_options.php:85
+msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
+msgstr ""
+"<b>Selektovati</b> stavke da bi ih<b>sakrili</b> od editovanja na ekranu"
+
+#: core/views/meta_box_options.php:86
+msgid ""
+"If multiple field groups appear on an edit screen, the first field group's "
+"options will be used. (the one with the lowest order number)"
+msgstr ""
+"Ako se više polja grupe pojavljuju na ekranu, prvo polje grupe će se "
+"koristiti . (onaj sa brojem najnižeg reda )"
+
+#: core/views/meta_box_options.php:96
+msgid "Permalink"
+msgstr "Permalink"
+
+#: core/views/meta_box_options.php:97
+msgid "Content Editor"
+msgstr "Editor sadržaja"
+
+#: core/views/meta_box_options.php:98
+msgid "Excerpt"
+msgstr "Izvod"
+
+#: core/views/meta_box_options.php:100
+msgid "Discussion"
+msgstr "Diskusija"
+
+#: core/views/meta_box_options.php:101
+msgid "Comments"
+msgstr "Komentari"
+
+#: core/views/meta_box_options.php:102
+msgid "Revisions"
+msgstr "Revizija"
+
+#: core/views/meta_box_options.php:103
+msgid "Slug"
+msgstr "Slug"
+
+#: core/views/meta_box_options.php:104
+msgid "Author"
+msgstr "Autor"
+
+#: core/views/meta_box_options.php:105
+msgid "Format"
+msgstr "Format"
+
+#: core/views/meta_box_options.php:107
+msgid "Categories"
+msgstr "Kategorije"
+
+#: core/views/meta_box_options.php:108
+msgid "Tags"
+msgstr "Tagovi"
+
+#: core/views/meta_box_options.php:109
+msgid "Send Trackbacks"
+msgstr "PoslatiTrackbacks "

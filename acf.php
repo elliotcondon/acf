@@ -2,8 +2,8 @@
 /*
 Plugin Name: Advanced Custom Fields
 Plugin URI: http://www.advancedcustomfields.com/
-Description: Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerfull API, it’s a must have for any web developer working with WordPress. Field types include: Wysiwyg, text, textarea, image, file, select, checkbox, page link, post object, date picker, color picker, repeater, flexible content, gallery and more!
-Version: 4.3.4
+Description: Customise WordPress with powerful, professional and intuitive fields
+Version: 4.4.7
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 License: GPL
@@ -43,7 +43,7 @@ class acf
 			'path'				=> apply_filters('acf/helpers/get_path', __FILE__),
 			'dir'				=> apply_filters('acf/helpers/get_dir', __FILE__),
 			'hook'				=> basename( dirname( __FILE__ ) ) . '/' . basename( __FILE__ ),
-			'version'			=> '4.3.4',
+			'version'			=> '4.4.7',
 			'upgrade_version'	=> '3.4.1',
 			'include_3rd_party'	=> false
 		);
@@ -159,42 +159,63 @@ class acf
 	*  @return	{mixed}	$post_id
 	*/
 	
-	function get_post_id( $post_id )
-	{
-		// set post_id to global
-		if( !$post_id )
-		{
-			global $post;
+	function get_post_id( $post_id ) {
+		
+		// if not $post_id, load queried object
+		if( !$post_id ) {
 			
-			if( $post )
-			{
-				$post_id = intval( $post->ID );
+			// try for global post (needed for setup_postdata)
+			$post_id = (int) get_the_ID();
+			
+			
+			// try for current screen
+			if( !$post_id ) {
+				
+				$post_id = get_queried_object();
+					
 			}
+			
+		}
+		
+		
+		// $post_id may be an object
+		if( is_object($post_id) ) {
+			
+			// user
+			if( isset($post_id->roles, $post_id->ID) ) {
+			
+				$post_id = 'user_' . $post_id->ID;
+			
+			// term
+			} elseif( isset($post_id->taxonomy, $post_id->term_id) ) {
+			
+				$post_id = $post_id->taxonomy . '_' . $post_id->term_id;
+			
+			// comment
+			} elseif( isset($post_id->comment_ID) ) {
+			
+				$post_id = 'comment_' . $post_id->comment_ID;
+			
+			// post
+			} elseif( isset($post_id->ID) ) {
+			
+				$post_id = $post_id->ID;
+			
+			// default
+			} else {
+				
+				$post_id = 0;
+				
+			}
+			
 		}
 		
 		
 		// allow for option == options
-		if( $post_id == "option" )
-		{
-			$post_id = "options";
-		}
+		if( $post_id === 'option' ) {
 		
-		
-		// object
-		if( is_object($post_id) )
-		{
-			if( isset($post_id->roles, $post_id->ID) )
-			{
-				$post_id = 'user_' . $post_id->ID;
-			}
-			elseif( isset($post_id->taxonomy, $post_id->term_id) )
-			{
-				$post_id = $post_id->taxonomy . '_' . $post_id->term_id;
-			}
-			elseif( isset($post_id->ID) )
-			{
-				$post_id = $post_id->ID;
-			}
+			$post_id = 'options';
+			
 		}
 		
 		
@@ -209,13 +230,16 @@ class acf
 		*  the user wants to load data from a completely different post_id
 		*/
 		
-		if( isset($_GET['preview_id']) )
-		{
+		if( isset($_GET['preview_id']) ) {
+		
 			$autosave = wp_get_post_autosave( $_GET['preview_id'] );
-			if( $autosave->post_parent == $post_id )
-			{
-				$post_id = intval( $autosave->ID );
+			
+			if( $autosave && $autosave->post_parent == $post_id ) {
+			
+				$post_id = (int) $autosave->ID;
+				
 			}
+			
 		}
 		
 		
@@ -510,45 +534,27 @@ class acf
 		));
 		
 		
+		// min
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		
+		
 		// register acf scripts
 		$scripts = array();
 		$scripts[] = array(
 			'handle'	=> 'acf-field-group',
-			'src'		=> $this->settings['dir'] . 'js/field-group.min.js',
+			'src'		=> $this->settings['dir'] . "js/field-group{$min}.js",
 			'deps'		=> array('jquery')
 		);
 		$scripts[] = array(
 			'handle'	=> 'acf-input',
-			'src'		=> $this->settings['dir'] . 'js/input.min.js',
-			'deps'		=> array('jquery')
+			'src'		=> $this->settings['dir'] . "js/input{$min}.js",
+			'deps'		=> array('jquery', 'jquery-ui-core', 'jquery-ui-datepicker')
 		);
-		$scripts[] = array(
-			'handle'	=> 'acf-datepicker',
-			'src'		=> $this->settings['dir'] . 'core/fields/date_picker/jquery.ui.datepicker.js',
-			'deps'		=> array('jquery', 'acf-input')
-		);
-		/*
-		
-		this script is now lazy loaded via JS
-		
-		$scripts[] = array(
-			'handle'	=> 'acf-googlemaps',
-			'src'		=> 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places',
-			'deps'		=> array('jquery'),
-			'in_footer'	=> true
-		);
-		*/
 		
 		
 		foreach( $scripts as $script )
 		{
-			// in footer?
-			if( !isset($script['in_footer']) )
-			{
-				$script['in_footer'] = false;
-			}
-			
-			wp_register_script( $script['handle'], $script['src'], $script['deps'], $this->settings['version'], $script['in_footer'] );
+			wp_register_script( $script['handle'], $script['src'], $script['deps'], $this->settings['version'] );
 		}
 		
 		

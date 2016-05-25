@@ -350,7 +350,8 @@ class acf_field_group
 	
 	function admin_head()
 	{
-		global $post;
+		// global
+		global $wp_version, $post;
 		
 		
 		// l10n
@@ -378,6 +379,7 @@ class acf_field_group
 	acf.nonce = "<?php echo wp_create_nonce( 'acf_nonce' ); ?>";
 	acf.admin_url = "<?php echo admin_url(); ?>";
 	acf.ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
+	acf.wp_version = "<?php echo $wp_version; ?>";
 	
 	
 	// l10n
@@ -701,12 +703,16 @@ class acf_field_group
 			
 			case "post_category" :
 				
-				$category_ids = get_all_category_ids();
-		
-				foreach($category_ids as $cat_id) 
-				{
-				  $cat_name = get_cat_name($cat_id);
-				  $choices[$cat_id] = $cat_name;
+				$terms = get_terms( 'category', array( 'hide_empty' => false ) );
+				
+				if( !empty($terms) ) {
+					
+					foreach( $terms as $term ) {
+						
+						$choices[ $term->term_id ] = $term->name;
+						
+					}
+					
 				}
 				
 				break;
@@ -720,13 +726,13 @@ class acf_field_group
 			case "post_status" :
 				
 				$choices = array(
-					'publish'	=> __( 'Publish' ),
-					'pending'	=> __( 'Pending Review' ),
-					'draft'		=> __( 'Draft' ),
-					'future'	=> __( 'Future' ),
-					'private'	=> __( 'Private' ),
-					'inherit'	=> __( 'Revision' ),
-					'trash'		=> __( 'Trash' )
+					'publish'	=> __( 'Published', 'acf'),
+					'pending'	=> __( 'Pending Review', 'acf'),
+					'draft'		=> __( 'Draft', 'acf'),
+					'future'	=> __( 'Future', 'acf'),
+					'private'	=> __( 'Private', 'acf'),
+					'inherit'	=> __( 'Revision', 'acf'),
+					'trash'		=> __( 'Trash', 'acf'),
 				);
 								
 				break;
@@ -739,7 +745,7 @@ class acf_field_group
 
 				if( is_multisite() )
 				{
-					$choices['super_admin'] = __('Super Admin');
+					$choices['super_admin'] = __('Super Admin', 'acf');
 				}
 								
 				break;

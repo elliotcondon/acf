@@ -323,7 +323,8 @@ table.acf_input td.label ul.hl li a.acf-button {
 
 table.acf_input tbody tr td.label label {
 	display: block;
-	font-size: 12px;
+	font-size: 13px;
+	line-height: 1.4em;
 	font-weight: bold;
 	padding: 0;
 	margin: 0 0 3px;
@@ -340,6 +341,7 @@ table.acf_input tbody tr td.label label span.required {
 table.acf_input tbody tr td.label p {
 	display: block;
 	font-size: 12px;
+	line-height: 1.4em;
 	padding: 0 !important;
 	margin: 3px 0 0 !important;
 	font-style: normal;
@@ -352,7 +354,7 @@ table.acf_input input[type="number"],
 table.acf_input textarea,
 table.acf_input select{
 	width: 99.95%;
-	padding: 5px;
+	padding: 3px 5px;
 	outline: none;
 }
 
@@ -490,6 +492,11 @@ ul.acf-checkbox-list li input {
     width: 18px;
     border-radius: 9px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    
+    -webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none; 	
+	transition: none;
 }
 
 .acf-button-edit,

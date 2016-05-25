@@ -8,43 +8,44 @@
 	background: url(../images/sprite.png) 0 0 no-repeat;
 }
 
-#acf-cols {
-	position: relative; 
-	clear: both;
-}
-
-#acf-col-left {
-	margin-right: 300px;
-}
-
-#acf-col-left .tablenav,
-#acf-col-left p.search-box {
+#acf-field-group-wrap .tablenav,
+#acf-field-group-wrap p.search-box {
 	display: none;
 }
 
-#acf-col-left .wp-list-table .check-column {
+#acf-field-group-wrap .wp-list-table .check-column {
 	padding-left: 5px;
 }
 
-#acf-col-left .wp-list-table th#fields {
+#acf-field-group-wrap .wp-list-table th#fields {
 	width: 25%;
 }
 
-#acf-col-left .tablenav.bottom {
+#acf-field-group-wrap .tablenav.bottom {
 	display: block;
 }
 
-#acf-col-left form {
-	position: relative;
+
+/* columns (replicate post edit layout) */
+.acf-columns-2 {
+	margin-right: 300px;
+}
+
+.acf-columns-2 .acf-column-1 {
 	float: left;
 	width: 100%;
 }
 
-#acf-col-right {
-	float: right; 
-	width: 281px; 
-	padding-top: 37px !important;
+.acf-columns-2 .acf-column-2 {
+	float: right;
+    margin-right: -300px;
+    width: 280px;
 }
+
+.acf-clear {
+	clear: both;
+}
+
 
 .acf-form-table {
 	max-width: 1100px;

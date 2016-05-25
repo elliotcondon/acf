@@ -26,13 +26,7 @@ class acf_field_relationship extends acf_field
 			'return_format'		=>	'object'
 		);
 		$this->l10n = array(
-			'max'		=> __("Maximum values reached ( {max} values )",'acf'),
-			'tmpl_li'	=> '
-							<li>
-								<a href="#" data-post_id="<%= post_id %>"><%= title %><span class="acf-button-remove"></span></a>
-								<input type="hidden" name="<%= name %>[]" value="<%= post_id %>" />
-							</li>
-							'
+			'max'		=> __("Maximum values reached ( {max} values )",'acf')
 		);
 		
 		
@@ -98,25 +92,100 @@ class acf_field_relationship extends acf_field
 		// return
 		return $field;
 	}
-		
-
+	
+	
 	/*
-   	*  posts_where
-   	*
-   	*  @description: 
-   	*  @created: 3/09/12
-   	*/
-   	
-   	function posts_where( $where, &$wp_query )
-	{
-	    global $wpdb;
-	    
-	    if ( $title = $wp_query->get('like_title') )
-	    {
-	        $where .= " AND " . $wpdb->posts . ".post_title LIKE '%" . esc_sql( like_escape(  $title ) ) . "%'";
-	    }
-	    
-	    return $where;
+	*  get_result
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	5/02/2015
+	*  @since	5.1.5
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function get_result( $post, $field, $the_post, $options = array() ) {
+		
+		// right aligned info
+		$title = '<span class="relationship-item-info">';
+			
+			if( in_array('post_type', $field['result_elements']) ) {
+				
+				$post_type_object = get_post_type_object( $post->post_type );
+				$title .= $post_type_object->labels->singular_name;
+				
+			}
+			
+			
+			// WPML
+			if( !empty($options['lang']) ) {
+				
+				$title .= ' (' . $options['lang'] . ')';
+				
+			} elseif( defined('ICL_LANGUAGE_CODE') ) {
+				
+				$title .= ' (' . ICL_LANGUAGE_CODE . ')';
+				
+			}
+			
+		$title .= '</span>';
+		
+		
+		// featured_image
+		if( in_array('featured_image', $field['result_elements']) ) {
+			
+			$image = '';
+			
+			if( $post->post_type == 'attachment' ) {
+				
+				$image = wp_get_attachment_image( $post->ID, array(21, 21) );
+				
+			} else {
+				
+				$image = get_the_post_thumbnail( $post->ID, array(21, 21) );
+				
+			}
+			
+			$title .= '<div class="result-thumbnail">' . $image . '</div>';
+			
+		}
+		
+		
+		// title
+		$post_title = get_the_title( $post->ID );
+		
+		
+		// empty
+		if( $post_title === '' ) {
+			
+			$post_title = __('(no title)', 'acf');
+			
+		}
+		
+		
+		$title .= $post_title;
+		
+		
+		// status
+		if( get_post_status( $post->ID ) != "publish" ) {
+			
+			$title .= ' (' . get_post_status( $post->ID ) . ')';
+			
+		}
+			
+		
+		// filters
+		$title = apply_filters('acf/fields/relationship/result', $title, $post, $field, $the_post);
+		$title = apply_filters('acf/fields/relationship/result/name=' . $field['_name'] , $title, $post, $field, $the_post);
+		$title = apply_filters('acf/fields/relationship/result/key=' . $field['key'], $title, $post, $field, $the_post);
+		
+		
+		// return
+		return $title;
+		
 	}
 	
 	
@@ -238,17 +307,6 @@ class acf_field_relationship extends acf_field
 		unset( $options['taxonomy'] );
 		
 		
-		// search
-		if( $options['s'] )
-		{
-			$options['like_title'] = $options['s'];
-			
-			add_filter( 'posts_where', array($this, 'posts_where'), 10, 2 );
-		}
-		
-		unset( $options['s'] );
-		
-		
 		// load field
 		$field = array();
 		if( $options['ancestor'] )
@@ -286,73 +344,29 @@ class acf_field_relationship extends acf_field
 		
 		
 		// loop
-		while( $wp_query->have_posts() )
-		{
+		while( $wp_query->have_posts() ) {
+			
 			$wp_query->the_post();
 			
 			
-			// right aligned info
-			$title = '<span class="relationship-item-info">';
-				
-				if( in_array('post_type', $field['result_elements']) )
-				{
-					$title .= get_post_type();
-				}
-				
-				// Post Children prepend Parent Title
-				$parent = false;
-				if ( in_array('post_children', $field['filters']) && $post->post_parent !== 0 ) {
-					if ( !$parent || $post->post_parent != $parent->ID )
-						$parent = get_post($post->post_parent);
-					
-					$title .= in_array('post_type', $field['result_elements']) ? " | {$parent->post_title}" : " {$parent->post_title}";
-				}
-				
-				// WPML
-				if( $options['lang'] )
-				{
-					$title .= ' (' . $options['lang'] . ')';
-				}
-				
-			$title .= '</span>';
-			
-			
-			// featured_image
-			if( in_array('featured_image', $field['result_elements']) )
-			{
-				$image = get_the_post_thumbnail( get_the_ID(), array(21, 21) );
-				
-				$title .= '<div class="result-thumbnail">' . $image . '</div>';
-			}
-			
-			
-			// title
-			$title .= get_the_title();
-			
-			
-			// status
-			if( get_post_status() != "publish" )
-			{
-				$title .= ' (' . get_post_status() . ')';
-			}
-				
-			
-			// filters
-			$title = apply_filters('acf/fields/relationship/result', $title, $post, $field, $the_post);
-			$title = apply_filters('acf/fields/relationship/result/name=' . $field['_name'] , $title, $post, $field, $the_post);
-			$title = apply_filters('acf/fields/relationship/result/key=' . $field['key'], $title, $post, $field, $the_post);
+			// get title
+			$title = $this->get_result($post, $field, $the_post, $options);
 			
 			// update html
-			$r['html'] .= '<li><a href="' . get_permalink() . '" data-post_id="' . get_the_ID() . '">' . $title .  '<span class="acf-button-add"></span></a></li>';
+			$r['html'] .= '<li><a href="' . get_permalink($post->ID) . '" data-post_id="' . $post->ID . '">' . $title .  '<span class="acf-button-add"></span></a></li>';
+				
 		}
 		
 		
-		if( (int)$options['paged'] >= $wp_query->max_num_pages )
-		{
+		// next page
+		if( (int)$options['paged'] >= $wp_query->max_num_pages ) {
+			
 			$r['next_page_exists'] = 0;
+			
 		}
 		
 		
+		// reset
 		wp_reset_postdata();
 		
 		
@@ -499,55 +513,7 @@ class acf_field_relationship extends acf_field
 		{
 			foreach( $field['value'] as $p )
 			{
-				// right aligned info
-				$title = '<span class="relationship-item-info">';
-					
-					if( in_array('post_type', $field['result_elements']) )
-					{
-						$title .= $p->post_type;
-					}
-					
-					// Post Children prepend Parent Title
-					$parent = false;
-					if ( in_array('post_children', $field['filters']) && $p->post_parent !== 0 ) {
-						if ( !$parent || $p->post_parent != $parent->ID )
-							$parent = get_post($p->post_parent);
-							
-						$title .= in_array('post_type', $field['result_elements']) ? " | {$parent->post_title}" : " {$parent->post_title}";
-					}
-					
-					// WPML
-					if( defined('ICL_LANGUAGE_CODE') )
-					{
-						$title .= ' (' . ICL_LANGUAGE_CODE . ')';
-					}
-					
-				$title .= '</span>';
-				
-				
-				// featured_image
-				if( in_array('featured_image', $field['result_elements']) )
-				{
-					$image = get_the_post_thumbnail( $p->ID, array(21, 21) );
-					
-					$title .= '<div class="result-thumbnail">' . $image . '</div>';
-				}
-				
-				
-				// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
-				$title .= apply_filters( 'the_title', $p->post_title, $p->ID );
-
-				// status
-				if($p->post_status != "publish")
-				{
-					$title .= " ($p->post_status)";
-				}
-
-				
-				// filters
-				$title = apply_filters('acf/fields/relationship/result', $title, $p, $field, $post);
-				$title = apply_filters('acf/fields/relationship/result/name=' . $field['_name'] , $title, $p, $field, $post);
-				$title = apply_filters('acf/fields/relationship/result/key=' . $field['key'], $title, $p, $field, $post);
+				$title = $this->get_result($p, $field, $post);
 				
 				
 				echo '<li>

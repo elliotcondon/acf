@@ -34,6 +34,49 @@ class acf_field_taxonomy extends acf_field
 	
 	
 	/*
+	*  get_terms
+	*
+	*  This function will return an array of terms for a given field value
+	*
+	*  @type	function
+	*  @date	13/06/2014
+	*  @since	5.0.0
+	*
+	*  @param	$value (array)
+	*  @return	$value
+	*/
+	
+	function get_terms( $value, $taxonomy = 'category' ) {
+		
+		// load terms in 1 query to save multiple DB calls from following code
+		if( count($value) > 1 ) {
+			
+			$terms = get_terms($taxonomy, array(
+				'hide_empty'	=> false,
+				'include'		=> $value,
+			));
+			
+		}
+		
+		
+		// update value to include $post
+		foreach( array_keys($value) as $i ) {
+			
+			$value[ $i ] = get_term( $value[ $i ], $taxonomy );
+			
+		}
+		
+		
+		// filter out null values
+		$value = array_filter($value);
+		
+		
+		// return
+		return $value;
+	}
+	
+	
+	/*
 	*  load_value()
 	*
 	*  This filter is appied to the $value after it is loaded from the db
@@ -49,23 +92,50 @@ class acf_field_taxonomy extends acf_field
 	*  @return	$value - the value to be saved in te database
 	*/
 	
-	function load_value( $value, $post_id, $field )
-	{
-		if( $field['load_save_terms'] )
-		{
-			$value = array();
+	function load_value( $value, $post_id, $field ) {
+		
+		// get valid terms
+		$value = acf_get_valid_terms($value, $field['taxonomy']);
+		
+		
+		// load/save
+		if( $field['load_save_terms'] ) {
 			
-			$terms = get_the_terms( $post_id, $field['taxonomy'] );
+			// bail early if no value
+			if( empty($value) ) {
+				
+				return $value;
+				
+			}
 			
-			if( is_array($terms) ){ foreach( $terms as $term ){
+			
+			// get current ID's
+			$term_ids = wp_get_object_terms($post_id, $field['taxonomy'], array('fields' => 'ids', 'orderby' => 'none'));
+			
+			
+			// case
+			if( empty($term_ids) ) {
 				
-				$value[] = $term->term_id;
+				// 1. no terms for this post
+				return null;
 				
-			}}
+			} elseif( is_array($value) ) {
+				
+				// 2. remove metadata terms which are no longer for this post
+				$value = array_map('intval', $value);
+				$value = array_intersect( $value, $term_ids );
+				
+			} elseif( !in_array($value, $term_ids)) {
+				
+				// 3. term is no longer for this post
+				return null;
+				
+			}
 			
 		}
 		
 		
+		// return
 		return $value;
 	}
 	
@@ -86,25 +156,106 @@ class acf_field_taxonomy extends acf_field
 	*  @return	$value - the modified value
 	*/
 	
-	function update_value( $value, $post_id, $field )
-	{
+	function update_value( $value, $post_id, $field ) {
+		
 		// vars
-		if( is_array($value) )
-		{
+		if( is_array($value) ) {
+		
 			$value = array_filter($value);
+			
 		}
 		
 		
-		if( $field['load_save_terms'] )
-		{
-			// Parse values
-			$value = apply_filters( 'acf/parse_types', $value );
-		
-			wp_set_object_terms( $post_id, $value, $field['taxonomy'], false );
+		// load_save_terms
+		if( $field['load_save_terms'] ) {
+			
+			// vars
+			$taxonomy = $field['taxonomy'];
+			
+			
+			// force value to array
+			$term_ids = acf_force_type_array( $value );
+			
+			
+			// convert to int
+			$term_ids = array_map('intval', $term_ids);
+			
+			
+			// bypass $this->set_terms if called directly from update_field
+			if( !did_action('acf/save_post') ) {
+				
+				wp_set_object_terms( $post_id, $term_ids, $taxonomy, false );
+				
+				return $value;
+				
+			}
+			
+			
+			// initialize
+			if( empty($this->set_terms) ) {
+				
+				// create holder
+				$this->set_terms = array();
+				
+				
+				// add action
+				add_action('acf/save_post', array($this, 'set_terms'), 15, 1);
+				
+			}
+			
+			
+			// append
+			if( empty($this->set_terms[ $taxonomy ]) ) {
+				
+				$this->set_terms[ $taxonomy ] = array();
+				
+			}
+			
+			$this->set_terms[ $taxonomy ] = array_merge($this->set_terms[ $taxonomy ], $term_ids);
+			
 		}
 		
 		
+		// return
 		return $value;
+		
+	}
+	
+	
+	/*
+	*  set_terms
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	26/11/2014
+	*  @since	5.0.9
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function set_terms( $post_id ) {
+		
+		// bail ealry if no terms
+		if( empty($this->set_terms) ) {
+			
+			return;
+			
+		}
+		
+		
+		// loop over terms
+		foreach( $this->set_terms as $taxonomy => $term_ids ){
+			
+			wp_set_object_terms( $post_id, $term_ids, $taxonomy, false );
+			
+		}
+		
+		
+		// reset array ( WP saves twice )
+		$this->set_terms = array();
+		
 	}
 	
 	
@@ -124,42 +275,43 @@ class acf_field_taxonomy extends acf_field
 	*  @return	$value	- the modified value
 	*/
 	
-	function format_value_for_api( $value, $post_id, $field )
-	{
-		// no value?
-		if( !$value )
-		{
+	function format_value_for_api( $value, $post_id, $field ) {
+		
+		// bail early if no value
+		if( empty($value) ) {
+			
 			return $value;
+		
 		}
 		
 		
-		// temp convert to array
-		$is_array = true;
+		// force value to array
+		$value = acf_force_type_array( $value );
 		
-		if( !is_array($value) )
-		{
-			$is_array = false;
-			$value = array( $value );
+		
+		// convert values to int
+		$value = array_map('intval', $value);
+		
+		
+		// load posts if needed
+		if( $field['return_format'] == 'object' ) {
+			
+			
+			// get posts
+			$value = $this->get_terms( $value, $field["taxonomy"] );
+		
 		}
 		
 		
-		// format
-		if( $field['return_format'] == 'object' )
-		{
-			foreach( $value as $k => $v )
-			{
-				$value[ $k ] = get_term( $v, $field['taxonomy'] );
-			}
+		// convert back from array if neccessary
+		if( $field['field_type'] == 'select' || $field['field_type'] == 'radio' ) {
+			
+			$value = array_shift($value);
+			
 		}
 		
-		
-		// de-convert from array
-		if( !$is_array && isset($value[0]) )
-		{
-			$value = $value[0];
-		}
-		
-		// Note: This function can be removed if not used
+
+		// return
 		return $value;
 	}
 
@@ -212,19 +364,19 @@ class acf_field_taxonomy extends acf_field
 		$args = apply_filters('acf/fields/taxonomy/wp_list_categories', $args, $field );
 		
 		?>
-<div class="acf-taxonomy-field">
+<div class="acf-taxonomy-field" data-load_save="<?php echo $field['load_save_terms']; ?>">
 	<input type="hidden" name="<?php echo $single_name; ?>" value="" />
 	
 	<?php if( $field['field_type'] == 'select' ): ?>
 		
-		<select name="<?php echo $field['name']; ?>" <?php if( $field['multiple'] ): ?>multiple="multiple" size="5"<?php endif; ?>>
+		<select id="<?php echo $field['id']; ?>" name="<?php echo $field['name']; ?>" <?php if( $field['multiple'] ): ?>multiple="multiple" size="5"<?php endif; ?>>
 			<?php if( $field['allow_null'] ): ?>
 				<option value=""><?php _e("None", 'acf'); ?></option>
 			<?php endif; ?>
 	
 	<?php else: ?>
 		<div class="categorychecklist-holder">
-		<ul class="categorychecklist<?php if( !$field['load_save_terms'] ){ echo ' no-ajax'; } ?>">
+		<ul class="acf-checkbox-list">
 			<?php if( $field['allow_null'] ): ?>
 				<li>
 					<label class="selectit">
@@ -280,19 +432,22 @@ class acf_field_taxonomy extends acf_field
 	<td>
 		<?php
 		
+		// vars
 		$choices = array();
-		$taxonomies = get_taxonomies( array('public' => true), 'objects' );
+		$taxonomies = get_taxonomies( array(), 'objects' );
+		$ignore = array( 'post_format', 'nav_menu', 'link_category' );
 		
-		foreach($taxonomies as $taxonomy)
+		
+		foreach( $taxonomies as $taxonomy )
 		{
-			$choices[ $taxonomy->name ] = $taxonomy->labels->name;
+			if( in_array($taxonomy->name, $ignore) )
+			{
+				continue;
+			}
+			
+			$choices[ $taxonomy->name ] = $taxonomy->name;
 		}
 		
-		// unset post_format (why is this a public taxonomy?)
-		if( isset($choices['post_format']) )
-		{
-			unset( $choices['post_format']) ;
-		}
 				
 		do_action('acf/create_field', array(
 			'type'	=>	'select',
@@ -300,6 +455,7 @@ class acf_field_taxonomy extends acf_field
 			'value'	=>	$field['taxonomy'],
 			'choices' => $choices,
 		));
+		
 		?>
 	</td>
 </tr>
@@ -422,8 +578,8 @@ class acf_taxonomy_field_walker extends Walker
 		}
 		elseif( $this->field['field_type'] == 'select' )
 		{
-			$indent = str_repeat("&mdash;", $depth);
-			$output .= '<option value="' . $term->term_id . '" ' . ($selected ? 'selected="selected"' : '') . '>' . $indent . ' ' . $term->name . '</option>';
+			$indent = str_repeat("&mdash; ", $depth);
+			$output .= '<option value="' . $term->term_id . '" ' . ($selected ? 'selected="selected"' : '') . '>' . $indent . $term->name . '</option>';
 		}
 		
 	}

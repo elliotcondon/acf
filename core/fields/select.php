@@ -54,7 +54,7 @@ class acf_field_select extends acf_field
 		$optgroup = false;
 		
 		
-		// determin if choices are grouped (2 levels of array)
+		// determine if choices are grouped (2 levels of array)
 		if( is_array($field['choices']) )
 		{
 			foreach( $field['choices'] as $k => $v )

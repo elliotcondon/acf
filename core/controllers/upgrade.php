@@ -46,123 +46,38 @@ class acf_upgrade
 			return;
 		}
 
-
+		
 		// vars
-		$new_version = apply_filters('acf/get_info', 'version');
-		$old_version = get_option('acf_version', false);
-
-
-		if( $new_version != $old_version )
-		{
-			update_option('acf_version', $new_version );
-
-			if( !$old_version )
-			{
-				// do nothing, this is a fresh install
-			}
-			elseif( $old_version < '4.0.0' && $new_version >= '4.0.0')
-			{
-				$url = admin_url('edit.php?post_type=acf&info=whats-new');
-				wp_redirect( $url );
-				exit;
-
-			}
+		$plugin_version = apply_filters('acf/get_info', 'version');
+		$acf_version = get_option('acf_version');
+		
+		
+		// bail early if a new install
+		if( empty($acf_version) ) {
+		
+			update_option('acf_version', $plugin_version );
+			return;
+			
 		}
-
-
-		// update info
-		global $pagenow;
-
-		if( $pagenow == 'plugins.php' )
-		{
-			$hook = apply_filters('acf/get_info', 'hook');
-
-			wp_enqueue_style( 'acf-global' );
-			add_action( 'in_plugin_update_message-' . $hook, array($this, 'in_plugin_update_message'), 10, 2 );
+		
+		
+		// bail early if $acf_version is >= $plugin_version
+		if( version_compare( $acf_version, $plugin_version, '>=') ) {
+		
+			return;
+			
 		}
-
-
+		
+		
+		// update version
+		update_option('acf_version', $plugin_version );
+		
+		
 		// update admin page
 		add_submenu_page('edit.php?post_type=acf', __('Upgrade','acf'), __('Upgrade','acf'), 'manage_options','acf-upgrade', array($this,'html') );
 	}
 
-
-
-
-	/*
-	*  in_plugin_update_message
-	*
-	*  Displays an update message for plugin list screens.
-	*  Shows only the version updates from the current until the newest version
-	*
-	*  @type	function
-	*  @date	5/06/13
-	*
-	*  @param	{array}		$plugin_data
-	*  @param	{object}	$r
-	*/
-
-	function in_plugin_update_message( $plugin_data, $r )
-	{
-		// vars
-		$version = apply_filters('acf/get_info', 'version');
-		$readme = wp_remote_fopen( 'http://plugins.svn.wordpress.org/advanced-custom-fields/trunk/readme.txt' );
-		$regexp = '/== Changelog ==(.*)= ' . $version . ' =/sm';
-		$o = '';
-
-
-		// validate
-		if( !$readme )
-		{
-			return;
-		}
-
-
-		// regexp
-		preg_match( $regexp, $readme, $matches );
-
-
-		if( ! isset($matches[1]) )
-		{
-			return;
-		}
-
-
-		// render changelog
-		$changelog = explode('*', $matches[1]);
-		array_shift( $changelog );
-
-
-		if( !empty($changelog) )
-		{
-			$o .= '<div class="acf-plugin-update-info">';
-			$o .= '<h3>' . __("What's new", 'acf') . '</h3>';
-			$o .= '<ul>';
-
-			foreach( $changelog as $item )
-			{
-				$item = explode('http', $item);
-
-				$o .= '<li>' . $item[0];
-
-				if( isset($item[1]) )
-				{
-					$o .= '<a href="http' . $item[1] . '" target="_blank">' . __("credits",'acf') . '</a>';
-				}
-
-				$o .= '</li>';
-
-
-			}
-
-			$o .= '</ul></div>';
-		}
-
-		echo $o;
-
-
-	}
-
+	
 
 	/*
 	*  html
@@ -832,7 +747,7 @@ class acf_upgrade
 			case '3.4.1':
 
 				// vars
-				$message = __("Moving user custom fields from wp_options to wp_usermeta'",'acf') . '...';
+				$message = __("Moving user custom fields from wp_options to wp_usermeta",'acf') . '...';
 
 				$option_row_ids = array();
 				$option_rows = $wpdb->get_results("SELECT option_id, option_name, option_value FROM $wpdb->options WHERE option_name LIKE 'user%' OR option_name LIKE '\_user%'", ARRAY_A);

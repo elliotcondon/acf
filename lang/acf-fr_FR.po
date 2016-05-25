@@ -3,20 +3,20 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Field - version 3.4.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
 "POT-Creation-Date: 2013-10-22 18:19+0100\n"
-"PO-Revision-Date: 2013-10-22 18:32+0100\n"
-"Last-Translator: Frédéric Lopez <frederic.lopez@glasshouse.fr>\n"
+"PO-Revision-Date: 2016-04-04 10:08+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: RVOLA <hello@rvola.com>\n"
-"Language: French\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;"
+"_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
 "X-Textdomain-Support: yes\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.1\n"
 
 # @ acf
 #: ../acf.php:436
@@ -182,8 +182,8 @@ msgstr "Page d‘options"
 #: ../core/controllers/addons.php:145
 msgid "Create global data to use throughout your website!"
 msgstr ""
-"Créez avec ACF une page d'options pour configurer des informations "
-"utilisable depuis n'importe quelle page."
+"Créez avec ACF une page d'options pour configurer des informations utilisable depuis n'importe quelle "
+"page."
 
 # @ acf
 #: ../core/controllers/addons.php:151
@@ -227,8 +227,7 @@ msgstr "Champ Contact Form 7"
 
 #: ../core/controllers/addons.php:183
 msgid "Assign one or more contact form 7 forms to a post"
-msgstr ""
-"Assignez un ou plusieurs formulaires Contact Form 7 dans vos publications."
+msgstr "Assignez un ou plusieurs formulaires Contact Form 7 dans vos publications."
 
 # @ acf
 #: ../core/controllers/addons.php:193
@@ -237,17 +236,16 @@ msgstr "Add-ons Advanced Custom Fields"
 
 #: ../core/controllers/addons.php:196
 msgid ""
-"The following Add-ons are available to increase the functionality of the "
-"Advanced Custom Fields plugin."
+"The following Add-ons are available to increase the functionality of the Advanced Custom Fields plugin."
 msgstr "Ces Add-ons vous permettent d'étendre les possibilités d'ACF."
 
 #: ../core/controllers/addons.php:197
 msgid ""
-"Each Add-on can be installed as a separate plugin (receives updates) or "
-"included in your theme (does not receive updates)."
+"Each Add-on can be installed as a separate plugin (receives updates) or included in your theme (does not "
+"receive updates)."
 msgstr ""
-"Chaque Add-on peut être installé séparément en tant qu'extension (avec mises "
-"à jour) ou inclus dans votre thème (sans mises à jour)"
+"Chaque Add-on peut être installé séparément en tant qu'extension (avec mises à jour) ou inclus dans votre "
+"thème (sans mises à jour)"
 
 #: ../core/controllers/addons.php:219 ../core/controllers/addons.php:240
 msgid "Installed"
@@ -258,10 +256,8 @@ msgid "Purchase & Install"
 msgstr "Acheter & installer"
 
 #: ../core/controllers/addons.php:242 ../core/controllers/field_groups.php:426
-#: ../core/controllers/field_groups.php:435
-#: ../core/controllers/field_groups.php:443
-#: ../core/controllers/field_groups.php:451
-#: ../core/controllers/field_groups.php:459
+#: ../core/controllers/field_groups.php:435 ../core/controllers/field_groups.php:443
+#: ../core/controllers/field_groups.php:451 ../core/controllers/field_groups.php:459
 msgid "Download"
 msgstr "Télécharger"
 
@@ -282,9 +278,7 @@ msgstr "Groupes de champs"
 
 #: ../core/controllers/export.php:222
 msgid "Select the field groups to be exported"
-msgstr ""
-"Sélectionnez les groupes de champs dans la liste et cliquez sur \"Exporter "
-"XML\""
+msgstr "Sélectionnez les groupes de champs dans la liste et cliquez sur \"Exporter XML\""
 
 # @ acf
 #: ../core/controllers/export.php:239 ../core/controllers/export.php:252
@@ -298,26 +292,20 @@ msgstr "Export PHP"
 
 # @ acf
 #: ../core/controllers/export.php:253
-msgid ""
-"ACF will create a .xml export file which is compatible with the native WP "
-"import plugin."
-msgstr ""
-"ACF générera un fichier d‘export .xml compatible avec le plugin d'import "
-"natif de WordPress."
+msgid "ACF will create a .xml export file which is compatible with the native WP import plugin."
+msgstr "ACF générera un fichier d‘export .xml compatible avec le plugin d'import natif de WordPress."
 
 #: ../core/controllers/export.php:254
 msgid ""
-"Imported field groups <b>will</b> appear in the list of editable field "
-"groups. This is useful for migrating fields groups between Wp websites."
+"Imported field groups <b>will</b> appear in the list of editable field groups. This is useful for "
+"migrating fields groups between Wp websites."
 msgstr ""
-"Les groupes de champs importés <b>apparaitront</b> dans ACF. Utile pour "
-"migrer les groupes de champs entre plusieurs site Wordpress."
+"Les groupes de champs importés <b>apparaitront</b> dans ACF. Utile pour migrer les groupes de champs "
+"entre plusieurs site Wordpress."
 
 #: ../core/controllers/export.php:256
 msgid "Select field group(s) from the list and click \"Export XML\""
-msgstr ""
-"Sélectionnez les groupes de champs dans la liste et cliquez sur \"Exporter "
-"XML\""
+msgstr "Sélectionnez les groupes de champs dans la liste et cliquez sur \"Exporter XML\""
 
 #: ../core/controllers/export.php:257
 msgid "Save the .xml file when prompted"
@@ -354,28 +342,25 @@ msgstr "ACF générera le code PHP à inclure dans votre thème"
 
 #: ../core/controllers/export.php:269 ../core/controllers/export.php:310
 msgid ""
-"Registered field groups <b>will not</b> appear in the list of editable field "
-"groups. This is useful for including fields in themes."
+"Registered field groups <b>will not</b> appear in the list of editable field groups. This is useful for "
+"including fields in themes."
 msgstr ""
-"Les groupes de champs enregistrés <b>n‘apparaitront pas</b> dans ACF. Cette "
-"manipulation sert à insérer les champs en PHP directement dans le thème."
+"Les groupes de champs enregistrés <b>n‘apparaitront pas</b> dans ACF. Cette manipulation sert à insérer "
+"les champs en PHP directement dans le thème."
 
 #: ../core/controllers/export.php:270 ../core/controllers/export.php:311
 msgid ""
-"Please note that if you export and register field groups within the same WP, "
-"you will see duplicate fields on your edit screens. To fix this, please move "
-"the original field group to the trash or remove the code from your functions."
-"php file."
+"Please note that if you export and register field groups within the same WP, you will see duplicate "
+"fields on your edit screens. To fix this, please move the original field group to the trash or remove the "
+"code from your functions.php file."
 msgstr ""
-"Si vous exportez ET inscrivez les groupes dans la même installation WP, vous "
-"verrez les champs en double dans votre page d‘édition. Pour éviter cela, "
-"supprimer le groupe depuis ACF ou retirez le code PHP de functions.php."
+"Si vous exportez ET inscrivez les groupes dans la même installation WP, vous verrez les champs en double "
+"dans votre page d‘édition. Pour éviter cela, supprimer le groupe depuis ACF ou retirez le code PHP de "
+"functions.php."
 
 #: ../core/controllers/export.php:272
 msgid "Select field group(s) from the list and click \"Create PHP\""
-msgstr ""
-"Sélectionnez les groupes de champs dans la liste et cliquez sur \"Générer PHP"
-"\""
+msgstr "Sélectionnez les groupes de champs dans la liste et cliquez sur \"Générer PHP\""
 
 # @ acf
 #: ../core/controllers/export.php:273 ../core/controllers/export.php:302
@@ -390,8 +375,7 @@ msgstr "Collez le code dans votre fichier functions.php"
 # @ acf
 #: ../core/controllers/export.php:275 ../core/controllers/export.php:304
 msgid "To activate any Add-ons, edit and use the code in the first few lines."
-msgstr ""
-"Pour activer un add-on, éditez le code dans les toutes premières lignes."
+msgstr "Pour activer un add-on, éditez le code dans les toutes premières lignes."
 
 # @ acf
 #: ../core/controllers/export.php:295
@@ -413,23 +397,19 @@ msgstr "Inclure dans le thème"
 
 #: ../core/controllers/export.php:317
 msgid ""
-"The Advanced Custom Fields plugin can be included within a theme. To do so, "
-"move the ACF plugin inside your theme and add the following code to your "
-"functions.php file:"
+"The Advanced Custom Fields plugin can be included within a theme. To do so, move the ACF plugin inside "
+"your theme and add the following code to your functions.php file:"
 msgstr ""
-"ACF peut être directement inclus dans un thème ! Déplacez pour cela le "
-"dossier Advanced Custom Field dans votre thème et ajoutez le code suivant à "
-"votre fichier functions.php :"
+"ACF peut être directement inclus dans un thème ! Déplacez pour cela le dossier Advanced Custom Field dans "
+"votre thème et ajoutez le code suivant à votre fichier functions.php :"
 
 #: ../core/controllers/export.php:323
 msgid ""
-"To remove all visual interfaces from the ACF plugin, you can use a constant "
-"to enable lite mode. Add the following code to your functions.php file "
-"<b>before</b> the include_once code:"
+"To remove all visual interfaces from the ACF plugin, you can use a constant to enable lite mode. Add the "
+"following code to your functions.php file <b>before</b> the include_once code:"
 msgstr ""
-"Pour désactiver l'interface d'ACF, vous pouvez utiliser une constante pour "
-"activer le mode 'lite'.  Ajoutez dans le fichier 'functions.php'  <b>avant</"
-"b> le code 'include_once' :"
+"Pour désactiver l'interface d'ACF, vous pouvez utiliser une constante pour activer le mode 'lite'.  "
+"Ajoutez dans le fichier 'functions.php'  <b>avant</b> le code 'include_once' :"
 
 # @ acf
 #: ../core/controllers/export.php:331
@@ -463,17 +443,14 @@ msgstr "Veuillez indiquer un titre pour le groupe de champs"
 msgid "copy"
 msgstr "copie"
 
-#: ../core/controllers/field_group.php:363
-#: ../core/views/meta_box_location.php:62
+#: ../core/controllers/field_group.php:363 ../core/views/meta_box_location.php:62
 #: ../core/views/meta_box_location.php:159
 msgid "or"
 msgstr "ou"
 
 # @ acf
-#: ../core/controllers/field_group.php:364
-#: ../core/controllers/field_group.php:395
-#: ../core/controllers/field_group.php:457
-#: ../core/controllers/field_groups.php:148
+#: ../core/controllers/field_group.php:364 ../core/controllers/field_group.php:395
+#: ../core/controllers/field_group.php:457 ../core/controllers/field_groups.php:148
 msgid "Fields"
 msgstr "Champs"
 
@@ -505,20 +482,18 @@ msgid "Show Field Key:"
 msgstr "Montrer la clé :"
 
 #: ../core/controllers/field_group.php:460 ../core/fields/page_link.php:138
-#: ../core/fields/page_link.php:159 ../core/fields/post_object.php:328
-#: ../core/fields/post_object.php:349 ../core/fields/select.php:224
-#: ../core/fields/select.php:243 ../core/fields/taxonomy.php:343
-#: ../core/fields/user.php:285 ../core/fields/wysiwyg.php:245
-#: ../core/views/meta_box_fields.php:195 ../core/views/meta_box_fields.php:218
+#: ../core/fields/page_link.php:159 ../core/fields/post_object.php:328 ../core/fields/post_object.php:349
+#: ../core/fields/select.php:224 ../core/fields/select.php:243 ../core/fields/taxonomy.php:343
+#: ../core/fields/user.php:285 ../core/fields/wysiwyg.php:245 ../core/views/meta_box_fields.php:195
+#: ../core/views/meta_box_fields.php:218
 msgid "No"
 msgstr "Non"
 
 #: ../core/controllers/field_group.php:461 ../core/fields/page_link.php:137
-#: ../core/fields/page_link.php:158 ../core/fields/post_object.php:327
-#: ../core/fields/post_object.php:348 ../core/fields/select.php:223
-#: ../core/fields/select.php:242 ../core/fields/taxonomy.php:342
-#: ../core/fields/user.php:284 ../core/fields/wysiwyg.php:244
-#: ../core/views/meta_box_fields.php:194 ../core/views/meta_box_fields.php:217
+#: ../core/fields/page_link.php:158 ../core/fields/post_object.php:327 ../core/fields/post_object.php:348
+#: ../core/fields/select.php:223 ../core/fields/select.php:242 ../core/fields/taxonomy.php:342
+#: ../core/fields/user.php:284 ../core/fields/wysiwyg.php:244 ../core/views/meta_box_fields.php:194
+#: ../core/views/meta_box_fields.php:217
 msgid "Yes"
 msgstr "Oui"
 
@@ -579,13 +554,10 @@ msgstr "Corbeille"
 msgid "Super Admin"
 msgstr "Super-admin"
 
-#: ../core/controllers/field_group.php:761
-#: ../core/controllers/field_group.php:782
-#: ../core/controllers/field_group.php:789 ../core/fields/file.php:186
-#: ../core/fields/image.php:170 ../core/fields/page_link.php:109
-#: ../core/fields/post_object.php:274 ../core/fields/post_object.php:298
-#: ../core/fields/relationship.php:595 ../core/fields/relationship.php:619
-#: ../core/fields/user.php:229
+#: ../core/controllers/field_group.php:761 ../core/controllers/field_group.php:782
+#: ../core/controllers/field_group.php:789 ../core/fields/file.php:186 ../core/fields/image.php:170
+#: ../core/fields/page_link.php:109 ../core/fields/post_object.php:274 ../core/fields/post_object.php:298
+#: ../core/fields/relationship.php:595 ../core/fields/relationship.php:619 ../core/fields/user.php:229
 msgid "All"
 msgstr "Tous"
 
@@ -594,8 +566,7 @@ msgid "Title"
 msgstr "Titre"
 
 # @ acf
-#: ../core/controllers/field_groups.php:216
-#: ../core/controllers/field_groups.php:257
+#: ../core/controllers/field_groups.php:216 ../core/controllers/field_groups.php:257
 msgid "Changelog"
 msgstr "Notes de version"
 
@@ -632,8 +603,7 @@ msgstr "Fonctions"
 msgid "Actions"
 msgstr "Actions"
 
-#: ../core/controllers/field_groups.php:225
-#: ../core/fields/relationship.php:638
+#: ../core/controllers/field_groups.php:225 ../core/fields/relationship.php:638
 msgid "Filters"
 msgstr "Filtres"
 
@@ -688,14 +658,13 @@ msgstr "Les codes d'activation sont devenus des extensions"
 
 #: ../core/controllers/field_groups.php:314
 msgid ""
-"Add-ons are now activated by downloading and installing individual plugins. "
-"Although these plugins will not be hosted on the wordpress.org repository, "
-"each Add-on will continue to receive updates in the usual way."
+"Add-ons are now activated by downloading and installing individual plugins. Although these plugins will "
+"not be hosted on the wordpress.org repository, each Add-on will continue to receive updates in the usual "
+"way."
 msgstr ""
-"Les Add-ons doivent être désormais téléchargés depuis le site ACF et sont "
-"présentés sous forme d'extensions. Elles ne seront pas hébergées sur le "
-"répertoire d'extension de WordPress. Chaque Add-on continuera de recevoir "
-"les mises à jour comme d'habitude."
+"Les Add-ons doivent être désormais téléchargés depuis le site ACF et sont présentés sous forme "
+"d'extensions. Elles ne seront pas hébergées sur le répertoire d'extension de WordPress. Chaque Add-on "
+"continuera de recevoir les mises à jour comme d'habitude."
 
 #: ../core/controllers/field_groups.php:320
 msgid "All previous Add-ons have been successfully installed"
@@ -703,8 +672,7 @@ msgstr "Tous les Add-ons ont bien été installés."
 
 #: ../core/controllers/field_groups.php:324
 msgid "This website uses premium Add-ons which need to be downloaded"
-msgstr ""
-"Ce site utilise des Add-ons premium qui nécessitent d'être téléchargés."
+msgstr "Ce site utilise des Add-ons premium qui nécessitent d'être téléchargés."
 
 # @ acf
 #: ../core/controllers/field_groups.php:324
@@ -712,12 +680,8 @@ msgid "Download your activated Add-ons"
 msgstr "Téléchargez les Add-ons activés"
 
 #: ../core/controllers/field_groups.php:329
-msgid ""
-"This website does not use premium Add-ons and will not be affected by this "
-"change."
-msgstr ""
-"Ce site n'utilise pas d'Add-ons et ne sera donc pas affecté par cette mise à "
-"jour."
+msgid "This website does not use premium Add-ons and will not be affected by this change."
+msgstr "Ce site n'utilise pas d'Add-ons et ne sera donc pas affecté par cette mise à jour."
 
 #: ../core/controllers/field_groups.php:339
 msgid "Easier Development"
@@ -754,11 +718,11 @@ msgstr "Types de champs"
 
 #: ../core/controllers/field_groups.php:349
 msgid ""
-"Creating your own field type has never been easier! Unfortunately, version 3 "
-"field types are not compatible with version 4."
+"Creating your own field type has never been easier! Unfortunately, version 3 field types are not "
+"compatible with version 4."
 msgstr ""
-"Créer votre propre type de champ est très facile ! Malheureusement les "
-"champs créés avec la version 3 ne seront pas compatible avec la version 4."
+"Créer votre propre type de champ est très facile ! Malheureusement les champs créés avec la version 3 ne "
+"seront pas compatible avec la version 4."
 
 #: ../core/controllers/field_groups.php:350
 msgid "Migrating your field types is easy, please"
@@ -777,12 +741,9 @@ msgid "Actions &amp; Filters"
 msgstr "Actions &amp; Filtres"
 
 #: ../core/controllers/field_groups.php:353
-msgid ""
-"All actions & filters have received a major facelift to make customizing ACF "
-"even easier! Please"
+msgid "All actions & filters have received a major facelift to make customizing ACF even easier! Please"
 msgstr ""
-"Toutes les actions & filtres ont été revus afin de rendre la "
-"personnalisation d'ACF encore plus facile !"
+"Toutes les actions & filtres ont été revus afin de rendre la personnalisation d'ACF encore plus facile !"
 
 # @ acf
 #: ../core/controllers/field_groups.php:353
@@ -815,13 +776,11 @@ msgstr "Structure de la base de données"
 
 #: ../core/controllers/field_groups.php:363
 msgid ""
-"Absolutely <strong>no</strong> changes have been made to the database "
-"between versions 3 and 4. This means you can roll back to version 3 without "
-"any issues."
+"Absolutely <strong>no</strong> changes have been made to the database between versions 3 and 4. This "
+"means you can roll back to version 3 without any issues."
 msgstr ""
-"Il n'y a eu <strong>aucun</strong> changement dans la base de données entre "
-"la version 3 et la version 4. Cela veut dire que vous pouvez retourner à la "
-"version 3 sans aucun problème."
+"Il n'y a eu <strong>aucun</strong> changement dans la base de données entre la version 3 et la version 4. "
+"Cela veut dire que vous pouvez retourner à la version 3 sans aucun problème."
 
 #: ../core/controllers/field_groups.php:365
 msgid "Potential Issues"
@@ -829,13 +788,11 @@ msgstr "Problèmes connus"
 
 #: ../core/controllers/field_groups.php:366
 msgid ""
-"Do to the sizable changes surounding Add-ons, field types and action/"
-"filters, your website may not operate correctly. It is important that you "
-"read the full"
+"Due to the sizable changes surrounding Add-ons, field types and action/filters, your website may not "
+"operate correctly. It is important that you read the full"
 msgstr ""
-"À cause des gros changements effectués autour des Add-ons, types de champs "
-"et actions/filtres, votre site ne pourrait plus fonctionner correctement "
-"après la migration. Il est important que vous consultiez"
+"À cause des gros changements effectués autour des Add-ons, types de champs et actions/filtres, votre site "
+"ne pourrait plus fonctionner correctement après la migration. Il est important que vous consultiez"
 
 #: ../core/controllers/field_groups.php:366
 msgid "Migrating from v3 to v4"
@@ -851,11 +808,10 @@ msgstr "Très important !"
 
 #: ../core/controllers/field_groups.php:369
 msgid ""
-"If you updated the ACF plugin without prior knowledge of such changes, "
-"please roll back to the latest"
+"If you updated the ACF plugin without prior knowledge of such changes, please roll back to the latest"
 msgstr ""
-"Si vous n'étiez pas au courant de ces changements lors de la mise à jour, "
-"nous vous conseillons de revenir à la"
+"Si vous n'étiez pas au courant de ces changements lors de la mise à jour, nous vous conseillons de "
+"revenir à la"
 
 #: ../core/controllers/field_groups.php:369
 msgid "version 3"
@@ -871,18 +827,15 @@ msgstr "Merci !"
 
 #: ../core/controllers/field_groups.php:375
 msgid ""
-"A <strong>BIG</strong> thank you to everyone who has helped test the version "
-"4 beta and for all the support I have received."
+"A <strong>BIG</strong> thank you to everyone who has helped test the version 4 beta and for all the "
+"support I have received."
 msgstr ""
-"Un <strong>GRAND</strong> merci à tous ceux qui ont aidé dans le "
-"développement de cette nouvelle version 4 et pour tout le support que vous "
-"m'avez apporté !"
+"Un <strong>GRAND</strong> merci à tous ceux qui ont aidé dans le développement de cette nouvelle version "
+"4 et pour tout le support que vous m'avez apporté !"
 
 #: ../core/controllers/field_groups.php:376
 msgid "Without you all, this release would not have been possible!"
-msgstr ""
-"Sans vous, cette version n'aurait pas pu voir le jour ! (Traduction FR par "
-"@maximebj)"
+msgstr "Sans vous, cette version n'aurait pas pu voir le jour ! (Traduction FR par @maximebj)"
 
 # @ acf
 #: ../core/controllers/field_groups.php:380
@@ -899,21 +852,17 @@ msgstr "Aperçu"
 
 #: ../core/controllers/field_groups.php:405
 msgid ""
-"Previously, all Add-ons were unlocked via an activation code (purchased from "
-"the ACF Add-ons store). New to v4, all Add-ons act as separate plugins which "
-"need to be individually downloaded, installed and updated."
+"Previously, all Add-ons were unlocked via an activation code (purchased from the ACF Add-ons store). New "
+"to v4, all Add-ons act as separate plugins which need to be individually downloaded, installed and "
+"updated."
 msgstr ""
-"Dans les versions précédentes, les Add-ons étaient activés par un code "
-"d'activation acheté depuis la boutique d'Add-ons ACF. Depuis la version 4, "
-"les Add-ons fonctionnent en tant qu'extensions séparées qu'il faut "
-"télécharger, installer et mettre à jour individuellement. "
+"Dans les versions précédentes, les Add-ons étaient activés par un code d'activation acheté depuis la "
+"boutique d'Add-ons ACF. Depuis la version 4, les Add-ons fonctionnent en tant qu'extensions séparées "
+"qu'il faut télécharger, installer et mettre à jour individuellement. "
 
 #: ../core/controllers/field_groups.php:407
-msgid ""
-"This page will assist you in downloading and installing each available Add-"
-"on."
-msgstr ""
-"Cette page vous permet de télécharger et installer les Add-ons disponibles."
+msgid "This page will assist you in downloading and installing each available Add-on."
+msgstr "Cette page vous permet de télécharger et installer les Add-ons disponibles."
 
 # @ acf
 #: ../core/controllers/field_groups.php:409
@@ -962,17 +911,11 @@ msgstr "Extensions > Ajouter > Importer"
 
 #: ../core/controllers/field_groups.php:473
 msgid "Use the uploader to browse, select and install your Add-on (.zip file)"
-msgstr ""
-"Utilisez l'uploader pour trouver, sélectionner et installer votre Add-on "
-"(fichier .zip)"
+msgstr "Utilisez l'uploader pour trouver, sélectionner et installer votre Add-on (fichier .zip)"
 
 #: ../core/controllers/field_groups.php:474
-msgid ""
-"Once the plugin has been uploaded and installed, click the 'Activate Plugin' "
-"link"
-msgstr ""
-"Une fois que l'extension a été importée et installée, cliquez sur \"Activer "
-"l'extension\""
+msgid "Once the plugin has been uploaded and installed, click the 'Activate Plugin' link"
+msgstr "Une fois que l'extension a été importée et installée, cliquez sur \"Activer l'extension\""
 
 #: ../core/controllers/field_groups.php:475
 msgid "The Add-on is now installed and activated!"
@@ -1018,9 +961,7 @@ msgstr "Modifier le champ 'taxonomie'"
 
 #: ../core/controllers/upgrade.php:835
 msgid "Moving user custom fields from wp_options to wp_usermeta'"
-msgstr ""
-"Déplacer les champs personnalisés des utilisateurs de wp_options à "
-"wp_usermeta '"
+msgstr "Déplacer les champs personnalisés des utilisateurs de wp_options à wp_usermeta '"
 
 # @ acf
 #: ../core/fields/checkbox.php:19 ../core/fields/taxonomy.php:319
@@ -1028,14 +969,13 @@ msgid "Checkbox"
 msgstr "Case à cocher"
 
 # @ acf
-#: ../core/fields/checkbox.php:20 ../core/fields/radio.php:19
-#: ../core/fields/select.php:19 ../core/fields/true_false.php:20
+#: ../core/fields/checkbox.php:20 ../core/fields/radio.php:19 ../core/fields/select.php:19
+#: ../core/fields/true_false.php:20
 msgid "Choice"
 msgstr "Choix"
 
 # @ acf
-#: ../core/fields/checkbox.php:146 ../core/fields/radio.php:144
-#: ../core/fields/select.php:177
+#: ../core/fields/checkbox.php:146 ../core/fields/radio.php:144 ../core/fields/select.php:177
 msgid "Choices"
 msgstr "Choix"
 
@@ -1045,26 +985,21 @@ msgstr "Indiquez une valeur par ligne"
 
 #: ../core/fields/checkbox.php:148 ../core/fields/select.php:179
 msgid "For more control, you may specify both a value and label like this:"
-msgstr ""
-"Pour un contrôle plus poussé, vous pouvez spécifier la valeur et le libellé "
-"de cette manière :"
+msgstr "Pour un contrôle plus poussé, vous pouvez spécifier la valeur et le libellé de cette manière :"
 
-#: ../core/fields/checkbox.php:149 ../core/fields/radio.php:150
-#: ../core/fields/select.php:180
+#: ../core/fields/checkbox.php:149 ../core/fields/radio.php:150 ../core/fields/select.php:180
 msgid "red : Red"
 msgstr "rouge : Rouge"
 
-#: ../core/fields/checkbox.php:149 ../core/fields/radio.php:151
-#: ../core/fields/select.php:180
+#: ../core/fields/checkbox.php:149 ../core/fields/radio.php:151 ../core/fields/select.php:180
 msgid "blue : Blue"
 msgstr "bleu : Bleu"
 
 # @ acf
-#: ../core/fields/checkbox.php:166 ../core/fields/color_picker.php:89
-#: ../core/fields/email.php:106 ../core/fields/number.php:116
-#: ../core/fields/radio.php:193 ../core/fields/select.php:197
-#: ../core/fields/text.php:116 ../core/fields/textarea.php:96
-#: ../core/fields/true_false.php:94 ../core/fields/wysiwyg.php:187
+#: ../core/fields/checkbox.php:166 ../core/fields/color_picker.php:89 ../core/fields/email.php:106
+#: ../core/fields/number.php:116 ../core/fields/radio.php:193 ../core/fields/select.php:197
+#: ../core/fields/text.php:116 ../core/fields/textarea.php:96 ../core/fields/true_false.php:94
+#: ../core/fields/wysiwyg.php:187
 msgid "Default Value"
 msgstr "Valeur par défaut"
 
@@ -1073,8 +1008,8 @@ msgid "Enter each default value on a new line"
 msgstr "Entrez chaque valeur par défaut sur une nouvelle ligne"
 
 # @ acf
-#: ../core/fields/checkbox.php:183 ../core/fields/message.php:20
-#: ../core/fields/radio.php:209 ../core/fields/tab.php:20
+#: ../core/fields/checkbox.php:183 ../core/fields/message.php:20 ../core/fields/radio.php:209
+#: ../core/fields/tab.php:20
 msgid "Layout"
 msgstr "Disposition"
 
@@ -1104,41 +1039,38 @@ msgstr "Factice"
 msgid "Email"
 msgstr "Mail"
 
-#: ../core/fields/email.php:107 ../core/fields/number.php:117
-#: ../core/fields/text.php:117 ../core/fields/textarea.php:97
-#: ../core/fields/wysiwyg.php:188
+#: ../core/fields/email.php:107 ../core/fields/number.php:117 ../core/fields/text.php:117
+#: ../core/fields/textarea.php:97 ../core/fields/wysiwyg.php:188
 msgid "Appears when creating a new post"
 msgstr "Apparaît lors de la création d'un article"
 
-#: ../core/fields/email.php:123 ../core/fields/number.php:133
-#: ../core/fields/password.php:105 ../core/fields/text.php:131
-#: ../core/fields/textarea.php:111
+#: ../core/fields/email.php:123 ../core/fields/number.php:133 ../core/fields/password.php:105
+#: ../core/fields/text.php:131 ../core/fields/textarea.php:111
 msgid "Placeholder Text"
 msgstr "Texte de substitution"
 
-#: ../core/fields/email.php:124 ../core/fields/number.php:134
-#: ../core/fields/password.php:106 ../core/fields/text.php:132
-#: ../core/fields/textarea.php:112
+#: ../core/fields/email.php:124 ../core/fields/number.php:134 ../core/fields/password.php:106
+#: ../core/fields/text.php:132 ../core/fields/textarea.php:112
 msgid "Appears within the input"
 msgstr "Apparaît dans la saisie"
 
-#: ../core/fields/email.php:138 ../core/fields/number.php:148
-#: ../core/fields/password.php:120 ../core/fields/text.php:146
+#: ../core/fields/email.php:138 ../core/fields/number.php:148 ../core/fields/password.php:120
+#: ../core/fields/text.php:146
 msgid "Prepend"
 msgstr "Préfixe"
 
-#: ../core/fields/email.php:139 ../core/fields/number.php:149
-#: ../core/fields/password.php:121 ../core/fields/text.php:147
+#: ../core/fields/email.php:139 ../core/fields/number.php:149 ../core/fields/password.php:121
+#: ../core/fields/text.php:147
 msgid "Appears before the input"
 msgstr "Apparaît avant la saisie"
 
-#: ../core/fields/email.php:153 ../core/fields/number.php:163
-#: ../core/fields/password.php:135 ../core/fields/text.php:161
+#: ../core/fields/email.php:153 ../core/fields/number.php:163 ../core/fields/password.php:135
+#: ../core/fields/text.php:161
 msgid "Append"
 msgstr "Suffixe"
 
-#: ../core/fields/email.php:154 ../core/fields/number.php:164
-#: ../core/fields/password.php:136 ../core/fields/text.php:162
+#: ../core/fields/email.php:154 ../core/fields/number.php:164 ../core/fields/password.php:136
+#: ../core/fields/text.php:162
 msgid "Appears after the input"
 msgstr "Apparaît après la saisie"
 
@@ -1147,8 +1079,7 @@ msgstr "Apparaît après la saisie"
 msgid "File"
 msgstr "Fichier"
 
-#: ../core/fields/file.php:20 ../core/fields/image.php:20
-#: ../core/fields/wysiwyg.php:36
+#: ../core/fields/file.php:20 ../core/fields/image.php:20 ../core/fields/wysiwyg.php:36
 msgid "Content"
 msgstr "Contenu"
 
@@ -1182,8 +1113,7 @@ msgid "Add File"
 msgstr "Ajouter un fichier"
 
 # @ acf
-#: ../core/fields/file.php:153 ../core/fields/image.php:118
-#: ../core/fields/taxonomy.php:367
+#: ../core/fields/file.php:153 ../core/fields/image.php:118 ../core/fields/taxonomy.php:367
 msgid "Return Value"
 msgstr "Valeur affichée dans le template"
 
@@ -1325,16 +1255,13 @@ msgid "Limit the media library choice"
 msgstr "Limite le choix dans la bibliothèque de médias"
 
 # @ acf
-#: ../core/fields/message.php:19 ../core/fields/message.php:70
-#: ../core/fields/true_false.php:79
+#: ../core/fields/message.php:19 ../core/fields/message.php:70 ../core/fields/true_false.php:79
 msgid "Message"
 msgstr "Message"
 
 #: ../core/fields/message.php:71
 msgid "Text &amp; HTML entered here will appear inline with the fields"
-msgstr ""
-"Cette zone de texte &amp; HTML permet d'afficher des indications de saisie "
-"au rédacteur"
+msgstr "Cette zone de texte &amp; HTML permet d'afficher des indications de saisie au rédacteur"
 
 #: ../core/fields/message.php:72
 msgid "Please note that all text will first be passed through the wp function "
@@ -1363,29 +1290,25 @@ msgid "Page Link"
 msgstr "Lien vers page ou article"
 
 # @ acf
-#: ../core/fields/page_link.php:19 ../core/fields/post_object.php:19
-#: ../core/fields/relationship.php:19 ../core/fields/taxonomy.php:19
-#: ../core/fields/user.php:19
+#: ../core/fields/page_link.php:19 ../core/fields/post_object.php:19 ../core/fields/relationship.php:19
+#: ../core/fields/taxonomy.php:19 ../core/fields/user.php:19
 msgid "Relational"
 msgstr "Relationnel"
 
 # @ acf
-#: ../core/fields/page_link.php:103 ../core/fields/post_object.php:268
-#: ../core/fields/relationship.php:589 ../core/fields/relationship.php:668
-#: ../core/views/meta_box_location.php:75
+#: ../core/fields/page_link.php:103 ../core/fields/post_object.php:268 ../core/fields/relationship.php:589
+#: ../core/fields/relationship.php:668 ../core/views/meta_box_location.php:75
 msgid "Post Type"
 msgstr "Type de publication"
 
 # @ acf
-#: ../core/fields/page_link.php:127 ../core/fields/post_object.php:317
-#: ../core/fields/select.php:214 ../core/fields/taxonomy.php:333
-#: ../core/fields/user.php:275
+#: ../core/fields/page_link.php:127 ../core/fields/post_object.php:317 ../core/fields/select.php:214
+#: ../core/fields/taxonomy.php:333 ../core/fields/user.php:275
 msgid "Allow Null?"
 msgstr "Autoriser vide ?"
 
 # @ acf
-#: ../core/fields/page_link.php:148 ../core/fields/post_object.php:338
-#: ../core/fields/select.php:233
+#: ../core/fields/page_link.php:148 ../core/fields/post_object.php:338 ../core/fields/select.php:233
 msgid "Select multiple values?"
 msgstr "Plusieurs valeurs possibles ?"
 
@@ -1410,7 +1333,7 @@ msgstr "Bouton radio"
 
 #: ../core/fields/radio.php:102 ../core/views/meta_box_location.php:91
 msgid "Other"
-msgstr "Sections de l'admin WordPress"
+msgstr "Autre"
 
 #: ../core/fields/radio.php:145
 msgid "Enter your choices one per line"
@@ -1498,8 +1421,8 @@ msgid "Maximum posts"
 msgstr "Nombre d‘articles maximal"
 
 # @ acf
-#: ../core/fields/select.php:18 ../core/fields/select.php:109
-#: ../core/fields/taxonomy.php:324 ../core/fields/user.php:266
+#: ../core/fields/select.php:18 ../core/fields/select.php:109 ../core/fields/taxonomy.php:324
+#: ../core/fields/user.php:266
 msgid "Select"
 msgstr "Liste de choix"
 
@@ -1509,19 +1432,17 @@ msgstr "Onglet"
 
 #: ../core/fields/tab.php:68
 msgid ""
-"Use \"Tab Fields\" to better organize your edit screen by grouping your "
-"fields together under separate tab headings."
+"Use \"Tab Fields\" to better organize your edit screen by grouping your fields together under separate "
+"tab headings."
 msgstr ""
-"Utilisez le type de champ \"Onglet\" pour mieux organiser votre écran de "
-"saisie en regroupant vos champs sous des onglets différents."
+"Utilisez le type de champ \"Onglet\" pour mieux organiser votre écran de saisie en regroupant vos champs "
+"sous des onglets différents."
 
 #: ../core/fields/tab.php:69
 msgid ""
-"All the fields following this \"tab field\" (or until another \"tab field\" "
-"is defined) will be grouped together."
-msgstr ""
-"Tous les champs listés après cet onglet (ou jusqu'au prochain onglet) seront "
-"regroupés ensemble."
+"All the fields following this \"tab field\" (or until another \"tab field\" is defined) will be grouped "
+"together."
+msgstr "Tous les champs listés après cet onglet (ou jusqu'au prochain onglet) seront regroupés ensemble."
 
 #: ../core/fields/tab.php:70
 msgid "Use multiple tabs to divide your fields into sections."
@@ -1537,8 +1458,8 @@ msgid "None"
 msgstr "Aucun"
 
 # @ acf
-#: ../core/fields/taxonomy.php:308 ../core/fields/user.php:251
-#: ../core/views/meta_box_fields.php:77 ../core/views/meta_box_fields.php:159
+#: ../core/fields/taxonomy.php:308 ../core/fields/user.php:251 ../core/views/meta_box_fields.php:77
+#: ../core/views/meta_box_fields.php:159
 msgid "Field Type"
 msgstr "Type de champ"
 
@@ -1566,11 +1487,9 @@ msgid "Load & Save Terms to Post"
 msgstr "Charger & enregistrer les termes"
 
 #: ../core/fields/taxonomy.php:360
-msgid ""
-"Load value based on the post's terms and update the post's terms on save"
+msgid "Load value based on the post's terms and update the post's terms on save"
 msgstr ""
-"Charge la valeur basée sur les termes de l'article et met à jour ces termes "
-"lors de l'enregistrement"
+"Charge la valeur basée sur les termes de l'article et met à jour ces termes lors de l'enregistrement"
 
 # @ acf
 #: ../core/fields/taxonomy.php:377
@@ -1592,7 +1511,7 @@ msgid "Formatting"
 msgstr "Formatage  "
 
 #: ../core/fields/text.php:177 ../core/fields/textarea.php:142
-msgid "Effects value on front end"
+msgid "Affects value on front end"
 msgstr "Modifie le contenu sur la partie publique du site"
 
 # @ acf
@@ -1681,22 +1600,15 @@ msgid "Save format"
 msgstr "Sauvegarder format"
 
 #: ../core/fields/date_picker/date_picker.php:127
-msgid ""
-"This format will determin the value saved to the database and returned via "
-"the API"
-msgstr ""
-"Ce format déterminera la valeur enregistrée dans la base de données et "
-"retournée par l‘API"
+msgid "This format will determine the value saved to the database and returned via the API"
+msgstr "Ce format déterminera la valeur enregistrée dans la base de données et retournée par l‘API"
 
 #: ../core/fields/date_picker/date_picker.php:128
 msgid "\"yymmdd\" is the most versatile save format. Read more about"
-msgstr ""
-"\"yymmdd\" est le format d‘enregistrement le plus polyvalent. En savoir plus "
-"sur"
+msgstr "\"yymmdd\" est le format d‘enregistrement le plus polyvalent. En savoir plus sur"
 
 # @ acf
-#: ../core/fields/date_picker/date_picker.php:128
-#: ../core/fields/date_picker/date_picker.php:144
+#: ../core/fields/date_picker/date_picker.php:128 ../core/fields/date_picker/date_picker.php:144
 msgid "jQuery date formats"
 msgstr "Format date jQuery"
 
@@ -1710,12 +1622,8 @@ msgid "This format will be seen by the user when entering a value"
 msgstr "Ce format sera vu par l'utilisateur lors de la saisie d‘une valeur"
 
 #: ../core/fields/date_picker/date_picker.php:144
-msgid ""
-"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
-"about"
-msgstr ""
-"\"dd/mm/yy\" ou \"mm/dd/yy\"  sont les formats d‘affichage les plus "
-"utilisées. En savoir plus sur"
+msgid "\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more about"
+msgstr "\"dd/mm/yy\" ou \"mm/dd/yy\"  sont les formats d‘affichage les plus utilisées. En savoir plus sur"
 
 #: ../core/fields/date_picker/date_picker.php:158
 msgid "Week Starts On"
@@ -1753,12 +1661,8 @@ msgstr "Clé du champ"
 
 # @ acf
 #: ../core/views/meta_box_fields.php:90
-msgid ""
-"No fields. Click the <strong>+ Add Field</strong> button to create your "
-"first field."
-msgstr ""
-"Aucun champ. Cliquez sur le bouton <strong>+ Ajouter</strong> pour créer "
-"votre premier champ."
+msgid "No fields. Click the <strong>+ Add Field</strong> button to create your first field."
+msgstr "Aucun champ. Cliquez sur le bouton <strong>+ Ajouter</strong> pour créer votre premier champ."
 
 # @ acf
 #: ../core/views/meta_box_fields.php:105 ../core/views/meta_box_fields.php:108
@@ -1812,8 +1716,7 @@ msgstr "Instructions pour ce champ"
 # @ acf
 #: ../core/views/meta_box_fields.php:174
 msgid "Instructions for authors. Shown when submitting data"
-msgstr ""
-"Instructions pour les auteurs. Affichées lors de la soumission de données."
+msgstr "Instructions pour les auteurs. Affichées lors de la soumission de données."
 
 # @ acf
 #: ../core/views/meta_box_fields.php:186
@@ -1824,13 +1727,11 @@ msgstr "Requis ?"
 msgid "Conditional Logic"
 msgstr "Logique conditionnelle"
 
-#: ../core/views/meta_box_fields.php:260
-#: ../core/views/meta_box_location.php:117
+#: ../core/views/meta_box_fields.php:260 ../core/views/meta_box_location.php:117
 msgid "is equal to"
 msgstr "est égal à"
 
-#: ../core/views/meta_box_fields.php:261
-#: ../core/views/meta_box_location.php:118
+#: ../core/views/meta_box_fields.php:261 ../core/views/meta_box_location.php:118
 msgid "is not equal to"
 msgstr "n‘est pas égal à"
 
@@ -1872,12 +1773,9 @@ msgstr "Règles"
 
 # @ acf
 #: ../core/views/meta_box_location.php:49
-msgid ""
-"Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
+msgid "Create a set of rules to determine which edit screens will use these advanced custom fields"
 msgstr ""
-"Créez une série de règles pour déterminer sur quelles pages d‘édition ce "
-"groupe de champs sera utilisé"
+"Créez une série de règles pour déterminer sur quelles pages d‘édition ce groupe de champs sera utilisé"
 
 #: ../core/views/meta_box_location.php:60
 msgid "Show this field group if"
@@ -1888,8 +1786,7 @@ msgid "Logged in User Type"
 msgstr "Rôle de l‘utilisateur"
 
 # @ acf
-#: ../core/views/meta_box_location.php:78
-#: ../core/views/meta_box_location.php:79
+#: ../core/views/meta_box_location.php:78 ../core/views/meta_box_location.php:79
 msgid "Page"
 msgstr "Page"
 
@@ -1908,8 +1805,7 @@ msgid "Page Template"
 msgstr "Modèle de page"
 
 # @ acf
-#: ../core/views/meta_box_location.php:84
-#: ../core/views/meta_box_location.php:85
+#: ../core/views/meta_box_location.php:84 ../core/views/meta_box_location.php:85
 msgid "Post"
 msgstr "Article"
 
@@ -1957,9 +1853,7 @@ msgstr "Numéro d‘ordre"
 # @ acf
 #: ../core/views/meta_box_options.php:26
 msgid "Field groups are created in order <br />from lowest to highest"
-msgstr ""
-"Les groupes de champs sont créés dans <br/> ordre du plus bas vers le plus "
-"haut"
+msgstr "Les groupes de champs sont créés dans <br/> ordre du plus bas vers le plus haut"
 
 # @ acf
 #: ../core/views/meta_box_options.php:42
@@ -1998,18 +1892,16 @@ msgstr "Ne pas afficher"
 # @ acf
 #: ../core/views/meta_box_options.php:85
 msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
-msgstr ""
-"<b>Décochez</b> les champs que vous souhaitez <b>masquer</b> sur la page "
-"d‘édition"
+msgstr "<b>Décochez</b> les champs que vous souhaitez <b>masquer</b> sur la page d‘édition"
 
 # @ acf
 #: ../core/views/meta_box_options.php:86
 msgid ""
-"If multiple field groups appear on an edit screen, the first field group's "
-"options will be used. (the one with the lowest order number)"
+"If multiple field groups appear on an edit screen, the first field group's options will be used. (the one "
+"with the lowest order number)"
 msgstr ""
-"Si plusieurs groupes ACF sont présents sur une page d‘édition, le groupe "
-"portant le numéro le plus bas sera affiché en premier."
+"Si plusieurs groupes ACF sont présents sur une page d‘édition, le groupe portant le numéro le plus bas "
+"sera affiché en premier."
 
 #: ../core/views/meta_box_options.php:96
 msgid "Content Editor"
@@ -2062,41 +1954,34 @@ msgstr "Envoyer des Trackbacks"
 #~ " *  Install Add-ons\n"
 #~ " *  \n"
 #~ " *  The following code will include all 4 premium Add-Ons in your theme.\n"
-#~ " *  Please do not attempt to include a file which does not exist. This "
-#~ "will produce an error.\n"
+#~ " *  Please do not attempt to include a file which does not exist. This will produce an error.\n"
 #~ " *  \n"
-#~ " *  The following code assumes you have a folder 'add-ons' inside your "
-#~ "theme.\n"
+#~ " *  The following code assumes you have a folder 'add-ons' inside your theme.\n"
 #~ " *\n"
 #~ " *  IMPORTANT\n"
-#~ " *  Add-ons may be included in a premium theme/plugin as outlined in the "
-#~ "terms and conditions.\n"
+#~ " *  Add-ons may be included in a premium theme/plugin as outlined in the terms and conditions.\n"
 #~ " *  For more information, please read:\n"
 #~ " *  - http://www.advancedcustomfields.com/terms-conditions/\n"
-#~ " *  - http://www.advancedcustomfields.com/resources/getting-started/"
-#~ "including-lite-mode-in-a-plugin-theme/\n"
+#~ " *  - http://www.advancedcustomfields.com/resources/getting-started/including-lite-mode-in-a-plugin-"
+#~ "theme/\n"
 #~ " */"
 #~ msgstr ""
 #~ "/**\n"
 #~ " *  Installation des Add-ons\n"
 #~ " *  \n"
 #~ " *  Le code suivant incluera les 4 Add-ons premium dans votre thème.\n"
-#~ " *  N'essayez pas d'inclure un fichier qui n'existe pas sous peine de "
-#~ "rencontrer des erreurs.\n"
+#~ " *  N'essayez pas d'inclure un fichier qui n'existe pas sous peine de rencontrer des erreurs.\n"
 #~ " *  \n"
-#~ " *  Tous les champs doivent être inclus durant l'action 'acf/"
-#~ "register_fields'.\n"
-#~ " *  Les autres Add-ons (comme la page Options) peuvent être inclus en "
-#~ "dehors de cette action.\n"
+#~ " *  Tous les champs doivent être inclus durant l'action 'acf/register_fields'.\n"
+#~ " *  Les autres Add-ons (comme la page Options) peuvent être inclus en dehors de cette action.\n"
 #~ " *  \n"
-#~ " *  Vous devez placer un dossier add-ons dans votre thème afin que le "
-#~ "code suivant fonctionne correctement.\n"
+#~ " *  Vous devez placer un dossier add-ons dans votre thème afin que le code suivant fonctionne "
+#~ "correctement.\n"
 #~ " *\n"
 #~ " *  IMPORTANT\n"
-#~ " *  Les Add-ons peuvent être inclus dans un thème premium à condition de "
-#~ "respecter les termes du contrat de licence ACF.\n"
-#~ " *  Cependant, ils ne doivent pas être inclus dans une autre extension "
-#~ "gratuite ou premium. \n"
-#~ " *  Pour plus d'informations veuillez consulter cette page http://www."
-#~ "advancedcustomfields.com/terms-conditions/\n"
+#~ " *  Les Add-ons peuvent être inclus dans un thème premium à condition de respecter les termes du "
+#~ "contrat de licence ACF.\n"
+#~ " *  Cependant, ils ne doivent pas être inclus dans une autre extension gratuite ou premium. \n"
+#~ " *  Pour plus d'informations veuillez consulter cette page http://www.advancedcustomfields.com/terms-"
+#~ "conditions/\n"
 #~ " */"

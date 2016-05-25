@@ -124,7 +124,7 @@ class acf_field_date_picker extends acf_field
 <tr class="field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
 		<label><?php _e("Save format",'acf'); ?></label>
-		<p class="description"><?php _e("This format will determin the value saved to the database and returned via the API",'acf'); ?></p>
+		<p class="description"><?php _e("This format will determine the value saved to the database and returned via the API",'acf'); ?></p>
 		<p><?php _e("\"yymmdd\" is the most versatile save format. Read more about",'acf'); ?> <a href="http://docs.jquery.com/UI/Datepicker/formatDate"><?php _e("jQuery date formats",'acf'); ?></a></p>
 	</td>
 	<td>
