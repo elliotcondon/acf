@@ -156,14 +156,7 @@ function wxr_term_description( $term ) {
  * @since 3.1.0
  */
 function wxr_authors_list() {
-	global $wpdb;
-
-	$authors = array();
-	$results = $wpdb->get_results( "SELECT DISTINCT post_author FROM $wpdb->posts" );
-	foreach ( (array) $results as $result )
-		$authors[] = get_userdata( $result->post_author );
-
-	$authors = array_filter( $authors );
+	$authors = get_users( array( 'who' => 'authors' ) );
 
 	foreach( $authors as $author ) {
 		echo "\t<wp:author>";
@@ -223,18 +216,21 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n";
 <?php wxr_authors_list(); ?>
 <?php if ( $my_options['acf_posts'] ) {
 
-	global $wp_query, $wpdb, $post;
+	global $wp_query, $post;
 	$wp_query->in_the_loop = true; // Fake being in the loop.
 	
-	// create SQL with %d placeholders
-	$where = 'WHERE ID IN (' . substr(str_repeat('%d,', count($my_options['acf_posts'])), 0, -1) . ')';
-	
-	// now prepare the SQL based on the %d + $_POST data
-	$posts = $wpdb->get_results( $wpdb->prepare("SELECT * FROM {$wpdb->posts} $where", $my_options['acf_posts']));
+	$args = array(
+		'posts_per_page'   => -1,
+		'post_type'        => 'acf',
+		'post_status'      => 'publish',
+		'include'          => $my_options['acf_posts']
+	);
+	$posts = get_posts( $args );
 
 	// Begin Loop
 	foreach ( $posts as $post ) {
 		setup_postdata( $post );
+
 ?>
 	<item>
 		<title><?php echo apply_filters( 'the_title_rss', $post->post_title ); ?></title>
@@ -253,17 +249,18 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n";
 		<wp:menu_order><?php echo $post->menu_order; ?></wp:menu_order>
 		<wp:post_type><?php echo $post->post_type; ?></wp:post_type>
 		<wp:post_password><?php echo $post->post_password; ?></wp:post_password>
-<?php	$postmeta = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d", $post->ID ) );
-		foreach( $postmeta as $meta ) : if ( $meta->meta_key != '_edit_lock' ) : 
+<?php	$postmeta = get_post_meta( $post->ID );
+		foreach( $postmeta as $meta_key => $meta_value ) : if ( $meta_key != '_edit_lock' ) : 
 			
-			$meta->meta_value = maybe_unserialize( $meta->meta_value );
-				$meta->meta_value = fix_line_breaks( $meta->meta_value );
-			$meta->meta_value = maybe_serialize( $meta->meta_value );
+			$meta_value = $meta_value[0];
+			$meta_value = maybe_unserialize( $meta_value );
+				$meta_value = fix_line_breaks( $meta_value );
+			$meta_value = maybe_serialize( $meta_value );
 						
 		?>
 		<wp:postmeta>
-			<wp:meta_key><?php echo $meta->meta_key; ?></wp:meta_key>
-			<wp:meta_value><?php echo wxr_cdata( $meta->meta_value ); ?></wp:meta_value>
+			<wp:meta_key><?php echo $meta_key; ?></wp:meta_key>
+			<wp:meta_value><?php echo wxr_cdata( $meta_value ); ?></wp:meta_value>
 		</wp:postmeta>
 <?php	endif; endforeach; ?>
 	</item>

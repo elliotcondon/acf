@@ -852,10 +852,13 @@ $(document).ready(function(){
 	{
 		global $wpdb;
 		
+		//This can corrupt cache. Its better to leave those. Keeping in single option could be a solution.
+		/*
 		$values = $wpdb->query($wpdb->prepare(
 			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
 			'%' . $taxonomy . '_' . $term . '%'
 		));
+		*/
 	}
 	
 			

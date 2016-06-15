@@ -260,49 +260,43 @@ class acf_revisions
 		
 		// vars
 		$fields = array();
-		
-		
-		// get field from postmeta
-		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT * FROM $wpdb->postmeta WHERE post_id=%d", 
-			$revision_id
-		), ARRAY_A);
-		
+
+		$post_meta = get_post_meta($post_id);
 		
 		// populate $fields
-		if( $rows )
+		if( $post_meta )
 		{
-			foreach( $rows as $row )
+			foreach( $post_meta as $key => $value  )
 			{
 				// meta_key must start with '_'
-				if( substr($row['meta_key'], 0, 1) !== '_' )
+				if( substr($key, 0, 1) !== '_' )
 				{
 					continue;
 				}
 				
 				
 				// meta_value must start with 'field_'
-				if( substr($row['meta_value'], 0, 6) !== 'field_' )
+				if( substr($value[0], 0, 6) !== 'field_' )
 				{
 					continue;
 				}
 				
 				
 				// this is an ACF field, append to $fields
-				$fields[] = substr($row['meta_key'], 1);
+				$fields[] = substr($key, 1);
 				
 			}
 		}
 		
 		
 		// save data
-		if( $rows )
+		if( $post_meta )
 		{
-			foreach( $rows as $row )
+			foreach( $post_meta as $key => $value )
 			{
-				if( in_array($row['meta_key'], $fields) )
+				if( in_array($key, $fields) )
 				{
-					update_post_meta( $post_id, $row['meta_key'], $row['meta_value'] );
+					update_post_meta( $post_id, $key, $value[0] );
 				}
 			}
 		}

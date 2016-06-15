@@ -90,30 +90,33 @@ function get_field_objects( $post_id = false, $options = array() ) {
 	// get field_names
 	if( is_numeric($post_id) )
 	{
-		$keys = $wpdb->get_col($wpdb->prepare(
-			"SELECT meta_value FROM $wpdb->postmeta WHERE post_id = %d and meta_key LIKE %s AND meta_value LIKE %s",
-			$post_id,
-			'_%',
-			'field_%'
-		));
+		$keys = array();
+		$post_meta = get_post_meta($post_id);
+		foreach( $post_meta as $key => $value ) {
+			if( strpos( $value[0], 'field_' ) === 0 )
+				$keys[] = $value[0];
+		}
 	}
 	elseif( strpos($post_id, 'user_') !== false )
-	{
+	{	
 		$user_id = str_replace('user_', '', $post_id);
-		
-		$keys = $wpdb->get_col($wpdb->prepare(
-			"SELECT meta_value FROM $wpdb->usermeta WHERE user_id = %d and meta_key LIKE %s AND meta_value LIKE %s",
-			$user_id,
-			'_%',
-			'field_%'
-		));
+
+		$keys = array();
+		$post_meta = get_user_meta($user_id);
+		foreach( $post_meta as $key => $value ) {
+			if( strpos( $value[0], 'field_' ) === 0 )
+				$keys[] = $value[0];
+		}
 	}
 	else
 	{
+		//This is too preformance unfriendly
+		/*
 		$keys = $wpdb->get_col($wpdb->prepare(
 			"SELECT option_value FROM $wpdb->options WHERE option_name LIKE %s",
 			'_' . $post_id . '_%' 
 		));
+		*/
 	}
 
 
