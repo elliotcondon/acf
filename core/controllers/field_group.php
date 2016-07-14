@@ -120,14 +120,18 @@ class acf_field_group
 
 		
 		// get field from postmeta
-		$rows = $wpdb->get_results( $wpdb->prepare("SELECT meta_key FROM $wpdb->postmeta WHERE post_id = %d AND meta_key LIKE %s", $post_id, 'field_%'), ARRAY_A);
+		$keys = array();
+		$post_meta = get_post_meta($post_id);
+		foreach( $post_meta as $key => $value ) {
+			if( strpos( $key, 'field_' ) === 0 )
+				$keys[] = $key;
+		}		
 		
-		
-		if( $rows )
+		if( $keys )
 		{
-			foreach( $rows as $row )
+			foreach( $keys as $key )
 			{
-				$field = apply_filters('acf/load_field', false, $row['meta_key'], $post_id );
+				$field = apply_filters('acf/load_field', false, $key, $post_id );
 	
 			 	$fields[ $field['order_no'] ] = $field;
 			}
