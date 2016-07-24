@@ -2595,6 +2595,29 @@ var acf = {
 		},
 		popup : function()
 		{
+			var t = this, send_attachment_bkp = wp.media.editor.send.attachment;
+			
+			_media.div = this.$el;
+			
+		    wp.media.editor.send.attachment = function(props, attachment)
+		    {
+		    	var image = {
+			    	id		:	attachment.id,
+			    	url		:	attachment.url
+		    	};
+		    	
+		    	if( attachment.sizes && attachment.sizes[ t.o.preview_size ] )
+		    	{
+			    	image.url = attachment.sizes[ t.o.preview_size ].url;
+		    	}
+		    	
+		        acf.fields.image.add( image );
+		        
+		        wp.media.editor.send.attachment = send_attachment_bkp;
+		    }
+		    wp.media.editor.open();
+			
+			/*
 			// reference
 			var t = this;
 			
@@ -2619,14 +2642,6 @@ var acf = {
 					})
 				]
 			});
-			
-			
-			/*acf.media.frame.on('all', function(e){
-				
-				console.log( e );
-				
-			});*/
-			
 			
 			// customize model / view
 			acf.media.frame.on('content:activate', function(){
@@ -2780,6 +2795,7 @@ var acf = {
 				
 			// Finally, open the modal
 			acf.media.frame.open();
+			*/	
 				
 
 			return false;
