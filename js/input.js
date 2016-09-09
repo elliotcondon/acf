@@ -911,7 +911,7 @@ var acf = {
 			// setup fields
 			$(document).trigger('acf/setup_fields', [ $('#poststuff') ]);
 			
-		}, 10);
+		}, 1000);
 		
 	});
 	
