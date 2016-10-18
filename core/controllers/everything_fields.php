@@ -853,8 +853,8 @@ $(document).ready(function(){
 		global $wpdb;
 		
 		$values = $wpdb->query($wpdb->prepare(
-			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			'%' . $taxonomy . '_' . $term . '%'
+			"DELETE FROM $wpdb->options WHERE option_name LIKE '%%%s\\_%%'",
+			$taxonomy . '_' . $term
 		));
 	}
 	
