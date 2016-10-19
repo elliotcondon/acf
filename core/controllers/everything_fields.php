@@ -850,12 +850,16 @@ $(document).ready(function(){
 	
 	function delete_term( $term, $tt_id, $taxonomy, $deleted_term )
 	{
-		global $wpdb;
-		
-		$values = $wpdb->query($wpdb->prepare(
-			"DELETE FROM $wpdb->options WHERE option_name LIKE '%%%s\\_%%'",
-			$taxonomy . '_' . $term
-		));
+        global $wpdb;
+
+        $search = $taxonomy . '_' . $term . '_%';
+        $_search = '_' . $search;
+
+        $result = $wpdb->query($wpdb->prepare(
+            "DELETE FROM $wpdb->options WHERE option_name LIKE %s OR option_name LIKE %s",
+            str_replace('_', '\_', $search),
+            str_replace('_', '\_', $_search)
+        ));
 	}
 	
 			
