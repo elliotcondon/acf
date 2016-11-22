@@ -909,7 +909,7 @@ var acf = {
 			
 			
 			// setup fields
-			$(document).trigger('acf/setup_fields', [ $('#poststuff') ]);
+			$(document).trigger('acf/setup_fields', [ $('.poststuff') ]);
 			
 		}, 10);
 		
