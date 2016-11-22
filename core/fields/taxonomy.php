@@ -252,6 +252,8 @@ class acf_field_taxonomy extends acf_field
 			
 		}
 		
+		// Interact after setting terms
+		do_action('acf/set_terms', $post_id);
 		
 		// reset array ( WP saves twice )
 		$this->set_terms = array();
