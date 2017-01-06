@@ -254,6 +254,9 @@ class acf_field_image extends acf_field
 			{
 				foreach( $image_sizes as $image_size )
 				{
+					if ( $image_size != $field['preview_size'] )
+						continue;
+
 					// find src
 					$src = wp_get_attachment_image_src( $attachment->ID, $image_size );
 					
