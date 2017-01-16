@@ -234,13 +234,13 @@ function get_field( $field_key, $post_id = false, $format_value = true ) {
 *  @since	3.6
 *  @date	3/02/13
 *
-*  @param	string		$field_key: string containing the name of teh field name / key ('sub_field' / 'field_1')
+*  @param	string		$field_key: string containing the name of the field name / key ('sub_field' / 'field_1')
 *  @param	mixed		$post_id: the post_id of which the value is saved against
 *  @param	array		$options: an array containing options
 *			boolean		+ load_value: load the field value or not. Defaults to true
 *			boolean		+ format_value: format the field value or not. Defaults to true
 *
-*  @return	array		$return: an array containin the field groups
+*  @return	array		$return: an array containing the field groups
 */
 
 function get_field_object( $field_key, $post_id = false, $options = array() ) {
@@ -307,6 +307,62 @@ function get_field_object( $field_key, $post_id = false, $options = array() ) {
 
 
 	return $field;
+
+}
+
+
+/*
+*  get_field_choices()
+*
+*  This function will return an array containing the choices of the field which matches the given $field_key.
+*
+*  If multiple
+*
+*  @type	function
+*  @since	4.4
+*  @date	8/27/15
+*
+*  @param	string		$field_key: string containing the name of the field name / key ('sub_field' / 'field_1')
+*
+*  @param	bool		$match_all: return all the matches as array or the first match.
+*
+*  @return	bool|array	$return: an assoc array containing the field choices with element ('val' => 'text')
+* 						or multi choices result with the key with the actual field_key.
+*/
+
+function get_field_choices( $field_key, $match_all = false ) {
+
+	$result = array();
+
+	// From the `register_field_group` registrations.
+	if(isset($GLOBALS['acf_register_field_group'])) {
+		foreach($GLOBALS['acf_register_field_group'] as $acf) {
+			foreach($acf['fields'] as $field) {
+				if(in_array($field_key, array($field['name'], $field['key']))
+					&& isset($field['choices'])) {
+					if(!$match_all) return $field['choices'];
+					else $results[$field['key']] = $field['choices'];
+				}
+			}
+		}
+	}
+
+	// From the `acf` post_type registration (admin panel).
+	foreach (get_posts(array('post_type' => 'acf', 'posts_per_page' => -1)) as $acf) {
+		$meta = get_post_meta($acf->ID);
+		foreach($meta as $key => $field) {
+			if(substr($key, 0, 6) == 'field_') {
+				$field = unserialize($field[0]);
+				if(in_array($field_key, array($field['name'], $field['key']))
+					&& isset($field['choices'])) {
+					if(!$match_all) return $field['choices'];
+					else $results[$field['key']] = $field['choices'];
+				}
+			}
+		}
+	}
+
+	return $match_all ? $result : false;
 
 }
 
