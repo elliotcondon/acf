@@ -833,7 +833,11 @@ if( substr($rule['value'], 0, 11) != 'acf-options' )
 						{
 							foreach($all_terms as $all_term)
 							{
-								$terms[] = $all_term->term_id;
+								if(gettype($rule['value']) === 'string'){
+									$terms[] = $all_term->slug;
+								}else{
+									$terms[] = $all_term->term_id;
+								}
 							}
 						}
 					}
