@@ -391,6 +391,10 @@ class acf_controller_post
 		{
 			$html .= '#trackbacksdiv, #screen-meta label[for=trackbacksdiv-hide] {display: none;} ';
 		}
+		if( in_array('block_title',$options['hide_on_screen']) )
+		{
+			$html .= 'label#title-prompt-text, input#title {pointer-events:none;} ';
+		}
 		
 				
 		return $html;
