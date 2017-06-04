@@ -18,7 +18,7 @@ global $post;
 $groups = apply_filters('acf/field_group/get_location', array(), $post->ID);
 
 
-// at lease 1 location rule
+// at least 1 location rule
 if( empty($groups) )
 {
 	$groups = array(

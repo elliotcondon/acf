@@ -79,7 +79,7 @@ class acf_field_taxonomy extends acf_field
 	/*
 	*  load_value()
 	*
-	*  This filter is appied to the $value after it is loaded from the db
+	*  This filter is applied to the $value after it is loaded from the db
 	*
 	*  @type	filter
 	*  @since	3.6
@@ -143,7 +143,7 @@ class acf_field_taxonomy extends acf_field
 	/*
 	*  update_value()
 	*
-	*  This filter is appied to the $value before it is updated in the db
+	*  This filter is applied to the $value before it is updated in the db
 	*
 	*  @type	filter
 	*  @since	3.6
@@ -262,7 +262,7 @@ class acf_field_taxonomy extends acf_field
 	/*
 	*  format_value_for_api()
 	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is passed back to the api functions such as the_field
+	*  This filter is applied to the $value after it is loaded from the db and before it is passed back to the api functions such as the_field
 	*
 	*  @type	filter
 	*  @since	3.6
