@@ -133,7 +133,7 @@ class acf_controller_input
 	{
 
 		// scripts
-		wp_enqueue_script(array(
+		$handles = array(
 			'jquery',
 			'jquery-ui-core',
 			'jquery-ui-tabs',
@@ -142,8 +142,12 @@ class acf_controller_input
 			'thickbox',
 			'media-upload',
 			'acf-input',
-			'acf-datepicker',	
-		));
+			'acf-datepicker',
+		);
+
+		foreach( $handles as $handle ) {
+			wp_enqueue_script( $handle );
+		}
 
 		
 		// 3.5 media gallery
@@ -154,13 +158,18 @@ class acf_controller_input
 		
 		
 		// styles
-		wp_enqueue_style(array(
+		$handles = array(
 			'thickbox',
 			'wp-color-picker',
 			'acf-global',
 			'acf-input',
-			'acf-datepicker',	
-		));
+			'acf-datepicker',
+		);
+
+		foreach( $handles as $handle ) {
+			wp_enqueue_style( $handle );
+		}
+
 	}
 			
 }

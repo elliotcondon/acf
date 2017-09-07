@@ -108,10 +108,14 @@ class acf_field_groups
 	
 	function admin_print_scripts()
 	{
-		wp_enqueue_script(array(
+		$handles = array(
 			'jquery',
 			'thickbox',
-		));
+		);
+
+		foreach ( $handles as $handle  ) {
+			wp_enqueue_script( $handle );
+		}
 	}
 	
 	
@@ -125,11 +129,14 @@ class acf_field_groups
 	
 	function admin_print_styles()
 	{
-		wp_enqueue_style(array(
+		$handles = array(
 			'thickbox',
 			'acf-global',
 			'acf',
-		));
+		);
+		foreach ( $handles as $handle ) {
+			wp_enqueue_style( $handle );
+		}
 	}
 	
 	

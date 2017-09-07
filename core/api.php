@@ -1107,9 +1107,7 @@ function acf_form_head()
 	
 	
 	// need wp styling
-	wp_enqueue_style(array(
-		'colors-fresh'
-	));
+	wp_enqueue_style( 'colors-fresh' );
 	
 		
 	// actions

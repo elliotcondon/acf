@@ -89,11 +89,14 @@ class acf_addons
 	
 	function admin_print_styles()
 	{
-		wp_enqueue_style(array(
+		$handles = array(
 			'wp-pointer',
 			'acf-global',
 			'acf',
-		));
+		);
+		foreach ( $handles as $handle ) {
+			wp_enqueue_style( $handle );
+		}
 	}
 	
 	
