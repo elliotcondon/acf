@@ -136,14 +136,14 @@ class acf {
         
         
         // if file is in plugins folder
-        $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR); 
+        $wp_plugin_dir = realpath(str_replace('\\' ,'/', WP_PLUGIN_DIR));
         $dir = str_replace($wp_plugin_dir, plugins_url(), $dir, $count);
         
         
         if( $count < 1 )
         {
 	        // if file is in wp-content folder
-	        $wp_content_dir = str_replace('\\' ,'/', WP_CONTENT_DIR); 
+	        $wp_content_dir = realpath(str_replace('\\' ,'/', WP_CONTENT_DIR));
 	        $dir = str_replace($wp_content_dir, content_url(), $dir, $count);
         }
         
@@ -151,7 +151,7 @@ class acf {
         if( $count < 1 )
         {
 	        // if file is in ??? folder
-	        $wp_dir = str_replace('\\' ,'/', ABSPATH); 
+	        $wp_dir = realpath(str_replace('\\' ,'/', ABSPATH));
 	        $dir = str_replace($wp_dir, site_url('/'), $dir);
         }
         
