@@ -136,7 +136,7 @@ class acf {
         
         
         // if file is in plugins folder
-        $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR); 
+        $wp_plugin_dir = realpath(str_replace('\\' ,'/', WP_PLUGIN_DIR)); 
         $dir = str_replace($wp_plugin_dir, plugins_url(), $dir, $count);
         
         
