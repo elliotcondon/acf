@@ -135,7 +135,8 @@ class acf_field_image extends acf_field
 			'choices'	=> array(
 				'object'	=>	__("Image Object",'acf'),
 				'url'		=>	__("Image URL",'acf'),
-				'id'		=>	__("Image ID",'acf')
+				'id'		=>	__("Image ID",'acf'),
+				'base64'	=>	__("Image Base64",'acf')
 			)
 		));
 		?>
@@ -217,6 +218,10 @@ class acf_field_image extends acf_field
 		if( $field['save_format'] == 'url' )
 		{
 			$value = wp_get_attachment_url( $value );
+		}
+		elseif( $field['save_format'] == 'base64' )
+		{
+			$value = base64_encode( file_get_contents( wp_get_attachment_url( $value ) ) );
 		}
 		elseif( $field['save_format'] == 'object' )
 		{
