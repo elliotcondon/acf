@@ -1541,6 +1541,11 @@ msgid "Image ID"
 msgstr "ID da Imagem"
 
 # @ acf
+#: core/fields/image.php:139
+msgid "Image Base64"
+msgstr "Base64 da Imagem"
+
+# @ acf
 #: core/fields/image.php:29
 msgid "Update Image"
 msgstr "Atualizar Imagem"
