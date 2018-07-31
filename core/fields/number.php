@@ -79,7 +79,12 @@ class acf_field_number extends acf_field
 		
 		foreach( $o as $k )
 		{
-			$e .= ' ' . $k . '="' . esc_attr( $field[ $k ] ) . '"';	
+
+			if( empty( $field[ $k ] ) && 0 !== $field[ $k ] ) {
+				continue;
+			}
+			
+			$e .= ' ' . $k . '="' . esc_attr( $field[ $k ] ) . '"';
 		}
 		
 		$e .= ' />';
