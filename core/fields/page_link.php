@@ -84,7 +84,7 @@ class acf_field_page_link extends acf_field
 	*  create_options()
 	*
 	*  Create extra options for your field. This is rendered when editing a field.
-	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+	*  The value of $field['name'] can be used (like below) to save extra data to the $field
 	*
 	*  @type	action
 	*  @since	3.6
