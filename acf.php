@@ -558,12 +558,12 @@ class acf {
 		$scripts = array();
 		$scripts[] = array(
 			'handle'	=> 'acf-field-group',
-			'src'		=> $this->settings['dir'] . "js/field-group{$min}.js",
+			'src'		=> get_bloginfo('url') . "js/field-group{$min}.js",
 			'deps'		=> array('jquery')
 		);
 		$scripts[] = array(
 			'handle'	=> 'acf-input',
-			'src'		=> $this->settings['dir'] . "js/input{$min}.js",
+			'src'		=> get_bloginfo('url') . "js/input{$min}.js",
 			'deps'		=> array('jquery', 'jquery-ui-core', 'jquery-ui-datepicker')
 		);
 		
@@ -576,11 +576,11 @@ class acf {
 		
 		// register acf styles
 		$styles = array(
-			'acf'				=> $this->settings['dir'] . 'css/acf.css',
-			'acf-field-group'	=> $this->settings['dir'] . 'css/field-group.css',
-			'acf-global'		=> $this->settings['dir'] . 'css/global.css',
-			'acf-input'			=> $this->settings['dir'] . 'css/input.css',
-			'acf-datepicker'	=> $this->settings['dir'] . 'core/fields/date_picker/style.date_picker.css',
+			'acf'				=> get_bloginfo('url') . 'css/acf.css',
+			'acf-field-group'	=> get_bloginfo('url') . 'css/field-group.css',
+			'acf-global'		=> get_bloginfo('url') . 'css/global.css',
+			'acf-input'			=> get_bloginfo('url') . 'css/input.css',
+			'acf-datepicker'	=> get_bloginfo('url') . 'core/fields/date_picker/style.date_picker.css',
 		);
 		
 		foreach( $styles as $k => $v )
