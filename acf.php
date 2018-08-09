@@ -339,21 +339,6 @@ class acf {
 				$value = trim( $value );
 			}
 			
-			
-			// numbers
-			if( is_numeric($value) )
-			{
-				// check for non numeric characters
-				if( preg_match('/[^0-9]/', $value) )
-				{
-					// leave value if it contains such characters: . + - e
-					//$value = floatval( $value );
-				}
-				else
-				{
-					$value = intval( $value );
-				}
-			}
 		}
 		
 		
