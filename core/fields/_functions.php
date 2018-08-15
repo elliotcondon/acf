@@ -347,7 +347,7 @@ class acf_field_functions
 				*  In this case, the field group ID is never known and we can check for the correct translated field group
 				*/
 				
-				if( defined('ICL_LANGUAGE_CODE') && !$post_id )
+				if( function_exists('icl_object_id') && defined('ICL_LANGUAGE_CODE') && !$post_id )
 				{
 					$wpml_post_id = icl_object_id($row['post_id'], 'acf', true, ICL_LANGUAGE_CODE);
 					
