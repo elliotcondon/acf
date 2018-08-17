@@ -4041,7 +4041,9 @@ var acf = {
 			}
 			
 			return false;
-		}
+		} else {
+            $(document).trigger('acf/validation_success');
+        }
 
 		
 		// remove hidden postboxes
