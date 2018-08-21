@@ -2008,13 +2008,18 @@ var acf = {
 		    
 		    // value exists?
 		    var lat = this.$el.find('.input-lat').val(),
-		    	lng = this.$el.find('.input-lng').val();
+		    	lng = this.$el.find('.input-lng').val(),
+				zoom = this.$el.find('.input-zoom').val();
 		    
 		    if( lat && lng )
 		    {
 			    this.update( lat, lng ).center();
 		    }
 		    
+			if(zoom)
+			{
+				this.map.setZoom( parseInt(zoom) );
+			}
 		    
 			// events
 			google.maps.event.addListener(autocomplete, 'place_changed', function( e ) {
@@ -2106,7 +2111,22 @@ var acf = {
 				_this.set({ $el : $el }).update( lat, lng ).sync();
 			
 			});
-
+			
+			
+			google.maps.event.addListener( this.map, 'zoom_changed', function( e ) {
+				
+				 // reference
+				var $el = this.$el;
+				
+				// vars
+				var zoom = this.data.map.getZoom();
+				
+				
+				// update inputs
+				$el.find('.input-zoom').val( zoom );
+				
+			});
+			
 			
 			
 	        // add to maps

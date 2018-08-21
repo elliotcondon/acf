@@ -67,7 +67,8 @@ class acf_field_google_map extends acf_field
 		$field['value'] = wp_parse_args($field['value'], array(
 			'address'	=> '',
 			'lat'		=> '',
-			'lng'		=> ''
+			'lng'		=> '',
+			'zoom'		=> '',
 		));
 		
 		
