@@ -103,6 +103,7 @@ $options = apply_filters('acf/field_group/get_options', array(), $post->ID);
 					'slug'				=>	__("Slug", 'acf'),
 					'author'			=>	__("Author", 'acf'),
 					'format'			=>	__("Format", 'acf'),
+					'page_attributes'	=>	__("Page Attributes", 'acf'),
 					'featured_image'	=>	__("Featured Image", 'acf'),
 					'categories'		=>	__("Categories", 'acf'),
 					'tags'				=>	__("Tags", 'acf'),
