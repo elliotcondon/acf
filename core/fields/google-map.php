@@ -239,7 +239,7 @@ class acf_field_google_map extends acf_field
 	/*
 	*  update_value()
 	*
-	*  This filter is appied to the $value before it is updated in the db
+	*  This filter is applied to the $value before it is updated in the db
 	*
 	*  @type	filter
 	*  @since	3.6

@@ -355,7 +355,7 @@ class acf_field_wysiwyg extends acf_field
 	/*
 	*  format_value_for_api()
 	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is passed back to the api functions such as the_field
+	*  This filter is applied to the $value after it is loaded from the db and before it is passed back to the api functions such as the_field
 	*
 	*  @type	filter
 	*  @since	3.6
