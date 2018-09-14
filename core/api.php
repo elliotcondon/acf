@@ -982,7 +982,7 @@ function api_acf_field_group_get_options( $options, $post_id )
 		{
 			if( $acf['id'] == $post_id )
 			{
-				$options = $acf['options'];
+				$options = (isset($acf['options'])) ? $acf['options'] : array() ;
 				break;
 			}
 		}
