@@ -971,9 +971,12 @@ function acf()
 
 
 // initialize
-acf();
+if ( did_action('plugins_loaded') ) {
+	// if the plugin is called within the functions.php file of a theme, the action `plugins_loaded` was already called, so the function has to be executed directly
+	acf();
+} else {
+	add_action('plugins_loaded', 'acf' );
+}
 
 
 endif; // class_exists check
-
-?>
