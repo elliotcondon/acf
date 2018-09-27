@@ -321,16 +321,12 @@ class acf_field_group
 		
 		
 		// custom scripts
-		wp_enqueue_script(array(
-			'acf-field-group',
-		));
+		wp_enqueue_script( 'acf-field-group' );
 		
 		
 		// custom styles
-		wp_enqueue_style(array(
-			'acf-global',
-			'acf-field-group',
-		));
+		wp_enqueue_style( 'acf-global' );
+		wp_enqueue_style( 'acf-field-group' );
 		
 		
 		// actions
