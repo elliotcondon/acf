@@ -3083,10 +3083,26 @@ var acf = {
 			});
 			
 			
-			// ajax fetch values for left side
-			this.fetch();
-					
+			// ajax fetch values for left side (lazyload if possible)
+			if ($.fn.lazyload) {
+				this.lazyload();
+			} else {
+				this.fetch();
+			}
+			
 		},
+		
+		lazyload : function(){
+			var _this = this,
+			    o = this.o,
+			    $el = this.$el;
+			this.$left.find('.relationship_list').lazyload({
+				appear: function() {
+					acf.fields.relationship.set({ $el : $el, o : o }).fetch();
+				}
+			});
+		},
+		
 		fetch : function(){
 			
 			// reference
