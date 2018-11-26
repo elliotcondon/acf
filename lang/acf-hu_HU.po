@@ -1,0 +1,1898 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Custom Fields\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
+"POT-Creation-Date: 2014-02-26 10:45+0100\n"
+"PO-Revision-Date: 2014-02-26 13:52+0100\n"
+"Last-Translator: keeteean <info@keeteean.com>\n"
+"Language-Team: Elliot Condon\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../acf.php:455
+msgid "Field&nbsp;Groups"
+msgstr "Mezőcsoportok"
+
+#: ../acf.php:456 ../core/controllers/field_groups.php:214
+msgid "Advanced Custom Fields"
+msgstr "Advanced Custom Fields"
+
+#: ../acf.php:457
+msgid "Add New"
+msgstr "Új hozzáadása"
+
+#: ../acf.php:458
+msgid "Add New Field Group"
+msgstr "Új mezőcsoport hozzáadása"
+
+#: ../acf.php:459
+msgid "Edit Field Group"
+msgstr "Mezőcsoport szerkesztése"
+
+#: ../acf.php:460
+msgid "New Field Group"
+msgstr "Új mezőcsoport"
+
+#: ../acf.php:461
+msgid "View Field Group"
+msgstr "Mezőcsoport megtekintése"
+
+#: ../acf.php:462
+msgid "Search Field Groups"
+msgstr "Mezőcsoportok keresése"
+
+#: ../acf.php:463
+msgid "No Field Groups found"
+msgstr "Nem található mezőcsoport"
+
+#: ../acf.php:464
+msgid "No Field Groups found in Trash"
+msgstr "Nem található mezőcsoport a lomtárban"
+
+#: ../acf.php:567 ../core/views/meta_box_options.php:99
+msgid "Custom Fields"
+msgstr "Egyedi mezők"
+
+#: ../acf.php:585 ../acf.php:588
+msgid "Field group updated."
+msgstr "Mezőcsoport frissítve."
+
+#: ../acf.php:586
+msgid "Custom field updated."
+msgstr "Egyedi mező frissítve."
+
+#: ../acf.php:587
+msgid "Custom field deleted."
+msgstr "Egyedi mező törölve."
+
+#: ../acf.php:590
+#, php-format
+msgid "Field group restored to revision from %s"
+msgstr "Mezőcsoport korábbi változata visszaállítva ebből: %s "
+
+#: ../acf.php:591
+msgid "Field group published."
+msgstr "Mezőcsoport közzétéve."
+
+#: ../acf.php:592
+msgid "Field group saved."
+msgstr "Mezőcsoport mentve"
+
+#: ../acf.php:593
+msgid "Field group submitted."
+msgstr "Mezőcsoport beküldve."
+
+#: ../acf.php:594
+msgid "Field group scheduled for."
+msgstr "Mezőcsoport előjegyezve."
+
+#: ../acf.php:595
+msgid "Field group draft updated."
+msgstr "Mezőcsoport vázlat frissítve."
+
+#: ../acf.php:730
+msgid "Thumbnail"
+msgstr "Bélyegkép"
+
+#: ../acf.php:731
+msgid "Medium"
+msgstr "Közepes"
+
+#: ../acf.php:732
+msgid "Large"
+msgstr "Nagy"
+
+#: ../acf.php:733
+msgid "Full"
+msgstr "Teljes méretű"
+
+#: ../core/actions/export.php:26 ../core/views/meta_box_fields.php:58
+msgid "Error"
+msgstr "Hiba"
+
+#: ../core/actions/export.php:33
+msgid "No ACF groups selected"
+msgstr "Nincs ACF csoport kijelölve."
+
+#: ../core/api.php:1162
+msgid "Update"
+msgstr "Frissítés"
+
+#: ../core/api.php:1163
+msgid "Post updated"
+msgstr "Bejegyzés frissítve"
+
+#: ../core/controllers/addons.php:42 ../core/controllers/field_groups.php:307
+msgid "Add-ons"
+msgstr "Kiegészítők"
+
+#: ../core/controllers/addons.php:130 ../core/controllers/field_groups.php:429
+msgid "Repeater Field"
+msgstr "Mező ismétlő"
+
+#: ../core/controllers/addons.php:131
+msgid "Create infinite rows of repeatable data with this versatile interface!"
+msgstr ""
+"Végtelen sornyi ismétlődő adatok létrehozása egy intuitív felület "
+"segítségével."
+
+#: ../core/controllers/addons.php:137 ../core/controllers/field_groups.php:437
+msgid "Gallery Field"
+msgstr "Galéria mező"
+
+#: ../core/controllers/addons.php:138
+msgid "Create image galleries in a simple and intuitive interface!"
+msgstr "Képgalériák létrehozása egy egyszerű és intuitív felület segítségével."
+
+#: ../core/controllers/addons.php:144 ../core/controllers/field_groups.php:445
+msgid "Options Page"
+msgstr "Beállítások oldal"
+
+#: ../core/controllers/addons.php:145
+msgid "Create global data to use throughout your website!"
+msgstr "Az egész weboldalon használható globális adatok létrehozása."
+
+#: ../core/controllers/addons.php:151
+msgid "Flexible Content Field"
+msgstr "Rugalmas tartalom mező"
+
+#: ../core/controllers/addons.php:152
+msgid "Create unique designs with a flexible content layout manager!"
+msgstr ""
+"Egyedi dizájnok létrehozása egy rugalmas tartalom-elrendezés kezelő "
+"segítségével."
+
+#: ../core/controllers/addons.php:161
+msgid "Gravity Forms Field"
+msgstr "Gravity Forms mező"
+
+#: ../core/controllers/addons.php:162
+msgid "Creates a select field populated with Gravity Forms!"
+msgstr "Gravity Forms által kitöltött választó mező létrehozása."
+
+#: ../core/controllers/addons.php:168
+msgid "Date & Time Picker"
+msgstr "Dátum és időválasztó"
+
+#: ../core/controllers/addons.php:169
+msgid "jQuery date & time picker"
+msgstr "jQuery alapú dátum és időválasztó."
+
+#: ../core/controllers/addons.php:175
+msgid "Location Field"
+msgstr "Helyszín mező"
+
+#: ../core/controllers/addons.php:176
+msgid "Find addresses and coordinates of a desired location"
+msgstr "A keresett helyszín címének és koordinátáinak megtalálása."
+
+#: ../core/controllers/addons.php:182
+msgid "Contact Form 7 Field"
+msgstr "Contact Form 7 mező"
+
+#: ../core/controllers/addons.php:183
+msgid "Assign one or more contact form 7 forms to a post"
+msgstr "Egy vagy több Contact Form 7 űrlap megjelenítése bejegyzésben."
+
+#: ../core/controllers/addons.php:193
+msgid "Advanced Custom Fields Add-Ons"
+msgstr "Advanced Custom Fields kiegészítők"
+
+#: ../core/controllers/addons.php:196
+msgid ""
+"The following Add-ons are available to increase the functionality of the "
+"Advanced Custom Fields plugin."
+msgstr ""
+"A következő kiegészítőkkel tovább növelhetjük a Advanced Custom Fields "
+"bővítmény képességeit."
+
+#: ../core/controllers/addons.php:197
+msgid ""
+"Each Add-on can be installed as a separate plugin (receives updates) or "
+"included in your theme (does not receive updates)."
+msgstr ""
+"Az egyes kiegészítők vagy különálló WordPress bővítményként telepíthetőek "
+"(frissülnek) vagy a sablonunk részét képezik (nem frissülnek)."
+
+#: ../core/controllers/addons.php:219 ../core/controllers/addons.php:240
+msgid "Installed"
+msgstr "Telepítve"
+
+#: ../core/controllers/addons.php:221
+msgid "Purchase & Install"
+msgstr "Vásárlás és telepítés"
+
+#: ../core/controllers/addons.php:242 ../core/controllers/field_groups.php:422
+#: ../core/controllers/field_groups.php:431
+#: ../core/controllers/field_groups.php:439
+#: ../core/controllers/field_groups.php:447
+#: ../core/controllers/field_groups.php:455
+msgid "Download"
+msgstr "Letöltés"
+
+#: ../core/controllers/export.php:50 ../core/controllers/export.php:159
+msgid "Export"
+msgstr "Exportálás"
+
+#: ../core/controllers/export.php:216
+msgid "Export Field Groups"
+msgstr "Mezőcsoportok exportálása"
+
+#: ../core/controllers/export.php:221
+msgid "Field Groups"
+msgstr "Mezőcsoportok"
+
+#: ../core/controllers/export.php:222
+msgid "Select the field groups to be exported"
+msgstr "Exportálandó mezőcsoportok kiválasztása"
+
+#: ../core/controllers/export.php:239 ../core/controllers/export.php:252
+msgid "Export to XML"
+msgstr "Exportálás XML-be"
+
+#: ../core/controllers/export.php:242 ../core/controllers/export.php:267
+msgid "Export to PHP"
+msgstr "PHP kód létrehozása"
+
+#: ../core/controllers/export.php:253
+msgid ""
+"ACF will create a .xml export file which is compatible with the native WP "
+"import plugin."
+msgstr ""
+"A WordPress natív importáló bővítményével kompatibilis .xml export fájlt "
+"létrehozása."
+
+#: ../core/controllers/export.php:254
+msgid ""
+"Imported field groups <b>will</b> appear in the list of editable field "
+"groups. This is useful for migrating fields groups between Wp websites."
+msgstr ""
+"A beimportált mezőcsoportok a szerkeszthető mezőcsoportok listájában "
+"<b>fognak</b> megjelenni. Mezőcsoportok különböző WordPress telepítések "
+"közötti mozgatásakor lehet hasznos."
+
+#: ../core/controllers/export.php:256
+msgid "Select field group(s) from the list and click \"Export XML\""
+msgstr ""
+"Válasszuk ki a mezőcsoporto(ka)t a listából és kattintsunk az  \"Exportálás "
+"XML-be\" gombra."
+
+#: ../core/controllers/export.php:257
+msgid "Save the .xml file when prompted"
+msgstr "Mentsük az .xml fájl, amikor megkér rá a rendszer."
+
+#: ../core/controllers/export.php:258
+msgid "Navigate to Tools &raquo; Import and select WordPress"
+msgstr ""
+"Navigáljunk el az Eszközök &raquo; Importálás menüpontba, majd válasszuk a "
+"WordPress opciót."
+
+#: ../core/controllers/export.php:259
+msgid "Install WP import plugin if prompted"
+msgstr "Telepítsük a WordPress importáló bővítményt, ha a rendszer megkér rá."
+
+#: ../core/controllers/export.php:260
+msgid "Upload and import your exported .xml file"
+msgstr "Töltsük fel és importáljuk be az exportált .xml fájlt."
+
+#: ../core/controllers/export.php:261
+msgid "Select your user and ignore Import Attachments"
+msgstr "Válasszuk ki a felhasználónkat és hagyjuk ki a csatolmányokat."
+
+#: ../core/controllers/export.php:262
+msgid "That's it! Happy WordPressing"
+msgstr "Ennyi! Kellemes WordPress-ezést!"
+
+#: ../core/controllers/export.php:268
+msgid "ACF will create the PHP code to include in your theme."
+msgstr "A saját WordPress sablonunkba építhető PHP kód létrehozása."
+
+#: ../core/controllers/export.php:269 ../core/controllers/export.php:310
+msgid ""
+"Registered field groups <b>will not</b> appear in the list of editable field "
+"groups. This is useful for including fields in themes."
+msgstr ""
+"A regisztrált mezőcsoportok <b>nem fognak</b> megjelenni a szerkeszthető "
+"mezőcsoportok listájában. A mezők WordPress sablonokba történő ágyazásánál "
+"lehet hasznos."
+
+#: ../core/controllers/export.php:270 ../core/controllers/export.php:311
+msgid ""
+"Please note that if you export and register field groups within the same WP, "
+"you will see duplicate fields on your edit screens. To fix this, please move "
+"the original field group to the trash or remove the code from your functions."
+"php file."
+msgstr ""
+"Vegyük figyelembe, hogy ha a mezőcsoportokat ugyan abba a WordPress "
+"telepítésbe regisztráljuk, melyből kiexportáltuk őket, az egyes mezőkből "
+"dupla példányokat fogunk látni a szerkesztő képernyőkön. A hiba "
+"kiküszöbölésére vagy tegyük a Lomtárba az eredeti mezőcsoportot vagy "
+"távolítsuk el a kódot a sablonunk funcition.php fájljából."
+
+#: ../core/controllers/export.php:272
+msgid "Select field group(s) from the list and click \"Create PHP\""
+msgstr ""
+"Válasszuk ki a mezőcsoporto(ka)t a listából és kattintsunk a \"PHP kód "
+"létrehozása\" gombra."
+
+#: ../core/controllers/export.php:273 ../core/controllers/export.php:302
+msgid "Copy the PHP code generated"
+msgstr "Másoljuk az előállított PHP kódot."
+
+#: ../core/controllers/export.php:274 ../core/controllers/export.php:303
+msgid "Paste into your functions.php file"
+msgstr "Illesszük be a sablonunk functions.php fájljába."
+
+#: ../core/controllers/export.php:275 ../core/controllers/export.php:304
+msgid "To activate any Add-ons, edit and use the code in the first few lines."
+msgstr ""
+"Bármely kiegészítő aktiválásához szerkesszük és használjuk az első pár "
+"sornyi kódot."
+
+#: ../core/controllers/export.php:295
+msgid "Export Field Groups to PHP"
+msgstr "Mezőcsoportok exportálása PHP-be"
+
+#: ../core/controllers/export.php:300 ../core/fields/tab.php:65
+msgid "Instructions"
+msgstr "Instrukciók"
+
+#: ../core/controllers/export.php:309
+msgid "Notes"
+msgstr "Megjegyzések"
+
+#: ../core/controllers/export.php:316
+msgid "Include in theme"
+msgstr "Beépítés sablonba"
+
+#: ../core/controllers/export.php:317
+msgid ""
+"The Advanced Custom Fields plugin can be included within a theme. To do so, "
+"move the ACF plugin inside your theme and add the following code to your "
+"functions.php file:"
+msgstr ""
+"Az Advanced Custom Fields bővítmény beépíthető a WordPress sablonokba. Ehhez "
+"helyezzük át az ACF bővítmény mappáját a sablonunk mappájába, majd az alábbi "
+"PHP kódot adjuk a functions.php fájlhoz:"
+
+#: ../core/controllers/export.php:323
+msgid ""
+"To remove all visual interfaces from the ACF plugin, you can use a constant "
+"to enable lite mode. Add the following code to your functions.php file "
+"<b>before</b> the include_once code:"
+msgstr ""
+"Az ACF összes vizuális felületének eltávolításához bekapcsolhatjuk a "
+"bővítmény \"Lite\" üzemmódját. Ehhez adjuk a sablonunk functions.php "
+"fájljához az alábbi kódot az include_once kódrész <b>elé</b>:"
+
+#: ../core/controllers/export.php:331
+msgid "Back to export"
+msgstr "Vissza az exportáláshoz"
+
+#: ../core/controllers/export.php:400
+msgid "No field groups were selected"
+msgstr "Nincs mezőcsoport kiválasztva."
+
+#: ../core/controllers/field_group.php:358
+msgid "Move to trash. Are you sure?"
+msgstr "Áthelyezés a Lomtárba. Biztosan ezt szeretnénk?"
+
+#: ../core/controllers/field_group.php:359
+msgid "checked"
+msgstr "bejelölve"
+
+#: ../core/controllers/field_group.php:360
+msgid "No toggle fields available"
+msgstr "Nincs elérhető állítható mező."
+
+#: ../core/controllers/field_group.php:361
+msgid "Field group title is required"
+msgstr "El kell látnunk a mezőcsoportot címmel."
+
+#: ../core/controllers/field_group.php:362
+msgid "copy"
+msgstr "másolás"
+
+#: ../core/controllers/field_group.php:363
+#: ../core/views/meta_box_location.php:62
+#: ../core/views/meta_box_location.php:159
+msgid "or"
+msgstr "vagy"
+
+#: ../core/controllers/field_group.php:364
+#: ../core/controllers/field_group.php:395
+#: ../core/controllers/field_group.php:457
+#: ../core/controllers/field_groups.php:148
+msgid "Fields"
+msgstr "Mezők"
+
+#: ../core/controllers/field_group.php:365
+msgid "Parent fields"
+msgstr "Szülőmezők"
+
+#: ../core/controllers/field_group.php:366
+msgid "Sibling fields"
+msgstr "Testvérmezők"
+
+#: ../core/controllers/field_group.php:367
+msgid "Hide / Show All"
+msgstr "Összes megjelenítése / elrejtése"
+
+#: ../core/controllers/field_group.php:396
+msgid "Location"
+msgstr "Helyszín"
+
+#: ../core/controllers/field_group.php:397
+msgid "Options"
+msgstr "Beállítások"
+
+#: ../core/controllers/field_group.php:459
+msgid "Show Field Key:"
+msgstr "Kulcsmező megjelenítése:"
+
+#: ../core/controllers/field_group.php:460 ../core/fields/page_link.php:138
+#: ../core/fields/page_link.php:159 ../core/fields/post_object.php:328
+#: ../core/fields/post_object.php:349 ../core/fields/select.php:224
+#: ../core/fields/select.php:243 ../core/fields/taxonomy.php:343
+#: ../core/fields/user.php:285 ../core/fields/wysiwyg.php:256
+#: ../core/views/meta_box_fields.php:195 ../core/views/meta_box_fields.php:218
+msgid "No"
+msgstr "Nem"
+
+#: ../core/controllers/field_group.php:461 ../core/fields/page_link.php:137
+#: ../core/fields/page_link.php:158 ../core/fields/post_object.php:327
+#: ../core/fields/post_object.php:348 ../core/fields/select.php:223
+#: ../core/fields/select.php:242 ../core/fields/taxonomy.php:342
+#: ../core/fields/user.php:284 ../core/fields/wysiwyg.php:255
+#: ../core/views/meta_box_fields.php:194 ../core/views/meta_box_fields.php:217
+msgid "Yes"
+msgstr "Igen"
+
+#: ../core/controllers/field_group.php:645
+msgid "Front Page"
+msgstr "Kezdőoldal"
+
+#: ../core/controllers/field_group.php:646
+msgid "Posts Page"
+msgstr "Bejegyzések oldal"
+
+#: ../core/controllers/field_group.php:647
+msgid "Top Level Page (parent of 0)"
+msgstr "Felső szintű oldal (nem rendelkezik gyermekekkel)"
+
+#: ../core/controllers/field_group.php:648
+msgid "Parent Page (has children)"
+msgstr "Szülő oldal (rendelkezik gyermekekkel)"
+
+#: ../core/controllers/field_group.php:649
+msgid "Child Page (has parent)"
+msgstr "Gyermek oldal (rendelkezik szülővel)"
+
+#: ../core/controllers/field_group.php:657
+msgid "Default Template"
+msgstr "Alapértelmezett sablon"
+
+#: ../core/controllers/field_group.php:734
+msgid "Publish"
+msgstr "Közzététel"
+
+#: ../core/controllers/field_group.php:735
+msgid "Pending Review"
+msgstr "Függőben lévő"
+
+#: ../core/controllers/field_group.php:736
+msgid "Draft"
+msgstr "Vázlat"
+
+#: ../core/controllers/field_group.php:737
+msgid "Future"
+msgstr "Jövőbeni"
+
+#: ../core/controllers/field_group.php:738
+msgid "Private"
+msgstr "Magánjellegű"
+
+#: ../core/controllers/field_group.php:739
+msgid "Revision"
+msgstr "Változat"
+
+#: ../core/controllers/field_group.php:740
+msgid "Trash"
+msgstr "Lomtár"
+
+#: ../core/controllers/field_group.php:753
+msgid "Super Admin"
+msgstr "Főadmin"
+
+#: ../core/controllers/field_group.php:768
+#: ../core/controllers/field_group.php:789
+#: ../core/controllers/field_group.php:796 ../core/fields/file.php:186
+#: ../core/fields/image.php:170 ../core/fields/page_link.php:109
+#: ../core/fields/post_object.php:274 ../core/fields/post_object.php:298
+#: ../core/fields/relationship.php:598 ../core/fields/relationship.php:622
+#: ../core/fields/user.php:229
+msgid "All"
+msgstr "Összes"
+
+#: ../core/controllers/field_groups.php:147
+msgid "Title"
+msgstr "Cím"
+
+#: ../core/controllers/field_groups.php:216
+#: ../core/controllers/field_groups.php:253
+msgid "Changelog"
+msgstr "Változások"
+
+#: ../core/controllers/field_groups.php:217
+msgid "See what's new in"
+msgstr "Újdonságok áttekintése:"
+
+#: ../core/controllers/field_groups.php:217
+msgid "version"
+msgstr "verzió"
+
+#: ../core/controllers/field_groups.php:219
+msgid "Resources"
+msgstr "Források"
+
+#: ../core/controllers/field_groups.php:221
+msgid "Getting Started"
+msgstr "Vágjunk bele!"
+
+#: ../core/controllers/field_groups.php:222
+msgid "Field Types"
+msgstr "Mezőtípusok"
+
+#: ../core/controllers/field_groups.php:223
+msgid "Functions"
+msgstr "Függvények"
+
+#: ../core/controllers/field_groups.php:224
+msgid "Actions"
+msgstr "Parancsok"
+
+#: ../core/controllers/field_groups.php:225
+#: ../core/fields/relationship.php:641
+msgid "Filters"
+msgstr "Szűrők"
+
+#: ../core/controllers/field_groups.php:226
+msgid "'How to' guides"
+msgstr "Gyakorlati útmutatók"
+
+#: ../core/controllers/field_groups.php:227
+msgid "Tutorials"
+msgstr "Tutorialok"
+
+#: ../core/controllers/field_groups.php:232
+msgid "Created by"
+msgstr "Készítette:"
+
+#: ../core/controllers/field_groups.php:244
+msgid "Welcome to Advanced Custom Fields"
+msgstr "Üdvözli az Advanced Custom Fields!"
+
+#: ../core/controllers/field_groups.php:245
+msgid "Thank you for updating to the latest version!"
+msgstr "Köszönjük, hogy frissített a legújabb verzióra!"
+
+#: ../core/controllers/field_groups.php:245
+msgid "is more polished and enjoyable than ever before. We hope you like it."
+msgstr "tovább lett polírozva és élvezetesebb használni, mint valaha."
+
+#: ../core/controllers/field_groups.php:252
+msgid "What’s New"
+msgstr "Újdonságok"
+
+#: ../core/controllers/field_groups.php:255
+msgid "Download Add-ons"
+msgstr "Kiegészítők letöltése"
+
+#: ../core/controllers/field_groups.php:309
+msgid "Activation codes have grown into plugins!"
+msgstr "Az aktiváló kódok mostantól a különálló bővítmények részét képezik."
+
+#: ../core/controllers/field_groups.php:310
+msgid ""
+"Add-ons are now activated by downloading and installing individual plugins. "
+"Although these plugins will not be hosted on the wordpress.org repository, "
+"each Add-on will continue to receive updates in the usual way."
+msgstr ""
+"A kiegészítőket mostantól különálló bővítményként lehet letölteni, "
+"telepíteni és bekapcsolni. Habár ezek a bővítmények nem találhatóak meg a "
+"WordPress bővítménytárában, minden egyes ACF kiegészítő ugyan úgy meg fogja "
+"kapni a frissítéseit."
+
+#: ../core/controllers/field_groups.php:316
+msgid "All previous Add-ons have been successfully installed"
+msgstr "Az összes előző kiegészítő sikeresen telepítve lett."
+
+#: ../core/controllers/field_groups.php:320
+msgid "This website uses premium Add-ons which need to be downloaded"
+msgstr ""
+"Ez a weboldal prémium kiegészítőket használ, melyeket külön-külön le kell "
+"töltenünk."
+
+#: ../core/controllers/field_groups.php:320
+msgid "Download your activated Add-ons"
+msgstr "Töltsük le az általunk aktivált kiegészítőket."
+
+#: ../core/controllers/field_groups.php:325
+msgid ""
+"This website does not use premium Add-ons and will not be affected by this "
+"change."
+msgstr ""
+"Mivel ez a weboldal nem használ prémium kiegészítőket, így ezen "
+"információkat figyelmen kívül hagyhatjuk"
+
+#: ../core/controllers/field_groups.php:335
+msgid "Easier Development"
+msgstr "Könnyebb fejlesztés"
+
+#: ../core/controllers/field_groups.php:337
+msgid "New Field Types"
+msgstr "Új mezőtípusok"
+
+#: ../core/controllers/field_groups.php:339
+msgid "Taxonomy Field"
+msgstr "Taxonómia mező"
+
+#: ../core/controllers/field_groups.php:340
+msgid "User Field"
+msgstr "Felhasználó mező"
+
+#: ../core/controllers/field_groups.php:341
+msgid "Email Field"
+msgstr "Email mező"
+
+#: ../core/controllers/field_groups.php:342
+msgid "Password Field"
+msgstr "Jelszó mező"
+
+#: ../core/controllers/field_groups.php:344
+msgid "Custom Field Types"
+msgstr "Egyedi mezőtípusok"
+
+#: ../core/controllers/field_groups.php:345
+msgid ""
+"Creating your own field type has never been easier! Unfortunately, version 3 "
+"field types are not compatible with version 4."
+msgstr ""
+"Saját mezőtípusaink létrehozása még soha nem volt ilyen egyszerű! Azonban "
+"sajnos a 3-as verzió mezőtípusai nem kompatibilisek az új 4-es verzióval."
+
+#: ../core/controllers/field_groups.php:346
+msgid "Migrating your field types is easy, please"
+msgstr "Mezőtípusaink átköltöztetése egyszerű, csupán"
+
+#: ../core/controllers/field_groups.php:346
+msgid "follow this tutorial"
+msgstr "követnünk kell ezt a tutorialt"
+
+#: ../core/controllers/field_groups.php:346
+msgid "to learn more."
+msgstr "a további tudnivalókért."
+
+#: ../core/controllers/field_groups.php:348
+msgid "Actions &amp; Filters"
+msgstr "Parancsok és Szűrők"
+
+#: ../core/controllers/field_groups.php:349
+msgid ""
+"All actions & filters have received a major facelift to make customizing ACF "
+"even easier! Please"
+msgstr ""
+"Az összes Parancs és Szűrő alapos ráncfelvarráson esett át, hogy az ACF "
+"testreszabása a lehető legegyszerűbb lehessen!"
+
+#: ../core/controllers/field_groups.php:349
+msgid "read this guide"
+msgstr "Olvassuk el ezt az útmutatót"
+
+#: ../core/controllers/field_groups.php:349
+msgid "to find the updated naming convention."
+msgstr "a frissített elnevezési megállapodások áttanulmányozásához."
+
+#: ../core/controllers/field_groups.php:351
+msgid "Preview draft is now working!"
+msgstr "A vázlat előnézete most már működik!"
+
+#: ../core/controllers/field_groups.php:352
+msgid "This bug has been squashed along with many other little critters!"
+msgstr "Ez a hiba javításra került sok más apró programozási bakival együtt."
+
+#: ../core/controllers/field_groups.php:352
+msgid "See the full changelog"
+msgstr "A változások teljes listájának megtekintése"
+
+#: ../core/controllers/field_groups.php:356
+msgid "Important"
+msgstr "Fontos"
+
+#: ../core/controllers/field_groups.php:358
+msgid "Database Changes"
+msgstr "Adatbázis változások"
+
+#: ../core/controllers/field_groups.php:359
+msgid ""
+"Absolutely <strong>no</strong> changes have been made to the database "
+"between versions 3 and 4. This means you can roll back to version 3 without "
+"any issues."
+msgstr ""
+"Abszolút <strong>semmilyen</strong> változtatás nem történt az adatbázisban: "
+"a 3-as és a 4-es verzió adatbázisa teljesen kompatibilis egymással. Így "
+"nyugodtan bármikor vissza tudunk térni a 3-as verzióhoz."
+
+#: ../core/controllers/field_groups.php:361
+msgid "Potential Issues"
+msgstr "Potenciális problémák"
+
+#: ../core/controllers/field_groups.php:362
+msgid ""
+"Do to the sizable changes surounding Add-ons, field types and action/"
+"filters, your website may not operate correctly. It is important that you "
+"read the full"
+msgstr ""
+"A weboldalunkon rendellenes működést tapasztalhatunk, ha a kiegészítőkön, "
+"mezőtípusokon és parancsokon/szűrőkön mérhető módosításokat végeztünk. "
+"Fontos, hogy elolvassuk a teljes"
+
+#: ../core/controllers/field_groups.php:362
+msgid "Migrating from v3 to v4"
+msgstr "Költöztetési útmutatót"
+
+#: ../core/controllers/field_groups.php:362
+msgid "guide to view the full list of changes."
+msgstr "a két verzió közötti váltást érintő összes változásról."
+
+#: ../core/controllers/field_groups.php:365
+msgid "Really Important!"
+msgstr "Nagyon fontos!"
+
+#: ../core/controllers/field_groups.php:365
+msgid ""
+"If you updated the ACF plugin without prior knowledge of such changes, "
+"please roll back to the latest"
+msgstr ""
+"Ha úgy frissítettük volna az ACF bővítményt, hogy alapvető fogalmunk lett "
+"volna a változásokról, azonnal tegyük vissza a bővítmény legfrissebb"
+
+#: ../core/controllers/field_groups.php:365
+msgid "version 3"
+msgstr "3-as verzióját."
+
+#: ../core/controllers/field_groups.php:365
+msgid "of this plugin."
+msgstr " "
+
+#: ../core/controllers/field_groups.php:370
+msgid "Thank You"
+msgstr "Köszönet"
+
+#: ../core/controllers/field_groups.php:371
+msgid ""
+"A <strong>BIG</strong> thank you to everyone who has helped test the version "
+"4 beta and for all the support I have received."
+msgstr ""
+"<strong>Nagy</strong> köszönet jár mindenkinek, aki közreműködött a 4-es "
+"verzió bétatesztelésében és az összes támogatásért, amit kaptam."
+
+#: ../core/controllers/field_groups.php:372
+msgid "Without you all, this release would not have been possible!"
+msgstr "Nélkületek ez a kiadás nem jöhetett volna létre!"
+
+#: ../core/controllers/field_groups.php:376
+msgid "Changelog for"
+msgstr "Változások a következőhöz:"
+
+#: ../core/controllers/field_groups.php:393
+msgid "Learn more"
+msgstr "További információk"
+
+#: ../core/controllers/field_groups.php:399
+msgid "Overview"
+msgstr "Áttekintés"
+
+#: ../core/controllers/field_groups.php:401
+msgid ""
+"Previously, all Add-ons were unlocked via an activation code (purchased from "
+"the ACF Add-ons store). New to v4, all Add-ons act as separate plugins which "
+"need to be individually downloaded, installed and updated."
+msgstr ""
+"Előzőleg minden kiegészítőt egy (az ACF áruházban megvásárolt) aktivációs "
+"kóddal lehetett feloldani. Az új 4-es verziótól kezdődően azonban minden "
+"egyes beépülő különálló letölthető és telepíthető WordPress bővítményként "
+"működik."
+
+#: ../core/controllers/field_groups.php:403
+msgid ""
+"This page will assist you in downloading and installing each available Add-"
+"on."
+msgstr ""
+"Az oldal végig fog vezetni minket bármely elérhető kiegészítő letöltésében "
+"és telepítésében."
+
+#: ../core/controllers/field_groups.php:405
+msgid "Available Add-ons"
+msgstr "Elérhető kiegészítők"
+
+#: ../core/controllers/field_groups.php:407
+msgid "The following Add-ons have been detected as activated on this website."
+msgstr "A következő aktivált kiegészítőket észleltük a weboldalon."
+
+#: ../core/controllers/field_groups.php:420
+msgid "Name"
+msgstr "Név"
+
+#: ../core/controllers/field_groups.php:421
+msgid "Activation Code"
+msgstr "Aktivációs kód"
+
+#: ../core/controllers/field_groups.php:453
+msgid "Flexible Content"
+msgstr "Rugalmas tartalom"
+
+#: ../core/controllers/field_groups.php:463
+msgid "Installation"
+msgstr "Telepítés"
+
+#: ../core/controllers/field_groups.php:465
+msgid "For each Add-on available, please perform the following:"
+msgstr "Minden egyes elérhető kiegészítőnél járjunk el következőképpen:"
+
+#: ../core/controllers/field_groups.php:467
+msgid "Download the Add-on plugin (.zip file) to your desktop"
+msgstr "Töltsük le a kiegészítő bővítményt (.zip fájl) a számítógépünkre."
+
+#: ../core/controllers/field_groups.php:468
+msgid "Navigate to"
+msgstr "Navigáljunk el a "
+
+#: ../core/controllers/field_groups.php:468
+msgid "Plugins > Add New > Upload"
+msgstr "Bővítmények > Új hozzáadása > Feltöltés menüponthoz."
+
+#: ../core/controllers/field_groups.php:469
+msgid "Use the uploader to browse, select and install your Add-on (.zip file)"
+msgstr ""
+"A WordPress bővítmény feltöltőjének segítségével keressük meg majd "
+"telepítsük fel a beépülőt (.zip fájlt)."
+
+#: ../core/controllers/field_groups.php:470
+msgid ""
+"Once the plugin has been uploaded and installed, click the 'Activate Plugin' "
+"link"
+msgstr ""
+"Amint a bővítmény fel lett töltve és telepítve lett, kattintsunk a "
+"'Bővítmény bekapcsolása' hivatkozásra."
+
+#: ../core/controllers/field_groups.php:471
+msgid "The Add-on is now installed and activated!"
+msgstr "A kiegészítő sikeresen telepítve és aktiválva lett!"
+
+#: ../core/controllers/field_groups.php:485
+msgid "Awesome. Let's get to work"
+msgstr "Nagyszerű! Fogjuk munkára!"
+
+#: ../core/controllers/input.php:63
+msgid "Expand Details"
+msgstr "Részletek megjelenítése"
+
+#: ../core/controllers/input.php:64
+msgid "Collapse Details"
+msgstr "Részletek bezárása"
+
+#: ../core/controllers/input.php:67
+msgid "Validation Failed. One or more fields below are required."
+msgstr ""
+"Érvényesítés sikertelen. Az alábbi mező vagy mezők nem maradhatnak üresen."
+
+#: ../core/controllers/upgrade.php:86
+msgid "Upgrade"
+msgstr "Frissítés"
+
+#: ../core/controllers/upgrade.php:139
+msgid "What's new"
+msgstr "Újdonságok"
+
+#: ../core/controllers/upgrade.php:150
+msgid "credits"
+msgstr "készítők"
+
+#: ../core/controllers/upgrade.php:684
+msgid "Modifying field group options 'show on page'"
+msgstr "Mezőcsoport 'megjelenítés az oldalon' beállításainak módosítása."
+
+#: ../core/controllers/upgrade.php:738
+msgid "Modifying field option 'taxonomy'"
+msgstr "Mező 'taxonómia' beállításainak módosítása."
+
+#: ../core/controllers/upgrade.php:835
+msgid "Moving user custom fields from wp_options to wp_usermeta'"
+msgstr ""
+"Felhasználói egyedi mezők áthelyezése a wp_options táblából wp_usermeta "
+"táblába."
+
+#: ../core/fields/_base.php:124 ../core/views/meta_box_location.php:74
+msgid "Basic"
+msgstr "Alap"
+
+#: ../core/fields/checkbox.php:19 ../core/fields/taxonomy.php:319
+msgid "Checkbox"
+msgstr "Jelölődoboz"
+
+#: ../core/fields/checkbox.php:20 ../core/fields/radio.php:19
+#: ../core/fields/select.php:19 ../core/fields/true_false.php:20
+msgid "Choice"
+msgstr "Választási lehetőség"
+
+#: ../core/fields/checkbox.php:146 ../core/fields/radio.php:147
+#: ../core/fields/select.php:177
+msgid "Choices"
+msgstr "Lehetőségek"
+
+#: ../core/fields/checkbox.php:147 ../core/fields/select.php:178
+msgid "Enter each choice on a new line."
+msgstr "Választási lehetőségek megadása soronként."
+
+#: ../core/fields/checkbox.php:148 ../core/fields/select.php:179
+msgid "For more control, you may specify both a value and label like this:"
+msgstr ""
+"A hatékonyabb vezérlés érdekében megadhatjuk külön az értéket és a címkét is "
+"a következő módon:"
+
+#: ../core/fields/checkbox.php:149 ../core/fields/radio.php:153
+#: ../core/fields/select.php:180
+msgid "red : Red"
+msgstr "piros : Piros"
+
+#: ../core/fields/checkbox.php:149 ../core/fields/radio.php:154
+#: ../core/fields/select.php:180
+msgid "blue : Blue"
+msgstr "kek : Kék"
+
+#: ../core/fields/checkbox.php:166 ../core/fields/color_picker.php:89
+#: ../core/fields/email.php:106 ../core/fields/number.php:116
+#: ../core/fields/radio.php:196 ../core/fields/select.php:197
+#: ../core/fields/text.php:116 ../core/fields/textarea.php:96
+#: ../core/fields/true_false.php:94 ../core/fields/wysiwyg.php:198
+msgid "Default Value"
+msgstr "Alapérték"
+
+#: ../core/fields/checkbox.php:167 ../core/fields/select.php:198
+msgid "Enter each default value on a new line"
+msgstr "Alapértelmezett értékek megadása soronként."
+
+#: ../core/fields/checkbox.php:183 ../core/fields/message.php:20
+#: ../core/fields/radio.php:212 ../core/fields/tab.php:20
+msgid "Layout"
+msgstr "Elrendezés"
+
+#: ../core/fields/checkbox.php:194 ../core/fields/radio.php:223
+msgid "Vertical"
+msgstr "Függőleges"
+
+#: ../core/fields/checkbox.php:195 ../core/fields/radio.php:224
+msgid "Horizontal"
+msgstr "Vízszintes"
+
+#: ../core/fields/color_picker.php:19
+msgid "Color Picker"
+msgstr "Színválasztó"
+
+#: ../core/fields/color_picker.php:20
+#: ../core/fields/date_picker/date_picker.php:20
+#: ../core/fields/google-map.php:19
+msgid "jQuery"
+msgstr "jQuery"
+
+#: ../core/fields/date_picker/date_picker.php:19
+msgid "Date Picker"
+msgstr "Dátumválasztó"
+
+#: ../core/fields/date_picker/date_picker.php:55
+msgid "Done"
+msgstr "Kész"
+
+#: ../core/fields/date_picker/date_picker.php:56
+msgid "Today"
+msgstr "Ma"
+
+#: ../core/fields/date_picker/date_picker.php:59
+msgid "Show a different month"
+msgstr "Másik hónap mutatása"
+
+#: ../core/fields/date_picker/date_picker.php:126
+msgid "Save format"
+msgstr "Mentési formátum"
+
+#: ../core/fields/date_picker/date_picker.php:127
+msgid ""
+"This format will determin the value saved to the database and returned via "
+"the API"
+msgstr ""
+"Ez a formátum határozza meg az adatbázisba mentett értéket, melyhez az API-n "
+"keresztül hozzáférhetünk."
+
+#: ../core/fields/date_picker/date_picker.php:128
+msgid "\"yymmdd\" is the most versatile save format. Read more about"
+msgstr "\"yymmdd\" a legrugalmasabb dátumformátum. További információk:"
+
+#: ../core/fields/date_picker/date_picker.php:128
+#: ../core/fields/date_picker/date_picker.php:144
+msgid "jQuery date formats"
+msgstr "jQuery dátum formátumok"
+
+#: ../core/fields/date_picker/date_picker.php:142
+msgid "Display format"
+msgstr "Megjelenítési formátum"
+
+#: ../core/fields/date_picker/date_picker.php:143
+msgid "This format will be seen by the user when entering a value"
+msgstr "Ezt a formátumot fogja adatbevitelnél a felhasználó látni."
+
+#: ../core/fields/date_picker/date_picker.php:144
+msgid ""
+"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
+"about"
+msgstr ""
+"\"dd/mm/yy\" vagy \"mm/dd/yy\" (magyarban: \"yy/mm/dd\") a legelterjedtebb "
+"megjelenítési dátum formátumok. További információk:"
+
+#: ../core/fields/date_picker/date_picker.php:158
+msgid "Week Starts On"
+msgstr "Hét kezdőnapja"
+
+#: ../core/fields/dummy.php:19
+msgid "Dummy"
+msgstr "Dummy"
+
+#: ../core/fields/email.php:19
+msgid "Email"
+msgstr "Email"
+
+#: ../core/fields/email.php:107 ../core/fields/number.php:117
+#: ../core/fields/text.php:117 ../core/fields/textarea.php:97
+#: ../core/fields/wysiwyg.php:199
+msgid "Appears when creating a new post"
+msgstr "Új bejegyzés létrehozásakor jelenik meg."
+
+#: ../core/fields/email.php:123 ../core/fields/number.php:133
+#: ../core/fields/password.php:105 ../core/fields/text.php:131
+#: ../core/fields/textarea.php:111
+msgid "Placeholder Text"
+msgstr "Helyőrző szöveg"
+
+#: ../core/fields/email.php:124 ../core/fields/number.php:134
+#: ../core/fields/password.php:106 ../core/fields/text.php:132
+#: ../core/fields/textarea.php:112
+msgid "Appears within the input"
+msgstr "A beviteli mezőben jelenik meg."
+
+#: ../core/fields/email.php:138 ../core/fields/number.php:148
+#: ../core/fields/password.php:120 ../core/fields/text.php:146
+msgid "Prepend"
+msgstr "Előtag"
+
+#: ../core/fields/email.php:139 ../core/fields/number.php:149
+#: ../core/fields/password.php:121 ../core/fields/text.php:147
+msgid "Appears before the input"
+msgstr "Beviteli mező előtt jelenik meg."
+
+#: ../core/fields/email.php:153 ../core/fields/number.php:163
+#: ../core/fields/password.php:135 ../core/fields/text.php:161
+msgid "Append"
+msgstr "Utótag"
+
+#: ../core/fields/email.php:154 ../core/fields/number.php:164
+#: ../core/fields/password.php:136 ../core/fields/text.php:162
+msgid "Appears after the input"
+msgstr "Beviteli mező után jelenik meg."
+
+#: ../core/fields/file.php:19
+msgid "File"
+msgstr "Fájl"
+
+#: ../core/fields/file.php:20 ../core/fields/image.php:20
+#: ../core/fields/wysiwyg.php:36
+msgid "Content"
+msgstr "Tartalom"
+
+#: ../core/fields/file.php:26
+msgid "Select File"
+msgstr "Fájl kiválasztása"
+
+#: ../core/fields/file.php:27
+msgid "Edit File"
+msgstr "Fájl szerkesztése"
+
+#: ../core/fields/file.php:28
+msgid "Update File"
+msgstr "Fájl frissítése"
+
+#: ../core/fields/file.php:29 ../core/fields/image.php:30
+msgid "uploaded to this post"
+msgstr "Feltöltve ebbe a bejegyzésbe"
+
+#: ../core/fields/file.php:123
+msgid "No File Selected"
+msgstr "Nincs fájl meghatározva"
+
+#: ../core/fields/file.php:123
+msgid "Add File"
+msgstr "Fájl hozzáadása"
+
+#: ../core/fields/file.php:153 ../core/fields/image.php:118
+#: ../core/fields/taxonomy.php:367
+msgid "Return Value"
+msgstr "Kimeneti érték"
+
+#: ../core/fields/file.php:164
+msgid "File Object"
+msgstr "Fájl objektum"
+
+#: ../core/fields/file.php:165
+msgid "File URL"
+msgstr "Fájl URL"
+
+#: ../core/fields/file.php:166
+msgid "File ID"
+msgstr "Fájl ID"
+
+#: ../core/fields/file.php:175 ../core/fields/image.php:158
+msgid "Library"
+msgstr "Médiatár"
+
+#: ../core/fields/file.php:187 ../core/fields/image.php:171
+msgid "Uploaded to post"
+msgstr "Bejegyzéshez tartozó"
+
+#: ../core/fields/google-map.php:18
+msgid "Google Map"
+msgstr "Google Térkép"
+
+#: ../core/fields/google-map.php:33
+msgid "Locating"
+msgstr "Helymeghatározás"
+
+#: ../core/fields/google-map.php:34
+msgid "Sorry, this browser does not support geolocation"
+msgstr "Sajnáljuk, de a böngésző nem támogatja a földrajzi meghatározást."
+
+#: ../core/fields/google-map.php:120
+msgid "Clear location"
+msgstr "helyszín törlése"
+
+#: ../core/fields/google-map.php:125
+msgid "Find current location"
+msgstr "Jelenlegi tartózkodási hely megkeresése"
+
+#: ../core/fields/google-map.php:126
+msgid "Search for address..."
+msgstr "Cím keresése..."
+
+#: ../core/fields/google-map.php:162
+msgid "Center"
+msgstr "Középpont"
+
+#: ../core/fields/google-map.php:163
+msgid "Center the initial map"
+msgstr "A térkép kezdeti középpontja"
+
+#: ../core/fields/google-map.php:199
+msgid "Zoom"
+msgstr "Nagyítás"
+
+#: ../core/fields/google-map.php:200
+msgid "Set the initial zoom level"
+msgstr "Kezdő nagyítási szint beállítása"
+
+#: ../core/fields/google-map.php:217
+msgid "Height"
+msgstr "Magasság"
+
+#: ../core/fields/google-map.php:218
+msgid "Customise the map height"
+msgstr "Térkép magasságának testreszabása"
+
+#: ../core/fields/image.php:19
+msgid "Image"
+msgstr "Kép"
+
+#: ../core/fields/image.php:27
+msgid "Select Image"
+msgstr "Kép kiválasztása"
+
+#: ../core/fields/image.php:28
+msgid "Edit Image"
+msgstr "Kép szerkesztése"
+
+#: ../core/fields/image.php:29
+msgid "Update Image"
+msgstr "Kép frissítése"
+
+#: ../core/fields/image.php:83
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: ../core/fields/image.php:84 ../core/views/meta_box_fields.php:108
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: ../core/fields/image.php:90
+msgid "No image selected"
+msgstr "Nincs kép kiválasztva"
+
+#: ../core/fields/image.php:90
+msgid "Add Image"
+msgstr "Kép hozzáadása"
+
+#: ../core/fields/image.php:119 ../core/fields/relationship.php:573
+msgid "Specify the returned value on front end"
+msgstr "A weboldalon megjelenő kimeneti érték meghatározása"
+
+#: ../core/fields/image.php:129
+msgid "Image Object"
+msgstr "Kép objektum"
+
+#: ../core/fields/image.php:130
+msgid "Image URL"
+msgstr "Kép URL"
+
+#: ../core/fields/image.php:131
+msgid "Image ID"
+msgstr "Kép ID"
+
+#: ../core/fields/image.php:139
+msgid "Preview Size"
+msgstr "Előnézet méret"
+
+#: ../core/fields/image.php:140
+msgid "Shown when entering data"
+msgstr "Megjelenítés adatbevitelnél"
+
+#: ../core/fields/image.php:159
+msgid "Limit the media library choice"
+msgstr "Médiatár elemeinek korlátozása"
+
+#: ../core/fields/message.php:19 ../core/fields/message.php:70
+#: ../core/fields/true_false.php:79
+msgid "Message"
+msgstr "Üzenet"
+
+#: ../core/fields/message.php:71
+msgid "Text &amp; HTML entered here will appear inline with the fields"
+msgstr "Az itt megadott szöveg és HTML kód fog megjelenni a mezőnél."
+
+#: ../core/fields/message.php:72
+msgid "Please note that all text will first be passed through the wp function "
+msgstr ""
+"Vegyük figyelembe, hogy az összes szöveg először a következő WordPress "
+"függvényen fog áthaladni: "
+
+#: ../core/fields/number.php:19
+msgid "Number"
+msgstr "Szám"
+
+#: ../core/fields/number.php:178
+msgid "Minimum Value"
+msgstr "Legkisebb érték"
+
+#: ../core/fields/number.php:194
+msgid "Maximum Value"
+msgstr "Legnagyobb érték"
+
+#: ../core/fields/number.php:210
+msgid "Step Size"
+msgstr "Lépésköz"
+
+#: ../core/fields/page_link.php:18
+msgid "Page Link"
+msgstr "Oldalhivatkozás"
+
+#: ../core/fields/page_link.php:19 ../core/fields/post_object.php:19
+#: ../core/fields/relationship.php:19 ../core/fields/taxonomy.php:19
+#: ../core/fields/user.php:19
+msgid "Relational"
+msgstr "Relációs"
+
+#: ../core/fields/page_link.php:103 ../core/fields/post_object.php:268
+#: ../core/fields/relationship.php:592 ../core/fields/relationship.php:671
+#: ../core/views/meta_box_location.php:75
+msgid "Post Type"
+msgstr "Bejegyzés típus"
+
+#: ../core/fields/page_link.php:127 ../core/fields/post_object.php:317
+#: ../core/fields/select.php:214 ../core/fields/taxonomy.php:333
+#: ../core/fields/user.php:275
+msgid "Allow Null?"
+msgstr "Nulla érték engedélyezése"
+
+#: ../core/fields/page_link.php:148 ../core/fields/post_object.php:338
+#: ../core/fields/select.php:233
+msgid "Select multiple values?"
+msgstr "Több érték kiválasztható"
+
+#: ../core/fields/password.php:19
+msgid "Password"
+msgstr "Jelszó"
+
+#: ../core/fields/post_object.php:18
+msgid "Post Object"
+msgstr "Bejegyzés objektum"
+
+#: ../core/fields/post_object.php:292 ../core/fields/relationship.php:616
+msgid "Filter from Taxonomy"
+msgstr "Szűrés Taxonómia alapján"
+
+#: ../core/fields/radio.php:18
+msgid "Radio Button"
+msgstr "Rádió gomb"
+
+#: ../core/fields/radio.php:105 ../core/views/meta_box_location.php:91
+msgid "Other"
+msgstr "Egyéb"
+
+#: ../core/fields/radio.php:148
+msgid "Enter your choices one per line"
+msgstr "Lehetőségek megadása soronként"
+
+#: ../core/fields/radio.php:150
+msgid "Red"
+msgstr "Vörös"
+
+#: ../core/fields/radio.php:151
+msgid "Blue"
+msgstr "Kék"
+
+#: ../core/fields/radio.php:175
+msgid "Add 'other' choice to allow for custom values"
+msgstr ""
+"'Egyéb' választási lehetőség hozzáadása az egyedi értékek használatához."
+
+#: ../core/fields/radio.php:187
+msgid "Save 'other' values to the field's choices"
+msgstr "'Egyéb' értékek mentése a mezőválasztási lehetőségeihez."
+
+#: ../core/fields/relationship.php:18
+msgid "Relationship"
+msgstr "Kapcsolat"
+
+#: ../core/fields/relationship.php:29
+msgid "Maximum values reached ( {max} values )"
+msgstr ""
+"Elértük az engedélyezett értékek felső határát (legfeljebb {max} érték)"
+
+#: ../core/fields/relationship.php:428
+msgid "Search..."
+msgstr "Keresés..."
+
+#: ../core/fields/relationship.php:439
+msgid "Filter by post type"
+msgstr "Szűrés bejegyzés típus alapján"
+
+#: ../core/fields/relationship.php:572
+msgid "Return Format"
+msgstr "Kimeneti formátum"
+
+#: ../core/fields/relationship.php:583
+msgid "Post Objects"
+msgstr "Bejegyzés objektumok"
+
+#: ../core/fields/relationship.php:584
+msgid "Post IDs"
+msgstr "Bejegyzés ID-k"
+
+#: ../core/fields/relationship.php:650
+msgid "Search"
+msgstr "Keresés"
+
+#: ../core/fields/relationship.php:651
+msgid "Post Type Select"
+msgstr "Bejegyzés típus kiválasztása"
+
+#: ../core/fields/relationship.php:659
+msgid "Elements"
+msgstr "Elemek"
+
+#: ../core/fields/relationship.php:660
+msgid "Selected elements will be displayed in each result"
+msgstr "A kiválasztott elemek minden egyes kimenetben megjelenítésre kerülnek"
+
+#: ../core/fields/relationship.php:669 ../core/views/meta_box_options.php:106
+msgid "Featured Image"
+msgstr "Kiemelt kép"
+
+#: ../core/fields/relationship.php:670
+msgid "Post Title"
+msgstr "Bejegyzés cím"
+
+#: ../core/fields/relationship.php:682
+msgid "Maximum posts"
+msgstr "Bejegyzések maximális száma"
+
+#: ../core/fields/select.php:18 ../core/fields/select.php:109
+#: ../core/fields/taxonomy.php:324 ../core/fields/user.php:266
+msgid "Select"
+msgstr "Választó mező"
+
+#: ../core/fields/tab.php:19
+msgid "Tab"
+msgstr "Fül"
+
+#: ../core/fields/tab.php:68
+msgid ""
+"Use \"Tab Fields\" to better organize your edit screen by grouping your "
+"fields together under separate tab headings."
+msgstr ""
+"A szerkesztő képernyő hatékonyabb rendszerezése érdekében használhatjuk a "
+"\"Fül mezőket\", hogy az összetartozó mezőket közös Fül alá "
+"csoportosíthassuk be."
+
+#: ../core/fields/tab.php:69
+msgid ""
+"All the fields following this \"tab field\" (or until another \"tab field\" "
+"is defined) will be grouped together."
+msgstr ""
+"A \"Fül mezőt\" követő összes mező egy csoportot alkot (a következő \"Fül "
+"mezőig\")."
+
+#: ../core/fields/tab.php:70
+msgid "Use multiple tabs to divide your fields into sections."
+msgstr ""
+"Használjunk füleket az egybe tartozó mezők szekciókba csoportosításához."
+
+#: ../core/fields/taxonomy.php:18 ../core/fields/taxonomy.php:278
+msgid "Taxonomy"
+msgstr "Taxonómia"
+
+#: ../core/fields/taxonomy.php:222 ../core/fields/taxonomy.php:231
+msgid "None"
+msgstr "Nincs"
+
+#: ../core/fields/taxonomy.php:308 ../core/fields/user.php:251
+#: ../core/views/meta_box_fields.php:77 ../core/views/meta_box_fields.php:159
+msgid "Field Type"
+msgstr "Mezőtípus"
+
+#: ../core/fields/taxonomy.php:318 ../core/fields/user.php:260
+msgid "Multiple Values"
+msgstr "Több érték"
+
+#: ../core/fields/taxonomy.php:320 ../core/fields/user.php:262
+msgid "Multi Select"
+msgstr "Többes választó mező"
+
+#: ../core/fields/taxonomy.php:322 ../core/fields/user.php:264
+msgid "Single Value"
+msgstr "Egy érték"
+
+#: ../core/fields/taxonomy.php:323
+msgid "Radio Buttons"
+msgstr "Rádió gombok"
+
+#: ../core/fields/taxonomy.php:352
+msgid "Load & Save Terms to Post"
+msgstr "Kifejezések betöltése és mentése a Bejegyzésbe"
+
+#: ../core/fields/taxonomy.php:360
+msgid ""
+"Load value based on the post's terms and update the post's terms on save"
+msgstr ""
+"A bejegyzés kifejezésein alapuló értékek betöltése, majd a bejegyzés "
+"kifejezéseinek frissítése mentéskor."
+
+#: ../core/fields/taxonomy.php:377
+msgid "Term Object"
+msgstr "Kifejezés objektum"
+
+#: ../core/fields/taxonomy.php:378
+msgid "Term ID"
+msgstr "Kifejezés ID"
+
+#: ../core/fields/text.php:19
+msgid "Text"
+msgstr "Szöveg"
+
+#: ../core/fields/text.php:176 ../core/fields/textarea.php:141
+msgid "Formatting"
+msgstr "Formázás"
+
+#: ../core/fields/text.php:177 ../core/fields/textarea.php:142
+msgid "Effects value on front end"
+msgstr "Formázási mód a weboldalon."
+
+#: ../core/fields/text.php:186 ../core/fields/textarea.php:151
+msgid "No formatting"
+msgstr "Formázatlan"
+
+#: ../core/fields/text.php:187 ../core/fields/textarea.php:153
+msgid "Convert HTML into tags"
+msgstr "HTML átalakítása címkékké"
+
+#: ../core/fields/text.php:195 ../core/fields/textarea.php:126
+msgid "Character Limit"
+msgstr "Karakter limit"
+
+#: ../core/fields/text.php:196 ../core/fields/textarea.php:127
+msgid "Leave blank for no limit"
+msgstr "Ha nem szeretnénk limitet használni, hagyjuk üresen."
+
+#: ../core/fields/textarea.php:19
+msgid "Text Area"
+msgstr "Szövegdoboz"
+
+#: ../core/fields/textarea.php:152
+msgid "Convert new lines into &lt;br /&gt; tags"
+msgstr "Új sorok &lt;br /&gt; címkékké alakítása"
+
+#: ../core/fields/true_false.php:19
+msgid "True / False"
+msgstr "Igaz / Hamis"
+
+#: ../core/fields/true_false.php:80
+msgid "eg. Show extra content"
+msgstr "pl. Extra tartalom megjelenítése"
+
+#: ../core/fields/user.php:18 ../core/views/meta_box_location.php:94
+msgid "User"
+msgstr "Felhasználó"
+
+#: ../core/fields/user.php:224
+msgid "Filter by role"
+msgstr "Szűrés szerepkör szerint"
+
+#: ../core/fields/wysiwyg.php:35
+msgid "Wysiwyg Editor"
+msgstr "Vizuális szerkesztő"
+
+#: ../core/fields/wysiwyg.php:213
+msgid "Toolbar"
+msgstr "Eszközsáv"
+
+#: ../core/fields/wysiwyg.php:245
+msgid "Show Media Upload Buttons?"
+msgstr "Média feltöltő gombok megjelenítése"
+
+#: ../core/views/meta_box_fields.php:24
+msgid "New Field"
+msgstr "Új mező"
+
+#: ../core/views/meta_box_fields.php:58
+msgid "Field type does not exist"
+msgstr "Mezőtípus nem létezik"
+
+#: ../core/views/meta_box_fields.php:74
+msgid "Field Order"
+msgstr "Mező sorrend"
+
+#: ../core/views/meta_box_fields.php:75 ../core/views/meta_box_fields.php:127
+msgid "Field Label"
+msgstr "Mező címke"
+
+#: ../core/views/meta_box_fields.php:76 ../core/views/meta_box_fields.php:143
+msgid "Field Name"
+msgstr "Mezőnév"
+
+#: ../core/views/meta_box_fields.php:78
+msgid "Field Key"
+msgstr "Mezőkulcs"
+
+#: ../core/views/meta_box_fields.php:90
+msgid ""
+"No fields. Click the <strong>+ Add Field</strong> button to create your "
+"first field."
+msgstr ""
+"Nem található mező. A <strong>+ Mező hozzáadása</strong> gombra kattintva "
+"létrehozhatjuk az első mezőt."
+
+#: ../core/views/meta_box_fields.php:105 ../core/views/meta_box_fields.php:108
+msgid "Edit this Field"
+msgstr "Mező szerkesztése"
+
+#: ../core/views/meta_box_fields.php:109
+msgid "Read documentation for this field"
+msgstr "Mező dokumentációjának elolvasása"
+
+#: ../core/views/meta_box_fields.php:109
+msgid "Docs"
+msgstr "Dokumentáció"
+
+#: ../core/views/meta_box_fields.php:110
+msgid "Duplicate this Field"
+msgstr "Mező megkettőzése"
+
+#: ../core/views/meta_box_fields.php:110
+msgid "Duplicate"
+msgstr "Megkettőzés"
+
+#: ../core/views/meta_box_fields.php:111
+msgid "Delete this Field"
+msgstr "Mező törlése"
+
+#: ../core/views/meta_box_fields.php:111
+msgid "Delete"
+msgstr "Törlés"
+
+#: ../core/views/meta_box_fields.php:128
+msgid "This is the name which will appear on the EDIT page"
+msgstr "Ez a név fog megjelenni a SZERKESZTŐ oldalon"
+
+#: ../core/views/meta_box_fields.php:144
+msgid "Single word, no spaces. Underscores and dashes allowed"
+msgstr ""
+"Egyedülálló szó üres szóközök nélkül. Aláhúzások és kötőjelek használhatóak."
+
+#: ../core/views/meta_box_fields.php:173
+msgid "Field Instructions"
+msgstr "Utasítások"
+
+#: ../core/views/meta_box_fields.php:174
+msgid "Instructions for authors. Shown when submitting data"
+msgstr ""
+"Szerzőknek szóló utasítások a mező használatáról. Adatbevitelnél jelenik meg."
+
+#: ../core/views/meta_box_fields.php:186
+msgid "Required?"
+msgstr "Szükséges"
+
+#: ../core/views/meta_box_fields.php:209
+msgid "Conditional Logic"
+msgstr "Feltételes logika"
+
+#: ../core/views/meta_box_fields.php:260
+#: ../core/views/meta_box_location.php:117
+msgid "is equal to"
+msgstr "egyenlő"
+
+#: ../core/views/meta_box_fields.php:261
+#: ../core/views/meta_box_location.php:118
+msgid "is not equal to"
+msgstr "nem egyenlő"
+
+#: ../core/views/meta_box_fields.php:279
+msgid "Show this field when"
+msgstr "Mező megjelenítése, ha"
+
+#: ../core/views/meta_box_fields.php:285
+msgid "all"
+msgstr "az összes"
+
+#: ../core/views/meta_box_fields.php:286
+msgid "any"
+msgstr "bármely"
+
+#: ../core/views/meta_box_fields.php:289
+msgid "these rules are met"
+msgstr "szabály ezek közül"
+
+#: ../core/views/meta_box_fields.php:303
+msgid "Close Field"
+msgstr "Mező bezárása"
+
+#: ../core/views/meta_box_fields.php:316
+msgid "Drag and drop to reorder"
+msgstr "Sorbarendezés egérrel"
+
+#: ../core/views/meta_box_fields.php:317
+msgid "+ Add Field"
+msgstr "+ Mező hozzáadása"
+
+#: ../core/views/meta_box_location.php:48
+msgid "Rules"
+msgstr "Szabályok"
+
+#: ../core/views/meta_box_location.php:49
+msgid ""
+"Create a set of rules to determine which edit screens will use these "
+"advanced custom fields"
+msgstr ""
+"Csoport szabályok létrehozásával határozhatjuk meg, mely szerkesztő "
+"képernyőn jelenjenek meg az egyedi mezők."
+
+#: ../core/views/meta_box_location.php:60
+msgid "Show this field group if"
+msgstr "Mezőcsoport megjelenítése, ha"
+
+#: ../core/views/meta_box_location.php:76
+msgid "Logged in User Type"
+msgstr "Bejelentkezett felhasználó típus"
+
+#: ../core/views/meta_box_location.php:78
+#: ../core/views/meta_box_location.php:79
+msgid "Page"
+msgstr "Oldal"
+
+#: ../core/views/meta_box_location.php:80
+msgid "Page Type"
+msgstr "Oldal típus"
+
+#: ../core/views/meta_box_location.php:81
+msgid "Page Parent"
+msgstr "Szülő oldal"
+
+#: ../core/views/meta_box_location.php:82
+msgid "Page Template"
+msgstr "Oldalsablon"
+
+#: ../core/views/meta_box_location.php:84
+#: ../core/views/meta_box_location.php:85
+msgid "Post"
+msgstr "Bejegyzés"
+
+#: ../core/views/meta_box_location.php:86
+msgid "Post Category"
+msgstr "Bejegyzés kategória"
+
+#: ../core/views/meta_box_location.php:87
+msgid "Post Format"
+msgstr "Bejegyzés formátum"
+
+#: ../core/views/meta_box_location.php:88
+msgid "Post Status"
+msgstr "Bejegyzés állapota"
+
+#: ../core/views/meta_box_location.php:89
+msgid "Post Taxonomy"
+msgstr "Bejegyzés taxonómia"
+
+#: ../core/views/meta_box_location.php:92
+msgid "Attachment"
+msgstr "Csatolmány"
+
+#: ../core/views/meta_box_location.php:93
+msgid "Taxonomy Term"
+msgstr "Taxonómia kifejezés"
+
+#: ../core/views/meta_box_location.php:146
+msgid "and"
+msgstr "és"
+
+#: ../core/views/meta_box_location.php:161
+msgid "Add rule group"
+msgstr "Csoport szabály hozzáadása"
+
+#: ../core/views/meta_box_options.php:25
+msgid "Order No."
+msgstr "Sorrend szám"
+
+#: ../core/views/meta_box_options.php:26
+msgid "Field groups are created in order <br />from lowest to highest"
+msgstr ""
+"Létrehozott mezőcsoportok sorrendbe állítva <br />legalacsonyabbtól a "
+"legmagasabbig"
+
+#: ../core/views/meta_box_options.php:42
+msgid "Position"
+msgstr "Pozíció"
+
+#: ../core/views/meta_box_options.php:52
+msgid "High (after title)"
+msgstr "Magas (cím után)"
+
+#: ../core/views/meta_box_options.php:53
+msgid "Normal (after content)"
+msgstr "Normál (tartalom után)"
+
+#: ../core/views/meta_box_options.php:54
+msgid "Side"
+msgstr "Oldalra"
+
+#: ../core/views/meta_box_options.php:64
+msgid "Style"
+msgstr "Stílus"
+
+#: ../core/views/meta_box_options.php:74
+msgid "Seamless (no metabox)"
+msgstr "Folytonos (metabox nélkül)"
+
+#: ../core/views/meta_box_options.php:75
+msgid "Standard (WP metabox)"
+msgstr "Hagyományos (WP metabox-szal)"
+
+#: ../core/views/meta_box_options.php:84
+msgid "Hide on screen"
+msgstr "Elrejtés a képernyőről"
+
+#: ../core/views/meta_box_options.php:85
+msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
+msgstr ""
+"<b>Válasszük ki</b> azokat az elemeket, melyeket <b>nem szeretnénk "
+"megjeleníteni</b> a szerkesztő képernyőn."
+
+#: ../core/views/meta_box_options.php:86
+msgid ""
+"If multiple field groups appear on an edit screen, the first field group's "
+"options will be used. (the one with the lowest order number)"
+msgstr ""
+"Ha több mezőcsoport is megjelenik ugyan azon a szerkesztő képernyőn, az első "
+"mezőcsoport beállításai lesznek érvényesek. (amelyiknek legalacsonyabb a "
+"sorrend száma)"
+
+#: ../core/views/meta_box_options.php:96
+msgid "Permalink"
+msgstr "Közvetlen hivatkozás"
+
+#: ../core/views/meta_box_options.php:97
+msgid "Content Editor"
+msgstr "Tartalomszerkesztő"
+
+#: ../core/views/meta_box_options.php:98
+msgid "Excerpt"
+msgstr "Kivonat"
+
+#: ../core/views/meta_box_options.php:100
+msgid "Discussion"
+msgstr "Beszélgetés"
+
+#: ../core/views/meta_box_options.php:101
+msgid "Comments"
+msgstr "Hozzászólások"
+
+#: ../core/views/meta_box_options.php:102
+msgid "Revisions"
+msgstr "Változatok"
+
+#: ../core/views/meta_box_options.php:103
+msgid "Slug"
+msgstr "Keresőbarát név"
+
+#: ../core/views/meta_box_options.php:104
+msgid "Author"
+msgstr "Szerző"
+
+#: ../core/views/meta_box_options.php:105
+msgid "Format"
+msgstr "Formátum"
+
+#: ../core/views/meta_box_options.php:107
+msgid "Categories"
+msgstr "Kategóriák"
+
+#: ../core/views/meta_box_options.php:108
+msgid "Tags"
+msgstr "Címkék"
+
+#: ../core/views/meta_box_options.php:109
+msgid "Send Trackbacks"
+msgstr "Visszakövetések küldése"
+
+#~ msgid "Vote"
+#~ msgstr "Szavazás"
+
+#~ msgid "Follow"
+#~ msgstr "Követés"
+
+#~ msgid "No Metabox"
+#~ msgstr "Nincs Metadoboz"
