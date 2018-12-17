@@ -62,12 +62,9 @@ class acf {
 		);
 		
 		
-		// set text domain
-		load_textdomain('acf', $this->settings['path'] . 'lang/acf-' . get_locale() . '.mo');
-		
-		
 		// actions
 		add_action('init', array($this, 'init'), 1);
+		add_action('plugins_loaded', array($this,'load_plugin_textdomain'));
 		add_action('acf/pre_save_post', array($this, 'save_post_lock'), 0);
 		add_action('acf/pre_save_post', array($this, 'save_post_unlock'), 999);
 		add_action('acf/save_post', array($this, 'save_post_lock'), 0);
@@ -153,6 +150,14 @@ class acf {
         // return
         return plugin_dir_url( $file );
         
+    }
+
+	/**
+	 * set text domain
+	 */
+    function load_plugin_textdomain()
+    {
+        load_textdomain('acf', $this->settings['path'] . 'lang/acf-' . get_locale() . '.mo');
     }
 	
 	
