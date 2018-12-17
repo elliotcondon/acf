@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
 *  acf_export
@@ -10,69 +10,69 @@
 
 class acf_export
 {
-	
+
 	var $action;
-	
-	
+
+
 	/*
 	*  __construct
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function __construct()
 	{
 		// vars
 		$this->action = '';
-		
-		
+
+
 		// actions
 		add_action('admin_menu', array($this,'admin_menu'), 11, 0);
-		
-		
+
+
 		// filters
 		add_filter('acf/export/clean_fields', array($this,'clean_fields'), 10, 1);
 	}
-	
-	
+
+
 	/*
 	*  admin_menu
 	*
-	*  @description: 
+	*  @description:
 	*  @created: 2/08/12
 	*/
-	
+
 	function admin_menu()
 	{
 		// add page
 		$page = add_submenu_page('edit.php?post_type=acf', __('Export','acf'), __('Export','acf'), 'manage_options', 'acf-export', array($this,'html'));
-		
-		
+
+
 		// actions
 		add_action('load-' . $page, array($this,'load'));
 		add_action('admin_print_scripts-' . $page, array($this, 'admin_print_scripts'));
 		add_action('admin_print_styles-' . $page, array($this, 'admin_print_styles'));
 		add_action('admin_head-' . $page, array($this,'admin_head'));
 	}
-	
-	
+
+
 	/*
 	*  load
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.5.2
 	*  @created: 16/11/12
 	*  @thanks: Kevin Biloski and Charlie Eriksen via Secunia SVCRP
 	*/
-	
+
 	function load()
 	{
 		// vars
 		$path = apply_filters('acf/get_info', 'path');
-		
-		
+
+
 		// verify nonce
 		if( isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'export') )
 		{
@@ -85,8 +85,8 @@ class acf_export
 				$this->action = 'export_to_php';
 			}
 		}
-		
-		
+
+
 		// include export action
 		if( $this->action == 'export_to_xml' )
 		{
@@ -94,30 +94,30 @@ class acf_export
 			die;
 		}
 	}
-	
-	
+
+
 	/*
 	*  admin_print_scripts
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function admin_print_scripts()
 	{
-		
+
 	}
-	
-	
+
+
 	/*
 	*  admin_print_styles
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function admin_print_styles()
 	{
 		wp_enqueue_style(array(
@@ -126,39 +126,39 @@ class acf_export
 			'acf',
 		));
 	}
-	
-	
+
+
 	/*
 	*  admin_head
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function admin_head()
 	{
-				
+
 	}
-	
-	
+
+
 	/*
 	*  html
 	*
-	*  @description: 
+	*  @description:
 	*  @since 3.1.8
 	*  @created: 23/06/12
 	*/
-	
+
 	function html()
-	{	
+	{
 		?>
 <div class="wrap">
 
 	<div class="icon32" id="icon-acf"><br></div>
 	<h2 style="margin: 4px 0 25px;"><?php _e("Export",'acf'); ?></h2>
 		<?php
-		
+
 		if( $this->action == "export_to_php" )
 		{
 			$this->html_php();
@@ -167,23 +167,23 @@ class acf_export
 		{
 			$this->html_index();
 		}
-		
+
 		?>
 </div>
 		<?php
-		
+
 		return;
-		
+
 	}
-	
-	
+
+
 	/*
 	*  html_index
 	*
-	*  @description: 
+	*  @description:
 	*  @created: 9/08/12
 	*/
-	
+
 	function html_index()
 	{
 		// vars
@@ -196,18 +196,18 @@ class acf_export
 
 		// blank array to hold acfs
 		$choices = array();
-		
+
 		if($acfs)
 		{
 			foreach($acfs as $acf)
 			{
 				// find title. Could use get_the_title, but that uses get_post(), so I think this uses less Memory
 				$title = apply_filters( 'the_title', $acf->post_title, $acf->ID );
-				
+
 				$choices[$acf->ID] = $title;
 			}
 		}
-		
+
 		?>
 <form method="post">
 <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( 'export' ); ?>" />
@@ -277,18 +277,18 @@ class acf_export
 <?php
 
 	}
-	
-	
+
+
 	/*
 	*  html_php
 	*
-	*  @description: 
+	*  @description:
 	*  @created: 9/08/12
 	*/
-	
+
 	function html_php()
 	{
-		
+
 		?>
 <div class="wp-box">
 	<div class="title">
@@ -325,16 +325,16 @@ include_once('advanced-custom-fields/acf.php');
 <pre>
 define( 'ACF_LITE', true );
 </pre>
- 
+
 <p><br /></p>
 
 <p><a href="">&laquo; <?php _e("Back to export",'acf'); ?></a></p>
 			</td>
 			<td>
 				<textarea class="pre" readonly="true"><?php
-		
+
 		$acfs = array();
-		
+
 		if( isset($_POST['acf_posts']) )
 		{
 			$acfs = get_posts(array(
@@ -348,52 +348,51 @@ define( 'ACF_LITE', true );
 		}
 		if( $acfs )
 		{
-			?>
-if(function_exists("register_field_group"))
-{
-<?php
-			foreach( $acfs as $i => $acf )
-			{
-				// populate acfs
-				$var = array(
-					'id' => $acf->post_name,
-					'title' => $acf->post_title,
-					'fields' => apply_filters('acf/field_group/get_fields', array(), $acf->ID),
-					'location' => apply_filters('acf/field_group/get_location', array(), $acf->ID),
-					'options' => apply_filters('acf/field_group/get_options', array(), $acf->ID),
-					'menu_order' => $acf->menu_order,
-				);
-				
-				
-				$var['fields'] = apply_filters('acf/export/clean_fields', $var['fields']);
 
+            $html  = 'if(function_exists("register_field_group"))' . "\n";
+            $html .= '{' . "\n";
 
-				// create html
-				$html = var_export($var, true);
-				
-				// change double spaces to tabs
-				$html = str_replace("  ", "\t", $html);
-				
-				// correctly formats "=> array("
-				$html = preg_replace('/([\t\r\n]+?)array/', 'array', $html);
-				
-				// Remove number keys from array
-				$html = preg_replace('/[0-9]+ => array/', 'array', $html);
-				
-				// add extra tab at start of each line
-				$html = str_replace("\n", "\n\t", $html);
-				
-				// add the WP __() function to specific strings for translation in theme
-				//$html = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $html);
-				//$html = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $html);
-				
-								
-?>	register_field_group(<?php echo $html ?>);
-<?php
-			}
-?>
-}
-<?php
+                foreach( $acfs as $i => $acf )
+                {
+                    // populate acfs
+                    $var = array(
+                        'id' => $acf->post_name,
+                        'title' => $acf->post_title,
+                        'fields' => apply_filters('acf/field_group/get_fields', array(), $acf->ID),
+                        'location' => apply_filters('acf/field_group/get_location', array(), $acf->ID),
+                        'options' => apply_filters('acf/field_group/get_options', array(), $acf->ID),
+                        'menu_order' => $acf->menu_order,
+                    );
+
+                    $var['fields'] = apply_filters('acf/export/clean_fields', $var['fields']);
+
+                    // create html
+                    $group = var_export($var, true);
+
+                    // change double spaces to tabs
+                    $group = str_replace("  ", "\t", $group);
+
+                    // correctly formats "=> array("
+                    $group = preg_replace('/([\t\r\n]+?)array/', 'array', $group);
+
+                    // Remove number keys from array
+                    $group = preg_replace('/[0-9]+ => array/', 'array', $group);
+
+                    // add extra tab at start of each line
+                    $group = str_replace("\n", "\n\t", $group);
+
+                    // add the WP __() function to specific strings for translation in theme
+                    //$group = preg_replace("/'label'(.*?)('.*?')/", "'label'$1__($2)", $group);
+                    //$group = preg_replace("/'instructions'(.*?)('.*?')/", "'instructions'$1__($2)", $group);
+
+                    $html .= "\t" . "register_field_group($group);" . "\n";
+                }
+
+            $html .= '}';
+
+            do_action('acf/export/php/after_export', $html);
+
+            echo $html;
 		}
 		else
 		{
@@ -406,31 +405,31 @@ if(function_exists("register_field_group"))
 </div>
 <script type="text/javascript">
 (function($){
-	
+
 	var i = 0;
-	
+
 	$(document).on('click', 'textarea.pre', function(){
-		
+
 		if( i == 0 )
 		{
 			i++;
-			
+
 			$(this).focus().select();
-			
+
 			return false;
 		}
-				
+
 	});
-	
+
 	$(document).on('keyup', 'textarea.pre', function(){
-	
+
 	    $(this).height( 0 );
 	    $(this).height( this.scrollHeight );
-	
+
 	});
 
 	$(document).ready(function(){
-		
+
 		$('textarea.pre').trigger('keyup');
 
 	});
@@ -439,16 +438,16 @@ if(function_exists("register_field_group"))
 </script>
 	<?php
 	}
-	
-	
+
+
 	/*
 	*  clean_fields
 	*
-	*  @description: 
+	*  @description:
 	*  @since: 3.5.7
 	*  @created: 7/03/13
 	*/
-	
+
 	function clean_fields( $fields )
 	{
 		// trim down the fields
@@ -458,29 +457,29 @@ if(function_exists("register_field_group"))
 			{
 				// unset unneccessary bits
 				unset( $field['id'], $field['class'], $field['order_no'], $field['field_group'], $field['_name'] );
-				
-				
+
+
 				// instructions
 				if( !$field['instructions'] )
 				{
 					unset( $field['instructions'] );
 				}
-				
-				
+
+
 				// Required
 				if( !$field['required'] )
 				{
 					unset( $field['required'] );
 				}
-				
-				
+
+
 				// conditional logic
 				if( !$field['conditional_logic']['status'] )
 				{
 					unset( $field['conditional_logic'] );
 				}
-				
-				
+
+
 				// children
 				if( isset($field['sub_fields']) )
 				{
@@ -494,14 +493,14 @@ if(function_exists("register_field_group"))
 					}
 				}
 
-				
+
 				// override field
 				$fields[ $i ] = $field;
 			}
 		}
-		
+
 		return $fields;
-	}	
+	}
 }
 
 new acf_export();
