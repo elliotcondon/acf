@@ -113,11 +113,20 @@ class acf_third_party
 	{
 		// get acf's
 		$acfs = apply_filters('acf/get_field_groups', array());
+
+		$filter = array(
+			'post_type' => $post_type 
+		);
+		$metabox_ids = array();
+		$metabox_ids = apply_filters( 'acf/location/match_field_groups', $metabox_ids, $filter );
 		
 		if($acfs)
 		{
 			foreach($acfs as $acf)
 			{
+				if( ! in_array( $acf['id'], $metabox_ids ) )
+					continue;
+
 				// add meta box
 				add_meta_box(
 					'acf_' . $acf['id'], 
