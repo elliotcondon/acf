@@ -112,12 +112,14 @@ class acf_field_relationship extends acf_field
 		// right aligned info
 		$title = '<span class="relationship-item-info">';
 			
+	  if( isset($field['result_elements']) && is_array($field['result_elements']) ) {
 			if( in_array('post_type', $field['result_elements']) ) {
 				
 				$post_type_object = get_post_type_object( $post->post_type );
 				$title .= $post_type_object->labels->singular_name;
 				
 			}
+		}
 			
 			
 			// WPML
@@ -135,22 +137,24 @@ class acf_field_relationship extends acf_field
 		
 		
 		// featured_image
-		if( in_array('featured_image', $field['result_elements']) ) {
-			
-			$image = '';
-			
-			if( $post->post_type == 'attachment' ) {
-				
-				$image = wp_get_attachment_image( $post->ID, array(21, 21) );
-				
-			} else {
-				
-				$image = get_the_post_thumbnail( $post->ID, array(21, 21) );
-				
-			}
-			
-			$title .= '<div class="result-thumbnail">' . $image . '</div>';
-			
+	  if( isset($field['result_elements']) && is_array($field['result_elements']) ) {
+      if( in_array('featured_image', $field['result_elements']) ) {
+        
+        $image = '';
+        
+        if( $post->post_type == 'attachment' ) {
+          
+          $image = wp_get_attachment_image( $post->ID, array(21, 21) );
+          
+        } else {
+          
+          $image = get_the_post_thumbnail( $post->ID, array(21, 21) );
+          
+        }
+        
+        $title .= '<div class="result-thumbnail">' . $image . '</div>';
+        
+      }
 		}
 		
 		
