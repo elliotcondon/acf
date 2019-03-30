@@ -431,6 +431,12 @@ acf.data = {
 	page_type		:	'<?php echo $this->data['page_type']; ?>',
 	page_action		:	'<?php echo $this->data['page_action']; ?>',
 	option_name		:	'<?php echo $this->data['option_name']; ?>'
+	<?php
+		global $sitepress;
+		if(isset($sitepress)){
+			echo ', lang : \''.$sitepress->get_current_language().'\'';
+		}
+	?>
 };
 
 $(document).ready(function(){
