@@ -838,18 +838,27 @@ class acf {
 				$required_label = ' <span class="required">*</span>';
 			}
 			
-			
-			echo '<div id="acf-' . $field['name'] . '" class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
-
-				echo '<p class="label">';
-					echo '<label for="' . $field['id'] . '">' . $field['label'] . $required_label . '</label>';
-					echo $field['instructions'];
-				echo '</p>';
-				
+			if( $field['no-title'] )
+			{
 				$field['name'] = 'fields[' . $field['key'] . ']';
 				do_action('acf/create_field', $field, $post_id);
+			}
+			else
+			{
+				echo '<div id="acf-' . $field['name'] . '" class="field field_type-' . $field['type'] . ' field_key-' . $field['key'] . $required_class . '" data-field_name="' . $field['name'] . '" data-field_key="' . $field['key'] . '" data-field_type="' . $field['type'] . '">';
+	
+					echo '<p class="label">';
+						echo '<label for="' . $field['id'] . '">' . $field['label'] . $required_label . '</label>';
+						echo $field['instructions'];
+					echo '</p>';
+					
+					$field['name'] = 'fields[' . $field['key'] . ']';
+					do_action('acf/create_field', $field, $post_id);
+				
+				echo '</div>';
+			}
 			
-			echo '</div>';
+
 			
 		}}
 				
