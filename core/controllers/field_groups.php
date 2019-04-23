@@ -144,7 +144,7 @@ class acf_field_groups
 	{
 		$columns = array(
 			'cb'	 	=> '<input type="checkbox" />',
-			'title' 	=> __("Title"),
+			'title' 	=> __("Title",'acf'),
 			'fields' 	=> __("Fields", 'acf')
 		);
 		
