@@ -1376,7 +1376,7 @@ msgstr "Artikel-Beziehung"
 # @ acf
 #: core/fields/taxonomy.php:211 core/fields/taxonomy.php:220
 msgid "None"
-msgstr "Nur Text"
+msgstr "Keine"
 
 # @ acf
 #: core/fields/taxonomy.php:316 core/fields/user.php:260
