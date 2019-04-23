@@ -152,26 +152,21 @@ class acf_field_post_object extends acf_field
 			// set post_type
 			$args['post_type'] = $post_type;
 			
-			
-			// set order
-			$get_pages = false;
-			if( is_post_type_hierarchical($post_type) && !isset($args['tax_query']) )
-			{
-				$args['sort_column'] = 'menu_order, post_title';
-				$args['sort_order'] = 'ASC';
-				
-				$get_pages = true;
-			}
-			
-			
 			// filters
 			$args = apply_filters('acf/fields/post_object/query', $args, $field, $post);
 			$args = apply_filters('acf/fields/post_object/query/name=' . $field['_name'], $args, $field, $post );
 			$args = apply_filters('acf/fields/post_object/query/key=' . $field['key'], $args, $field, $post );
 			
 			
-			if( $get_pages )
+			if( is_post_type_hierarchical($post_type) && !isset($args['tax_query']) )
 			{
+				// set order if not set with filters
+				if (!isset($args['sort_column'])) {
+					$args['sort_column'] = 'menu_order, post_title';
+				}
+				if (!isset($args['sort_order'])) {
+					$args['sort_order'] = 'ASC';
+				}
 				$posts = get_pages( $args );
 			}
 			else
