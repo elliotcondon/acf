@@ -2091,20 +2091,24 @@ var acf = {
 			    
 			});
 			
+			var clickTimeout;
 			
 			google.maps.event.addListener( this.map, 'click', function( e ) {
-				
 				// reference
-			    var $el = this.$el;
-			    
+				var $el = this.$el;
 			    
 				// vars
 				var lat = e.latLng.lat(),
-					lng = e.latLng.lng();
+				    lng = e.latLng.lng();
 				
-				
-				_this.set({ $el : $el }).update( lat, lng ).sync();
+				clickTimeout = setTimeout(function(){
+					_this.set({ $el : $el }).update( lat, lng ).sync();
+				}, 300);
+			});
 			
+			// Enable double click zooming without moving the marker
+			google.maps.event.addListener( this.map, 'dblclick', function( e ) {
+				clearTimeout(clickTimeout);
 			});
 
 			
